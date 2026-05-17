@@ -1,0 +1,25 @@
+﻿# 멜리언스 브랜드 기본 설정 파일
+[brand]
+name = "멜리언스"
+name_en = "melliance"
+industry = "뷰티"
+target = "25-44대 여성"
+active = true
+
+[style]
+primary_color = "#C8A6D8"
+secondary_color = "#F7F1FA"
+accent_color = "#6E4A7D"
+tone = "정돈된 뷰티, 세련되고 균형 잡힌 무드"
+forbidden = ["과장효과", "저품질 합성", "경쟁사명"]
+
+[performance_targets]
+ctr_target = 2.0
+cvr_target = 4.0
+cpa_target_krw = 20000
+roas_target = 250
+
+[image_config]
+real_photo_count = 2
+illustration_count = 2
+copy_area_bottom_pct = 25

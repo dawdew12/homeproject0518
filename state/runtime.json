@@ -1,0 +1,9 @@
+﻿{
+  "daily_cost_usd": 0,
+  "monthly_cost_usd": 0,
+  "images_generated": 0,
+  "images_approved": 0,
+  "retry_count": 0,
+  "execution_start": null,
+  "execution_end": null
+}

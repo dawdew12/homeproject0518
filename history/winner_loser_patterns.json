@@ -1,0 +1,10 @@
+﻿{
+  "updated_at": null,
+  "brands": {
+    "someud": { "winners": [], "losers": [], "pending": [] },
+    "kinda": { "winners": [], "losers": [], "pending": [] },
+    "melliance": { "winners": [], "losers": [], "pending": [] },
+    "paperback": { "winners": [], "losers": [], "pending": [] },
+    "baren": { "winners": [], "losers": [], "pending": [] }
+  }
+}

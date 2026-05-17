@@ -1,0 +1,25 @@
+﻿# 페이퍼백 브랜드 기본 설정 파일
+[brand]
+name = "페이퍼백"
+name_en = "paperback"
+industry = "라이프스타일"
+target = "25-44대 여성"
+active = true
+
+[style]
+primary_color = "#6F7F64"
+secondary_color = "#F4F1E8"
+accent_color = "#D0A94C"
+tone = "일상 감성, 차분하고 취향이 드러나는 라이프스타일"
+forbidden = ["가격만 강조", "저품질 배경", "경쟁사명"]
+
+[performance_targets]
+ctr_target = 2.5
+cvr_target = 5.0
+cpa_target_krw = 15000
+roas_target = 300
+
+[image_config]
+real_photo_count = 2
+illustration_count = 2
+copy_area_bottom_pct = 25

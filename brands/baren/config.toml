@@ -1,0 +1,25 @@
+﻿# 바렌 브랜드 기본 설정 파일
+[brand]
+name = "바렌"
+name_en = "baren"
+industry = "기능성 브랜드"
+target = "30-50대 여성"
+active = true
+
+[style]
+primary_color = "#2F6F73"
+secondary_color = "#EEF7F6"
+accent_color = "#F0B35A"
+tone = "기능성, 명확하고 깨끗한 정보 전달"
+forbidden = ["과도한 텍스트", "어두운 배경", "경쟁사명"]
+
+[performance_targets]
+ctr_target = 2.0
+cvr_target = 4.0
+cpa_target_krw = 20000
+roas_target = 250
+
+[image_config]
+real_photo_count = 2
+illustration_count = 2
+copy_area_bottom_pct = 25

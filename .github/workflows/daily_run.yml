@@ -1,0 +1,14 @@
+﻿name: AIPR daily run
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 17 * * 1-5'
+
+jobs:
+  phase-placeholder:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Phase 1 placeholder
+        run: echo "PHASE 11에서 실제 자동화 실행 단계를 연결합니다."
