@@ -22,3 +22,17 @@
 - Codex 번들 Python으로 skeleton import 검증을 통과했다.
 - state/current_phase.json의 상태를 completed로 갱신했다.
 
+## 2026-05-18 PHASE 2 시작
+
+- 사용자는 현재 진행상황 브리핑 후 다음 작업 진행을 승인했다.
+- PHASE 2의 범위는 팀원 A 광고 데이터 수집이다.
+- 실제 광고 API 키와 계정 권한은 아직 제공되지 않았으므로, 이번 단계는 mock 수집, 저장, retry, credential 확인 골격까지 구현한다.
+- 실제 API 요청 매핑은 매체별 응답 샘플과 권한 확인 후 이어서 연결한다.
+
+## 2026-05-18 PHASE 2 검증
+
+- `agents/data_collector.py`는 Meta, 네이버SA, 카카오모먼트별 mock 수집 결과를 생성한다.
+- `retry_call`은 실패 후 재시도해 3번째 호출에서 성공하는 테스트를 통과했다.
+- `history/daily/2026-05-18_ad_data.json`에 3개 매체 x 5개 브랜드, 총 15개 mock 레코드를 저장했다.
+- 실제 API 호출은 아직 연결하지 않았고, live 모드에서는 필요한 환경변수 존재 여부만 확인한다.
+

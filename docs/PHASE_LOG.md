@@ -13,3 +13,18 @@
 - Codex 번들 Python으로 skeleton import 검증을 통과했다.
 - 남은 리스크: 로컬 python 명령이 실제 Python 3.11로 연결되어 있지 않다.
 
+## 2026-05-18 PHASE 2 시작
+
+- 목표: Meta, 네이버SA, 카카오모먼트 광고 성과 수집 구조 구현.
+- 범위: mock 데이터 수집, 3회 retry, `history/daily/{date}_ad_data.json` 저장, 단위 테스트.
+- 보류: 실제 API 요청 매핑은 광고 계정 권한과 응답 샘플 확인 후 연결한다.
+
+## 2026-05-18 PHASE 2 완료
+
+- `agents/data_collector.py`에 매체별 mock 수집, credential 확인, 3회 retry, JSON 저장 함수를 구현했다.
+- `tests/test_data_collector.py`로 mock 수집, 저장, retry 동작을 검증했다.
+- `history/daily/2026-05-18_ad_data.json`에 검증용 mock 광고 데이터를 저장했다.
+- 검증 명령: Codex 번들 Python으로 `python -m unittest tests.test_data_collector`.
+- 결과: 3개 테스트 통과.
+- 남은 리스크: 실제 Meta, 네이버SA, 카카오모먼트 API 응답 매핑은 계정 권한과 샘플 응답 확인 후 연결해야 한다.
+
