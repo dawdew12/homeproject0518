@@ -36,3 +36,16 @@
 - `history/daily/2026-05-18_ad_data.json`에 3개 매체 x 5개 브랜드, 총 15개 mock 레코드를 저장했다.
 - 실제 API 호출은 아직 연결하지 않았고, live 모드에서는 필요한 환경변수 존재 여부만 확인한다.
 
+## 2026-05-18 PHASE 3 시작
+
+- PHASE 3의 범위는 팀원 B 트렌드 수집이다.
+- 실제 네이버 트렌드, Google Trends, 뉴스 API 연결 전 단계로 mock 수집, 저장, retry, credential 확인 골격까지 구현한다.
+- 경쟁사 이슈는 별도 mock 소스로 분리해 팀장 분석 단계에서 시즌 이슈와 경쟁사 신호를 구분할 수 있게 한다.
+
+## 2026-05-18 PHASE 3 검증
+
+- `agents/trend_collector.py`는 네이버 트렌드, Google Trends, 뉴스, 경쟁사 이슈별 mock 수집 결과를 생성한다.
+- `retry_call`은 실패 후 재시도해 3번째 호출에서 성공하는 테스트를 통과했다.
+- `history/daily/2026-05-18_trend_data.json`에 4개 소스 x 5개 브랜드, 총 20개 mock 레코드를 저장했다.
+- 실제 API 호출은 아직 연결하지 않았고, live 모드에서는 필요한 환경변수 존재 여부만 확인한다.
+

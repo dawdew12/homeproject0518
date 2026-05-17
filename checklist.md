@@ -29,3 +29,16 @@
 - [x] `history/daily/{date}_ad_data.json` 저장 함수 구현
 - [x] 수집기 단위 테스트 추가
 - [x] PHASE 2 검증 실행
+
+# PHASE 3 Checklist
+
+- [x] PHASE 2 완료 상태 확인
+- [x] 트렌드 수집 대상 파일 확인
+- [x] 네이버 트렌드 mock 수집 구조 구현
+- [x] Google Trends mock 수집 구조 구현
+- [x] 뉴스 이슈 mock 수집 구조 구현
+- [x] 경쟁사 이슈 mock 수집 구조 구현
+- [x] 3회 retry 공통 함수 구현
+- [x] `history/daily/{date}_trend_data.json` 저장 함수 구현
+- [x] 수집기 단위 테스트 추가
+- [x] PHASE 3 검증 실행
