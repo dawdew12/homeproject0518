@@ -42,3 +42,11 @@
 - [x] `history/daily/{date}_trend_data.json` 저장 함수 구현
 - [x] 수집기 단위 테스트 추가
 - [x] PHASE 3 검증 실행
+
+# PHASE 3 Source Catalog Update
+
+- [x] 첨부 시장조사 출처 문서를 `docs/MARKETING_AD_TREND_SOURCES.md`로 배치
+- [x] 팀원 B가 출처 카탈로그를 daily/weekly/monthly로 읽는 구조 구현
+- [x] daily 시장조사 출처를 트렌드 수집 payload에 포함
+- [x] 출처 카탈로그 로드 테스트 추가
+- [x] 검증용 트렌드 JSON 재생성

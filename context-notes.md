@@ -49,3 +49,11 @@
 - `history/daily/2026-05-18_trend_data.json`에 4개 소스 x 5개 브랜드, 총 20개 mock 레코드를 저장했다.
 - 실제 API 호출은 아직 연결하지 않았고, live 모드에서는 필요한 환경변수 존재 여부만 확인한다.
 
+## 2026-05-18 PHASE 3 시장조사 출처 보강
+
+- 사용자가 전달한 `codex_marketing_ad_trend_sources.md`를 팀원 B의 시장조사 출처 기준으로 채택했다.
+- 문서는 `docs/MARKETING_AD_TREND_SOURCES.md`에 저장했다.
+- `agents/trend_collector.py`가 해당 문서의 Markdown 표를 읽어 daily, weekly, monthly 출처를 구분한다.
+- 매일 수집 payload에는 daily 출처 13개가 `monitoring_sources.daily`로 포함된다.
+- 실제 웹 방문과 본문 수집은 후속 자동화 단계에서 연결한다.
+

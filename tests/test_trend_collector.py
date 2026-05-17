@@ -6,7 +6,14 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from agents.trend_collector import BRANDS, collect_trend_data, retry_call, save_trend_data
+from agents.trend_collector import (
+    BRANDS,
+    collect_trend_data,
+    load_marketing_source_catalog,
+    retry_call,
+    save_trend_data,
+    select_due_monitoring_sources,
+)
 
 
 class TrendCollectorTest(unittest.TestCase):
@@ -20,6 +27,8 @@ class TrendCollectorTest(unittest.TestCase):
         self.assertEqual(payload["summary"]["record_count"], 4 * len(BRANDS))
         self.assertEqual(len(payload["records"]), 4 * len(BRANDS))
         self.assertIn("top_keywords", payload["summary"])
+        self.assertGreaterEqual(payload["summary"]["daily_monitoring_source_count"], 10)
+        self.assertIn("monitoring_sources", payload)
 
     def test_save_trend_data_writes_daily_json(self) -> None:
         payload = collect_trend_data("2026-05-18")
@@ -30,6 +39,17 @@ class TrendCollectorTest(unittest.TestCase):
 
         self.assertEqual(output_path.name, "2026-05-18_trend_data.json")
         self.assertEqual(saved["summary"]["record_count"], 20)
+        self.assertIn("daily", saved["monitoring_sources"])
+
+    def test_load_marketing_source_catalog_reads_attached_monitoring_sources(self) -> None:
+        catalog = load_marketing_source_catalog()
+        daily_sources = select_due_monitoring_sources(catalog, "daily")
+        daily_source_names = {source["source_name"] for source in daily_sources}
+
+        self.assertGreaterEqual(len(catalog), 30)
+        self.assertIn("Meta Ad Library", daily_source_names)
+        self.assertIn("오픈애즈", daily_source_names)
+        self.assertIn("네이버 광고주센터 공지사항", daily_source_names)
 
     def test_retry_call_retries_until_success(self) -> None:
         attempts = {"count": 0}

@@ -13,6 +13,7 @@ from typing import Any, Callable
 BRANDS = ["someud", "kinda", "melliance", "paperback", "baren"]
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_OUTPUT_DIR = PROJECT_ROOT / "history" / "daily"
+MARKETING_SOURCE_DOC = PROJECT_ROOT / "docs" / "MARKETING_AD_TREND_SOURCES.md"
 MAX_ATTEMPTS = 3
 
 SOURCE_CONFIGS: dict[str, dict[str, Any]] = {
@@ -41,6 +42,67 @@ BRAND_KEYWORDS: dict[str, list[str]] = {
     "paperback": ["라이프스타일", "독서 감성", "카페"],
     "baren": ["기능성 케어", "인포그래픽", "성분"],
 }
+
+
+def parse_marketing_source_catalog(markdown: str) -> list[dict[str, str]]:
+    """시장조사 출처 문서의 Markdown 표를 구조화한다."""
+    catalog = []
+    category = ""
+    category_label = ""
+
+    for raw_line in markdown.splitlines():
+        line = raw_line.strip()
+        if line.startswith("## ") and "(" in line and ")" in line:
+            heading = line.removeprefix("## ").strip()
+            category_label = heading.split("(")[0].strip()
+            category = heading.rsplit("(", 1)[1].rstrip(")").strip()
+            continue
+
+        if not line.startswith("|") or line.startswith("|---") or line.startswith("| Priority"):
+            continue
+
+        cells = [cell.strip() for cell in line.strip("|").split("|")]
+        if len(cells) != 6 or not category:
+            continue
+
+        priority, cadence, source_name, url, use_case, codex_task = cells
+        catalog.append(
+            {
+                "category": category,
+                "category_label": category_label,
+                "priority": priority,
+                "cadence": cadence,
+                "source_name": source_name,
+                "url": url,
+                "use_case": use_case,
+                "codex_task": codex_task,
+            }
+        )
+
+    return catalog
+
+
+def load_marketing_source_catalog(path: Path = MARKETING_SOURCE_DOC) -> list[dict[str, str]]:
+    """프로젝트 문서에 저장된 시장조사 출처 카탈로그를 읽는다."""
+    if not path.exists():
+        return []
+    return parse_marketing_source_catalog(path.read_text(encoding="utf-8"))
+
+
+def select_due_monitoring_sources(catalog: list[dict[str, str]], cadence: str) -> list[dict[str, str]]:
+    """실행 주기에 맞는 시장조사 출처만 고른다."""
+    normalized = cadence.lower()
+    return [source for source in catalog if source["cadence"].lower() == normalized]
+
+
+def build_monitoring_source_plan(catalog: list[dict[str, str]]) -> dict[str, Any]:
+    """팀원 B가 확인할 시장조사 출처를 주기별로 묶는다."""
+    return {
+        "catalog_path": str(MARKETING_SOURCE_DOC.relative_to(PROJECT_ROOT)),
+        "daily": select_due_monitoring_sources(catalog, "daily"),
+        "weekly": select_due_monitoring_sources(catalog, "weekly"),
+        "monthly": select_due_monitoring_sources(catalog, "monthly"),
+    }
 
 
 def resolve_date(value: str | None = None) -> str:
@@ -157,6 +219,8 @@ def collect_competitor_issues(date: str | None = None, mock: bool = True) -> dic
 def collect_trend_data(date: str | None = None, mock: bool = True) -> dict[str, Any]:
     """트렌드와 뉴스 수집 결과를 하나의 일별 데이터로 묶는다."""
     target_date = resolve_date(date)
+    marketing_source_catalog = load_marketing_source_catalog()
+    monitoring_sources = build_monitoring_source_plan(marketing_source_catalog)
     sources = [
         collect_naver_trends(target_date, mock=mock),
         collect_google_trends(target_date, mock=mock),
@@ -165,6 +229,7 @@ def collect_trend_data(date: str | None = None, mock: bool = True) -> dict[str, 
     ]
     records = [record for source in sources for record in source["records"]]
     top_keywords = sorted({keyword for record in records for keyword in record["keywords"]})
+    daily_categories = sorted({source["category"] for source in monitoring_sources["daily"]})
 
     return {
         "date": target_date,
@@ -175,7 +240,11 @@ def collect_trend_data(date: str | None = None, mock: bool = True) -> dict[str, 
             "brand_count": len(BRANDS),
             "record_count": len(records),
             "top_keywords": top_keywords[:10],
+            "monitoring_source_count": len(marketing_source_catalog),
+            "daily_monitoring_source_count": len(monitoring_sources["daily"]),
+            "daily_monitoring_categories": daily_categories,
         },
+        "monitoring_sources": monitoring_sources,
         "records": records,
     }
 
