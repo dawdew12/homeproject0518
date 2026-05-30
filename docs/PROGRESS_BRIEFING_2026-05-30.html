@@ -1,0 +1,338 @@
+<!-- 프로젝트 진행 현황을 요약하는 HTML 브리핑 문서 -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIPR 진행 현황 브리핑</title>
+<style>
+:root {
+  --bg: #f5f6f2;
+  --panel: #ffffff;
+  --ink: #1d1f1f;
+  --muted: #606760;
+  --line: #d9ded5;
+  --green: #1f7a56;
+  --blue: #2e67b1;
+  --amber: #a36a08;
+  --red: #a43737;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Pretendard", "Segoe UI", Arial, sans-serif;
+  line-height: 1.62;
+}
+.wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 32px 22px 56px;
+}
+.top {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 20px;
+  align-items: start;
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--line);
+}
+h1 {
+  margin: 0 0 8px;
+  font-size: 30px;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+.sub {
+  color: var(--muted);
+  margin: 0;
+  font-size: 14px;
+}
+.stamp {
+  min-width: 220px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 14px 16px;
+  font-size: 13px;
+}
+.stamp strong { display: block; font-size: 15px; margin-bottom: 4px; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin: 24px 0;
+}
+.metric {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 14px 16px;
+}
+.label {
+  color: var(--muted);
+  font-size: 12px;
+  margin-bottom: 6px;
+}
+.value {
+  font-size: 24px;
+  font-weight: 700;
+}
+.ok { color: var(--green); }
+.info { color: var(--blue); }
+.warn { color: var(--amber); }
+section {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 20px;
+  margin: 14px 0;
+}
+h2 {
+  margin: 0 0 14px;
+  font-size: 19px;
+}
+h3 {
+  margin: 18px 0 8px;
+  font-size: 15px;
+}
+ul {
+  margin: 8px 0 0;
+  padding-left: 20px;
+}
+li { margin: 5px 0; }
+.timeline {
+  display: grid;
+  gap: 10px;
+}
+.phase {
+  display: grid;
+  grid-template-columns: 130px 1fr 190px;
+  gap: 14px;
+  align-items: start;
+  padding: 14px 0;
+  border-top: 1px solid var(--line);
+}
+.phase:first-child { border-top: 0; padding-top: 0; }
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  border-radius: 999px;
+  padding: 3px 10px;
+  font-size: 12px;
+  font-weight: 700;
+  background: #e5f3ec;
+  color: var(--green);
+}
+.commit {
+  color: var(--muted);
+  font-family: Consolas, monospace;
+  font-size: 12px;
+  word-break: break-all;
+}
+.files {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+.file {
+  background: #f8f9f6;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 11px 12px;
+  font-family: Consolas, monospace;
+  font-size: 12px;
+}
+.risk {
+  border-left: 4px solid var(--amber);
+}
+.next {
+  border-left: 4px solid var(--blue);
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+th, td {
+  border-bottom: 1px solid var(--line);
+  padding: 9px 8px;
+  text-align: left;
+  vertical-align: top;
+}
+th {
+  color: var(--muted);
+  font-weight: 700;
+}
+code {
+  background: #eef1ec;
+  border-radius: 5px;
+  padding: 2px 5px;
+}
+@media (max-width: 820px) {
+  .top,
+  .grid,
+  .phase,
+  .files {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header class="top">
+    <div>
+      <h1>AIPR 프로젝트 진행 현황 브리핑</h1>
+      <p class="sub">D:\AIPR 실제 파일, 상태 JSON, PHASE 로그, Git 이력, 테스트 결과 기준.</p>
+    </div>
+    <div class="stamp">
+      <strong>기준일</strong>
+      2026-05-30 · Asia/Seoul<br>
+      <strong>현재 상태</strong>
+      PHASE 3 완료
+    </div>
+  </header>
+
+  <div class="grid">
+    <div class="metric">
+      <div class="label">현재 Phase</div>
+      <div class="value ok">3 완료</div>
+    </div>
+    <div class="metric">
+      <div class="label">마지막 성공 기록</div>
+      <div class="value info">출처 보강</div>
+    </div>
+    <div class="metric">
+      <div class="label">현재 테스트</div>
+      <div class="value ok">7 OK</div>
+    </div>
+    <div class="metric">
+      <div class="label">Git 상태</div>
+      <div class="value ok">Clean</div>
+    </div>
+  </div>
+
+  <section>
+    <h2>한 줄 요약</h2>
+    <p>프로젝트 기반 세팅, 광고 데이터 mock 수집, 트렌드 데이터 mock 수집, 시장조사 출처 카탈로그 반영까지 완료됐습니다. 다음 작업은 PHASE 4인 팀장 분석 엔진입니다.</p>
+  </section>
+
+  <section>
+    <h2>Phase별 진행 상황</h2>
+    <div class="timeline">
+      <div class="phase">
+        <div><span class="badge">PHASE 1 완료</span></div>
+        <div>
+          <strong>프로젝트 기반 세팅과 아키텍처 문서화.</strong>
+          <ul>
+            <li>폴더 구조, README, requirements, .env.example, state, logs 생성.</li>
+            <li>에이전트와 유틸리티 skeleton 생성.</li>
+            <li>기존 대시보드 HTML을 dashboard 폴더에 배치하고 원본 백업 생성.</li>
+            <li>ARCHITECTURE, DASHBOARD_SPEC, PHASE_LOG 문서 작성.</li>
+          </ul>
+        </div>
+        <div class="commit">06e01af<br>[PHASE 1] 프로젝트 기반 구조 생성</div>
+      </div>
+      <div class="phase">
+        <div><span class="badge">PHASE 2 완료</span></div>
+        <div>
+          <strong>광고 데이터 수집 mock 구현.</strong>
+          <ul>
+            <li>Meta, 네이버SA, 카카오모먼트 mock 수집 구조 구현.</li>
+            <li>3회 retry 함수와 JSON 저장 함수 구현.</li>
+            <li>검증용 광고 데이터 15개 레코드 저장.</li>
+            <li>단위 테스트 3개 통과.</li>
+          </ul>
+        </div>
+        <div class="commit">876197c<br>[PHASE 2] 광고 데이터 수집 mock 구현</div>
+      </div>
+      <div class="phase">
+        <div><span class="badge">PHASE 3 완료</span></div>
+        <div>
+          <strong>트렌드 수집 mock 구현.</strong>
+          <ul>
+            <li>네이버 트렌드, Google Trends, 뉴스 이슈, 경쟁사 이슈 mock 수집 구조 구현.</li>
+            <li>검증용 트렌드 데이터 20개 레코드 저장.</li>
+            <li>팀원 B가 시장조사 출처 카탈로그를 읽도록 보강.</li>
+            <li>daily 시장조사 출처 13개를 트렌드 payload에 포함.</li>
+          </ul>
+        </div>
+        <div class="commit">c3f0b83<br>[PHASE 3] 트렌드 데이터 수집 mock 구현<br><br>6f1df7d<br>[PHASE 3] 시장조사 출처 카탈로그 반영</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>현재 산출물</h2>
+    <div class="files">
+      <div class="file">agents/data_collector.py</div>
+      <div class="file">agents/trend_collector.py</div>
+      <div class="file">tests/test_data_collector.py</div>
+      <div class="file">tests/test_trend_collector.py</div>
+      <div class="file">history/daily/2026-05-18_ad_data.json</div>
+      <div class="file">history/daily/2026-05-18_trend_data.json</div>
+      <div class="file">docs/MARKETING_AD_TREND_SOURCES.md</div>
+      <div class="file">dashboard/AIPR_Dashboard.html</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>데이터 기준 확인</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>파일</th>
+          <th>상태</th>
+          <th>레코드</th>
+          <th>비고</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>2026-05-18_ad_data.json</code></td>
+          <td>mock_collected</td>
+          <td>15</td>
+          <td>3개 광고 매체 x 5개 브랜드.</td>
+        </tr>
+        <tr>
+          <td><code>2026-05-18_trend_data.json</code></td>
+          <td>mock_collected</td>
+          <td>20</td>
+          <td>4개 트렌드 소스 x 5개 브랜드, daily 시장조사 출처 13개 포함.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>검증 결과</h2>
+    <ul>
+      <li><code>python -m unittest tests.test_trend_collector tests.test_data_collector</code> 실행 완료.</li>
+      <li>결과는 <strong>Ran 7 tests ... OK</strong>.</li>
+      <li>Git remote는 <code>https://github.com/dawdew12/homeproject0518.git</code>.</li>
+      <li>현재 브랜치는 <code>main</code>.</li>
+      <li>작업트리는 HTML 생성 전 기준으로 깨끗했습니다.</li>
+    </ul>
+  </section>
+
+  <section class="risk">
+    <h2>남은 리스크</h2>
+    <ul>
+      <li>Meta, 네이버SA, 카카오모먼트 실제 API 응답 매핑은 아직 연결되지 않았습니다.</li>
+      <li>네이버 트렌드, Google Trends, 뉴스 API 실제 요청 매핑도 아직 연결되지 않았습니다.</li>
+      <li>로컬 <code>python</code> 명령은 이전 확인 당시 Microsoft Store 실행 별칭으로 잡혀 있었고, 현재 검증은 Codex 번들 Python으로 수행했습니다.</li>
+      <li>PHASE 4 팀장 분석 엔진부터는 광고 데이터와 트렌드 데이터를 종합하는 판단 로직이 필요합니다.</li>
+    </ul>
+  </section>
+
+  <section class="next">
+    <h2>다음 진행 권장</h2>
+    <p>다음은 PHASE 4, 팀장 분석 엔진입니다. 입력은 광고 데이터 JSON과 트렌드 데이터 JSON이며, 출력은 <code>history/daily/{date}_manager_brief.json</code>가 적절합니다. 우선 mock 기반으로 브랜드별 소재 방향, 개선안, 우선순위, 리스크를 생성하고 테스트를 붙이는 순서가 안전합니다.</p>
+  </section>
+</main>
+</body>
+</html>
