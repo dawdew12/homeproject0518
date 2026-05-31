@@ -159,3 +159,17 @@
 - `history/daily/2026-05-18_image_dry_run.json`에는 5개 batch, 20개 요청, 예상 비용 $2.64, 일일/월간 한도 통과 여부가 저장되었다.
 - 대시보드 JSON과 화면은 PHASE 6 완료, 전체 진행도 50%, 다음 단계 PHASE 7 품질 검수로 갱신되었다.
 
+## 2026-06-01 PHASE 7 Quality Review 시작
+
+- PHASE 7의 범위는 팀장이 팀원 D의 이미지 dry-run 요청을 검수하고 재생성 필요 여부를 판단하는 것이다.
+- 실제 이미지 파일은 아직 생성되지 않았으므로 이번 검수는 픽셀 품질이 아니라 생성 요청의 운영 적합성을 점검한다.
+- 검수 기준은 모델, 2K 사이즈, 이미지 유형별 품질, no-text 규칙, 하단 25% 카피 여백, 출력 경로, negative prompt의 텍스트 차단 항목이다.
+- 산출물은 `history/daily/{date}_quality_review.json`이며, 다음 PHASE 8 Winner/Loser 학습 입력 전의 승인 게이트로 사용한다.
+
+## 2026-06-01 PHASE 7 Quality Review 구현
+
+- `agents/manager.py`에 품질 검수 기준, 점수화, 재생성 필요 여부, 최대 재시도 2회 handoff 구조를 구현했다.
+- `history/daily/2026-05-18_quality_review.json`은 20개 요청을 모두 승인했고 평균 점수는 100.0이다.
+- 재생성 필요 요청은 0개이며, no-text 규칙과 하단 25% 카피 여백 검수는 모두 통과했다.
+- 대시보드는 PHASE 7 완료, 전체 진행도 58%, 다음 단계 PHASE 8 Winner/Loser 학습으로 갱신한다.
+

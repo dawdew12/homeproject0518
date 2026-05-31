@@ -19,6 +19,8 @@ BRAND_VISUAL_CONCEPTS = {
     "paperback": "취향 있는 카페와 독서 장면을 연결한 라이프스타일 컷",
     "baren": "성분과 기능을 깨끗하게 이해시키는 정보형 비주얼",
 }
+QUALITY_SCORE_THRESHOLD = 90
+MAX_REGENERATION_RETRY = 2
 
 
 def read_json(path: Path, default: Any | None = None) -> Any:
@@ -301,9 +303,173 @@ def review_storyboards(date: str | None = None) -> dict[str, Any]:
     return {"status": "pending_prompt_engineer_output", "step": "storyboard_review", "date": date}
 
 
-def review_images(date: str | None = None) -> dict[str, Any]:
+def build_quality_check(name: str, passed: bool, detail: str) -> dict[str, Any]:
+    """품질 검수 항목 1개를 표준 구조로 만든다."""
+    return {"name": name, "passed": passed, "detail": detail}
+
+
+def build_quality_checks(request: dict[str, Any]) -> list[dict[str, Any]]:
+    """이미지 생성 요청이 운영 품질 기준을 만족하는지 점검한다."""
+    brand = str(request.get("brand", ""))
+    output_path = str(request.get("output_path", ""))
+    rules = [str(rule) for rule in request.get("rules", [])]
+    negative_prompt = {str(item).lower() for item in request.get("negative_prompt", [])}
+    image_type = request.get("image_type_label")
+    expected_quality = "high" if image_type == "실사" else "medium" if image_type == "일러스트" else None
+
+    return [
+        build_quality_check(
+            "status_ready",
+            request.get("status") == "dry_run_ready",
+            "이미지 요청이 dry-run 준비 상태여야 한다.",
+        ),
+        build_quality_check(
+            "model",
+            request.get("model") == "gpt-image-2",
+            "이미지 생성 모델은 gpt-image-2여야 한다.",
+        ),
+        build_quality_check(
+            "size",
+            request.get("size") == "2048x2048",
+            "이미지 사이즈는 2K 정사각형 규격이어야 한다.",
+        ),
+        build_quality_check(
+            "quality_by_type",
+            expected_quality is not None and request.get("quality") == expected_quality,
+            "실사는 high, 일러스트는 medium 품질이어야 한다.",
+        ),
+        build_quality_check(
+            "output_path",
+            output_path.startswith(f"outputs/{brand}/") and output_path.endswith(".png"),
+            "출력 경로는 브랜드별 outputs 폴더의 PNG 파일이어야 한다.",
+        ),
+        build_quality_check(
+            "copy_space",
+            request.get("copy_space") == "bottom_25_percent",
+            "하단 25% 카피 여백이 예약되어야 한다.",
+        ),
+        build_quality_check(
+            "no_text_rule",
+            "NO text" in rules,
+            "이미지 안에 텍스트를 넣지 않는 규칙이 필요하다.",
+        ),
+        build_quality_check(
+            "negative_prompt",
+            {"text", "watermark", "logo"}.issubset(negative_prompt),
+            "negative prompt가 텍스트, 워터마크, 로고를 차단해야 한다.",
+        ),
+    ]
+
+
+def review_image_request(request: dict[str, Any]) -> dict[str, Any]:
+    """이미지 요청 1개의 품질 점수와 재생성 필요 여부를 만든다."""
+    checks = build_quality_checks(request)
+    failed_checks = [check for check in checks if not check["passed"]]
+    score = max(0, 100 - len(failed_checks) * 15)
+    regeneration_needed = score < QUALITY_SCORE_THRESHOLD
+    reason = "all_checks_passed" if not failed_checks else ", ".join(check["name"] for check in failed_checks)
+
+    return {
+        "prompt_id": request.get("prompt_id"),
+        "storyboard_id": request.get("storyboard_id"),
+        "brand": request.get("brand"),
+        "output_path": request.get("output_path"),
+        "image_type_label": request.get("image_type_label"),
+        "quality": request.get("quality"),
+        "score": score,
+        "status": "regeneration_required" if regeneration_needed else "approved",
+        "checks": checks,
+        "regeneration": {
+            "needed": regeneration_needed,
+            "reason": reason,
+            "retry_count": 1 if regeneration_needed else 0,
+            "max_retry": MAX_REGENERATION_RETRY,
+        },
+    }
+
+
+def collect_image_requests(image_payload: dict[str, Any]) -> list[dict[str, Any]]:
+    """이미지 dry-run payload에서 요청 목록을 모은다."""
+    if image_payload.get("requests"):
+        return image_payload.get("requests", [])
+    requests = []
+    for batch in image_payload.get("batches", []):
+        requests.extend(batch.get("requests", []))
+    return requests
+
+
+def build_quality_review(
+    date: str,
+    image_payload: dict[str, Any],
+    input_files: dict[str, str] | None = None,
+) -> dict[str, Any]:
+    """이미지 dry-run 요청 전체에 대한 품질 검수 결과를 만든다."""
+    reviews = [review_image_request(request) for request in collect_image_requests(image_payload)]
+    approved = [item for item in reviews if item["status"] == "approved"]
+    regeneration_required = [item for item in reviews if item["status"] == "regeneration_required"]
+
+    return {
+        "date": date,
+        "status": "quality_review_ready",
+        "mode": image_payload.get("mode"),
+        "input_files": input_files or {},
+        "summary": {
+            "brand_count": len({item.get("brand") for item in reviews}),
+            "request_count": len(reviews),
+            "approved_count": len(approved),
+            "regeneration_required_count": len(regeneration_required),
+            "blocked_count": 0,
+            "avg_score": average([float(item["score"]) for item in reviews]),
+            "no_text_rule_passed": all(
+                check["passed"]
+                for item in reviews
+                for check in item["checks"]
+                if check["name"] == "no_text_rule"
+            ),
+            "copy_space_passed": all(
+                check["passed"]
+                for item in reviews
+                for check in item["checks"]
+                if check["name"] == "copy_space"
+            ),
+            "max_retry": MAX_REGENERATION_RETRY,
+        },
+        "reviews": reviews,
+        "handoff_to_prompt_engineer": [
+            {
+                "prompt_id": item["prompt_id"],
+                "brand": item["brand"],
+                "reason": item["regeneration"]["reason"],
+                "retry_count": item["regeneration"]["retry_count"],
+                "max_retry": item["regeneration"]["max_retry"],
+            }
+            for item in regeneration_required
+        ],
+    }
+
+
+def save_quality_review(payload: dict[str, Any], output_dir: Path = DEFAULT_DAILY_DIR) -> Path:
+    """품질 검수 결과를 daily history에 저장한다."""
+    return write_json(output_dir / f"{payload['date']}_quality_review.json", payload)
+
+
+def review_images(
+    date: str | None = None,
+    daily_dir: Path = DEFAULT_DAILY_DIR,
+    output_dir: Path | None = None,
+) -> dict[str, Any]:
     """생성 이미지의 품질을 검수하고 재생성 필요 여부를 판단한다."""
-    return {"status": "pending_image_output", "step": "image_review", "date": date}
+    image_path = find_daily_file(date, "image_dry_run", daily_dir)
+    image_payload = read_json(image_path)
+    review_date = date or image_payload.get("date")
+    payload = build_quality_review(
+        review_date,
+        image_payload,
+        {"image_dry_run": str(image_path.relative_to(PROJECT_ROOT)).replace("\\", "/")},
+    )
+    output_path = save_quality_review(payload, output_dir or daily_dir)
+    payload["output_path"] = str(output_path)
+    return payload
 
 
 def classify_winner_loser(date: str | None = None) -> dict[str, Any]:
@@ -342,7 +508,7 @@ def main() -> None:
     handlers = {
         "analyze": lambda selected_date: analyze_daily_inputs(selected_date, output_dir=output_dir),
         "storyboard": review_storyboards,
-        "review": review_images,
+        "review": lambda selected_date: review_images(selected_date, output_dir=output_dir),
         "classify": classify_winner_loser,
     }
     result = handlers[args.step](args.date)

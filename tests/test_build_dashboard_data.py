@@ -23,10 +23,13 @@ class BuildDashboardDataTest(unittest.TestCase):
         self.assertEqual(payload["data"]["prompts"]["storyboard_count"], 20)
         self.assertEqual(payload["data"]["images"]["request_count"], 20)
         self.assertEqual(payload["data"]["images"]["estimated_cost_usd"], 2.64)
+        self.assertEqual(payload["data"]["quality_review"]["approved_count"], 20)
+        self.assertEqual(payload["data"]["quality_review"]["regeneration_required_count"], 0)
+        self.assertEqual(payload["data"]["quality_review"]["avg_score"], 100.0)
         self.assertEqual(payload["data"]["marketing_source_counts"]["daily"], 13)
         self.assertEqual(payload["architecture"]["overall_progress"]["total_phase_count"], 12)
-        self.assertEqual(payload["architecture"]["overall_progress"]["completed_phase_count"], 6)
-        self.assertEqual(payload["architecture"]["overall_progress"]["percent"], 50)
+        self.assertEqual(payload["architecture"]["overall_progress"]["completed_phase_count"], 7)
+        self.assertEqual(payload["architecture"]["overall_progress"]["percent"], 58)
         self.assertGreaterEqual(len(payload["architecture"]["layers"]), 5)
         self.assertGreaterEqual(len(payload["architecture"]["flow"]), 8)
         self.assertGreaterEqual(len(payload["quality"]["phase_test_results"]), 7)
@@ -34,10 +37,11 @@ class BuildDashboardDataTest(unittest.TestCase):
         self.assertEqual(len(payload["data"]["manager_preview"]), 5)
         self.assertGreaterEqual(len(payload["data"]["prompt_preview"]), 5)
         self.assertGreaterEqual(len(payload["data"]["image_preview"]), 5)
+        self.assertGreaterEqual(len(payload["data"]["quality_preview"]), 5)
         self.assertEqual(len(payload["operations"]["agent_status"]), 5)
         self.assertGreaterEqual(len(payload["operations"]["pipeline_steps"]), 9)
         self.assertGreaterEqual(len(payload["data"]["monitoring_preview"]["daily"]), 5)
-        self.assertEqual(payload["next_step"]["phase"], "PHASE 7")
+        self.assertEqual(payload["next_step"]["phase"], "PHASE 8")
 
     def test_write_dashboard_payload_creates_json_file(self) -> None:
         payload = build_dashboard_payload()
@@ -47,7 +51,7 @@ class BuildDashboardDataTest(unittest.TestCase):
             saved = json.loads(output_path.read_text(encoding="utf-8"))
 
         self.assertEqual(saved["project"]["github_repo"], "https://github.com/dawdew12/homeproject0518")
-        self.assertEqual(saved["verification"]["test_count"], 20)
+        self.assertEqual(saved["verification"]["test_count"], 23)
         self.assertIn("feature_status", saved["operations"])
         self.assertTrue(output_path.name.endswith(".json"))
 

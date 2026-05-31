@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-31T19:24:49+09:00",
+  "generated_at": "2026-06-01T08:44:55+09:00",
   "project": {
     "name": "AIPR",
     "github_repo": "https://github.com/dawdew12/homeproject0518",
@@ -8,10 +8,10 @@
     "custom_domain_enabled": false
   },
   "current_phase": {
-    "current_phase": 6,
+    "current_phase": 7,
     "status": "completed",
     "active_brand": null,
-    "last_success": "2026-05-31 PHASE 6 image dry-run completed",
+    "last_success": "2026-06-01 PHASE 7 quality review completed",
     "last_error": null
   },
   "phase_progress": [
@@ -53,18 +53,23 @@
     {
       "phase": "PHASE 7",
       "title": "품질 검수 및 재생성",
+      "status": "completed"
+    },
+    {
+      "phase": "PHASE 8",
+      "title": "Winner/Loser 학습",
       "status": "next"
     }
   ],
   "architecture": {
     "overall_progress": {
-      "completed_phase_count": 6,
+      "completed_phase_count": 7,
       "total_phase_count": 12,
-      "percent": 50,
-      "current_phase": "PHASE 6",
-      "next_phase": "PHASE 7",
+      "percent": 58,
+      "current_phase": "PHASE 7",
+      "next_phase": "PHASE 8",
       "dashboard_milestones_completed": 2,
-      "latest_test_count": 20,
+      "latest_test_count": 23,
       "latest_test_result": "passed"
     },
     "phase_roadmap": [
@@ -107,13 +112,13 @@
       {
         "phase": "PHASE 7",
         "title": "품질 검수 및 재생성",
-        "status": "next",
-        "progress": 0
+        "status": "completed",
+        "progress": 100
       },
       {
         "phase": "PHASE 8",
         "title": "Winner/Loser 학습",
-        "status": "planned",
+        "status": "next",
         "progress": 0
       },
       {
@@ -215,13 +220,13 @@
           {
             "id": "quality_review",
             "label": "품질 검수",
-            "status": "next",
-            "metric": "PHASE 7"
+            "status": "quality_review_ready",
+            "metric": "20 approved"
           },
           {
             "id": "learning",
             "label": "Winner/Loser 학습",
-            "status": "planned",
+            "status": "next",
             "metric": "PHASE 8"
           }
         ]
@@ -234,7 +239,7 @@
             "id": "history",
             "label": "history/daily",
             "status": "ready",
-            "metric": "4 daily JSON"
+            "metric": "5 daily JSON"
           },
           {
             "id": "dashboard",
@@ -307,6 +312,18 @@
         "status": "ready"
       },
       {
+        "from": "이미지 Dry-run",
+        "to": "팀장 검수",
+        "artifact": "품질 점수 20개",
+        "status": "ready"
+      },
+      {
+        "from": "팀장 검수",
+        "to": "history/daily/*_quality_review.json",
+        "artifact": "승인 20개",
+        "status": "ready"
+      },
+      {
         "from": "history/state/git",
         "to": "Vercel Dashboard",
         "artifact": "latest_status.json",
@@ -343,6 +360,12 @@
         "producer": "팀원 D",
         "consumer": "팀장 검수, 대시보드",
         "status": "ready"
+      },
+      {
+        "path": "history/daily/{date}_quality_review.json",
+        "producer": "팀장",
+        "consumer": "팀원 C, 대시보드",
+        "status": "quality_review_ready"
       },
       {
         "path": "outputs/{brand}/{date}/",
@@ -419,10 +442,18 @@
       {
         "phase": "PHASE 7",
         "scope": "품질 검수 및 재생성",
-        "check": "예정: 품질 기준 + 재생성 판단 테스트",
+        "check": "python -m unittest tests.test_manager",
+        "result": "passed",
+        "test_count": 6,
+        "artifact": "history/daily/2026-05-18_quality_review.json"
+      },
+      {
+        "phase": "PHASE 8",
+        "scope": "Winner/Loser 학습",
+        "check": "예정: 성과 분류 + 패턴 저장 테스트",
         "result": "next",
         "test_count": 0,
-        "artifact": "history/daily/{date}_quality_review.json"
+        "artifact": "history/winner_loser_patterns.json"
       }
     ]
   },
@@ -516,6 +547,20 @@
       "daily_cost_allowed": true,
       "monthly_cost_allowed": true,
       "charged": false
+    },
+    "quality_review": {
+      "exists": true,
+      "path": "history/daily/2026-05-18_quality_review.json",
+      "date": "2026-05-18",
+      "status": "quality_review_ready",
+      "request_count": 20,
+      "approved_count": 20,
+      "regeneration_required_count": 0,
+      "blocked_count": 0,
+      "avg_score": 100.0,
+      "no_text_rule_passed": true,
+      "copy_space_passed": true,
+      "max_retry": 2
     },
     "marketing_source_counts": {
       "daily": 13,
@@ -1068,6 +1113,80 @@
         "status": "dry_run_ready"
       }
     ],
+    "quality_preview": [
+      {
+        "prompt_id": "someud_20260518_prompt01",
+        "brand": "someud",
+        "image_type_label": "실사",
+        "score": 100,
+        "status": "approved",
+        "regeneration_needed": false,
+        "reason": "all_checks_passed"
+      },
+      {
+        "prompt_id": "someud_20260518_prompt02",
+        "brand": "someud",
+        "image_type_label": "실사",
+        "score": 100,
+        "status": "approved",
+        "regeneration_needed": false,
+        "reason": "all_checks_passed"
+      },
+      {
+        "prompt_id": "someud_20260518_prompt03",
+        "brand": "someud",
+        "image_type_label": "일러스트",
+        "score": 100,
+        "status": "approved",
+        "regeneration_needed": false,
+        "reason": "all_checks_passed"
+      },
+      {
+        "prompt_id": "someud_20260518_prompt04",
+        "brand": "someud",
+        "image_type_label": "일러스트",
+        "score": 100,
+        "status": "approved",
+        "regeneration_needed": false,
+        "reason": "all_checks_passed"
+      },
+      {
+        "prompt_id": "kinda_20260518_prompt01",
+        "brand": "kinda",
+        "image_type_label": "실사",
+        "score": 100,
+        "status": "approved",
+        "regeneration_needed": false,
+        "reason": "all_checks_passed"
+      },
+      {
+        "prompt_id": "kinda_20260518_prompt02",
+        "brand": "kinda",
+        "image_type_label": "실사",
+        "score": 100,
+        "status": "approved",
+        "regeneration_needed": false,
+        "reason": "all_checks_passed"
+      },
+      {
+        "prompt_id": "kinda_20260518_prompt03",
+        "brand": "kinda",
+        "image_type_label": "일러스트",
+        "score": 100,
+        "status": "approved",
+        "regeneration_needed": false,
+        "reason": "all_checks_passed"
+      },
+      {
+        "prompt_id": "kinda_20260518_prompt04",
+        "brand": "kinda",
+        "image_type_label": "일러스트",
+        "score": 100,
+        "status": "approved",
+        "regeneration_needed": false,
+        "reason": "all_checks_passed"
+      }
+    ],
     "monitoring_preview": {
       "daily": [
         {
@@ -1323,22 +1442,34 @@
           "$2.64 예상 비용",
           "한도 확인"
         ]
+      },
+      {
+        "name": "품질 검수와 재생성 판단",
+        "status": "quality_review_ready",
+        "details": [
+          "20개 요청 승인",
+          "평균 점수 100",
+          "재생성 필요 0개",
+          "no-text 검수",
+          "카피 여백 검수"
+        ]
       }
     ],
     "agent_status": [
       {
         "agent": "팀장",
         "file": "agents/manager.py",
-        "status": "analysis_ready",
+        "status": "quality_review_ready",
         "implemented": [
           "광고/트렌드 종합",
           "브랜드별 우선순위",
           "소재 방향",
           "프롬프트 handoff",
-          "Winner/Loser 기본 분류"
+          "품질 검수",
+          "재생성 판단"
         ],
-        "output": "history/daily/{date}_manager_brief.json",
-        "next": "PHASE 5에서 팀원 C 프롬프트 생성과 연결"
+        "output": "history/daily/{date}_quality_review.json",
+        "next": "PHASE 8에서 Winner/Loser 학습과 연결"
       },
       {
         "agent": "팀원 A",
@@ -1394,7 +1525,7 @@
           "재생성 제한"
         ],
         "output": "outputs/{brand}/{date}/",
-        "next": "PHASE 7에서 품질 검수와 재생성 판단 연결"
+        "next": "실제 gpt-image-2 API 호출 연결"
       }
     ],
     "pipeline_steps": [
@@ -1432,13 +1563,13 @@
         "step": "06",
         "title": "품질 검수/재생성",
         "owner": "팀장",
-        "status": "next"
+        "status": "quality_review_ready"
       },
       {
         "step": "07",
         "title": "Winner/Loser 학습",
         "owner": "팀장",
-        "status": "planned"
+        "status": "next"
       },
       {
         "step": "08",
@@ -1457,11 +1588,15 @@
   "verification": {
     "last_command": "python -m unittest tests.test_trend_collector tests.test_data_collector tests.test_manager tests.test_prompt_engineer tests.test_image_designer tests.test_build_dashboard_data",
     "last_result": "passed",
-    "test_count": 20
+    "test_count": 23
   },
   "git": {
     "branch": "main",
     "recent_commits": [
+      {
+        "hash": "667fda5",
+        "subject": "[PHASE 6] 이미지 생성 dry-run 구현"
+      },
       {
         "hash": "a204d08",
         "subject": "[DASHBOARD] 최근 커밋 실시간 동기화"
@@ -1477,23 +1612,20 @@
       {
         "hash": "9707460",
         "subject": "[PHASE 5] 프롬프트 생성 엔진 구현"
-      },
-      {
-        "hash": "47edb69",
-        "subject": "[PHASE 4] 팀장 분석 엔진 구현"
       }
     ]
   },
   "next_step": {
-    "phase": "PHASE 7",
-    "title": "품질 검수 및 재생성",
-    "summary": "팀원 D의 image dry-run 결과를 입력으로 받아 품질 기준과 재생성 판단 로직을 연결한다."
+    "phase": "PHASE 8",
+    "title": "Winner/Loser 학습",
+    "summary": "광고 성과 기준으로 Winner, Loser, Pending을 분류하고 다음 소재 개선 패턴을 저장한다."
   },
   "risks": [
     "광고 API와 트렌드 API는 아직 mock 수집 단계다.",
     "팀장 분석은 deterministic rule 기반이며 실제 LLM 판단은 후속 API 연결 단계에서 붙인다.",
     "프롬프트 생성도 rule 기반이며 실제 OpenAI API 호출은 아직 수행하지 않는다.",
     "이미지 생성은 dry-run 단계이며 실제 gpt-image-2 API 호출은 아직 수행하지 않는다.",
+    "품질 검수는 dry-run 요청 메타데이터 기준이며 실제 이미지 픽셀 검수는 이미지 API 연결 후 확장한다.",
     "초 단위 실행 로그 실시간화는 PHASE 10 API 연동에서 확장한다."
   ]
 }

@@ -134,3 +134,15 @@
 - [x] 대시보드 화면에 이미지 dry-run 요약 표시
 - [x] PHASE 6 검증 실행
 - [x] GitHub 저장 및 Vercel 반영 확인
+
+# PHASE 7 Quality Review Checklist
+
+- [x] PHASE 6 이미지 dry-run 구조 확인
+- [x] 팀장 품질 검수 기준 구현
+- [x] 재생성 필요 여부와 retry 제한 판단 구현
+- [x] `history/daily/{date}_quality_review.json` 저장 구현
+- [x] 품질 검수 단위 테스트 추가
+- [x] 대시보드 JSON에 품질 검수 결과 추가
+- [x] 대시보드 화면에 품질 검수 요약 표시
+- [x] PHASE 7 검증 실행
+- [x] GitHub 저장 및 Vercel 반영 확인

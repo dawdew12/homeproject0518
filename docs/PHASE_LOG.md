@@ -122,3 +122,15 @@
 - 결과: 20개 테스트 통과.
 - 남은 리스크: 실제 gpt-image-2 API 호출은 아직 하지 않았고, 다음 PHASE 7에서 품질 검수와 재생성 판단을 연결해야 한다.
 
+## 2026-06-01 PHASE 7 완료
+
+- 목표: 이미지 dry-run 요청을 팀장이 검수하고 재생성 필요 여부를 판단.
+- `agents/manager.py`에 품질 검수 기준, 점수화, 재생성 handoff, 최대 재시도 2회 기준을 구현했다.
+- `history/daily/2026-05-18_quality_review.json`에 20개 요청 검수 결과를 저장했다.
+- 모든 요청은 approved이며 평균 점수는 100.0, 재생성 필요 요청은 0개다.
+- `scripts/build_dashboard_data.py`와 `web/index.html`에 품질 검수 요약과 미리보기를 추가했다.
+- 현재 공식 로드맵 기준 진행률은 7/12, 58%다.
+- 검증 명령: Codex 번들 Python으로 `python -m unittest tests.test_trend_collector tests.test_data_collector tests.test_manager tests.test_prompt_engineer tests.test_image_designer tests.test_build_dashboard_data`.
+- 결과: 23개 테스트 통과.
+- 남은 리스크: 이번 품질 검수는 dry-run 메타데이터 기준이며, 실제 이미지 픽셀 검수는 gpt-image-2 API 연결 후 확장해야 한다.
+
