@@ -17,12 +17,15 @@ class BuildDashboardDataTest(unittest.TestCase):
         self.assertEqual(payload["current_phase"]["status"], "completed")
         self.assertEqual(payload["data"]["ad"]["record_count"], 15)
         self.assertEqual(payload["data"]["trend"]["record_count"], 20)
+        self.assertEqual(payload["data"]["manager"]["brand_count"], 5)
+        self.assertEqual(payload["data"]["manager"]["high_priority_count"], 3)
         self.assertEqual(payload["data"]["marketing_source_counts"]["daily"], 13)
         self.assertEqual(len(payload["data"]["brand_snapshots"]), 5)
+        self.assertEqual(len(payload["data"]["manager_preview"]), 5)
         self.assertEqual(len(payload["operations"]["agent_status"]), 5)
         self.assertGreaterEqual(len(payload["operations"]["pipeline_steps"]), 9)
         self.assertGreaterEqual(len(payload["data"]["monitoring_preview"]["daily"]), 5)
-        self.assertEqual(payload["next_step"]["phase"], "PHASE 4")
+        self.assertEqual(payload["next_step"]["phase"], "PHASE 5")
 
     def test_write_dashboard_payload_creates_json_file(self) -> None:
         payload = build_dashboard_payload()
@@ -32,7 +35,7 @@ class BuildDashboardDataTest(unittest.TestCase):
             saved = json.loads(output_path.read_text(encoding="utf-8"))
 
         self.assertEqual(saved["project"]["github_repo"], "https://github.com/dawdew12/homeproject0518")
-        self.assertEqual(saved["verification"]["test_count"], 9)
+        self.assertEqual(saved["verification"]["test_count"], 12)
         self.assertIn("feature_status", saved["operations"])
         self.assertTrue(output_path.name.endswith(".json"))
 

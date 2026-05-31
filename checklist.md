@@ -71,3 +71,16 @@
 - [x] 광고/트렌드 수집 데이터 미리보기를 대시보드에 표시
 - [x] 시장조사 daily 출처를 대시보드에 표시
 - [x] 운영형 대시보드 테스트 실행
+
+# PHASE 4 Manager Analysis Checklist
+
+- [x] PHASE 3.5 완료 상태 확인
+- [x] 광고와 트렌드 daily JSON 구조 확인
+- [x] 팀장 분석 엔진 구현
+- [x] 브랜드별 우선순위와 소재 방향 생성
+- [x] 프롬프트 엔지니어 handoff 생성
+- [x] `history/daily/{date}_manager_brief.json` 저장 함수 구현
+- [x] 팀장 분석 단위 테스트 추가
+- [x] 대시보드 JSON에 팀장 분석 결과 추가
+- [x] 대시보드 화면에 팀장 분석 Brief 표시
+- [x] PHASE 4 검증 실행

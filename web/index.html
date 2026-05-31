@@ -68,7 +68,7 @@ h3 {
 }
 .grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 12px;
   margin-bottom: 14px;
 }
@@ -128,6 +128,10 @@ section {
 .tag.next {
   background: #e7eef9;
   color: var(--blue);
+}
+.tag.analysis_ready {
+  background: #e4f0f2;
+  color: #28606d;
 }
 .tag.planned,
 .tag.skeleton_ready {
@@ -293,6 +297,10 @@ li { margin: 5px 0; }
       <div class="label">트렌드 레코드</div>
       <div class="value" id="trend-records">-</div>
     </div>
+    <div class="metric">
+      <div class="label">팀장 분석</div>
+      <div class="value info" id="manager-brands">-</div>
+    </div>
   </div>
 
   <section>
@@ -322,6 +330,7 @@ li { margin: 5px 0; }
         <tbody>
           <tr><th>광고 데이터</th><td id="ad-status">-</td></tr>
           <tr><th>트렌드 데이터</th><td id="trend-status">-</td></tr>
+          <tr><th>팀장 분석</th><td id="manager-status">-</td></tr>
           <tr><th>Daily 시장조사 출처</th><td id="daily-sources">-</td></tr>
           <tr><th>검증</th><td id="verification">-</td></tr>
         </tbody>
@@ -336,6 +345,22 @@ li { margin: 5px 0; }
   </div>
 
   <section>
+    <h2>팀장 분석 Brief</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>브랜드</th>
+          <th>우선순위</th>
+          <th>소재 방향</th>
+          <th>비주얼 컨셉</th>
+          <th>다음 액션</th>
+        </tr>
+      </thead>
+      <tbody id="manager-table"></tbody>
+    </table>
+  </section>
+
+  <section>
     <h2>브랜드별 mock 지표</h2>
     <table>
       <thead>
@@ -346,6 +371,7 @@ li { margin: 5px 0; }
           <th>CTR</th>
           <th>ROAS</th>
           <th>CPA</th>
+          <th>팀장 판단</th>
           <th>키워드</th>
         </tr>
       </thead>
@@ -413,6 +439,7 @@ function render(data) {
   const current = data.current_phase || {};
   const ad = data.data?.ad || {};
   const trend = data.data?.trend || {};
+  const manager = data.data?.manager || {};
   const sourceCounts = data.data?.marketing_source_counts || {};
 
   text("deploy-status", `생성 시각 ${data.generated_at || "-"}`);
@@ -420,8 +447,10 @@ function render(data) {
   text("phase-status", current.status || "-");
   text("ad-records", ad.record_count ?? 0);
   text("trend-records", trend.record_count ?? 0);
+  text("manager-brands", manager.brand_count ?? 0);
   text("ad-status", `${ad.status || "-"} · ${ad.record_count ?? 0} records · ${ad.source_count ?? 0} sources`);
   text("trend-status", `${trend.status || "-"} · ${trend.record_count ?? 0} records · ${trend.source_count ?? 0} sources`);
+  text("manager-status", `${manager.status || "-"} · ${manager.brand_count ?? 0} brands · ${manager.handoff_count ?? 0} handoff`);
   text("daily-sources", `${sourceCounts.daily ?? 0} daily · ${sourceCounts.weekly ?? 0} weekly · ${sourceCounts.monthly ?? 0} monthly`);
   text("verification", `${data.verification?.last_result || "-"} · ${data.verification?.test_count ?? 0} tests`);
   text("next-phase", `${data.next_step?.phase || "-"} · ${data.next_step?.title || ""}`);
@@ -462,6 +491,16 @@ function render(data) {
     </div>
   `).join("");
 
+  document.getElementById("manager-table").innerHTML = (data.data?.manager_preview || []).map(item => `
+    <tr>
+      <td><strong>${item.brand}</strong></td>
+      <td><span class="tag ${tagClass(item.priority)}">${item.priority}</span></td>
+      <td>${item.creative_direction || "-"}</td>
+      <td>${item.visual_concept || "-"}</td>
+      <td>${(item.actions || []).join("<br>")}</td>
+    </tr>
+  `).join("");
+
   document.getElementById("brand-table").innerHTML = (data.data?.brand_snapshots || []).map(brand => `
     <tr>
       <td><strong>${brand.brand}</strong></td>
@@ -470,6 +509,7 @@ function render(data) {
       <td>${fmt(brand.avg_ctr, "%")}</td>
       <td>${fmt(brand.avg_roas, "%")}</td>
       <td>$${fmt(brand.avg_cpa)}</td>
+      <td><span class="tag ${tagClass(brand.manager_priority)}">${brand.manager_priority}</span></td>
       <td>${(brand.top_keywords || []).slice(0, 3).join(", ")}</td>
     </tr>
   `).join("");

@@ -81,3 +81,18 @@
 - 현재 표시 가능한 실전형 항목은 광고 mock 15개, 트렌드 mock 20개, 브랜드별 집계 5개, daily 시장조사 출처 8개 미리보기다.
 - 실제 API 연결 전까지 대시보드의 수치는 mock 기반 운영 리허설 데이터다.
 
+## 2026-05-31 PHASE 4 시작
+
+- 사용자는 다음 단계를 승인했고, 이전 지시에 따라 Phase 단위로 자율 검토 후 진행한다.
+- PHASE 4의 범위는 팀장 에이전트가 광고 성과 mock과 트렌드 mock을 종합해 브랜드별 우선순위, 소재 방향, 프롬프트 엔지니어 handoff를 만드는 것이다.
+- 실제 LLM API 호출은 아직 연결하지 않는다. 현재 단계는 deterministic rule 기반 mock 분석으로 운영 흐름과 데이터 계약을 먼저 고정한다.
+- 대시보드는 `history/daily/{date}_manager_brief.json`의 결과를 읽어 팀장 분석 Brief를 표시해야 한다.
+
+## 2026-05-31 PHASE 4 완료
+
+- `agents/manager.py`가 광고 성과와 트렌드 데이터를 읽어 브랜드별 priority, creative_direction, visual_concept, recommended_actions, prompt handoff를 생성한다.
+- 검증용 `history/daily/2026-05-18_manager_brief.json`에는 5개 브랜드 분석과 팀원 C handoff 5개가 저장되었다.
+- 현재 우선순위는 baren, melliance를 scale, paperback을 high, someud와 kinda를 test로 판단한다.
+- `scripts/build_dashboard_data.py`와 `web/index.html`은 팀장 분석 Brief와 브랜드별 팀장 판단을 표시한다.
+- 실제 LLM 분석과 API 실데이터 판단은 후속 Phase에서 연결한다.
+

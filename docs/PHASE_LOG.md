@@ -82,3 +82,13 @@
 - 결과: 9개 테스트 통과.
 - 남은 리스크: 표시 수치는 아직 mock 데이터 기준이며, 실제 API 연결 후 운영 데이터로 교체해야 한다.
 
+## 2026-05-31 PHASE 4 완료
+
+- 목표: 팀장 에이전트가 광고 성과와 트렌드 데이터를 종합해 브랜드별 소재 방향과 개선안을 생성.
+- `agents/manager.py`에 manager brief 생성, 브랜드별 우선순위 판단, 소재 방향, 추천 액션, 팀원 C handoff, 기본 Winner/Loser 분류를 구현했다.
+- `history/daily/2026-05-18_manager_brief.json`에 5개 브랜드 분석 결과를 저장했다.
+- `scripts/build_dashboard_data.py`와 `web/index.html`에 팀장 분석 Brief 표시를 추가했다.
+- 검증 명령: Codex 번들 Python으로 `python -m unittest tests.test_trend_collector tests.test_data_collector tests.test_manager tests.test_build_dashboard_data`.
+- 결과: 12개 테스트 통과.
+- 남은 리스크: 팀장 판단은 현재 rule 기반 mock 분석이며, 실제 LLM 분석과 API 실데이터 연결은 후속 Phase에서 진행해야 한다.
+

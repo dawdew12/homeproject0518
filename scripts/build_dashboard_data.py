@@ -47,6 +47,28 @@ def summarize_daily_file(path: Path | None) -> dict[str, Any]:
     }
 
 
+def summarize_manager_brief(path: Path | None) -> dict[str, Any]:
+    """팀장 분석 Brief를 대시보드용 요약으로 변환한다."""
+    if path is None:
+        return {"exists": False, "brand_count": 0, "high_priority_count": 0, "top_opportunities": []}
+
+    payload = read_json(path, {})
+    summary = payload.get("summary", {})
+    return {
+        "exists": True,
+        "path": str(path.relative_to(PROJECT_ROOT)).replace("\\", "/"),
+        "date": payload.get("date"),
+        "status": payload.get("status"),
+        "brand_count": summary.get("brand_count", 0),
+        "high_priority_count": summary.get("high_priority_count", 0),
+        "avg_ctr": summary.get("avg_ctr", 0),
+        "avg_roas": summary.get("avg_roas", 0),
+        "avg_trend_score": summary.get("avg_trend_score", 0),
+        "top_opportunities": summary.get("top_opportunities", []),
+        "handoff_count": len(payload.get("handoff_to_prompt_engineer", [])),
+    }
+
+
 def run_git(args: list[str]) -> str:
     """가능하면 Git 명령 결과를 반환한다."""
     git_candidates = [
@@ -106,11 +128,16 @@ def average(values: list[float]) -> float:
     return round(sum(values) / len(values), 4)
 
 
-def build_brand_snapshots(ad_payload: dict[str, Any], trend_payload: dict[str, Any]) -> list[dict[str, Any]]:
+def build_brand_snapshots(
+    ad_payload: dict[str, Any],
+    trend_payload: dict[str, Any],
+    manager_payload: dict[str, Any] | None = None,
+) -> list[dict[str, Any]]:
     """브랜드별 광고와 트렌드 mock 데이터를 운영 화면용으로 요약한다."""
     brands = ["someud", "kinda", "melliance", "paperback", "baren"]
     ad_records = ad_payload.get("records", [])
     trend_records = trend_payload.get("records", [])
+    manager_by_brand = {item.get("brand"): item for item in (manager_payload or {}).get("brands", [])}
     snapshots = []
 
     for brand in brands:
@@ -134,6 +161,8 @@ def build_brand_snapshots(ad_payload: dict[str, Any], trend_payload: dict[str, A
                 "avg_cpa": average(cpa_values),
                 "avg_trend_score": average(trend_scores),
                 "top_keywords": sorted(set(keywords))[:5],
+                "manager_priority": manager_by_brand.get(brand, {}).get("priority", "pending"),
+                "creative_direction": manager_by_brand.get(brand, {}).get("creative_direction", ""),
                 "status": "mock_ready" if brand_ad_records and brand_trend_records else "pending",
             }
         )
@@ -146,16 +175,31 @@ def sample_records(payload: dict[str, Any], limit: int = 5) -> list[dict[str, An
     return payload.get("records", [])[:limit]
 
 
+def build_manager_preview(manager_payload: dict[str, Any], limit: int = 5) -> list[dict[str, Any]]:
+    """팀장 분석 결과를 화면 미리보기용으로 줄인다."""
+    return [
+        {
+            "brand": item.get("brand"),
+            "priority": item.get("priority"),
+            "creative_direction": item.get("creative_direction"),
+            "visual_concept": item.get("visual_concept"),
+            "actions": item.get("recommended_actions", [])[:2],
+            "keywords": item.get("prompt_keywords", [])[:4],
+        }
+        for item in manager_payload.get("brands", [])[:limit]
+    ]
+
+
 def build_agent_status() -> list[dict[str, Any]]:
     """에이전트별 구현 범위와 다음 작업을 정리한다."""
     return [
         {
             "agent": "팀장",
             "file": "agents/manager.py",
-            "status": "skeleton_ready",
-            "implemented": ["분석", "스토리보드 승인", "이미지 검수", "Winner/Loser 분류 함수 골격"],
+            "status": "analysis_ready",
+            "implemented": ["광고/트렌드 종합", "브랜드별 우선순위", "소재 방향", "프롬프트 handoff", "Winner/Loser 기본 분류"],
             "output": "history/daily/{date}_manager_brief.json",
-            "next": "PHASE 4에서 광고/트렌드 데이터 종합 분석 로직 구현",
+            "next": "PHASE 5에서 팀원 C 프롬프트 생성과 연결",
         },
         {
             "agent": "팀원 A",
@@ -197,8 +241,8 @@ def build_pipeline_steps() -> list[dict[str, str]]:
     return [
         {"step": "01", "title": "광고 성과 수집", "owner": "팀원 A", "status": "mock_ready"},
         {"step": "02", "title": "트렌드/시장조사 수집", "owner": "팀원 B", "status": "mock_ready"},
-        {"step": "03", "title": "팀장 분석/개선안", "owner": "팀장", "status": "next"},
-        {"step": "04", "title": "스토리보드/프롬프트", "owner": "팀원 C", "status": "planned"},
+        {"step": "03", "title": "팀장 분석/개선안", "owner": "팀장", "status": "analysis_ready"},
+        {"step": "04", "title": "스토리보드/프롬프트", "owner": "팀원 C", "status": "next"},
         {"step": "05", "title": "이미지 생성", "owner": "팀원 D", "status": "planned"},
         {"step": "06", "title": "품질 검수/재생성", "owner": "팀장", "status": "planned"},
         {"step": "07", "title": "Winner/Loser 학습", "owner": "팀장", "status": "planned"},
@@ -232,8 +276,13 @@ def build_feature_status() -> list[dict[str, Any]]:
         },
         {
             "name": "팀장 분석 엔진",
+            "status": "analysis_ready",
+            "details": ["광고/트렌드 종합", "브랜드별 우선순위", "소재 방향", "팀원 C handoff"],
+        },
+        {
+            "name": "프롬프트 엔지니어링",
             "status": "next",
-            "details": ["광고/트렌드 종합", "브랜드별 소재 방향", "개선안 생성"],
+            "details": ["스토리보드 생성", "이미지 프롬프트 생성", "팀장 피드백 반영"],
         },
     ]
 
@@ -253,10 +302,13 @@ def build_dashboard_payload() -> dict[str, Any]:
     current_phase = read_json(PROJECT_ROOT / "state" / "current_phase.json", {})
     latest_ad_file = find_latest_file("*_ad_data.json")
     latest_trend_file = find_latest_file("*_trend_data.json")
+    latest_manager_file = find_latest_file("*_manager_brief.json")
     ad_payload = load_latest_daily_payload("*_ad_data.json")
     trend_payload = load_latest_daily_payload("*_trend_data.json")
+    manager_payload = load_latest_daily_payload("*_manager_brief.json")
     ad_summary = summarize_daily_file(latest_ad_file)
     trend_summary = summarize_daily_file(latest_trend_file)
+    manager_summary = summarize_manager_brief(latest_manager_file)
     source_counts = count_marketing_sources()
     recent_commits = get_recent_commits()
 
@@ -275,15 +327,18 @@ def build_dashboard_payload() -> dict[str, Any]:
             {"phase": "PHASE 2", "title": "광고 데이터 수집 mock", "status": "completed"},
             {"phase": "PHASE 3", "title": "트렌드 수집 및 시장조사 출처", "status": "completed"},
             {"phase": "PHASE 3.5", "title": "Vercel 대시보드 배포 기반", "status": "completed"},
-            {"phase": "PHASE 4", "title": "팀장 분석 엔진", "status": "next"},
+            {"phase": "PHASE 4", "title": "팀장 분석 엔진", "status": "completed"},
+            {"phase": "PHASE 5", "title": "스토리보드와 프롬프트 생성", "status": "next"},
         ],
         "data": {
             "ad": ad_summary,
             "trend": trend_summary,
+            "manager": manager_summary,
             "marketing_source_counts": source_counts,
-            "brand_snapshots": build_brand_snapshots(ad_payload, trend_payload),
+            "brand_snapshots": build_brand_snapshots(ad_payload, trend_payload, manager_payload),
             "ad_preview": sample_records(ad_payload),
             "trend_preview": sample_records(trend_payload),
+            "manager_preview": build_manager_preview(manager_payload),
             "monitoring_preview": build_monitoring_preview(trend_payload),
         },
         "operations": {
@@ -292,21 +347,22 @@ def build_dashboard_payload() -> dict[str, Any]:
             "pipeline_steps": build_pipeline_steps(),
         },
         "verification": {
-            "last_command": "python -m unittest tests.test_trend_collector tests.test_data_collector tests.test_build_dashboard_data",
+            "last_command": "python -m unittest tests.test_trend_collector tests.test_data_collector tests.test_manager tests.test_build_dashboard_data",
             "last_result": "passed",
-            "test_count": 9,
+            "test_count": 12,
         },
         "git": {
             "branch": run_git(["branch", "--show-current"]) or "main",
             "recent_commits": recent_commits,
         },
         "next_step": {
-            "phase": "PHASE 4",
-            "title": "팀장 분석 엔진",
-            "summary": "광고 데이터와 트렌드 데이터를 종합해 브랜드별 소재 방향과 개선안을 생성한다.",
+            "phase": "PHASE 5",
+            "title": "스토리보드와 프롬프트 생성",
+            "summary": "팀장 분석 Brief를 입력으로 받아 브랜드별 스토리보드와 이미지 프롬프트를 생성한다.",
         },
         "risks": [
             "광고 API와 트렌드 API는 아직 mock 수집 단계다.",
+            "팀장 분석은 deterministic rule 기반이며 실제 LLM 판단은 후속 API 연결 단계에서 붙인다.",
             "Vercel 초기 버전은 push 이후 반영되는 정적 JSON 대시보드다.",
             "초 단위 실행 로그 실시간화는 PHASE 10 API 연동에서 확장한다.",
         ],

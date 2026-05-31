@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-31T11:12:56+09:00",
+  "generated_at": "2026-05-31T11:45:49+09:00",
   "project": {
     "name": "AIPR",
     "github_repo": "https://github.com/dawdew12/homeproject0518",
@@ -8,10 +8,10 @@
     "custom_domain_enabled": false
   },
   "current_phase": {
-    "current_phase": 3.5,
+    "current_phase": 4,
     "status": "completed",
     "active_brand": null,
-    "last_success": "2026-05-31 PHASE 3.5 operational dashboard view completed",
+    "last_success": "2026-05-31 PHASE 4 manager analysis engine completed",
     "last_error": null
   },
   "phase_progress": [
@@ -38,6 +38,11 @@
     {
       "phase": "PHASE 4",
       "title": "팀장 분석 엔진",
+      "status": "completed"
+    },
+    {
+      "phase": "PHASE 5",
+      "title": "스토리보드와 프롬프트 생성",
       "status": "next"
     }
   ],
@@ -75,6 +80,35 @@
         "어버이날 선물"
       ]
     },
+    "manager": {
+      "exists": true,
+      "path": "history/daily/2026-05-18_manager_brief.json",
+      "date": "2026-05-18",
+      "status": "manager_brief_ready",
+      "brand_count": 5,
+      "high_priority_count": 3,
+      "avg_ctr": 2.3991,
+      "avg_roas": 271.0,
+      "avg_trend_score": 78.0,
+      "top_opportunities": [
+        {
+          "brand": "baren",
+          "priority": "scale",
+          "creative_direction": "기능성 케어 중심의 기능성, 명확하고 깨끗한 정보 전달 소재"
+        },
+        {
+          "brand": "melliance",
+          "priority": "scale",
+          "creative_direction": "뷰티 루틴 중심의 정돈된 뷰티, 세련되고 균형 잡힌 무드 소재"
+        },
+        {
+          "brand": "paperback",
+          "priority": "high",
+          "creative_direction": "라이프스타일 중심의 일상 감성, 차분하고 취향이 드러나는 라이프스타일 소재"
+        }
+      ],
+      "handoff_count": 5
+    },
     "marketing_source_counts": {
       "daily": 13,
       "weekly": 24,
@@ -94,6 +128,8 @@
           "어버이날 선물",
           "황토침대"
         ],
+        "manager_priority": "test",
+        "creative_direction": "황토침대 중심의 프리미엄 오가닉, 따뜻하고 신뢰감 소재",
         "status": "mock_ready"
       },
       {
@@ -109,6 +145,8 @@
           "비포애프터",
           "홈케어"
         ],
+        "manager_priority": "test",
+        "creative_direction": "극손상 헤어팩 중심의 손상 모발 회복, 부드럽고 신뢰감 있는 뷰티 톤 소재",
         "status": "mock_ready"
       },
       {
@@ -124,6 +162,8 @@
           "뷰티 루틴",
           "피부결"
         ],
+        "manager_priority": "scale",
+        "creative_direction": "뷰티 루틴 중심의 정돈된 뷰티, 세련되고 균형 잡힌 무드 소재",
         "status": "mock_ready"
       },
       {
@@ -139,6 +179,8 @@
           "라이프스타일",
           "카페"
         ],
+        "manager_priority": "high",
+        "creative_direction": "라이프스타일 중심의 일상 감성, 차분하고 취향이 드러나는 라이프스타일 소재",
         "status": "mock_ready"
       },
       {
@@ -154,6 +196,8 @@
           "성분",
           "인포그래픽"
         ],
+        "manager_priority": "scale",
+        "creative_direction": "기능성 케어 중심의 기능성, 명확하고 깨끗한 정보 전달 소재",
         "status": "mock_ready"
       }
     ],
@@ -349,6 +393,83 @@
           "detected": false,
           "summary": "경쟁사 변화 없음."
         }
+      }
+    ],
+    "manager_preview": [
+      {
+        "brand": "someud",
+        "priority": "test",
+        "creative_direction": "황토침대 중심의 프리미엄 오가닉, 따뜻하고 신뢰감 소재",
+        "visual_concept": "따뜻한 침실에서 숙면과 가족 신뢰를 보여주는 실사",
+        "actions": [
+          "첫 화면 후킹 이미지를 더 명확하게 만들고 핵심 베네핏을 1개로 좁힌다.",
+          "신뢰 증거와 사용 맥락을 보강해 전환 설득력을 높인다."
+        ],
+        "keywords": [
+          "황토침대",
+          "어버이날 선물",
+          "숙면"
+        ]
+      },
+      {
+        "brand": "kinda",
+        "priority": "test",
+        "creative_direction": "극손상 헤어팩 중심의 손상 모발 회복, 부드럽고 신뢰감 있는 뷰티 톤 소재",
+        "visual_concept": "손상 모발 전후 차이가 선명한 욕실·파우더룸 실사",
+        "actions": [
+          "첫 화면 후킹 이미지를 더 명확하게 만들고 핵심 베네핏을 1개로 좁힌다.",
+          "신뢰 증거와 사용 맥락을 보강해 전환 설득력을 높인다."
+        ],
+        "keywords": [
+          "극손상 헤어팩",
+          "비포애프터",
+          "홈케어"
+        ]
+      },
+      {
+        "brand": "melliance",
+        "priority": "scale",
+        "creative_direction": "뷰티 루틴 중심의 정돈된 뷰티, 세련되고 균형 잡힌 무드 소재",
+        "visual_concept": "피부결과 루틴을 정돈된 뷰티 무드로 보여주는 클로즈업",
+        "actions": [
+          "성과가 받쳐주는 키워드를 첫 소재 묶음의 메인 각도로 배치한다.",
+          "경쟁사 소재 변화가 감지된 채널은 카피보다 비주얼 차별점을 우선 검토한다."
+        ],
+        "keywords": [
+          "뷰티 루틴",
+          "봄 컬렉션",
+          "피부결"
+        ]
+      },
+      {
+        "brand": "paperback",
+        "priority": "high",
+        "creative_direction": "라이프스타일 중심의 일상 감성, 차분하고 취향이 드러나는 라이프스타일 소재",
+        "visual_concept": "취향 있는 카페와 독서 장면을 연결한 라이프스타일 컷",
+        "actions": [
+          "성과가 받쳐주는 키워드를 첫 소재 묶음의 메인 각도로 배치한다.",
+          "첫 화면 후킹 이미지를 더 명확하게 만들고 핵심 베네핏을 1개로 좁힌다."
+        ],
+        "keywords": [
+          "라이프스타일",
+          "독서 감성",
+          "카페"
+        ]
+      },
+      {
+        "brand": "baren",
+        "priority": "scale",
+        "creative_direction": "기능성 케어 중심의 기능성, 명확하고 깨끗한 정보 전달 소재",
+        "visual_concept": "성분과 기능을 깨끗하게 이해시키는 정보형 비주얼",
+        "actions": [
+          "성과가 받쳐주는 키워드를 첫 소재 묶음의 메인 각도로 배치한다.",
+          "경쟁사 소재 변화가 감지된 채널은 카피보다 비주얼 차별점을 우선 검토한다."
+        ],
+        "keywords": [
+          "기능성 케어",
+          "인포그래픽",
+          "성분"
+        ]
       }
     ],
     "monitoring_preview": {
@@ -577,11 +698,21 @@
       },
       {
         "name": "팀장 분석 엔진",
-        "status": "next",
+        "status": "analysis_ready",
         "details": [
           "광고/트렌드 종합",
-          "브랜드별 소재 방향",
-          "개선안 생성"
+          "브랜드별 우선순위",
+          "소재 방향",
+          "팀원 C handoff"
+        ]
+      },
+      {
+        "name": "프롬프트 엔지니어링",
+        "status": "next",
+        "details": [
+          "스토리보드 생성",
+          "이미지 프롬프트 생성",
+          "팀장 피드백 반영"
         ]
       }
     ],
@@ -589,15 +720,16 @@
       {
         "agent": "팀장",
         "file": "agents/manager.py",
-        "status": "skeleton_ready",
+        "status": "analysis_ready",
         "implemented": [
-          "분석",
-          "스토리보드 승인",
-          "이미지 검수",
-          "Winner/Loser 분류 함수 골격"
+          "광고/트렌드 종합",
+          "브랜드별 우선순위",
+          "소재 방향",
+          "프롬프트 handoff",
+          "Winner/Loser 기본 분류"
         ],
         "output": "history/daily/{date}_manager_brief.json",
-        "next": "PHASE 4에서 광고/트렌드 데이터 종합 분석 로직 구현"
+        "next": "PHASE 5에서 팀원 C 프롬프트 생성과 연결"
       },
       {
         "agent": "팀원 A",
@@ -670,13 +802,13 @@
         "step": "03",
         "title": "팀장 분석/개선안",
         "owner": "팀장",
-        "status": "next"
+        "status": "analysis_ready"
       },
       {
         "step": "04",
         "title": "스토리보드/프롬프트",
         "owner": "팀원 C",
-        "status": "planned"
+        "status": "next"
       },
       {
         "step": "05",
@@ -711,13 +843,17 @@
     ]
   },
   "verification": {
-    "last_command": "python -m unittest tests.test_trend_collector tests.test_data_collector tests.test_build_dashboard_data",
+    "last_command": "python -m unittest tests.test_trend_collector tests.test_data_collector tests.test_manager tests.test_build_dashboard_data",
     "last_result": "passed",
-    "test_count": 9
+    "test_count": 12
   },
   "git": {
     "branch": "main",
     "recent_commits": [
+      {
+        "hash": "3daf6d7",
+        "subject": "[PHASE 3.5] 운영형 대시보드 기능 현황 강화"
+      },
       {
         "hash": "23fd7bc",
         "subject": "[PHASE 3.5] Vercel 대시보드 배포 기반 구축"
@@ -733,20 +869,17 @@
       {
         "hash": "c3f0b83",
         "subject": "[PHASE 3] 트렌드 데이터 수집 mock 구현"
-      },
-      {
-        "hash": "876197c",
-        "subject": "[PHASE 2] 광고 데이터 수집 mock 구현"
       }
     ]
   },
   "next_step": {
-    "phase": "PHASE 4",
-    "title": "팀장 분석 엔진",
-    "summary": "광고 데이터와 트렌드 데이터를 종합해 브랜드별 소재 방향과 개선안을 생성한다."
+    "phase": "PHASE 5",
+    "title": "스토리보드와 프롬프트 생성",
+    "summary": "팀장 분석 Brief를 입력으로 받아 브랜드별 스토리보드와 이미지 프롬프트를 생성한다."
   },
   "risks": [
     "광고 API와 트렌드 API는 아직 mock 수집 단계다.",
+    "팀장 분석은 deterministic rule 기반이며 실제 LLM 판단은 후속 API 연결 단계에서 붙인다.",
     "Vercel 초기 버전은 push 이후 반영되는 정적 JSON 대시보드다.",
     "초 단위 실행 로그 실시간화는 PHASE 10 API 연동에서 확장한다."
   ]
