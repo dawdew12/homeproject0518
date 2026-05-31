@@ -57,3 +57,19 @@
 - 매일 수집 payload에는 daily 출처 13개가 `monitoring_sources.daily`로 포함된다.
 - 실제 웹 방문과 본문 수집은 후속 자동화 단계에서 연결한다.
 
+## 2026-05-31 PHASE 3.5 Vercel 대시보드 시작
+
+- 사용자는 Vercel 프로젝트 `homeproject0518`을 생성했고 Project ID `prj_Pe7nqm93OZ6yPog5DJVGJwS0h3Ce`를 제공했다.
+- Vercel 팀은 `raw22226-9071s-projects`, Team ID는 `team_sSX5hPGMzUn68TtAYcIXIMmr`로 확인했다.
+- 프로젝트에는 아직 배포가 없고 framework는 `null` 상태다.
+- 커스텀 도메인은 지금 단계에서 쓰지 않는다. 기본 Vercel 도메인으로 먼저 운영하고, 외부 공유가 필요할 때 붙인다.
+- 초기 대시보드는 정적 HTML과 JSON으로 구성한다. API 기반 실시간화는 PHASE 10에서 확장한다.
+
+## 2026-05-31 PHASE 3.5 Vercel 대시보드 완료
+
+- 루트 `vercel.json`을 추가해 Vercel 출력 폴더를 `web`으로 지정했다.
+- `web/index.html`은 `web/data/latest_status.json`을 읽어 현재 Phase, 수집 데이터, 검증, 최근 커밋, 리스크를 표시한다.
+- `scripts/build_dashboard_data.py`가 `state`, `history`, Git 이력을 읽어 Vercel용 JSON을 생성한다.
+- `tests/test_build_dashboard_data.py`로 대시보드 데이터 생성 결과를 검증한다.
+- Vercel 프로젝트의 첫 배포는 GitHub push 후 Vercel 프로젝트에서 Git 연결이 활성화되어 있으면 자동으로 시작된다.
+

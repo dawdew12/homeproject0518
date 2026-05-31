@@ -53,3 +53,23 @@
 - 검증 명령: Codex 번들 Python으로 `python -m unittest tests.test_trend_collector tests.test_data_collector`.
 - 결과: 7개 테스트 통과.
 
+## 2026-05-31 PHASE 3.5 Vercel 대시보드 시작
+
+- 목표: GitHub push 후 Vercel에서 진행 현황을 확인할 수 있는 정적 대시보드 기반 구축.
+- Vercel 프로젝트: `homeproject0518`.
+- Project ID: `prj_Pe7nqm93OZ6yPog5DJVGJwS0h3Ce`.
+- Team ID: `team_sSX5hPGMzUn68TtAYcIXIMmr`.
+- 커스텀 도메인: 보류. 기본 Vercel 도메인 사용.
+- 구현 범위: `vercel.json`, `web/index.html`, `scripts/build_dashboard_data.py`, `web/data/latest_status.json`, 단위 테스트.
+- 보류: 초 단위 실행 로그 실시간화와 API 기반 대시보드는 PHASE 10에서 진행한다.
+
+## 2026-05-31 PHASE 3.5 Vercel 대시보드 완료
+
+- `vercel.json`을 추가해 Vercel이 `web` 폴더를 정적 출력으로 배포하도록 설정했다.
+- `web/index.html` 정적 대시보드를 생성했다.
+- `scripts/build_dashboard_data.py`로 `web/data/latest_status.json`을 생성했다.
+- `tests/test_build_dashboard_data.py`로 상태 JSON 생성 결과를 검증했다.
+- 검증 명령: Codex 번들 Python으로 `python -m unittest tests.test_trend_collector tests.test_data_collector tests.test_build_dashboard_data`.
+- 결과: 9개 테스트 통과.
+- 남은 리스크: Vercel 프로젝트가 GitHub 저장소와 연결되어 있어야 push 후 자동 배포가 생성된다. 자동 배포가 생성되지 않으면 Vercel UI에서 Git Repository 연결과 Root Directory 설정을 확인해야 한다.
+

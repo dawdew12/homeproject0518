@@ -1,0 +1,295 @@
+<!-- AIPR 진행 상태를 표시하는 Vercel 정적 대시보드 -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIPR Live Dashboard</title>
+<style>
+:root {
+  --bg: #f4f6f3;
+  --panel: #ffffff;
+  --panel-soft: #f8faf7;
+  --ink: #1c211f;
+  --muted: #68706a;
+  --line: #dce2db;
+  --green: #1d7b55;
+  --blue: #245fa8;
+  --amber: #9a6508;
+  --red: #a53434;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Pretendard", "Segoe UI", Arial, sans-serif;
+  line-height: 1.58;
+}
+main {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 28px 20px 48px;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+h1 {
+  margin: 0 0 6px;
+  font-size: 26px;
+  line-height: 1.2;
+}
+.sub {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+.status-pill {
+  background: #e7f4ee;
+  color: var(--green);
+  border: 1px solid #c9e7d8;
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.card,
+section {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 16px;
+}
+.card .label {
+  color: var(--muted);
+  font-size: 12px;
+  margin-bottom: 6px;
+}
+.card .value {
+  font-size: 24px;
+  font-weight: 750;
+}
+.ok { color: var(--green); }
+.info { color: var(--blue); }
+.warn { color: var(--amber); }
+section { margin-top: 14px; }
+h2 {
+  margin: 0 0 12px;
+  font-size: 18px;
+}
+.phase-list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+}
+.phase {
+  background: var(--panel-soft);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px;
+  min-height: 104px;
+}
+.phase strong {
+  display: block;
+  margin-bottom: 4px;
+}
+.phase span {
+  color: var(--muted);
+  font-size: 12px;
+}
+.phase.completed {
+  border-color: #b8dfca;
+  background: #f0f8f4;
+}
+.phase.next {
+  border-color: #b9cdeb;
+  background: #f1f6fc;
+}
+.cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+td, th {
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  padding: 9px 6px;
+}
+th { color: var(--muted); font-weight: 700; }
+ul {
+  margin: 8px 0 0;
+  padding-left: 20px;
+}
+li { margin: 5px 0; }
+code {
+  background: #edf1ed;
+  border-radius: 5px;
+  padding: 2px 5px;
+}
+.commit {
+  display: flex;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 13px;
+}
+.commit:last-child { border-bottom: 0; }
+.hash {
+  color: var(--blue);
+  font-family: Consolas, monospace;
+  min-width: 64px;
+}
+.empty {
+  color: var(--muted);
+  padding: 14px;
+}
+@media (max-width: 900px) {
+  header,
+  .grid,
+  .cols,
+  .phase-list {
+    grid-template-columns: 1fr;
+    display: grid;
+  }
+}
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div>
+      <h1>AIPR Live Dashboard</h1>
+      <p class="sub">GitHub에 저장된 state, history, docs 데이터를 기준으로 표시합니다.</p>
+    </div>
+    <div class="status-pill" id="deploy-status">데이터 불러오는 중</div>
+  </header>
+
+  <div class="grid">
+    <div class="card">
+      <div class="label">현재 Phase</div>
+      <div class="value info" id="current-phase">-</div>
+    </div>
+    <div class="card">
+      <div class="label">상태</div>
+      <div class="value ok" id="phase-status">-</div>
+    </div>
+    <div class="card">
+      <div class="label">광고 레코드</div>
+      <div class="value" id="ad-records">-</div>
+    </div>
+    <div class="card">
+      <div class="label">트렌드 레코드</div>
+      <div class="value" id="trend-records">-</div>
+    </div>
+  </div>
+
+  <section>
+    <h2>Phase 진행</h2>
+    <div class="phase-list" id="phase-list"></div>
+  </section>
+
+  <div class="cols">
+    <section>
+      <h2>데이터 수집 상태</h2>
+      <table>
+        <tbody>
+          <tr><th>광고 데이터</th><td id="ad-status">-</td></tr>
+          <tr><th>트렌드 데이터</th><td id="trend-status">-</td></tr>
+          <tr><th>Daily 시장조사 출처</th><td id="daily-sources">-</td></tr>
+          <tr><th>검증</th><td id="verification">-</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>다음 작업</h2>
+      <p><strong id="next-phase">-</strong></p>
+      <p id="next-summary" class="sub">-</p>
+    </section>
+  </div>
+
+  <section>
+    <h2>최근 커밋</h2>
+    <div id="commits" class="empty">커밋 정보를 불러오는 중입니다.</div>
+  </section>
+
+  <section>
+    <h2>남은 리스크</h2>
+    <ul id="risks"></ul>
+  </section>
+</main>
+
+<script>
+async function loadDashboard() {
+  const response = await fetch("./data/latest_status.json", { cache: "no-store" });
+  if (!response.ok) {
+    throw new Error("latest_status.json을 불러오지 못했습니다.");
+  }
+  return response.json();
+}
+
+function text(id, value) {
+  document.getElementById(id).textContent = value;
+}
+
+function render(data) {
+  const current = data.current_phase || {};
+  const ad = data.data?.ad || {};
+  const trend = data.data?.trend || {};
+  const sourceCounts = data.data?.marketing_source_counts || {};
+
+  text("deploy-status", `생성 시각 ${data.generated_at || "-"}`);
+  text("current-phase", current.current_phase ?? "-");
+  text("phase-status", current.status || "-");
+  text("ad-records", ad.record_count ?? 0);
+  text("trend-records", trend.record_count ?? 0);
+  text("ad-status", `${ad.status || "-"} · ${ad.record_count ?? 0} records · ${ad.source_count ?? 0} sources`);
+  text("trend-status", `${trend.status || "-"} · ${trend.record_count ?? 0} records · ${trend.source_count ?? 0} sources`);
+  text("daily-sources", `${sourceCounts.daily ?? 0} daily · ${sourceCounts.weekly ?? 0} weekly · ${sourceCounts.monthly ?? 0} monthly`);
+  text("verification", `${data.verification?.last_result || "-"} · ${data.verification?.test_count ?? 0} tests`);
+  text("next-phase", `${data.next_step?.phase || "-"} · ${data.next_step?.title || ""}`);
+  text("next-summary", data.next_step?.summary || "-");
+
+  document.getElementById("phase-list").innerHTML = (data.phase_progress || []).map(item => `
+    <div class="phase ${item.status}">
+      <strong>${item.phase}</strong>
+      <span>${item.title}</span><br>
+      <span>${item.status}</span>
+    </div>
+  `).join("");
+
+  const commits = data.git?.recent_commits || [];
+  document.getElementById("commits").innerHTML = commits.length
+    ? commits.map(commit => `<div class="commit"><span class="hash">${commit.hash}</span><span>${commit.subject}</span></div>`).join("")
+    : "<div class=\"empty\">커밋 정보 없음.</div>";
+
+  document.getElementById("risks").innerHTML = (data.risks || [])
+    .map(risk => `<li>${risk}</li>`)
+    .join("");
+}
+
+loadDashboard()
+  .then(render)
+  .catch(error => {
+    text("deploy-status", "데이터 로드 실패");
+    document.body.insertAdjacentHTML("beforeend", `<pre style="padding:20px;color:#a53434">${error.message}</pre>`);
+  });
+</script>
+</body>
+</html>

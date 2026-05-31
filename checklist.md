@@ -50,3 +50,14 @@
 - [x] daily 시장조사 출처를 트렌드 수집 payload에 포함
 - [x] 출처 카탈로그 로드 테스트 추가
 - [x] 검증용 트렌드 JSON 재생성
+
+# PHASE 3.5 Vercel Dashboard Checklist
+
+- [x] Vercel 프로젝트 ID와 팀 ID 확인
+- [x] 커스텀 도메인은 보류하고 기본 Vercel 도메인 사용 결정
+- [x] Vercel 정적 배포 설정 `vercel.json` 생성
+- [x] `web/index.html` 진행 현황 대시보드 생성
+- [x] `scripts/build_dashboard_data.py` 생성
+- [x] `web/data/latest_status.json` 생성 구조 구현
+- [x] 대시보드 데이터 생성 테스트 추가
+- [x] Vercel 대시보드 검증 실행
