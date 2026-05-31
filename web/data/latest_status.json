@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-31T16:00:54+09:00",
+  "generated_at": "2026-05-31T19:24:49+09:00",
   "project": {
     "name": "AIPR",
     "github_repo": "https://github.com/dawdew12/homeproject0518",
@@ -8,10 +8,10 @@
     "custom_domain_enabled": false
   },
   "current_phase": {
-    "current_phase": 5,
+    "current_phase": 6,
     "status": "completed",
     "active_brand": null,
-    "last_success": "2026-05-31 PHASE 5 prompt engineering completed",
+    "last_success": "2026-05-31 PHASE 6 image dry-run completed",
     "last_error": null
   },
   "phase_progress": [
@@ -48,18 +48,23 @@
     {
       "phase": "PHASE 6",
       "title": "이미지 생성 dry-run",
+      "status": "completed"
+    },
+    {
+      "phase": "PHASE 7",
+      "title": "품질 검수 및 재생성",
       "status": "next"
     }
   ],
   "architecture": {
     "overall_progress": {
-      "completed_phase_count": 5,
+      "completed_phase_count": 6,
       "total_phase_count": 12,
-      "percent": 42,
-      "current_phase": "PHASE 5",
-      "next_phase": "PHASE 6",
+      "percent": 50,
+      "current_phase": "PHASE 6",
+      "next_phase": "PHASE 7",
       "dashboard_milestones_completed": 2,
-      "latest_test_count": 16,
+      "latest_test_count": 20,
       "latest_test_result": "passed"
     },
     "phase_roadmap": [
@@ -96,13 +101,13 @@
       {
         "phase": "PHASE 6",
         "title": "이미지 생성",
-        "status": "next",
-        "progress": 0
+        "status": "completed",
+        "progress": 100
       },
       {
         "phase": "PHASE 7",
         "title": "품질 검수 및 재생성",
-        "status": "planned",
+        "status": "next",
         "progress": 0
       },
       {
@@ -204,13 +209,13 @@
           {
             "id": "image_designer",
             "label": "팀원 D 이미지 생성",
-            "status": "next",
-            "metric": "dry-run next"
+            "status": "dry_run_ready",
+            "metric": "20 requests"
           },
           {
             "id": "quality_review",
             "label": "품질 검수",
-            "status": "planned",
+            "status": "next",
             "metric": "PHASE 7"
           },
           {
@@ -293,7 +298,13 @@
         "from": "프롬프트 Pack",
         "to": "팀원 D",
         "artifact": "이미지 dry-run 입력",
-        "status": "next"
+        "status": "ready"
+      },
+      {
+        "from": "팀원 D",
+        "to": "history/daily/*_image_dry_run.json",
+        "artifact": "dry-run 요청 20개",
+        "status": "ready"
       },
       {
         "from": "history/state/git",
@@ -328,10 +339,16 @@
         "status": "ready"
       },
       {
+        "path": "history/daily/{date}_image_dry_run.json",
+        "producer": "팀원 D",
+        "consumer": "팀장 검수, 대시보드",
+        "status": "ready"
+      },
+      {
         "path": "outputs/{brand}/{date}/",
         "producer": "팀원 D",
         "consumer": "팀장 검수",
-        "status": "next"
+        "status": "dry_run_ready"
       },
       {
         "path": "web/data/latest_status.json",
@@ -394,10 +411,18 @@
       {
         "phase": "PHASE 6",
         "scope": "이미지 생성 dry-run",
-        "check": "예정: image_designer dry-run + 비용 계산 테스트",
+        "check": "python -m unittest tests.test_image_designer",
+        "result": "passed",
+        "test_count": 4,
+        "artifact": "history/daily/2026-05-18_image_dry_run.json"
+      },
+      {
+        "phase": "PHASE 7",
+        "scope": "품질 검수 및 재생성",
+        "check": "예정: 품질 기준 + 재생성 판단 테스트",
         "result": "next",
         "test_count": 0,
-        "artifact": "outputs/{brand}/{date}/"
+        "artifact": "history/daily/{date}_quality_review.json"
       }
     ]
   },
@@ -475,6 +500,22 @@
       "real_photo_count": 10,
       "illustration_count": 10,
       "no_text_rule_applied": true
+    },
+    "images": {
+      "exists": true,
+      "path": "history/daily/2026-05-18_image_dry_run.json",
+      "date": "2026-05-18",
+      "status": "image_dry_run_ready",
+      "mode": "dry_run",
+      "brand_count": 5,
+      "batch_count": 5,
+      "request_count": 20,
+      "real_photo_count": 10,
+      "illustration_count": 10,
+      "estimated_cost_usd": 2.64,
+      "daily_cost_allowed": true,
+      "monthly_cost_allowed": true,
+      "charged": false
     },
     "marketing_source_counts": {
       "daily": 13,
@@ -953,6 +994,80 @@
         ]
       }
     ],
+    "image_preview": [
+      {
+        "prompt_id": "someud_20260518_prompt01",
+        "brand": "someud",
+        "image_type_label": "실사",
+        "quality": "high",
+        "estimated_cost_usd": 0.211,
+        "output_path": "outputs/someud/2026-05-18/someud_20260518_실사_황토침대-어버이날-선물-숙면_v01_high.png",
+        "status": "dry_run_ready"
+      },
+      {
+        "prompt_id": "someud_20260518_prompt02",
+        "brand": "someud",
+        "image_type_label": "실사",
+        "quality": "high",
+        "estimated_cost_usd": 0.211,
+        "output_path": "outputs/someud/2026-05-18/someud_20260518_실사_황토침대-어버이날-선물-숙면_v02_high.png",
+        "status": "dry_run_ready"
+      },
+      {
+        "prompt_id": "someud_20260518_prompt03",
+        "brand": "someud",
+        "image_type_label": "일러스트",
+        "quality": "medium",
+        "estimated_cost_usd": 0.053,
+        "output_path": "outputs/someud/2026-05-18/someud_20260518_일러스트_황토침대-어버이날-선물-숙면_v03_medium.png",
+        "status": "dry_run_ready"
+      },
+      {
+        "prompt_id": "someud_20260518_prompt04",
+        "brand": "someud",
+        "image_type_label": "일러스트",
+        "quality": "medium",
+        "estimated_cost_usd": 0.053,
+        "output_path": "outputs/someud/2026-05-18/someud_20260518_일러스트_황토침대-어버이날-선물-숙면_v04_medium.png",
+        "status": "dry_run_ready"
+      },
+      {
+        "prompt_id": "kinda_20260518_prompt01",
+        "brand": "kinda",
+        "image_type_label": "실사",
+        "quality": "high",
+        "estimated_cost_usd": 0.211,
+        "output_path": "outputs/kinda/2026-05-18/kinda_20260518_실사_극손상-헤어팩-비포애프터-홈케어_v01_high.png",
+        "status": "dry_run_ready"
+      },
+      {
+        "prompt_id": "kinda_20260518_prompt02",
+        "brand": "kinda",
+        "image_type_label": "실사",
+        "quality": "high",
+        "estimated_cost_usd": 0.211,
+        "output_path": "outputs/kinda/2026-05-18/kinda_20260518_실사_극손상-헤어팩-비포애프터-홈케어_v02_high.png",
+        "status": "dry_run_ready"
+      },
+      {
+        "prompt_id": "kinda_20260518_prompt03",
+        "brand": "kinda",
+        "image_type_label": "일러스트",
+        "quality": "medium",
+        "estimated_cost_usd": 0.053,
+        "output_path": "outputs/kinda/2026-05-18/kinda_20260518_일러스트_극손상-헤어팩-비포애프터-홈케어_v03_medium.png",
+        "status": "dry_run_ready"
+      },
+      {
+        "prompt_id": "kinda_20260518_prompt04",
+        "brand": "kinda",
+        "image_type_label": "일러스트",
+        "quality": "medium",
+        "estimated_cost_usd": 0.053,
+        "output_path": "outputs/kinda/2026-05-18/kinda_20260518_일러스트_극손상-헤어팩-비포애프터-홈케어_v04_medium.png",
+        "status": "dry_run_ready"
+      }
+    ],
     "monitoring_preview": {
       "daily": [
         {
@@ -1200,12 +1315,13 @@
       },
       {
         "name": "이미지 생성 dry-run",
-        "status": "next",
+        "status": "dry_run_ready",
         "details": [
-          "팀원 D batch 입력",
-          "출력 파일명",
-          "비용 계산",
-          "재생성 제한"
+          "20개 요청",
+          "5개 브랜드 batch",
+          "출력 파일 경로",
+          "$2.64 예상 비용",
+          "한도 확인"
         ]
       }
     ],
@@ -1269,15 +1385,16 @@
       {
         "agent": "팀원 D",
         "file": "agents/image_designer.py",
-        "status": "skeleton_ready",
+        "status": "dry_run_ready",
         "implemented": [
           "이미지 비용 설정",
+          "브랜드별 batch dry-run",
           "출력 경로 생성",
-          "dry-run 생성 함수",
-          "재생성 제한 함수"
+          "한도 확인",
+          "재생성 제한"
         ],
         "output": "outputs/{brand}/{date}/",
-        "next": "PHASE 6에서 gpt-image-2 Batch dry-run 및 실제 생성 연결"
+        "next": "PHASE 7에서 품질 검수와 재생성 판단 연결"
       }
     ],
     "pipeline_steps": [
@@ -1309,13 +1426,13 @@
         "step": "05",
         "title": "이미지 생성",
         "owner": "팀원 D",
-        "status": "next"
+        "status": "dry_run_ready"
       },
       {
         "step": "06",
         "title": "품질 검수/재생성",
         "owner": "팀장",
-        "status": "planned"
+        "status": "next"
       },
       {
         "step": "07",
@@ -1338,13 +1455,21 @@
     ]
   },
   "verification": {
-    "last_command": "python -m unittest tests.test_trend_collector tests.test_data_collector tests.test_manager tests.test_prompt_engineer tests.test_build_dashboard_data",
+    "last_command": "python -m unittest tests.test_trend_collector tests.test_data_collector tests.test_manager tests.test_prompt_engineer tests.test_image_designer tests.test_build_dashboard_data",
     "last_result": "passed",
-    "test_count": 16
+    "test_count": 20
   },
   "git": {
     "branch": "main",
     "recent_commits": [
+      {
+        "hash": "a204d08",
+        "subject": "[DASHBOARD] 최근 커밋 실시간 동기화"
+      },
+      {
+        "hash": "749370a",
+        "subject": "[DASHBOARD] 최신 커밋 메타데이터 갱신"
+      },
       {
         "hash": "bcefd8e",
         "subject": "[DASHBOARD] 아키텍처 진행도 시각화 추가"
@@ -1356,27 +1481,19 @@
       {
         "hash": "47edb69",
         "subject": "[PHASE 4] 팀장 분석 엔진 구현"
-      },
-      {
-        "hash": "3daf6d7",
-        "subject": "[PHASE 3.5] 운영형 대시보드 기능 현황 강화"
-      },
-      {
-        "hash": "23fd7bc",
-        "subject": "[PHASE 3.5] Vercel 대시보드 배포 기반 구축"
       }
     ]
   },
   "next_step": {
-    "phase": "PHASE 6",
-    "title": "이미지 생성 dry-run",
-    "summary": "팀원 C의 prompt pack을 입력으로 받아 팀원 D 이미지 생성 dry-run과 비용 계산을 연결한다."
+    "phase": "PHASE 7",
+    "title": "품질 검수 및 재생성",
+    "summary": "팀원 D의 image dry-run 결과를 입력으로 받아 품질 기준과 재생성 판단 로직을 연결한다."
   },
   "risks": [
     "광고 API와 트렌드 API는 아직 mock 수집 단계다.",
     "팀장 분석은 deterministic rule 기반이며 실제 LLM 판단은 후속 API 연결 단계에서 붙인다.",
     "프롬프트 생성도 rule 기반이며 실제 OpenAI API 호출은 아직 수행하지 않는다.",
-    "Vercel 초기 버전은 push 이후 반영되는 정적 JSON 대시보드다.",
+    "이미지 생성은 dry-run 단계이며 실제 gpt-image-2 API 호출은 아직 수행하지 않는다.",
     "초 단위 실행 로그 실시간화는 PHASE 10 API 연동에서 확장한다."
   ]
 }

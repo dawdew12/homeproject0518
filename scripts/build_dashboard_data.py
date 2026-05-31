@@ -90,6 +90,31 @@ def summarize_prompt_pack(path: Path | None) -> dict[str, Any]:
     }
 
 
+def summarize_image_dry_run(path: Path | None) -> dict[str, Any]:
+    """팀원 D 이미지 dry-run 결과를 대시보드용 요약으로 변환한다."""
+    if path is None:
+        return {"exists": False, "request_count": 0, "estimated_cost_usd": 0}
+
+    payload = read_json(path, {})
+    summary = payload.get("summary", {})
+    return {
+        "exists": True,
+        "path": str(path.relative_to(PROJECT_ROOT)).replace("\\", "/"),
+        "date": payload.get("date"),
+        "status": payload.get("status"),
+        "mode": payload.get("mode"),
+        "brand_count": summary.get("brand_count", 0),
+        "batch_count": summary.get("batch_count", 0),
+        "request_count": summary.get("request_count", 0),
+        "real_photo_count": summary.get("real_photo_count", 0),
+        "illustration_count": summary.get("illustration_count", 0),
+        "estimated_cost_usd": summary.get("estimated_cost_usd", 0),
+        "daily_cost_allowed": summary.get("daily_cost_allowed", False),
+        "monthly_cost_allowed": summary.get("monthly_cost_allowed", False),
+        "charged": summary.get("charged", False),
+    }
+
+
 def run_git(args: list[str]) -> str:
     """가능하면 Git 명령 결과를 반환한다."""
     git_candidates = [
@@ -227,6 +252,22 @@ def build_prompt_preview(prompt_payload: dict[str, Any], limit: int = 8) -> list
     ]
 
 
+def build_image_request_preview(image_payload: dict[str, Any], limit: int = 8) -> list[dict[str, Any]]:
+    """이미지 dry-run 요청 일부를 화면 미리보기용으로 줄인다."""
+    return [
+        {
+            "prompt_id": request.get("prompt_id"),
+            "brand": request.get("brand"),
+            "image_type_label": request.get("image_type_label"),
+            "quality": request.get("quality"),
+            "estimated_cost_usd": request.get("estimated_cost_usd"),
+            "output_path": request.get("output_path"),
+            "status": request.get("status"),
+        }
+        for request in image_payload.get("requests", [])[:limit]
+    ]
+
+
 def build_agent_status() -> list[dict[str, Any]]:
     """에이전트별 구현 범위와 다음 작업을 정리한다."""
     return [
@@ -265,10 +306,10 @@ def build_agent_status() -> list[dict[str, Any]]:
         {
             "agent": "팀원 D",
             "file": "agents/image_designer.py",
-            "status": "skeleton_ready",
-            "implemented": ["이미지 비용 설정", "출력 경로 생성", "dry-run 생성 함수", "재생성 제한 함수"],
+            "status": "dry_run_ready",
+            "implemented": ["이미지 비용 설정", "브랜드별 batch dry-run", "출력 경로 생성", "한도 확인", "재생성 제한"],
             "output": "outputs/{brand}/{date}/",
-            "next": "PHASE 6에서 gpt-image-2 Batch dry-run 및 실제 생성 연결",
+            "next": "PHASE 7에서 품질 검수와 재생성 판단 연결",
         },
     ]
 
@@ -280,8 +321,8 @@ def build_pipeline_steps() -> list[dict[str, str]]:
         {"step": "02", "title": "트렌드/시장조사 수집", "owner": "팀원 B", "status": "mock_ready"},
         {"step": "03", "title": "팀장 분석/개선안", "owner": "팀장", "status": "analysis_ready"},
         {"step": "04", "title": "스토리보드/프롬프트", "owner": "팀원 C", "status": "prompt_ready"},
-        {"step": "05", "title": "이미지 생성", "owner": "팀원 D", "status": "next"},
-        {"step": "06", "title": "품질 검수/재생성", "owner": "팀장", "status": "planned"},
+        {"step": "05", "title": "이미지 생성", "owner": "팀원 D", "status": "dry_run_ready"},
+        {"step": "06", "title": "품질 검수/재생성", "owner": "팀장", "status": "next"},
         {"step": "07", "title": "Winner/Loser 학습", "owner": "팀장", "status": "planned"},
         {"step": "08", "title": "저장소 연동", "owner": "utils", "status": "planned"},
         {"step": "09", "title": "대시보드 실시간화", "owner": "dashboard", "status": "static_ready"},
@@ -323,8 +364,8 @@ def build_feature_status() -> list[dict[str, Any]]:
         },
         {
             "name": "이미지 생성 dry-run",
-            "status": "next",
-            "details": ["팀원 D batch 입력", "출력 파일명", "비용 계산", "재생성 제한"],
+            "status": "dry_run_ready",
+            "details": ["20개 요청", "5개 브랜드 batch", "출력 파일 경로", "$2.64 예상 비용", "한도 확인"],
         },
     ]
 
@@ -347,8 +388,8 @@ def build_phase_roadmap() -> list[dict[str, Any]]:
         {"phase": "PHASE 3", "title": "트렌드 수집", "status": "completed", "progress": 100},
         {"phase": "PHASE 4", "title": "팀장 분석 엔진", "status": "completed", "progress": 100},
         {"phase": "PHASE 5", "title": "프롬프트 엔지니어링", "status": "completed", "progress": 100},
-        {"phase": "PHASE 6", "title": "이미지 생성", "status": "next", "progress": 0},
-        {"phase": "PHASE 7", "title": "품질 검수 및 재생성", "status": "planned", "progress": 0},
+        {"phase": "PHASE 6", "title": "이미지 생성", "status": "completed", "progress": 100},
+        {"phase": "PHASE 7", "title": "품질 검수 및 재생성", "status": "next", "progress": 0},
         {"phase": "PHASE 8", "title": "Winner/Loser 학습", "status": "planned", "progress": 0},
         {"phase": "PHASE 9", "title": "저장소 연동", "status": "planned", "progress": 0},
         {"phase": "PHASE 10", "title": "Dashboard 실시간화", "status": "planned", "progress": 0},
@@ -366,10 +407,10 @@ def build_overall_progress(roadmap: list[dict[str, Any]]) -> dict[str, Any]:
         "completed_phase_count": completed,
         "total_phase_count": total,
         "percent": round(completed / total * 100),
-        "current_phase": "PHASE 5",
+        "current_phase": "PHASE 6",
         "next_phase": next_items[0]["phase"] if next_items else None,
         "dashboard_milestones_completed": 2,
-        "latest_test_count": 16,
+        "latest_test_count": 20,
         "latest_test_result": "passed",
     }
 
@@ -406,8 +447,8 @@ def build_architecture_layers() -> list[dict[str, Any]]:
             "layer": "Generation",
             "title": "이미지 생성과 검수",
             "nodes": [
-                {"id": "image_designer", "label": "팀원 D 이미지 생성", "status": "next", "metric": "dry-run next"},
-                {"id": "quality_review", "label": "품질 검수", "status": "planned", "metric": "PHASE 7"},
+                {"id": "image_designer", "label": "팀원 D 이미지 생성", "status": "dry_run_ready", "metric": "20 requests"},
+                {"id": "quality_review", "label": "품질 검수", "status": "next", "metric": "PHASE 7"},
                 {"id": "learning", "label": "Winner/Loser 학습", "status": "planned", "metric": "PHASE 8"},
             ],
         },
@@ -433,7 +474,8 @@ def build_architecture_flow() -> list[dict[str, str]]:
         {"from": "팀장", "to": "history/daily/*_manager_brief.json", "artifact": "브랜드 Brief 5개", "status": "ready"},
         {"from": "팀장 Brief", "to": "팀원 C", "artifact": "handoff 5개", "status": "ready"},
         {"from": "팀원 C", "to": "history/daily/*_prompts.json", "artifact": "프롬프트 20개", "status": "ready"},
-        {"from": "프롬프트 Pack", "to": "팀원 D", "artifact": "이미지 dry-run 입력", "status": "next"},
+        {"from": "프롬프트 Pack", "to": "팀원 D", "artifact": "이미지 dry-run 입력", "status": "ready"},
+        {"from": "팀원 D", "to": "history/daily/*_image_dry_run.json", "artifact": "dry-run 요청 20개", "status": "ready"},
         {"from": "history/state/git", "to": "Vercel Dashboard", "artifact": "latest_status.json", "status": "ready"},
     ]
 
@@ -445,7 +487,8 @@ def build_storage_contracts() -> list[dict[str, str]]:
         {"path": "history/daily/{date}_trend_data.json", "producer": "팀원 B", "consumer": "팀장, 대시보드", "status": "ready"},
         {"path": "history/daily/{date}_manager_brief.json", "producer": "팀장", "consumer": "팀원 C, 대시보드", "status": "ready"},
         {"path": "history/daily/{date}_prompts.json", "producer": "팀원 C", "consumer": "팀원 D, 대시보드", "status": "ready"},
-        {"path": "outputs/{brand}/{date}/", "producer": "팀원 D", "consumer": "팀장 검수", "status": "next"},
+        {"path": "history/daily/{date}_image_dry_run.json", "producer": "팀원 D", "consumer": "팀장 검수, 대시보드", "status": "ready"},
+        {"path": "outputs/{brand}/{date}/", "producer": "팀원 D", "consumer": "팀장 검수", "status": "dry_run_ready"},
         {"path": "web/data/latest_status.json", "producer": "scripts/build_dashboard_data.py", "consumer": "Vercel Dashboard", "status": "ready"},
     ]
 
@@ -504,10 +547,18 @@ def build_phase_test_results() -> list[dict[str, Any]]:
         {
             "phase": "PHASE 6",
             "scope": "이미지 생성 dry-run",
-            "check": "예정: image_designer dry-run + 비용 계산 테스트",
+            "check": "python -m unittest tests.test_image_designer",
+            "result": "passed",
+            "test_count": 4,
+            "artifact": "history/daily/2026-05-18_image_dry_run.json",
+        },
+        {
+            "phase": "PHASE 7",
+            "scope": "품질 검수 및 재생성",
+            "check": "예정: 품질 기준 + 재생성 판단 테스트",
             "result": "next",
             "test_count": 0,
-            "artifact": "outputs/{brand}/{date}/",
+            "artifact": "history/daily/{date}_quality_review.json",
         },
     ]
 
@@ -519,14 +570,17 @@ def build_dashboard_payload() -> dict[str, Any]:
     latest_trend_file = find_latest_file("*_trend_data.json")
     latest_manager_file = find_latest_file("*_manager_brief.json")
     latest_prompt_file = find_latest_file("*_prompts.json")
+    latest_image_file = find_latest_file("*_image_dry_run.json")
     ad_payload = load_latest_daily_payload("*_ad_data.json")
     trend_payload = load_latest_daily_payload("*_trend_data.json")
     manager_payload = load_latest_daily_payload("*_manager_brief.json")
     prompt_payload = load_latest_daily_payload("*_prompts.json")
+    image_payload = load_latest_daily_payload("*_image_dry_run.json")
     ad_summary = summarize_daily_file(latest_ad_file)
     trend_summary = summarize_daily_file(latest_trend_file)
     manager_summary = summarize_manager_brief(latest_manager_file)
     prompt_summary = summarize_prompt_pack(latest_prompt_file)
+    image_summary = summarize_image_dry_run(latest_image_file)
     source_counts = count_marketing_sources()
     recent_commits = get_recent_commits()
     phase_roadmap = build_phase_roadmap()
@@ -548,7 +602,8 @@ def build_dashboard_payload() -> dict[str, Any]:
             {"phase": "PHASE 3.5", "title": "Vercel 대시보드 배포 기반", "status": "completed"},
             {"phase": "PHASE 4", "title": "팀장 분석 엔진", "status": "completed"},
             {"phase": "PHASE 5", "title": "스토리보드와 프롬프트 생성", "status": "completed"},
-            {"phase": "PHASE 6", "title": "이미지 생성 dry-run", "status": "next"},
+            {"phase": "PHASE 6", "title": "이미지 생성 dry-run", "status": "completed"},
+            {"phase": "PHASE 7", "title": "품질 검수 및 재생성", "status": "next"},
         ],
         "architecture": {
             "overall_progress": build_overall_progress(phase_roadmap),
@@ -565,12 +620,14 @@ def build_dashboard_payload() -> dict[str, Any]:
             "trend": trend_summary,
             "manager": manager_summary,
             "prompts": prompt_summary,
+            "images": image_summary,
             "marketing_source_counts": source_counts,
             "brand_snapshots": build_brand_snapshots(ad_payload, trend_payload, manager_payload),
             "ad_preview": sample_records(ad_payload),
             "trend_preview": sample_records(trend_payload),
             "manager_preview": build_manager_preview(manager_payload),
             "prompt_preview": build_prompt_preview(prompt_payload),
+            "image_preview": build_image_request_preview(image_payload),
             "monitoring_preview": build_monitoring_preview(trend_payload),
         },
         "operations": {
@@ -579,24 +636,24 @@ def build_dashboard_payload() -> dict[str, Any]:
             "pipeline_steps": build_pipeline_steps(),
         },
         "verification": {
-            "last_command": "python -m unittest tests.test_trend_collector tests.test_data_collector tests.test_manager tests.test_prompt_engineer tests.test_build_dashboard_data",
+            "last_command": "python -m unittest tests.test_trend_collector tests.test_data_collector tests.test_manager tests.test_prompt_engineer tests.test_image_designer tests.test_build_dashboard_data",
             "last_result": "passed",
-            "test_count": 16,
+            "test_count": 20,
         },
         "git": {
             "branch": run_git(["branch", "--show-current"]) or "main",
             "recent_commits": recent_commits,
         },
         "next_step": {
-            "phase": "PHASE 6",
-            "title": "이미지 생성 dry-run",
-            "summary": "팀원 C의 prompt pack을 입력으로 받아 팀원 D 이미지 생성 dry-run과 비용 계산을 연결한다.",
+            "phase": "PHASE 7",
+            "title": "품질 검수 및 재생성",
+            "summary": "팀원 D의 image dry-run 결과를 입력으로 받아 품질 기준과 재생성 판단 로직을 연결한다.",
         },
         "risks": [
             "광고 API와 트렌드 API는 아직 mock 수집 단계다.",
             "팀장 분석은 deterministic rule 기반이며 실제 LLM 판단은 후속 API 연결 단계에서 붙인다.",
             "프롬프트 생성도 rule 기반이며 실제 OpenAI API 호출은 아직 수행하지 않는다.",
-            "Vercel 초기 버전은 push 이후 반영되는 정적 JSON 대시보드다.",
+            "이미지 생성은 dry-run 단계이며 실제 gpt-image-2 API 호출은 아직 수행하지 않는다.",
             "초 단위 실행 로그 실시간화는 PHASE 10 API 연동에서 확장한다.",
         ],
     }

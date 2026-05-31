@@ -217,6 +217,7 @@ section {
 .tag.completed,
 .tag.mock_ready,
 .tag.static_ready,
+.tag.dry_run_ready,
 .tag.ready,
 .tag.configured,
 .tag.passed {
@@ -411,6 +412,10 @@ li { margin: 5px 0; }
       <div class="label">프롬프트</div>
       <div class="value" id="prompt-count">-</div>
     </div>
+    <div class="metric">
+      <div class="label">이미지 요청</div>
+      <div class="value info" id="image-requests">-</div>
+    </div>
   </div>
 
   <section>
@@ -482,6 +487,7 @@ li { margin: 5px 0; }
           <tr><th>트렌드 데이터</th><td id="trend-status">-</td></tr>
           <tr><th>팀장 분석</th><td id="manager-status">-</td></tr>
           <tr><th>프롬프트 Pack</th><td id="prompt-status">-</td></tr>
+          <tr><th>이미지 Dry-run</th><td id="image-status">-</td></tr>
           <tr><th>Daily 시장조사 출처</th><td id="daily-sources">-</td></tr>
           <tr><th>검증</th><td id="verification">-</td></tr>
         </tbody>
@@ -525,6 +531,24 @@ li { margin: 5px 0; }
         </tr>
       </thead>
       <tbody id="prompt-table"></tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>이미지 Dry-run 요청</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Prompt ID</th>
+          <th>브랜드</th>
+          <th>유형</th>
+          <th>품질</th>
+          <th>예상 비용</th>
+          <th>상태</th>
+          <th>출력 경로</th>
+        </tr>
+      </thead>
+      <tbody id="image-table"></tbody>
     </table>
   </section>
 
@@ -630,6 +654,7 @@ function render(data) {
   const trend = data.data?.trend || {};
   const manager = data.data?.manager || {};
   const prompts = data.data?.prompts || {};
+  const images = data.data?.images || {};
   const sourceCounts = data.data?.marketing_source_counts || {};
 
   text("deploy-status", `생성 시각 ${data.generated_at || "-"}`);
@@ -639,10 +664,12 @@ function render(data) {
   text("trend-records", trend.record_count ?? 0);
   text("manager-brands", manager.brand_count ?? 0);
   text("prompt-count", prompts.prompt_count ?? 0);
+  text("image-requests", images.request_count ?? 0);
   text("ad-status", `${ad.status || "-"} · ${ad.record_count ?? 0} records · ${ad.source_count ?? 0} sources`);
   text("trend-status", `${trend.status || "-"} · ${trend.record_count ?? 0} records · ${trend.source_count ?? 0} sources`);
   text("manager-status", `${manager.status || "-"} · ${manager.brand_count ?? 0} brands · ${manager.handoff_count ?? 0} handoff`);
   text("prompt-status", `${prompts.status || "-"} · ${prompts.storyboard_count ?? 0} storyboards · ${prompts.prompt_count ?? 0} prompts`);
+  text("image-status", `${images.status || "-"} · ${images.request_count ?? 0} requests · $${images.estimated_cost_usd ?? 0} · charged ${images.charged ? "yes" : "no"}`);
   text("daily-sources", `${sourceCounts.daily ?? 0} daily · ${sourceCounts.weekly ?? 0} weekly · ${sourceCounts.monthly ?? 0} monthly`);
   text("verification", `${data.verification?.last_result || "-"} · ${data.verification?.test_count ?? 0} tests`);
   text("next-phase", `${data.next_step?.phase || "-"} · ${data.next_step?.title || ""}`);
@@ -747,6 +774,18 @@ function render(data) {
       <td>${item.quality}</td>
       <td><code>${item.file_name_preview}</code></td>
       <td>${(item.rules || []).join("<br>")}</td>
+    </tr>
+  `).join("");
+
+  document.getElementById("image-table").innerHTML = (data.data?.image_preview || []).map(item => `
+    <tr>
+      <td><code>${item.prompt_id}</code></td>
+      <td>${item.brand}</td>
+      <td>${item.image_type_label}</td>
+      <td>${item.quality}</td>
+      <td>$${item.estimated_cost_usd}</td>
+      <td><span class="tag ${tagClass(item.status)}">${item.status}</span></td>
+      <td><code>${item.output_path}</code></td>
     </tr>
   `).join("");
 

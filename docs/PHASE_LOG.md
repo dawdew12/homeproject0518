@@ -111,3 +111,14 @@
 - 검증 명령: Codex 번들 Python으로 `python -m unittest tests.test_trend_collector tests.test_data_collector tests.test_manager tests.test_prompt_engineer tests.test_build_dashboard_data`.
 - 결과: 16개 테스트 통과.
 
+## 2026-05-31 PHASE 6 완료
+
+- 목표: 팀원 C 프롬프트 pack을 팀원 D 이미지 생성 dry-run 요청으로 변환.
+- `agents/image_designer.py`에 브랜드별 batch dry-run, 요청별 출력 경로, 예상 비용, 일일/월간 한도 확인, JSON 저장 명령을 구현했다.
+- `history/daily/2026-05-18_image_dry_run.json`에 5개 브랜드, 20개 이미지 요청, 실사 10개와 일러스트 10개, 예상 비용 $2.64를 저장했다.
+- `scripts/build_dashboard_data.py`와 `web/index.html`에 이미지 dry-run 요약과 요청 미리보기를 추가했다.
+- 현재 공식 로드맵 기준 진행률은 6/12, 50%다.
+- 검증 명령: Codex 번들 Python으로 `python -m unittest tests.test_trend_collector tests.test_data_collector tests.test_manager tests.test_prompt_engineer tests.test_image_designer tests.test_build_dashboard_data`.
+- 결과: 20개 테스트 통과.
+- 남은 리스크: 실제 gpt-image-2 API 호출은 아직 하지 않았고, 다음 PHASE 7에서 품질 검수와 재생성 판단을 연결해야 한다.
+

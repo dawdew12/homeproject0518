@@ -145,3 +145,17 @@
 - GitHub API가 실패해도 `latest_status.json`에 포함된 커밋 목록을 그대로 보여주도록 fallback을 유지했다.
 - 기존 Python 단위 테스트 16개와 HTML script parse 검증을 통과했다.
 
+## 2026-05-31 PHASE 6 Image Dry Run 시작
+
+- 다음 단계는 팀원 D가 팀원 C의 `history/daily/{date}_prompts.json`을 입력으로 받아 이미지 생성 dry-run 요청을 만드는 것이다.
+- 실제 gpt-image-2 API 호출은 아직 실행하지 않고, 모델, 품질, batch 구성, 출력 파일 경로, 예상 비용을 검증 가능한 JSON으로 남긴다.
+- `outputs/`는 `.gitignore`에 포함되어 있으므로 추적 가능한 운영 기록은 `history/daily/{date}_image_dry_run.json`에 저장한다.
+- 성공 기준은 5개 브랜드, 20개 이미지 요청, 실사 10개와 일러스트 10개, 총 예상 비용 $2.64가 단위 테스트와 대시보드에 반영되는 것이다.
+
+## 2026-05-31 PHASE 6 Image Dry Run 구현
+
+- `agents/image_designer.py`가 프롬프트 pack을 읽어 브랜드별 4개 요청 batch를 만들고, 요청별 출력 경로와 예상 비용을 계산한다.
+- 실제 이미지는 생성하지 않으며 `charged: false`로 기록해 비용이 청구되지 않는 dry-run임을 명시한다.
+- `history/daily/2026-05-18_image_dry_run.json`에는 5개 batch, 20개 요청, 예상 비용 $2.64, 일일/월간 한도 통과 여부가 저장되었다.
+- 대시보드 JSON과 화면은 PHASE 6 완료, 전체 진행도 50%, 다음 단계 PHASE 7 품질 검수로 갱신되었다.
+

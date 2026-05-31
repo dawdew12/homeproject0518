@@ -122,3 +122,15 @@
 - [x] GitHub 공개 API 기반 최근 커밋 실시간 로딩 추가
 - [x] GitHub API 실패 시 기존 JSON 커밋 목록 fallback 유지
 - [x] 검증 실행
+
+# PHASE 6 Image Dry Run Checklist
+
+- [x] PHASE 5 프롬프트 pack 구조 확인
+- [x] 팀원 D 이미지 dry-run batch 생성 로직 구현
+- [x] 브랜드별 출력 경로와 예상 비용 계산 구현
+- [x] `history/daily/{date}_image_dry_run.json` 저장 구현
+- [x] 이미지 dry-run 단위 테스트 추가
+- [x] 대시보드 JSON에 이미지 dry-run 결과 추가
+- [x] 대시보드 화면에 이미지 dry-run 요약 표시
+- [x] PHASE 6 검증 실행
+- [x] GitHub 저장 및 Vercel 반영 확인
