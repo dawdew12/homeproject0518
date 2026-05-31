@@ -1,4 +1,4 @@
-<!-- AIPR 진행 상태를 표시하는 Vercel 정적 대시보드 -->
+<!-- AIPR 진행 상태와 구현 기능을 표시하는 Vercel 정적 대시보드 -->
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -9,7 +9,7 @@
 :root {
   --bg: #f4f6f3;
   --panel: #ffffff;
-  --panel-soft: #f8faf7;
+  --soft: #f8faf7;
   --ink: #1c211f;
   --muted: #68706a;
   --line: #dce2db;
@@ -27,21 +27,29 @@ body {
   line-height: 1.58;
 }
 main {
-  max-width: 1180px;
+  max-width: 1240px;
   margin: 0 auto;
-  padding: 28px 20px 48px;
+  padding: 28px 20px 52px;
 }
 header {
   display: flex;
   justify-content: space-between;
-  gap: 18px;
   align-items: flex-start;
-  margin-bottom: 20px;
+  gap: 18px;
+  margin-bottom: 18px;
 }
 h1 {
   margin: 0 0 6px;
-  font-size: 26px;
+  font-size: 27px;
   line-height: 1.2;
+}
+h2 {
+  margin: 0 0 12px;
+  font-size: 18px;
+}
+h3 {
+  margin: 0 0 6px;
+  font-size: 14px;
 }
 .sub {
   margin: 0;
@@ -64,29 +72,67 @@ h1 {
   gap: 12px;
   margin-bottom: 14px;
 }
-.card,
-section {
+section,
+.metric,
+.tile {
   background: var(--panel);
   border: 1px solid var(--line);
   border-radius: 8px;
-  padding: 16px;
 }
-.card .label {
+section {
+  padding: 16px;
+  margin-top: 14px;
+}
+.metric {
+  padding: 15px 16px;
+}
+.label {
   color: var(--muted);
   font-size: 12px;
-  margin-bottom: 6px;
+  margin-bottom: 5px;
 }
-.card .value {
+.value {
   font-size: 24px;
   font-weight: 750;
 }
 .ok { color: var(--green); }
 .info { color: var(--blue); }
 .warn { color: var(--amber); }
-section { margin-top: 14px; }
-h2 {
-  margin: 0 0 12px;
-  font-size: 18px;
+.bad { color: var(--red); }
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+.tile {
+  padding: 12px;
+  background: var(--soft);
+}
+.tile .tag,
+.phase .tag {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 2px 8px;
+  margin-top: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  background: #edf1ed;
+  color: var(--muted);
+}
+.tag.completed,
+.tag.mock_ready,
+.tag.static_ready {
+  background: #e4f3ec;
+  color: var(--green);
+}
+.tag.next {
+  background: #e7eef9;
+  color: var(--blue);
+}
+.tag.planned,
+.tag.skeleton_ready {
+  background: #faefd8;
+  color: var(--amber);
 }
 .phase-list {
   display: grid;
@@ -94,19 +140,11 @@ h2 {
   gap: 8px;
 }
 .phase {
-  background: var(--panel-soft);
   border: 1px solid var(--line);
   border-radius: 8px;
   padding: 12px;
   min-height: 104px;
-}
-.phase strong {
-  display: block;
-  margin-bottom: 4px;
-}
-.phase span {
-  color: var(--muted);
-  font-size: 12px;
+  background: var(--soft);
 }
 .phase.completed {
   border-color: #b8dfca;
@@ -121,6 +159,27 @@ h2 {
   grid-template-columns: 1fr 1fr;
   gap: 14px;
 }
+.wide-cols {
+  display: grid;
+  grid-template-columns: 1.15fr .85fr;
+  gap: 14px;
+}
+.pipeline {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.step {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px;
+  background: var(--soft);
+}
+.step-num {
+  color: var(--blue);
+  font-weight: 800;
+  font-size: 12px;
+}
 table {
   width: 100%;
   border-collapse: collapse;
@@ -130,17 +189,40 @@ td, th {
   text-align: left;
   border-bottom: 1px solid var(--line);
   padding: 9px 6px;
+  vertical-align: top;
 }
-th { color: var(--muted); font-weight: 700; }
-ul {
+th {
+  color: var(--muted);
+  font-weight: 700;
+}
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.chip {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 4px 9px;
+  background: var(--soft);
+  font-size: 12px;
+}
+.agent-list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+.agent {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px;
+  background: var(--soft);
+}
+.agent ul {
   margin: 8px 0 0;
-  padding-left: 20px;
-}
-li { margin: 5px 0; }
-code {
-  background: #edf1ed;
-  border-radius: 5px;
-  padding: 2px 5px;
+  padding-left: 18px;
+  color: var(--muted);
+  font-size: 12px;
 }
 .commit {
   display: flex;
@@ -155,17 +237,31 @@ code {
   font-family: Consolas, monospace;
   min-width: 64px;
 }
+code {
+  background: #edf1ed;
+  border-radius: 5px;
+  padding: 2px 5px;
+}
+ul {
+  margin: 8px 0 0;
+  padding-left: 20px;
+}
+li { margin: 5px 0; }
 .empty {
   color: var(--muted);
   padding: 14px;
 }
-@media (max-width: 900px) {
+@media (max-width: 980px) {
   header,
   .grid,
   .cols,
-  .phase-list {
-    grid-template-columns: 1fr;
+  .wide-cols,
+  .tiles,
+  .phase-list,
+  .pipeline,
+  .agent-list {
     display: grid;
+    grid-template-columns: 1fr;
   }
 }
 </style>
@@ -175,33 +271,48 @@ code {
   <header>
     <div>
       <h1>AIPR Live Dashboard</h1>
-      <p class="sub">GitHub에 저장된 state, history, docs 데이터를 기준으로 표시합니다.</p>
+      <p class="sub">진행 기록, 구현된 기능, mock 수집 데이터, 시장조사 소스를 한 화면에서 확인합니다.</p>
     </div>
     <div class="status-pill" id="deploy-status">데이터 불러오는 중</div>
   </header>
 
   <div class="grid">
-    <div class="card">
+    <div class="metric">
       <div class="label">현재 Phase</div>
       <div class="value info" id="current-phase">-</div>
     </div>
-    <div class="card">
+    <div class="metric">
       <div class="label">상태</div>
       <div class="value ok" id="phase-status">-</div>
     </div>
-    <div class="card">
+    <div class="metric">
       <div class="label">광고 레코드</div>
       <div class="value" id="ad-records">-</div>
     </div>
-    <div class="card">
+    <div class="metric">
       <div class="label">트렌드 레코드</div>
       <div class="value" id="trend-records">-</div>
     </div>
   </div>
 
   <section>
+    <h2>구현 기능 현황</h2>
+    <div class="tiles" id="feature-status"></div>
+  </section>
+
+  <section>
     <h2>Phase 진행</h2>
     <div class="phase-list" id="phase-list"></div>
+  </section>
+
+  <section>
+    <h2>에이전트 운영판</h2>
+    <div class="agent-list" id="agent-list"></div>
+  </section>
+
+  <section>
+    <h2>자동화 파이프라인</h2>
+    <div class="pipeline" id="pipeline"></div>
   </section>
 
   <div class="cols">
@@ -225,14 +336,55 @@ code {
   </div>
 
   <section>
-    <h2>최근 커밋</h2>
-    <div id="commits" class="empty">커밋 정보를 불러오는 중입니다.</div>
+    <h2>브랜드별 mock 지표</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>브랜드</th>
+          <th>광고</th>
+          <th>트렌드</th>
+          <th>CTR</th>
+          <th>ROAS</th>
+          <th>CPA</th>
+          <th>키워드</th>
+        </tr>
+      </thead>
+      <tbody id="brand-table"></tbody>
+    </table>
   </section>
 
-  <section>
-    <h2>남은 리스크</h2>
-    <ul id="risks"></ul>
-  </section>
+  <div class="wide-cols">
+    <section>
+      <h2>수집 데이터 미리보기</h2>
+      <h3>광고 성과 샘플</h3>
+      <table>
+        <thead><tr><th>매체</th><th>브랜드</th><th>CTR</th><th>ROAS</th><th>전환</th></tr></thead>
+        <tbody id="ad-preview"></tbody>
+      </table>
+      <h3 style="margin-top:18px">트렌드 샘플</h3>
+      <table>
+        <thead><tr><th>소스</th><th>브랜드</th><th>점수</th><th>변화율</th><th>이슈</th></tr></thead>
+        <tbody id="trend-preview"></tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>시장조사 소스</h2>
+      <p class="sub">팀원 B가 매일 우선 확인할 출처입니다.</p>
+      <div class="chips" id="monitoring-sources"></div>
+    </section>
+  </div>
+
+  <div class="cols">
+    <section>
+      <h2>최근 커밋</h2>
+      <div id="commits" class="empty">커밋 정보를 불러오는 중입니다.</div>
+    </section>
+    <section>
+      <h2>남은 리스크</h2>
+      <ul id="risks"></ul>
+    </section>
+  </div>
 </main>
 
 <script>
@@ -246,6 +398,15 @@ async function loadDashboard() {
 
 function text(id, value) {
   document.getElementById(id).textContent = value;
+}
+
+function tagClass(status) {
+  return String(status || "").replace(".", "_");
+}
+
+function fmt(value, suffix = "") {
+  if (value === null || value === undefined || value === "") return "-";
+  return `${value}${suffix}`;
 }
 
 function render(data) {
@@ -266,13 +427,76 @@ function render(data) {
   text("next-phase", `${data.next_step?.phase || "-"} · ${data.next_step?.title || ""}`);
   text("next-summary", data.next_step?.summary || "-");
 
-  document.getElementById("phase-list").innerHTML = (data.phase_progress || []).map(item => `
-    <div class="phase ${item.status}">
-      <strong>${item.phase}</strong>
-      <span>${item.title}</span><br>
-      <span>${item.status}</span>
+  document.getElementById("feature-status").innerHTML = (data.operations?.feature_status || []).map(item => `
+    <div class="tile">
+      <h3>${item.name}</h3>
+      <span class="tag ${tagClass(item.status)}">${item.status}</span>
+      <ul>${(item.details || []).map(detail => `<li>${detail}</li>`).join("")}</ul>
     </div>
   `).join("");
+
+  document.getElementById("phase-list").innerHTML = (data.phase_progress || []).map(item => `
+    <div class="phase ${tagClass(item.status)}">
+      <strong>${item.phase}</strong>
+      <span>${item.title}</span><br>
+      <span class="tag ${tagClass(item.status)}">${item.status}</span>
+    </div>
+  `).join("");
+
+  document.getElementById("agent-list").innerHTML = (data.operations?.agent_status || []).map(agent => `
+    <div class="agent">
+      <h3>${agent.agent}</h3>
+      <div class="label">${agent.file}</div>
+      <span class="tag ${tagClass(agent.status)}">${agent.status}</span>
+      <ul>${(agent.implemented || []).map(item => `<li>${item}</li>`).join("")}</ul>
+      <div class="label" style="margin-top:8px">출력: ${agent.output}</div>
+    </div>
+  `).join("");
+
+  document.getElementById("pipeline").innerHTML = (data.operations?.pipeline_steps || []).map(step => `
+    <div class="step">
+      <div class="step-num">STEP ${step.step}</div>
+      <strong>${step.title}</strong>
+      <div class="label">${step.owner}</div>
+      <span class="tag ${tagClass(step.status)}">${step.status}</span>
+    </div>
+  `).join("");
+
+  document.getElementById("brand-table").innerHTML = (data.data?.brand_snapshots || []).map(brand => `
+    <tr>
+      <td><strong>${brand.brand}</strong></td>
+      <td>${brand.ad_records}</td>
+      <td>${brand.trend_records}</td>
+      <td>${fmt(brand.avg_ctr, "%")}</td>
+      <td>${fmt(brand.avg_roas, "%")}</td>
+      <td>$${fmt(brand.avg_cpa)}</td>
+      <td>${(brand.top_keywords || []).slice(0, 3).join(", ")}</td>
+    </tr>
+  `).join("");
+
+  document.getElementById("ad-preview").innerHTML = (data.data?.ad_preview || []).map(record => `
+    <tr>
+      <td>${record.source}</td>
+      <td>${record.brand}</td>
+      <td>${record.metrics?.ctr}%</td>
+      <td>${record.metrics?.roas}%</td>
+      <td>${record.metrics?.conversions}</td>
+    </tr>
+  `).join("");
+
+  document.getElementById("trend-preview").innerHTML = (data.data?.trend_preview || []).map(record => `
+    <tr>
+      <td>${record.source}</td>
+      <td>${record.brand}</td>
+      <td>${record.trend_score}</td>
+      <td>${record.trend_change_pct}%</td>
+      <td>${record.seasonal_issue?.title || "-"}</td>
+    </tr>
+  `).join("");
+
+  document.getElementById("monitoring-sources").innerHTML = (data.data?.monitoring_preview?.daily || [])
+    .map(source => `<span class="chip">${source.source_name}</span>`)
+    .join("");
 
   const commits = data.git?.recent_commits || [];
   document.getElementById("commits").innerHTML = commits.length

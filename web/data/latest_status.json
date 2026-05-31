@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-31T10:24:06+09:00",
+  "generated_at": "2026-05-31T11:12:56+09:00",
   "project": {
     "name": "AIPR",
     "github_repo": "https://github.com/dawdew12/homeproject0518",
@@ -11,7 +11,7 @@
     "current_phase": 3.5,
     "status": "completed",
     "active_brand": null,
-    "last_success": "2026-05-31 PHASE 3.5 Vercel dashboard foundation completed",
+    "last_success": "2026-05-31 PHASE 3.5 operational dashboard view completed",
     "last_error": null
   },
   "phase_progress": [
@@ -79,7 +79,636 @@
       "daily": 13,
       "weekly": 24,
       "monthly": 1
+    },
+    "brand_snapshots": [
+      {
+        "brand": "someud",
+        "ad_records": 3,
+        "trend_records": 4,
+        "avg_ctr": 2.3159,
+        "avg_roas": 247.0,
+        "avg_cpa": 5.0497,
+        "avg_trend_score": 66.0,
+        "top_keywords": [
+          "숙면",
+          "어버이날 선물",
+          "황토침대"
+        ],
+        "status": "mock_ready"
+      },
+      {
+        "brand": "kinda",
+        "ad_records": 3,
+        "trend_records": 4,
+        "avg_ctr": 2.3661,
+        "avg_roas": 259.0,
+        "avg_cpa": 4.9024,
+        "avg_trend_score": 72.0,
+        "top_keywords": [
+          "극손상 헤어팩",
+          "비포애프터",
+          "홈케어"
+        ],
+        "status": "mock_ready"
+      },
+      {
+        "brand": "melliance",
+        "ad_records": 3,
+        "trend_records": 4,
+        "avg_ctr": 2.4065,
+        "avg_roas": 271.0,
+        "avg_cpa": 8.6147,
+        "avg_trend_score": 78.0,
+        "top_keywords": [
+          "봄 컬렉션",
+          "뷰티 루틴",
+          "피부결"
+        ],
+        "status": "mock_ready"
+      },
+      {
+        "brand": "paperback",
+        "ad_records": 3,
+        "trend_records": 4,
+        "avg_ctr": 2.4396,
+        "avg_roas": 283.0,
+        "avg_cpa": 7.6706,
+        "avg_trend_score": 84.0,
+        "top_keywords": [
+          "독서 감성",
+          "라이프스타일",
+          "카페"
+        ],
+        "status": "mock_ready"
+      },
+      {
+        "brand": "baren",
+        "ad_records": 3,
+        "trend_records": 4,
+        "avg_ctr": 2.4673,
+        "avg_roas": 295.0,
+        "avg_cpa": 7.0679,
+        "avg_trend_score": 90.0,
+        "top_keywords": [
+          "기능성 케어",
+          "성분",
+          "인포그래픽"
+        ],
+        "status": "mock_ready"
+      }
+    ],
+    "ad_preview": [
+      {
+        "date": "2026-05-18",
+        "source": "meta",
+        "brand": "someud",
+        "campaign_id": "meta_someud_20260518",
+        "creative_id": "someud_meta_mock_001",
+        "metrics": {
+          "ctr": 2.3913,
+          "cvr": 12.1212,
+          "cpa": 5.6875,
+          "roas": 247.0,
+          "impressions": 1380,
+          "clicks": 33,
+          "cost": 22.75,
+          "conversions": 4
+        }
+      },
+      {
+        "date": "2026-05-18",
+        "source": "meta",
+        "brand": "kinda",
+        "campaign_id": "meta_kinda_20260518",
+        "creative_id": "kinda_meta_mock_001",
+        "metrics": {
+          "ctr": 2.4359,
+          "cvr": 13.1579,
+          "cpa": 5.4,
+          "roas": 259.0,
+          "impressions": 1560,
+          "clicks": 38,
+          "cost": 27.0,
+          "conversions": 5
+        }
+      },
+      {
+        "date": "2026-05-18",
+        "source": "meta",
+        "brand": "melliance",
+        "campaign_id": "meta_melliance_20260518",
+        "creative_id": "melliance_meta_mock_001",
+        "metrics": {
+          "ctr": 2.4713,
+          "cvr": 6.9767,
+          "cpa": 10.4167,
+          "roas": 271.0,
+          "impressions": 1740,
+          "clicks": 43,
+          "cost": 31.25,
+          "conversions": 3
+        }
+      },
+      {
+        "date": "2026-05-18",
+        "source": "meta",
+        "brand": "paperback",
+        "campaign_id": "meta_paperback_20260518",
+        "creative_id": "paperback_meta_mock_001",
+        "metrics": {
+          "ctr": 2.5,
+          "cvr": 8.3333,
+          "cpa": 8.875,
+          "roas": 283.0,
+          "impressions": 1920,
+          "clicks": 48,
+          "cost": 35.5,
+          "conversions": 4
+        }
+      },
+      {
+        "date": "2026-05-18",
+        "source": "meta",
+        "brand": "baren",
+        "campaign_id": "meta_baren_20260518",
+        "creative_id": "baren_meta_mock_001",
+        "metrics": {
+          "ctr": 2.5238,
+          "cvr": 9.434,
+          "cpa": 7.95,
+          "roas": 295.0,
+          "impressions": 2100,
+          "clicks": 53,
+          "cost": 39.75,
+          "conversions": 5
+        }
+      }
+    ],
+    "trend_preview": [
+      {
+        "date": "2026-05-18",
+        "source": "naver_trends",
+        "brand": "someud",
+        "keywords": [
+          "황토침대",
+          "어버이날 선물",
+          "숙면"
+        ],
+        "trend_score": 60,
+        "trend_change_pct": 6.2,
+        "seasonal_issue": {
+          "title": "황토침대 관심 증가",
+          "level": "medium",
+          "summary": "someud 관련 핵심 키워드가 전주 대비 6.2% 상승했다."
+        },
+        "competitor_signal": {
+          "detected": false,
+          "summary": "경쟁사 변화 없음."
+        }
+      },
+      {
+        "date": "2026-05-18",
+        "source": "naver_trends",
+        "brand": "kinda",
+        "keywords": [
+          "극손상 헤어팩",
+          "비포애프터",
+          "홈케어"
+        ],
+        "trend_score": 66,
+        "trend_change_pct": 7.9,
+        "seasonal_issue": {
+          "title": "극손상 헤어팩 관심 증가",
+          "level": "medium",
+          "summary": "kinda 관련 핵심 키워드가 전주 대비 7.9% 상승했다."
+        },
+        "competitor_signal": {
+          "detected": false,
+          "summary": "경쟁사 변화 없음."
+        }
+      },
+      {
+        "date": "2026-05-18",
+        "source": "naver_trends",
+        "brand": "melliance",
+        "keywords": [
+          "뷰티 루틴",
+          "봄 컬렉션",
+          "피부결"
+        ],
+        "trend_score": 72,
+        "trend_change_pct": 9.6,
+        "seasonal_issue": {
+          "title": "뷰티 루틴 관심 증가",
+          "level": "medium",
+          "summary": "melliance 관련 핵심 키워드가 전주 대비 9.6% 상승했다."
+        },
+        "competitor_signal": {
+          "detected": false,
+          "summary": "경쟁사 변화 없음."
+        }
+      },
+      {
+        "date": "2026-05-18",
+        "source": "naver_trends",
+        "brand": "paperback",
+        "keywords": [
+          "라이프스타일",
+          "독서 감성",
+          "카페"
+        ],
+        "trend_score": 78,
+        "trend_change_pct": 11.3,
+        "seasonal_issue": {
+          "title": "라이프스타일 관심 증가",
+          "level": "high",
+          "summary": "paperback 관련 핵심 키워드가 전주 대비 11.3% 상승했다."
+        },
+        "competitor_signal": {
+          "detected": false,
+          "summary": "경쟁사 변화 없음."
+        }
+      },
+      {
+        "date": "2026-05-18",
+        "source": "naver_trends",
+        "brand": "baren",
+        "keywords": [
+          "기능성 케어",
+          "인포그래픽",
+          "성분"
+        ],
+        "trend_score": 84,
+        "trend_change_pct": 13.0,
+        "seasonal_issue": {
+          "title": "기능성 케어 관심 증가",
+          "level": "high",
+          "summary": "baren 관련 핵심 키워드가 전주 대비 13.0% 상승했다."
+        },
+        "competitor_signal": {
+          "detected": false,
+          "summary": "경쟁사 변화 없음."
+        }
+      }
+    ],
+    "monitoring_preview": {
+      "daily": [
+        {
+          "category": "creative_reference",
+          "category_label": "소재 확인용",
+          "priority": "A",
+          "cadence": "daily",
+          "source_name": "Meta Ad Library",
+          "url": "https://www.facebook.com/ads/library",
+          "use_case": "Facebook/Instagram 경쟁사 광고 소재, 카피, 랜딩 흐름 확인",
+          "codex_task": "Search by brand, industry keywords, and product category. Save active ad copy, visual angle, CTA, landing page pattern."
+        },
+        {
+          "category": "creative_reference",
+          "category_label": "소재 확인용",
+          "priority": "A",
+          "cadence": "daily",
+          "source_name": "TikTok Creative Center",
+          "url": "https://ads.tiktok.com/business/creativecenter/",
+          "use_case": "숏폼 광고, 인기 해시태그, 후킹 문구, 우수 광고 구조 확인",
+          "codex_task": "Collect top ads by country, industry, objective, hashtag. Extract first 3 seconds hook, caption, format, CTA."
+        },
+        {
+          "category": "korean_industry_news",
+          "category_label": "국내 마케팅·광고 트렌드",
+          "priority": "A",
+          "cadence": "daily",
+          "source_name": "오픈애즈",
+          "url": "https://openads.co.kr/",
+          "use_case": "국내 마케팅 트렌드, 광고 사례, 실무 노하우 확인",
+          "codex_task": "Collect articles about Naver, Kakao, Google Ads, Meta, AI marketing, ecommerce. Summarize actionable points for agency AE."
+        },
+        {
+          "category": "korean_industry_news",
+          "category_label": "국내 마케팅·광고 트렌드",
+          "priority": "A",
+          "cadence": "daily",
+          "source_name": "아이보스",
+          "url": "https://www.i-boss.co.kr/",
+          "use_case": "국내 광고 실무자 커뮤니티, 네이버·메타·대행사 이슈 확인",
+          "codex_task": "Monitor hot posts and Q&A about ad operations. Extract issues, platform bugs, policy concerns, practical tips."
+        },
+        {
+          "category": "korean_industry_news",
+          "category_label": "국내 마케팅·광고 트렌드",
+          "priority": "B",
+          "cadence": "daily",
+          "source_name": "매드타임스",
+          "url": "https://www.madtimes.co.kr/",
+          "use_case": "광고·마케팅·AI·브랜드·미디어 기사 확인",
+          "codex_task": "Collect major marketing/advertising articles. Summarize trend, affected industries, implications for performance marketing."
+        },
+        {
+          "category": "consumer_trend",
+          "category_label": "소비자·키워드 트렌드",
+          "priority": "A",
+          "cadence": "daily",
+          "source_name": "Google Trends",
+          "url": "https://trends.google.com/trends/",
+          "use_case": "키워드 검색 관심도, 지역별 관심도, 급상승 검색어 확인",
+          "codex_task": "Track target keywords by country and time range. Save rising queries, breakout keywords, seasonality."
+        },
+        {
+          "category": "platform_update",
+          "category_label": "매체 공식 업데이트",
+          "priority": "A",
+          "cadence": "daily",
+          "source_name": "네이버 광고주센터 공지사항",
+          "url": "https://ads.naver.com/notice",
+          "use_case": "네이버 검색광고, 쇼핑광고, 브랜드검색, 플레이스광고, GFA 변경사항 확인",
+          "codex_task": "Check new notices daily. Extract product changes, policy updates, new metrics, schedule, advertiser impact."
+        },
+        {
+          "category": "global_news",
+          "category_label": "글로벌 광고·마케팅 뉴스",
+          "priority": "B",
+          "cadence": "daily",
+          "source_name": "Adweek",
+          "url": "https://www.adweek.com/",
+          "use_case": "글로벌 광고, 브랜드, 미디어, 테크 뉴스 확인",
+          "codex_task": "Collect top marketing/ad news. Extract brand case, campaign angle, platform implication."
+        }
+      ],
+      "weekly": [
+        {
+          "category": "creative_reference",
+          "category_label": "소재 확인용",
+          "priority": "A",
+          "cadence": "weekly",
+          "source_name": "Google Ads Transparency Center",
+          "url": "https://adstransparency.google.com/",
+          "use_case": "Google/YouTube/Display 광고주 집행 소재 확인",
+          "codex_task": "Search advertiser domains and brand names. Record ad format, last shown date, message angle, visual pattern."
+        },
+        {
+          "category": "creative_reference",
+          "category_label": "소재 확인용",
+          "priority": "B",
+          "cadence": "weekly",
+          "source_name": "Ads of the World",
+          "url": "https://www.adsoftheworld.com/",
+          "use_case": "글로벌 광고 캠페인 이미지·영상 레퍼런스 확인",
+          "codex_task": "Collect global campaign examples by industry. Summarize creative concept, key message, visual metaphor."
+        },
+        {
+          "category": "creative_reference",
+          "category_label": "소재 확인용",
+          "priority": "B",
+          "cadence": "weekly",
+          "source_name": "Little Black Book",
+          "url": "https://lbbonline.com/",
+          "use_case": "글로벌 캠페인, 제작사, 에이전시 작업물 확인",
+          "codex_task": "Monitor new campaign articles. Extract brand, agency, creative direction, media format, campaign insight."
+        },
+        {
+          "category": "creative_reference",
+          "category_label": "소재 확인용",
+          "priority": "B",
+          "cadence": "weekly",
+          "source_name": "Foreplay",
+          "url": "https://www.foreplay.co/",
+          "use_case": "광고 소재 저장, 스와이프 파일, 팀 단위 소재 관리",
+          "codex_task": "Use as swipe-file destination if account access exists. Group saved ads by industry, funnel stage, and hook type."
+        },
+        {
+          "category": "creative_reference",
+          "category_label": "소재 확인용",
+          "priority": "B",
+          "cadence": "weekly",
+          "source_name": "MagicBrief Inspire",
+          "url": "https://magicbrief.com/inspire",
+          "use_case": "경쟁사 광고 소재, 장기 집행 광고, 신규 소재 탐색",
+          "codex_task": "Find long-running ads and identify likely winning angles. Classify hooks, offers, thumbnails, CTA."
+        },
+        {
+          "category": "creative_reference",
+          "category_label": "소재 확인용",
+          "priority": "B",
+          "cadence": "weekly",
+          "source_name": "BigSpy",
+          "url": "https://bigspy.com/en",
+          "use_case": "Facebook, TikTok, 이커머스 광고 스파이툴",
+          "codex_task": "Search ads by keyword, country, platform, industry. Export ad examples and classify by performance signal if available."
+        },
+        {
+          "category": "creative_reference",
+          "category_label": "소재 확인용",
+          "priority": "B",
+          "cadence": "weekly",
+          "source_name": "PiPiAds",
+          "url": "https://www.pipiads.com/",
+          "use_case": "TikTok, Facebook, TikTok Shop 광고 소재 확인",
+          "codex_task": "Monitor TikTok-style commerce ads. Extract product angle, hook, video structure, offer, CTA."
+        },
+        {
+          "category": "korean_industry_news",
+          "category_label": "국내 마케팅·광고 트렌드",
+          "priority": "A",
+          "cadence": "weekly",
+          "source_name": "DMC리포트",
+          "url": "https://www.dmcreport.co.kr/",
+          "use_case": "디지털 광고 시장, 소비자, 미디어 리포트 확인",
+          "codex_task": "Collect new reports. Extract market data, consumer insight, media trend, useful statistics for proposals."
+        }
+      ],
+      "monthly": [
+        {
+          "category": "platform_update",
+          "category_label": "매체 공식 업데이트",
+          "priority": "C",
+          "cadence": "monthly",
+          "source_name": "Microsoft Advertising Blog",
+          "url": "https://about.ads.microsoft.com/en/blog",
+          "use_case": "Bing 검색광고, AI 검색광고, CTV·쇼핑 광고 흐름 확인",
+          "codex_task": "Monitor major Microsoft Advertising updates. Extract features relevant to search, shopping, AI, audience ads."
+        }
+      ]
     }
+  },
+  "operations": {
+    "feature_status": [
+      {
+        "name": "프로젝트 기반 구조",
+        "status": "completed",
+        "details": [
+          "폴더 구조",
+          "브랜드 설정",
+          "state/logs",
+          "문서",
+          "대시보드 원본 보존"
+        ]
+      },
+      {
+        "name": "광고 데이터 수집",
+        "status": "mock_ready",
+        "details": [
+          "3개 매체 mock",
+          "15개 레코드",
+          "retry",
+          "JSON 저장",
+          "단위 테스트"
+        ]
+      },
+      {
+        "name": "트렌드/시장조사 수집",
+        "status": "mock_ready",
+        "details": [
+          "4개 수집 소스 mock",
+          "20개 레코드",
+          "daily 출처 13개",
+          "weekly 출처 24개",
+          "monthly 출처 1개"
+        ]
+      },
+      {
+        "name": "Vercel 진행 대시보드",
+        "status": "static_ready",
+        "details": [
+          "정적 HTML",
+          "latest_status.json",
+          "GitHub push 기반 자동 배포",
+          "Vercel READY"
+        ]
+      },
+      {
+        "name": "팀장 분석 엔진",
+        "status": "next",
+        "details": [
+          "광고/트렌드 종합",
+          "브랜드별 소재 방향",
+          "개선안 생성"
+        ]
+      }
+    ],
+    "agent_status": [
+      {
+        "agent": "팀장",
+        "file": "agents/manager.py",
+        "status": "skeleton_ready",
+        "implemented": [
+          "분석",
+          "스토리보드 승인",
+          "이미지 검수",
+          "Winner/Loser 분류 함수 골격"
+        ],
+        "output": "history/daily/{date}_manager_brief.json",
+        "next": "PHASE 4에서 광고/트렌드 데이터 종합 분석 로직 구현"
+      },
+      {
+        "agent": "팀원 A",
+        "file": "agents/data_collector.py",
+        "status": "mock_ready",
+        "implemented": [
+          "Meta mock 수집",
+          "네이버SA mock 수집",
+          "카카오모먼트 mock 수집",
+          "3회 retry",
+          "JSON 저장"
+        ],
+        "output": "history/daily/{date}_ad_data.json",
+        "next": "실제 광고 API 응답 매핑"
+      },
+      {
+        "agent": "팀원 B",
+        "file": "agents/trend_collector.py",
+        "status": "mock_ready",
+        "implemented": [
+          "네이버 트렌드 mock",
+          "Google Trends mock",
+          "뉴스/경쟁사 mock",
+          "시장조사 출처 카탈로그",
+          "JSON 저장"
+        ],
+        "output": "history/daily/{date}_trend_data.json",
+        "next": "실제 트렌드/뉴스 수집 연결"
+      },
+      {
+        "agent": "팀원 C",
+        "file": "agents/prompt_engineer.py",
+        "status": "skeleton_ready",
+        "implemented": [
+          "스토리보드 생성 함수 골격",
+          "이미지 프롬프트 생성 함수 골격",
+          "검수 피드백 반영 함수 골격"
+        ],
+        "output": "history/daily/{date}_prompts.json",
+        "next": "PHASE 5에서 브랜드별 스토리보드와 프롬프트 생성 구현"
+      },
+      {
+        "agent": "팀원 D",
+        "file": "agents/image_designer.py",
+        "status": "skeleton_ready",
+        "implemented": [
+          "이미지 비용 설정",
+          "출력 경로 생성",
+          "dry-run 생성 함수",
+          "재생성 제한 함수"
+        ],
+        "output": "outputs/{brand}/{date}/",
+        "next": "PHASE 6에서 gpt-image-2 Batch dry-run 및 실제 생성 연결"
+      }
+    ],
+    "pipeline_steps": [
+      {
+        "step": "01",
+        "title": "광고 성과 수집",
+        "owner": "팀원 A",
+        "status": "mock_ready"
+      },
+      {
+        "step": "02",
+        "title": "트렌드/시장조사 수집",
+        "owner": "팀원 B",
+        "status": "mock_ready"
+      },
+      {
+        "step": "03",
+        "title": "팀장 분석/개선안",
+        "owner": "팀장",
+        "status": "next"
+      },
+      {
+        "step": "04",
+        "title": "스토리보드/프롬프트",
+        "owner": "팀원 C",
+        "status": "planned"
+      },
+      {
+        "step": "05",
+        "title": "이미지 생성",
+        "owner": "팀원 D",
+        "status": "planned"
+      },
+      {
+        "step": "06",
+        "title": "품질 검수/재생성",
+        "owner": "팀장",
+        "status": "planned"
+      },
+      {
+        "step": "07",
+        "title": "Winner/Loser 학습",
+        "owner": "팀장",
+        "status": "planned"
+      },
+      {
+        "step": "08",
+        "title": "저장소 연동",
+        "owner": "utils",
+        "status": "planned"
+      },
+      {
+        "step": "09",
+        "title": "대시보드 실시간화",
+        "owner": "dashboard",
+        "status": "static_ready"
+      }
+    ]
   },
   "verification": {
     "last_command": "python -m unittest tests.test_trend_collector tests.test_data_collector tests.test_build_dashboard_data",
@@ -89,6 +718,10 @@
   "git": {
     "branch": "main",
     "recent_commits": [
+      {
+        "hash": "23fd7bc",
+        "subject": "[PHASE 3.5] Vercel 대시보드 배포 기반 구축"
+      },
       {
         "hash": "f069726",
         "subject": "[DOCS] 진행 현황 HTML 브리핑 추가"
@@ -104,10 +737,6 @@
       {
         "hash": "876197c",
         "subject": "[PHASE 2] 광고 데이터 수집 mock 구현"
-      },
-      {
-        "hash": "06e01af",
-        "subject": "[PHASE 1] 프로젝트 기반 구조 생성"
       }
     ]
   },

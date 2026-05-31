@@ -93,11 +93,170 @@ def count_marketing_sources() -> dict[str, int]:
     }
 
 
+def load_latest_daily_payload(pattern: str) -> dict[str, Any]:
+    """최신 일별 JSON payload를 읽는다."""
+    latest_file = find_latest_file(pattern)
+    return read_json(latest_file, {}) if latest_file else {}
+
+
+def average(values: list[float]) -> float:
+    """숫자 목록의 평균을 소수점 4자리로 반환한다."""
+    if not values:
+        return 0
+    return round(sum(values) / len(values), 4)
+
+
+def build_brand_snapshots(ad_payload: dict[str, Any], trend_payload: dict[str, Any]) -> list[dict[str, Any]]:
+    """브랜드별 광고와 트렌드 mock 데이터를 운영 화면용으로 요약한다."""
+    brands = ["someud", "kinda", "melliance", "paperback", "baren"]
+    ad_records = ad_payload.get("records", [])
+    trend_records = trend_payload.get("records", [])
+    snapshots = []
+
+    for brand in brands:
+        brand_ad_records = [record for record in ad_records if record.get("brand") == brand]
+        brand_trend_records = [record for record in trend_records if record.get("brand") == brand]
+        ctr_values = [record.get("metrics", {}).get("ctr", 0) for record in brand_ad_records]
+        roas_values = [record.get("metrics", {}).get("roas", 0) for record in brand_ad_records]
+        cpa_values = [record.get("metrics", {}).get("cpa", 0) for record in brand_ad_records]
+        trend_scores = [record.get("trend_score", 0) for record in brand_trend_records]
+        keywords = []
+        for record in brand_trend_records:
+            keywords.extend(record.get("keywords", []))
+
+        snapshots.append(
+            {
+                "brand": brand,
+                "ad_records": len(brand_ad_records),
+                "trend_records": len(brand_trend_records),
+                "avg_ctr": average(ctr_values),
+                "avg_roas": average(roas_values),
+                "avg_cpa": average(cpa_values),
+                "avg_trend_score": average(trend_scores),
+                "top_keywords": sorted(set(keywords))[:5],
+                "status": "mock_ready" if brand_ad_records and brand_trend_records else "pending",
+            }
+        )
+
+    return snapshots
+
+
+def sample_records(payload: dict[str, Any], limit: int = 5) -> list[dict[str, Any]]:
+    """대시보드 미리보기용 레코드 일부를 반환한다."""
+    return payload.get("records", [])[:limit]
+
+
+def build_agent_status() -> list[dict[str, Any]]:
+    """에이전트별 구현 범위와 다음 작업을 정리한다."""
+    return [
+        {
+            "agent": "팀장",
+            "file": "agents/manager.py",
+            "status": "skeleton_ready",
+            "implemented": ["분석", "스토리보드 승인", "이미지 검수", "Winner/Loser 분류 함수 골격"],
+            "output": "history/daily/{date}_manager_brief.json",
+            "next": "PHASE 4에서 광고/트렌드 데이터 종합 분석 로직 구현",
+        },
+        {
+            "agent": "팀원 A",
+            "file": "agents/data_collector.py",
+            "status": "mock_ready",
+            "implemented": ["Meta mock 수집", "네이버SA mock 수집", "카카오모먼트 mock 수집", "3회 retry", "JSON 저장"],
+            "output": "history/daily/{date}_ad_data.json",
+            "next": "실제 광고 API 응답 매핑",
+        },
+        {
+            "agent": "팀원 B",
+            "file": "agents/trend_collector.py",
+            "status": "mock_ready",
+            "implemented": ["네이버 트렌드 mock", "Google Trends mock", "뉴스/경쟁사 mock", "시장조사 출처 카탈로그", "JSON 저장"],
+            "output": "history/daily/{date}_trend_data.json",
+            "next": "실제 트렌드/뉴스 수집 연결",
+        },
+        {
+            "agent": "팀원 C",
+            "file": "agents/prompt_engineer.py",
+            "status": "skeleton_ready",
+            "implemented": ["스토리보드 생성 함수 골격", "이미지 프롬프트 생성 함수 골격", "검수 피드백 반영 함수 골격"],
+            "output": "history/daily/{date}_prompts.json",
+            "next": "PHASE 5에서 브랜드별 스토리보드와 프롬프트 생성 구현",
+        },
+        {
+            "agent": "팀원 D",
+            "file": "agents/image_designer.py",
+            "status": "skeleton_ready",
+            "implemented": ["이미지 비용 설정", "출력 경로 생성", "dry-run 생성 함수", "재생성 제한 함수"],
+            "output": "outputs/{brand}/{date}/",
+            "next": "PHASE 6에서 gpt-image-2 Batch dry-run 및 실제 생성 연결",
+        },
+    ]
+
+
+def build_pipeline_steps() -> list[dict[str, str]]:
+    """운영 자동화 단계별 구현 상태를 반환한다."""
+    return [
+        {"step": "01", "title": "광고 성과 수집", "owner": "팀원 A", "status": "mock_ready"},
+        {"step": "02", "title": "트렌드/시장조사 수집", "owner": "팀원 B", "status": "mock_ready"},
+        {"step": "03", "title": "팀장 분석/개선안", "owner": "팀장", "status": "next"},
+        {"step": "04", "title": "스토리보드/프롬프트", "owner": "팀원 C", "status": "planned"},
+        {"step": "05", "title": "이미지 생성", "owner": "팀원 D", "status": "planned"},
+        {"step": "06", "title": "품질 검수/재생성", "owner": "팀장", "status": "planned"},
+        {"step": "07", "title": "Winner/Loser 학습", "owner": "팀장", "status": "planned"},
+        {"step": "08", "title": "저장소 연동", "owner": "utils", "status": "planned"},
+        {"step": "09", "title": "대시보드 실시간화", "owner": "dashboard", "status": "static_ready"},
+    ]
+
+
+def build_feature_status() -> list[dict[str, Any]]:
+    """구현된 기능과 아직 남은 기능을 대시보드용으로 정리한다."""
+    return [
+        {
+            "name": "프로젝트 기반 구조",
+            "status": "completed",
+            "details": ["폴더 구조", "브랜드 설정", "state/logs", "문서", "대시보드 원본 보존"],
+        },
+        {
+            "name": "광고 데이터 수집",
+            "status": "mock_ready",
+            "details": ["3개 매체 mock", "15개 레코드", "retry", "JSON 저장", "단위 테스트"],
+        },
+        {
+            "name": "트렌드/시장조사 수집",
+            "status": "mock_ready",
+            "details": ["4개 수집 소스 mock", "20개 레코드", "daily 출처 13개", "weekly 출처 24개", "monthly 출처 1개"],
+        },
+        {
+            "name": "Vercel 진행 대시보드",
+            "status": "static_ready",
+            "details": ["정적 HTML", "latest_status.json", "GitHub push 기반 자동 배포", "Vercel READY"],
+        },
+        {
+            "name": "팀장 분석 엔진",
+            "status": "next",
+            "details": ["광고/트렌드 종합", "브랜드별 소재 방향", "개선안 생성"],
+        },
+    ]
+
+
+def build_monitoring_preview(trend_payload: dict[str, Any], limit: int = 8) -> dict[str, Any]:
+    """시장조사 출처 일부를 대시보드 미리보기용으로 추출한다."""
+    monitoring_sources = trend_payload.get("monitoring_sources", {})
+    return {
+        "daily": monitoring_sources.get("daily", [])[:limit],
+        "weekly": monitoring_sources.get("weekly", [])[:limit],
+        "monthly": monitoring_sources.get("monthly", [])[:limit],
+    }
+
+
 def build_dashboard_payload() -> dict[str, Any]:
     """프로젝트 진행 상태를 하나의 대시보드 JSON으로 묶는다."""
     current_phase = read_json(PROJECT_ROOT / "state" / "current_phase.json", {})
-    ad_summary = summarize_daily_file(find_latest_file("*_ad_data.json"))
-    trend_summary = summarize_daily_file(find_latest_file("*_trend_data.json"))
+    latest_ad_file = find_latest_file("*_ad_data.json")
+    latest_trend_file = find_latest_file("*_trend_data.json")
+    ad_payload = load_latest_daily_payload("*_ad_data.json")
+    trend_payload = load_latest_daily_payload("*_trend_data.json")
+    ad_summary = summarize_daily_file(latest_ad_file)
+    trend_summary = summarize_daily_file(latest_trend_file)
     source_counts = count_marketing_sources()
     recent_commits = get_recent_commits()
 
@@ -122,6 +281,15 @@ def build_dashboard_payload() -> dict[str, Any]:
             "ad": ad_summary,
             "trend": trend_summary,
             "marketing_source_counts": source_counts,
+            "brand_snapshots": build_brand_snapshots(ad_payload, trend_payload),
+            "ad_preview": sample_records(ad_payload),
+            "trend_preview": sample_records(trend_payload),
+            "monitoring_preview": build_monitoring_preview(trend_payload),
+        },
+        "operations": {
+            "feature_status": build_feature_status(),
+            "agent_status": build_agent_status(),
+            "pipeline_steps": build_pipeline_steps(),
         },
         "verification": {
             "last_command": "python -m unittest tests.test_trend_collector tests.test_data_collector tests.test_build_dashboard_data",

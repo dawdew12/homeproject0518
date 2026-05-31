@@ -18,6 +18,10 @@ class BuildDashboardDataTest(unittest.TestCase):
         self.assertEqual(payload["data"]["ad"]["record_count"], 15)
         self.assertEqual(payload["data"]["trend"]["record_count"], 20)
         self.assertEqual(payload["data"]["marketing_source_counts"]["daily"], 13)
+        self.assertEqual(len(payload["data"]["brand_snapshots"]), 5)
+        self.assertEqual(len(payload["operations"]["agent_status"]), 5)
+        self.assertGreaterEqual(len(payload["operations"]["pipeline_steps"]), 9)
+        self.assertGreaterEqual(len(payload["data"]["monitoring_preview"]["daily"]), 5)
         self.assertEqual(payload["next_step"]["phase"], "PHASE 4")
 
     def test_write_dashboard_payload_creates_json_file(self) -> None:
@@ -29,6 +33,7 @@ class BuildDashboardDataTest(unittest.TestCase):
 
         self.assertEqual(saved["project"]["github_repo"], "https://github.com/dawdew12/homeproject0518")
         self.assertEqual(saved["verification"]["test_count"], 9)
+        self.assertIn("feature_status", saved["operations"])
         self.assertTrue(output_path.name.endswith(".json"))
 
 

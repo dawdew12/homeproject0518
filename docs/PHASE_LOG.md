@@ -73,3 +73,12 @@
 - 결과: 9개 테스트 통과.
 - 남은 리스크: Vercel 프로젝트가 GitHub 저장소와 연결되어 있어야 push 후 자동 배포가 생성된다. 자동 배포가 생성되지 않으면 Vercel UI에서 Git Repository 연결과 Root Directory 설정을 확인해야 한다.
 
+## 2026-05-31 PHASE 3.5 운영형 대시보드 보강
+
+- 목표: 진행 기록뿐 아니라 현재 구현된 기능을 운영 화면처럼 확인하도록 대시보드 확장.
+- `scripts/build_dashboard_data.py`에 구현 기능, 에이전트 상태, 파이프라인 단계, 브랜드별 mock 지표, 수집 데이터 미리보기, 시장조사 소스 미리보기를 추가했다.
+- `web/index.html`에 구현 기능 현황, 에이전트 운영판, 자동화 파이프라인, 브랜드별 mock 지표, 수집 데이터 미리보기, 시장조사 소스 섹션을 추가했다.
+- 검증 명령: Codex 번들 Python으로 `python -m unittest tests.test_trend_collector tests.test_data_collector tests.test_build_dashboard_data`.
+- 결과: 9개 테스트 통과.
+- 남은 리스크: 표시 수치는 아직 mock 데이터 기준이며, 실제 API 연결 후 운영 데이터로 교체해야 한다.
+

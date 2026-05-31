@@ -61,3 +61,13 @@
 - [x] `web/data/latest_status.json` 생성 구조 구현
 - [x] 대시보드 데이터 생성 테스트 추가
 - [x] Vercel 대시보드 검증 실행
+
+# PHASE 3.5 Dashboard Operations View Update
+
+- [x] 구현 기능 현황을 대시보드 JSON에 추가
+- [x] 에이전트별 구현 상태를 대시보드 JSON에 추가
+- [x] 자동화 파이프라인 단계별 상태를 대시보드 JSON에 추가
+- [x] 브랜드별 광고/트렌드 mock 지표를 대시보드 JSON에 추가
+- [x] 광고/트렌드 수집 데이터 미리보기를 대시보드에 표시
+- [x] 시장조사 daily 출처를 대시보드에 표시
+- [x] 운영형 대시보드 테스트 실행
