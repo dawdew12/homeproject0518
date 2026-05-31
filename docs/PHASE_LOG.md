@@ -92,3 +92,13 @@
 - 결과: 12개 테스트 통과.
 - 남은 리스크: 팀장 판단은 현재 rule 기반 mock 분석이며, 실제 LLM 분석과 API 실데이터 연결은 후속 Phase에서 진행해야 한다.
 
+## 2026-05-31 PHASE 5 완료
+
+- 목표: 팀원 C가 팀장 분석 Brief를 바탕으로 브랜드별 스토리보드와 이미지 프롬프트를 생성.
+- `agents/prompt_engineer.py`에 daily prompt pack 생성, 브랜드별 스토리보드 4개, 이미지 프롬프트 4개, 검수 피드백 반영 함수를 구현했다.
+- `history/daily/2026-05-18_prompts.json`에 5개 브랜드, 총 20개 스토리보드와 20개 이미지 프롬프트를 저장했다.
+- `scripts/build_dashboard_data.py`와 `web/index.html`에 프롬프트 pack 요약과 미리보기를 추가했다.
+- 검증 명령: Codex 번들 Python으로 `python -m unittest tests.test_trend_collector tests.test_data_collector tests.test_manager tests.test_prompt_engineer tests.test_build_dashboard_data`.
+- 결과: 16개 테스트 통과.
+- 남은 리스크: 프롬프트는 rule 기반 mock 생성 결과이며, 실제 OpenAI API 호출과 이미지 생성은 PHASE 6 이후에 연결해야 한다.
+

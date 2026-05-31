@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-31T11:45:49+09:00",
+  "generated_at": "2026-05-31T12:28:10+09:00",
   "project": {
     "name": "AIPR",
     "github_repo": "https://github.com/dawdew12/homeproject0518",
@@ -8,10 +8,10 @@
     "custom_domain_enabled": false
   },
   "current_phase": {
-    "current_phase": 4,
+    "current_phase": 5,
     "status": "completed",
     "active_brand": null,
-    "last_success": "2026-05-31 PHASE 4 manager analysis engine completed",
+    "last_success": "2026-05-31 PHASE 5 prompt engineering completed",
     "last_error": null
   },
   "phase_progress": [
@@ -43,6 +43,11 @@
     {
       "phase": "PHASE 5",
       "title": "스토리보드와 프롬프트 생성",
+      "status": "completed"
+    },
+    {
+      "phase": "PHASE 6",
+      "title": "이미지 생성 dry-run",
       "status": "next"
     }
   ],
@@ -108,6 +113,18 @@
         }
       ],
       "handoff_count": 5
+    },
+    "prompts": {
+      "exists": true,
+      "path": "history/daily/2026-05-18_prompts.json",
+      "date": "2026-05-18",
+      "status": "prompts_ready",
+      "brand_count": 5,
+      "storyboard_count": 20,
+      "prompt_count": 20,
+      "real_photo_count": 10,
+      "illustration_count": 10,
+      "no_text_rule_applied": true
     },
     "marketing_source_counts": {
       "daily": 13,
@@ -472,6 +489,120 @@
         ]
       }
     ],
+    "prompt_preview": [
+      {
+        "prompt_id": "someud_20260518_prompt01",
+        "brand": "someud",
+        "image_type_label": "실사",
+        "quality": "high",
+        "file_name_preview": "someud_20260518_실사_황토침대-어버이날-선물-숙면_v01_high.png",
+        "copy_space": "bottom_25_percent",
+        "rules": [
+          "NO text",
+          "NO watermark",
+          "NO logo",
+          "Leave 25% bottom space for copywriting"
+        ]
+      },
+      {
+        "prompt_id": "someud_20260518_prompt02",
+        "brand": "someud",
+        "image_type_label": "실사",
+        "quality": "high",
+        "file_name_preview": "someud_20260518_실사_황토침대-어버이날-선물-숙면_v02_high.png",
+        "copy_space": "bottom_25_percent",
+        "rules": [
+          "NO text",
+          "NO watermark",
+          "NO logo",
+          "Leave 25% bottom space for copywriting"
+        ]
+      },
+      {
+        "prompt_id": "someud_20260518_prompt03",
+        "brand": "someud",
+        "image_type_label": "일러스트",
+        "quality": "medium",
+        "file_name_preview": "someud_20260518_일러스트_황토침대-어버이날-선물-숙면_v03_medium.png",
+        "copy_space": "bottom_25_percent",
+        "rules": [
+          "NO text",
+          "NO watermark",
+          "NO logo",
+          "Leave 25% bottom space for copywriting"
+        ]
+      },
+      {
+        "prompt_id": "someud_20260518_prompt04",
+        "brand": "someud",
+        "image_type_label": "일러스트",
+        "quality": "medium",
+        "file_name_preview": "someud_20260518_일러스트_황토침대-어버이날-선물-숙면_v04_medium.png",
+        "copy_space": "bottom_25_percent",
+        "rules": [
+          "NO text",
+          "NO watermark",
+          "NO logo",
+          "Leave 25% bottom space for copywriting"
+        ]
+      },
+      {
+        "prompt_id": "kinda_20260518_prompt01",
+        "brand": "kinda",
+        "image_type_label": "실사",
+        "quality": "high",
+        "file_name_preview": "kinda_20260518_실사_극손상-헤어팩-비포애프터-홈케어_v01_high.png",
+        "copy_space": "bottom_25_percent",
+        "rules": [
+          "NO text",
+          "NO watermark",
+          "NO logo",
+          "Leave 25% bottom space for copywriting"
+        ]
+      },
+      {
+        "prompt_id": "kinda_20260518_prompt02",
+        "brand": "kinda",
+        "image_type_label": "실사",
+        "quality": "high",
+        "file_name_preview": "kinda_20260518_실사_극손상-헤어팩-비포애프터-홈케어_v02_high.png",
+        "copy_space": "bottom_25_percent",
+        "rules": [
+          "NO text",
+          "NO watermark",
+          "NO logo",
+          "Leave 25% bottom space for copywriting"
+        ]
+      },
+      {
+        "prompt_id": "kinda_20260518_prompt03",
+        "brand": "kinda",
+        "image_type_label": "일러스트",
+        "quality": "medium",
+        "file_name_preview": "kinda_20260518_일러스트_극손상-헤어팩-비포애프터-홈케어_v03_medium.png",
+        "copy_space": "bottom_25_percent",
+        "rules": [
+          "NO text",
+          "NO watermark",
+          "NO logo",
+          "Leave 25% bottom space for copywriting"
+        ]
+      },
+      {
+        "prompt_id": "kinda_20260518_prompt04",
+        "brand": "kinda",
+        "image_type_label": "일러스트",
+        "quality": "medium",
+        "file_name_preview": "kinda_20260518_일러스트_극손상-헤어팩-비포애프터-홈케어_v04_medium.png",
+        "copy_space": "bottom_25_percent",
+        "rules": [
+          "NO text",
+          "NO watermark",
+          "NO logo",
+          "Leave 25% bottom space for copywriting"
+        ]
+      }
+    ],
     "monitoring_preview": {
       "daily": [
         {
@@ -708,11 +839,23 @@
       },
       {
         "name": "프롬프트 엔지니어링",
+        "status": "prompt_ready",
+        "details": [
+          "스토리보드 20개",
+          "이미지 프롬프트 20개",
+          "실사 10개",
+          "일러스트 10개",
+          "no-text 규칙"
+        ]
+      },
+      {
+        "name": "이미지 생성 dry-run",
         "status": "next",
         "details": [
-          "스토리보드 생성",
-          "이미지 프롬프트 생성",
-          "팀장 피드백 반영"
+          "팀원 D batch 입력",
+          "출력 파일명",
+          "비용 계산",
+          "재생성 제한"
         ]
       }
     ],
@@ -762,14 +905,16 @@
       {
         "agent": "팀원 C",
         "file": "agents/prompt_engineer.py",
-        "status": "skeleton_ready",
+        "status": "prompt_ready",
         "implemented": [
-          "스토리보드 생성 함수 골격",
-          "이미지 프롬프트 생성 함수 골격",
-          "검수 피드백 반영 함수 골격"
+          "브랜드별 스토리보드 4개",
+          "이미지 프롬프트 4개",
+          "no-text 규칙",
+          "파일명 preview",
+          "검수 피드백 반영"
         ],
         "output": "history/daily/{date}_prompts.json",
-        "next": "PHASE 5에서 브랜드별 스토리보드와 프롬프트 생성 구현"
+        "next": "PHASE 6에서 팀원 D 이미지 dry-run과 연결"
       },
       {
         "agent": "팀원 D",
@@ -808,13 +953,13 @@
         "step": "04",
         "title": "스토리보드/프롬프트",
         "owner": "팀원 C",
-        "status": "next"
+        "status": "prompt_ready"
       },
       {
         "step": "05",
         "title": "이미지 생성",
         "owner": "팀원 D",
-        "status": "planned"
+        "status": "next"
       },
       {
         "step": "06",
@@ -843,13 +988,17 @@
     ]
   },
   "verification": {
-    "last_command": "python -m unittest tests.test_trend_collector tests.test_data_collector tests.test_manager tests.test_build_dashboard_data",
+    "last_command": "python -m unittest tests.test_trend_collector tests.test_data_collector tests.test_manager tests.test_prompt_engineer tests.test_build_dashboard_data",
     "last_result": "passed",
-    "test_count": 12
+    "test_count": 16
   },
   "git": {
     "branch": "main",
     "recent_commits": [
+      {
+        "hash": "47edb69",
+        "subject": "[PHASE 4] 팀장 분석 엔진 구현"
+      },
       {
         "hash": "3daf6d7",
         "subject": "[PHASE 3.5] 운영형 대시보드 기능 현황 강화"
@@ -865,21 +1014,18 @@
       {
         "hash": "6f1df7d",
         "subject": "[PHASE 3] 시장조사 출처 카탈로그 반영"
-      },
-      {
-        "hash": "c3f0b83",
-        "subject": "[PHASE 3] 트렌드 데이터 수집 mock 구현"
       }
     ]
   },
   "next_step": {
-    "phase": "PHASE 5",
-    "title": "스토리보드와 프롬프트 생성",
-    "summary": "팀장 분석 Brief를 입력으로 받아 브랜드별 스토리보드와 이미지 프롬프트를 생성한다."
+    "phase": "PHASE 6",
+    "title": "이미지 생성 dry-run",
+    "summary": "팀원 C의 prompt pack을 입력으로 받아 팀원 D 이미지 생성 dry-run과 비용 계산을 연결한다."
   },
   "risks": [
     "광고 API와 트렌드 API는 아직 mock 수집 단계다.",
     "팀장 분석은 deterministic rule 기반이며 실제 LLM 판단은 후속 API 연결 단계에서 붙인다.",
+    "프롬프트 생성도 rule 기반이며 실제 OpenAI API 호출은 아직 수행하지 않는다.",
     "Vercel 초기 버전은 push 이후 반영되는 정적 JSON 대시보드다.",
     "초 단위 실행 로그 실시간화는 PHASE 10 API 연동에서 확장한다."
   ]

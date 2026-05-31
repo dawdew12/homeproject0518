@@ -96,3 +96,18 @@
 - `scripts/build_dashboard_data.py`와 `web/index.html`은 팀장 분석 Brief와 브랜드별 팀장 판단을 표시한다.
 - 실제 LLM 분석과 API 실데이터 판단은 후속 Phase에서 연결한다.
 
+## 2026-05-31 PHASE 5 시작
+
+- PHASE 5의 범위는 팀원 C가 PHASE 4의 `manager_brief`를 입력으로 받아 브랜드별 스토리보드와 이미지 생성 프롬프트를 만드는 것이다.
+- 실제 OpenAI API 호출은 아직 연결하지 않고, deterministic rule 기반으로 프롬프트 데이터 계약을 만든다.
+- AGENTS.md 이미지 규칙에 따라 초안 이미지는 생성하지 않고 텍스트 스토리보드만 만든다.
+- 브랜드 컨텍스트 파일은 아직 placeholder이므로 이번 단계는 브랜드 config와 팀장 handoff를 우선 기준으로 사용한다.
+
+## 2026-05-31 PHASE 5 완료
+
+- `agents/prompt_engineer.py`가 `manager_brief`를 읽어 브랜드별 스토리보드 4개와 이미지 프롬프트 4개를 생성한다.
+- 검증용 `history/daily/2026-05-18_prompts.json`에는 5개 브랜드, 총 20개 스토리보드와 20개 프롬프트가 저장되었다.
+- 프롬프트는 실사 high 10개, 일러스트 medium 10개로 구성했고, 모든 프롬프트에 no-text, no-logo, 하단 25% 카피 영역 규칙을 포함했다.
+- 파일명 preview에는 sequence를 넣어 같은 브랜드와 키워드 조합에서도 덮어쓰기 위험을 줄였다.
+- 실제 이미지 생성은 하지 않았고, 팀원 D가 PHASE 6에서 dry-run으로 이어받는다.
+

@@ -84,3 +84,16 @@
 - [x] 대시보드 JSON에 팀장 분석 결과 추가
 - [x] 대시보드 화면에 팀장 분석 Brief 표시
 - [x] PHASE 4 검증 실행
+
+# PHASE 5 Prompt Engineering Checklist
+
+- [x] PHASE 4 완료 상태 확인
+- [x] 팀장 분석 Brief와 브랜드 설정 구조 확인
+- [x] 팀원 C 스토리보드 생성 로직 구현
+- [x] 브랜드별 이미지 프롬프트 4개 생성 로직 구현
+- [x] 검수 피드백 반영 로직 구현
+- [x] `history/daily/{date}_prompts.json` 저장 함수 구현
+- [x] 프롬프트 엔지니어 단위 테스트 추가
+- [x] 대시보드 JSON에 프롬프트 생성 결과 추가
+- [x] 대시보드 화면에 프롬프트 미리보기 표시
+- [x] PHASE 5 검증 실행
