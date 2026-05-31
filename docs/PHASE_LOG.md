@@ -102,3 +102,12 @@
 - 결과: 16개 테스트 통과.
 - 남은 리스크: 프롬프트는 rule 기반 mock 생성 결과이며, 실제 OpenAI API 호출과 이미지 생성은 PHASE 6 이후에 연결해야 한다.
 
+## 2026-05-31 Dashboard Architecture View 완료
+
+- 목표: PHASE 6 진입 전 소프트웨어 아키텍처, 전체 진행도, Phase별 테스트 결과를 대시보드에서 한눈에 확인.
+- `scripts/build_dashboard_data.py`에 공식 PHASE 1-12 로드맵, 전체 진행률, 아키텍처 레이어, 데이터 흐름, 저장 계약, Phase별 테스트 결과를 추가했다.
+- `web/index.html`에 전체 진행률 바, 로드맵 타일, 소프트웨어 아키텍처 도식, 데이터 흐름, Phase별 검증 표를 추가했다.
+- 현재 공식 로드맵 기준 진행률은 5/12, 42%다.
+- 검증 명령: Codex 번들 Python으로 `python -m unittest tests.test_trend_collector tests.test_data_collector tests.test_manager tests.test_prompt_engineer tests.test_build_dashboard_data`.
+- 결과: 16개 테스트 통과.
+

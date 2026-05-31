@@ -339,6 +339,179 @@ def build_monitoring_preview(trend_payload: dict[str, Any], limit: int = 8) -> d
     }
 
 
+def build_phase_roadmap() -> list[dict[str, Any]]:
+    """공식 PHASE 1-12 로드맵과 현재 상태를 반환한다."""
+    return [
+        {"phase": "PHASE 1", "title": "프로젝트 기반 세팅", "status": "completed", "progress": 100},
+        {"phase": "PHASE 2", "title": "광고 데이터 수집", "status": "completed", "progress": 100},
+        {"phase": "PHASE 3", "title": "트렌드 수집", "status": "completed", "progress": 100},
+        {"phase": "PHASE 4", "title": "팀장 분석 엔진", "status": "completed", "progress": 100},
+        {"phase": "PHASE 5", "title": "프롬프트 엔지니어링", "status": "completed", "progress": 100},
+        {"phase": "PHASE 6", "title": "이미지 생성", "status": "next", "progress": 0},
+        {"phase": "PHASE 7", "title": "품질 검수 및 재생성", "status": "planned", "progress": 0},
+        {"phase": "PHASE 8", "title": "Winner/Loser 학습", "status": "planned", "progress": 0},
+        {"phase": "PHASE 9", "title": "저장소 연동", "status": "planned", "progress": 0},
+        {"phase": "PHASE 10", "title": "Dashboard 실시간화", "status": "planned", "progress": 0},
+        {"phase": "PHASE 11", "title": "GitHub Actions 자동화", "status": "planned", "progress": 0},
+        {"phase": "PHASE 12", "title": "안정화", "status": "planned", "progress": 0},
+    ]
+
+
+def build_overall_progress(roadmap: list[dict[str, Any]]) -> dict[str, Any]:
+    """로드맵 기반 전체 진행률을 계산한다."""
+    total = len(roadmap)
+    completed = sum(1 for item in roadmap if item["status"] == "completed")
+    next_items = [item for item in roadmap if item["status"] == "next"]
+    return {
+        "completed_phase_count": completed,
+        "total_phase_count": total,
+        "percent": round(completed / total * 100),
+        "current_phase": "PHASE 5",
+        "next_phase": next_items[0]["phase"] if next_items else None,
+        "dashboard_milestones_completed": 2,
+        "latest_test_count": 16,
+        "latest_test_result": "passed",
+    }
+
+
+def build_architecture_layers() -> list[dict[str, Any]]:
+    """현재 소프트웨어 아키텍처를 레이어와 노드로 도식화한다."""
+    return [
+        {
+            "layer": "Input",
+            "title": "외부 입력과 기준 문서",
+            "nodes": [
+                {"id": "brand_config", "label": "브랜드 설정", "status": "ready", "metric": "5 brands"},
+                {"id": "market_sources", "label": "시장조사 출처", "status": "ready", "metric": "38 sources"},
+                {"id": "api_slots", "label": "API 키 슬롯", "status": "configured", "metric": ".env.example"},
+            ],
+        },
+        {
+            "layer": "Collection",
+            "title": "데이터 수집 에이전트",
+            "nodes": [
+                {"id": "data_collector", "label": "팀원 A 광고 수집", "status": "mock_ready", "metric": "15 records"},
+                {"id": "trend_collector", "label": "팀원 B 트렌드 수집", "status": "mock_ready", "metric": "20 records"},
+            ],
+        },
+        {
+            "layer": "Decision",
+            "title": "분석과 제작 지시",
+            "nodes": [
+                {"id": "manager", "label": "팀장 분석", "status": "analysis_ready", "metric": "5 briefs"},
+                {"id": "prompt_engineer", "label": "팀원 C 프롬프트", "status": "prompt_ready", "metric": "20 prompts"},
+            ],
+        },
+        {
+            "layer": "Generation",
+            "title": "이미지 생성과 검수",
+            "nodes": [
+                {"id": "image_designer", "label": "팀원 D 이미지 생성", "status": "next", "metric": "dry-run next"},
+                {"id": "quality_review", "label": "품질 검수", "status": "planned", "metric": "PHASE 7"},
+                {"id": "learning", "label": "Winner/Loser 학습", "status": "planned", "metric": "PHASE 8"},
+            ],
+        },
+        {
+            "layer": "Storage",
+            "title": "저장과 운영 화면",
+            "nodes": [
+                {"id": "history", "label": "history/daily", "status": "ready", "metric": "4 daily JSON"},
+                {"id": "dashboard", "label": "Vercel Dashboard", "status": "static_ready", "metric": "READY"},
+                {"id": "automation", "label": "GitHub Actions", "status": "planned", "metric": "PHASE 11"},
+            ],
+        },
+    ]
+
+
+def build_architecture_flow() -> list[dict[str, str]]:
+    """에이전트 간 데이터 흐름을 반환한다."""
+    return [
+        {"from": "브랜드 설정", "to": "팀원 A/B", "artifact": "brand config", "status": "ready"},
+        {"from": "팀원 A", "to": "history/daily/*_ad_data.json", "artifact": "광고 mock 15개", "status": "ready"},
+        {"from": "팀원 B", "to": "history/daily/*_trend_data.json", "artifact": "트렌드 mock 20개", "status": "ready"},
+        {"from": "광고/트렌드 JSON", "to": "팀장", "artifact": "분석 입력", "status": "ready"},
+        {"from": "팀장", "to": "history/daily/*_manager_brief.json", "artifact": "브랜드 Brief 5개", "status": "ready"},
+        {"from": "팀장 Brief", "to": "팀원 C", "artifact": "handoff 5개", "status": "ready"},
+        {"from": "팀원 C", "to": "history/daily/*_prompts.json", "artifact": "프롬프트 20개", "status": "ready"},
+        {"from": "프롬프트 Pack", "to": "팀원 D", "artifact": "이미지 dry-run 입력", "status": "next"},
+        {"from": "history/state/git", "to": "Vercel Dashboard", "artifact": "latest_status.json", "status": "ready"},
+    ]
+
+
+def build_storage_contracts() -> list[dict[str, str]]:
+    """저장 파일별 생산자와 소비자를 정리한다."""
+    return [
+        {"path": "history/daily/{date}_ad_data.json", "producer": "팀원 A", "consumer": "팀장, 대시보드", "status": "ready"},
+        {"path": "history/daily/{date}_trend_data.json", "producer": "팀원 B", "consumer": "팀장, 대시보드", "status": "ready"},
+        {"path": "history/daily/{date}_manager_brief.json", "producer": "팀장", "consumer": "팀원 C, 대시보드", "status": "ready"},
+        {"path": "history/daily/{date}_prompts.json", "producer": "팀원 C", "consumer": "팀원 D, 대시보드", "status": "ready"},
+        {"path": "outputs/{brand}/{date}/", "producer": "팀원 D", "consumer": "팀장 검수", "status": "next"},
+        {"path": "web/data/latest_status.json", "producer": "scripts/build_dashboard_data.py", "consumer": "Vercel Dashboard", "status": "ready"},
+    ]
+
+
+def build_phase_test_results() -> list[dict[str, Any]]:
+    """Phase별 검증 결과를 대시보드용으로 정리한다."""
+    return [
+        {
+            "phase": "PHASE 1",
+            "scope": "프로젝트 기반 구조",
+            "check": "필수 파일 존재 확인 + skeleton import",
+            "result": "passed",
+            "test_count": "file checks + imports",
+            "artifact": "state/current_phase.json",
+        },
+        {
+            "phase": "PHASE 2",
+            "scope": "광고 데이터 수집 mock",
+            "check": "python -m unittest tests.test_data_collector",
+            "result": "passed",
+            "test_count": 3,
+            "artifact": "history/daily/2026-05-18_ad_data.json",
+        },
+        {
+            "phase": "PHASE 3",
+            "scope": "트렌드 수집과 출처 카탈로그",
+            "check": "python -m unittest tests.test_trend_collector tests.test_data_collector",
+            "result": "passed",
+            "test_count": 7,
+            "artifact": "history/daily/2026-05-18_trend_data.json",
+        },
+        {
+            "phase": "PHASE 3.5",
+            "scope": "Vercel 정적 대시보드",
+            "check": "python -m unittest tests.test_trend_collector tests.test_data_collector tests.test_build_dashboard_data",
+            "result": "passed",
+            "test_count": 9,
+            "artifact": "web/data/latest_status.json",
+        },
+        {
+            "phase": "PHASE 4",
+            "scope": "팀장 분석 엔진",
+            "check": "python -m unittest tests.test_trend_collector tests.test_data_collector tests.test_manager tests.test_build_dashboard_data",
+            "result": "passed",
+            "test_count": 12,
+            "artifact": "history/daily/2026-05-18_manager_brief.json",
+        },
+        {
+            "phase": "PHASE 5",
+            "scope": "스토리보드와 프롬프트 생성",
+            "check": "python -m unittest tests.test_trend_collector tests.test_data_collector tests.test_manager tests.test_prompt_engineer tests.test_build_dashboard_data",
+            "result": "passed",
+            "test_count": 16,
+            "artifact": "history/daily/2026-05-18_prompts.json",
+        },
+        {
+            "phase": "PHASE 6",
+            "scope": "이미지 생성 dry-run",
+            "check": "예정: image_designer dry-run + 비용 계산 테스트",
+            "result": "next",
+            "test_count": 0,
+            "artifact": "outputs/{brand}/{date}/",
+        },
+    ]
+
+
 def build_dashboard_payload() -> dict[str, Any]:
     """프로젝트 진행 상태를 하나의 대시보드 JSON으로 묶는다."""
     current_phase = read_json(PROJECT_ROOT / "state" / "current_phase.json", {})
@@ -356,6 +529,7 @@ def build_dashboard_payload() -> dict[str, Any]:
     prompt_summary = summarize_prompt_pack(latest_prompt_file)
     source_counts = count_marketing_sources()
     recent_commits = get_recent_commits()
+    phase_roadmap = build_phase_roadmap()
 
     return {
         "generated_at": datetime.now(KST).isoformat(timespec="seconds"),
@@ -376,6 +550,16 @@ def build_dashboard_payload() -> dict[str, Any]:
             {"phase": "PHASE 5", "title": "스토리보드와 프롬프트 생성", "status": "completed"},
             {"phase": "PHASE 6", "title": "이미지 생성 dry-run", "status": "next"},
         ],
+        "architecture": {
+            "overall_progress": build_overall_progress(phase_roadmap),
+            "phase_roadmap": phase_roadmap,
+            "layers": build_architecture_layers(),
+            "flow": build_architecture_flow(),
+            "storage_contracts": build_storage_contracts(),
+        },
+        "quality": {
+            "phase_test_results": build_phase_test_results(),
+        },
         "data": {
             "ad": ad_summary,
             "trend": trend_summary,

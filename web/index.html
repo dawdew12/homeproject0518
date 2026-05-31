@@ -86,6 +86,101 @@ section {
 .metric {
   padding: 15px 16px;
 }
+.progress-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 14px;
+  align-items: stretch;
+}
+.progress-panel {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 14px;
+  background: var(--soft);
+}
+.progress-value {
+  font-size: 38px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--green);
+}
+.progress-bar {
+  height: 12px;
+  background: #e5eae4;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-top: 12px;
+}
+.progress-fill {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, #1d7b55, #245fa8);
+}
+.roadmap-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 8px;
+}
+.roadmap-item {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 9px;
+  background: #fff;
+  min-height: 88px;
+}
+.roadmap-item.completed {
+  border-color: #b8dfca;
+  background: #f0f8f4;
+}
+.roadmap-item.next {
+  border-color: #b9cdeb;
+  background: #f1f6fc;
+}
+.architecture-map {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+.arch-layer {
+  border-left: 3px solid #aac5b8;
+  padding: 10px 10px 8px;
+  background: var(--soft);
+  border-radius: 8px;
+}
+.arch-node {
+  border-top: 1px solid var(--line);
+  padding: 8px 0;
+}
+.arch-node:first-of-type {
+  border-top: 0;
+}
+.node-title {
+  display: block;
+  font-weight: 700;
+  font-size: 13px;
+}
+.node-metric {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+}
+.flow-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.flow-item {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px;
+  background: var(--soft);
+  min-height: 92px;
+}
+.flow-arrow {
+  color: var(--blue);
+  font-weight: 800;
+  margin: 0 4px;
+}
 .label {
   color: var(--muted);
   font-size: 12px;
@@ -121,7 +216,10 @@ section {
 }
 .tag.completed,
 .tag.mock_ready,
-.tag.static_ready {
+.tag.static_ready,
+.tag.ready,
+.tag.configured,
+.tag.passed {
   background: #e4f3ec;
   color: var(--green);
 }
@@ -267,7 +365,11 @@ li { margin: 5px 0; }
   .tiles,
   .phase-list,
   .pipeline,
-  .agent-list {
+  .agent-list,
+  .progress-layout,
+  .roadmap-grid,
+  .architecture-map,
+  .flow-list {
     display: grid;
     grid-template-columns: 1fr;
   }
@@ -310,6 +412,46 @@ li { margin: 5px 0; }
       <div class="value" id="prompt-count">-</div>
     </div>
   </div>
+
+  <section>
+    <h2>전체 진행도</h2>
+    <div class="progress-layout">
+      <div class="progress-panel">
+        <div class="label">공식 로드맵 기준</div>
+        <div class="progress-value" id="overall-percent">-</div>
+        <div class="progress-bar"><div class="progress-fill" id="overall-progress-fill"></div></div>
+        <p class="sub" id="overall-summary" style="margin-top:10px">-</p>
+      </div>
+      <div class="roadmap-grid" id="phase-roadmap"></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>소프트웨어 아키텍처</h2>
+    <div class="architecture-map" id="architecture-map"></div>
+  </section>
+
+  <section>
+    <h2>데이터 흐름</h2>
+    <div class="flow-list" id="architecture-flow"></div>
+  </section>
+
+  <section>
+    <h2>Phase별 테스트 결과</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Phase</th>
+          <th>범위</th>
+          <th>검증</th>
+          <th>결과</th>
+          <th>테스트</th>
+          <th>산출물</th>
+        </tr>
+      </thead>
+      <tbody id="phase-tests"></tbody>
+    </table>
+  </section>
 
   <section>
     <h2>구현 기능 현황</h2>
@@ -484,6 +626,52 @@ function render(data) {
   text("verification", `${data.verification?.last_result || "-"} · ${data.verification?.test_count ?? 0} tests`);
   text("next-phase", `${data.next_step?.phase || "-"} · ${data.next_step?.title || ""}`);
   text("next-summary", data.next_step?.summary || "-");
+
+  const progress = data.architecture?.overall_progress || {};
+  text("overall-percent", `${progress.percent ?? 0}%`);
+  text("overall-summary", `${progress.completed_phase_count ?? 0}/${progress.total_phase_count ?? 0} phases completed · 다음 ${progress.next_phase || "-"}`);
+  document.getElementById("overall-progress-fill").style.width = `${progress.percent ?? 0}%`;
+
+  document.getElementById("phase-roadmap").innerHTML = (data.architecture?.phase_roadmap || []).map(item => `
+    <div class="roadmap-item ${tagClass(item.status)}">
+      <strong>${item.phase}</strong>
+      <div class="label">${item.title}</div>
+      <span class="tag ${tagClass(item.status)}">${item.status}</span>
+    </div>
+  `).join("");
+
+  document.getElementById("architecture-map").innerHTML = (data.architecture?.layers || []).map(layer => `
+    <div class="arch-layer">
+      <h3>${layer.layer}</h3>
+      <div class="label">${layer.title}</div>
+      ${(layer.nodes || []).map(node => `
+        <div class="arch-node">
+          <span class="node-title">${node.label}</span>
+          <span class="node-metric">${node.metric}</span>
+          <span class="tag ${tagClass(node.status)}">${node.status}</span>
+        </div>
+      `).join("")}
+    </div>
+  `).join("");
+
+  document.getElementById("architecture-flow").innerHTML = (data.architecture?.flow || []).map(item => `
+    <div class="flow-item">
+      <strong>${item.from}</strong><span class="flow-arrow">→</span><strong>${item.to}</strong>
+      <div class="label">${item.artifact}</div>
+      <span class="tag ${tagClass(item.status)}">${item.status}</span>
+    </div>
+  `).join("");
+
+  document.getElementById("phase-tests").innerHTML = (data.quality?.phase_test_results || []).map(item => `
+    <tr>
+      <td><strong>${item.phase}</strong></td>
+      <td>${item.scope}</td>
+      <td><code>${item.check}</code></td>
+      <td><span class="tag ${tagClass(item.result)}">${item.result}</span></td>
+      <td>${item.test_count}</td>
+      <td><code>${item.artifact}</code></td>
+    </tr>
+  `).join("");
 
   document.getElementById("feature-status").innerHTML = (data.operations?.feature_status || []).map(item => `
     <div class="tile">
