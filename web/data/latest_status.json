@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-31T13:01:55+09:00",
+  "generated_at": "2026-05-31T16:00:54+09:00",
   "project": {
     "name": "AIPR",
     "github_repo": "https://github.com/dawdew12/homeproject0518",
@@ -1346,6 +1346,10 @@
     "branch": "main",
     "recent_commits": [
       {
+        "hash": "bcefd8e",
+        "subject": "[DASHBOARD] 아키텍처 진행도 시각화 추가"
+      },
+      {
         "hash": "9707460",
         "subject": "[PHASE 5] 프롬프트 생성 엔진 구현"
       },
@@ -1360,10 +1364,6 @@
       {
         "hash": "23fd7bc",
         "subject": "[PHASE 3.5] Vercel 대시보드 배포 기반 구축"
-      },
-      {
-        "hash": "f069726",
-        "subject": "[DOCS] 진행 현황 HTML 브리핑 추가"
       }
     ]
   },

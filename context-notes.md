@@ -124,3 +124,13 @@
 - `web/index.html`은 전체 진행률 바, 로드맵 타일, 소프트웨어 아키텍처 도식, 데이터 흐름, Phase별 검증 표를 렌더링한다.
 - 현재 공식 로드맵 기준 진행률은 PHASE 1-5 완료로 5/12, 42%다.
 
+## 2026-05-31 Dashboard Metadata Sync 시작
+
+- 이전 작업은 커밋과 Vercel 배포까지 완료됐지만, `web/data/latest_status.json`은 커밋 전에 생성되어 최근 커밋 목록에 대시보드 아키텍처 커밋이 아직 반영되지 않았다.
+- 운영 대시보드의 자기 보고 정확도를 맞추기 위해 데이터 JSON만 재생성하고 검증 후 별도 커밋으로 저장한다.
+
+## 2026-05-31 Dashboard Metadata Sync 구현
+
+- `scripts/build_dashboard_data.py`를 재실행해 `web/data/latest_status.json`의 최근 커밋 목록에 `bcefd8e [DASHBOARD] 아키텍처 진행도 시각화 추가`가 표시되도록 갱신했다.
+- 동일한 16개 단위 테스트를 다시 실행해 대시보드 데이터 구조가 유지되는지 확인했다.
+
