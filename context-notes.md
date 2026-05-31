@@ -134,3 +134,14 @@
 - `scripts/build_dashboard_data.py`를 재실행해 `web/data/latest_status.json`의 최근 커밋 목록에 `bcefd8e [DASHBOARD] 아키텍처 진행도 시각화 추가`가 표시되도록 갱신했다.
 - 동일한 16개 단위 테스트를 다시 실행해 대시보드 데이터 구조가 유지되는지 확인했다.
 
+## 2026-05-31 Dashboard Live Commit Sync 시작
+
+- 정적 JSON을 커밋에 포함하는 현재 방식은 최근 커밋 목록이 한 커밋 늦게 보일 수 있다.
+- 최근 커밋 영역은 정적 JSON을 fallback으로 유지하되, 화면 로드 후 GitHub 공개 API에서 main 브랜치 최신 커밋을 받아 다시 렌더링하도록 보강한다.
+
+## 2026-05-31 Dashboard Live Commit Sync 구현
+
+- `web/index.html`에 GitHub commits API 호출을 추가해 최근 커밋 영역을 화면 로드 후 최신 main 브랜치 기준으로 다시 그린다.
+- GitHub API가 실패해도 `latest_status.json`에 포함된 커밋 목록을 그대로 보여주도록 fallback을 유지했다.
+- 기존 Python 단위 테스트 16개와 HTML script parse 검증을 통과했다.
+

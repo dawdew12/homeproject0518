@@ -114,4 +114,11 @@
 - [x] 이전 작업 후 남은 누락 여부 확인
 - [x] 최신 커밋이 대시보드 JSON에 반영되도록 재생성
 - [x] 대시보드 데이터 테스트 재실행
-- [ ] GitHub 저장 및 Vercel 반영 확인
+- [x] GitHub 저장 및 Vercel 반영 확인
+
+# Dashboard Live Commit Sync
+
+- [x] 정적 JSON 최근 커밋 목록의 한 커밋 지연 구조 확인
+- [x] GitHub 공개 API 기반 최근 커밋 실시간 로딩 추가
+- [x] GitHub API 실패 시 기존 JSON 커밋 목록 fallback 유지
+- [x] 검증 실행
