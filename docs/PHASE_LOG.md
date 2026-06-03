@@ -164,3 +164,16 @@
 - 남은 리스크: 실제 Google Drive 업로드는 아직 dry-run이며, 서비스 계정 또는 OAuth 인증 연결 후 API 호출로 확장해야 한다.
 - 남은 리스크: 일반 비로그인 fetch는 Vercel Authentication 페이지를 반환하므로 공개 공유 전 Deployment Protection 설정을 확인해야 한다.
 
+## 2026-06-03 PHASE 10 완료
+
+- 목표: 대시보드가 정적 상태 JSON뿐 아니라 API 계약과 30초 polling으로 운영 상태를 갱신하도록 구현.
+- `scripts/build_dashboard_data.py`가 `web/data/latest_status.json`과 `web/api/*.json` 12개 API 파일을 함께 생성하도록 확장했다.
+- `dashboard_api.py`에 FastAPI 호환 skeleton을 추가해 상태, 에이전트, 비용, 브랜드, history, Winner/Loser, 로그 payload를 함수와 라우트로 반환할 수 있게 했다.
+- `vercel.json`에 `/api/status`, `/api/agents`, `/api/costs`, `/api/brands`, `/api/brands/{brand}`, `/api/history/daily`, `/api/winner-loser`, `/api/logs` rewrite를 추가했다.
+- `web/index.html`은 30초마다 cache-busting으로 대시보드 데이터와 API endpoint를 다시 읽고 API 상태표와 실행 로그를 표시한다.
+- 현재 공식 로드맵 기준 진행률은 10/12, 83%다.
+- 검증 명령: Codex 번들 Python으로 `python -m unittest tests.test_trend_collector tests.test_data_collector tests.test_manager tests.test_prompt_engineer tests.test_image_designer tests.test_storage_utils tests.test_dashboard_api tests.test_build_dashboard_data`.
+- 결과: 33개 테스트 통과.
+- 로컬 HTTP 검증: `http://localhost:4173/`, `http://localhost:4173/api/status.json`, `http://localhost:4173/api/logs.json` 모두 200 응답.
+- 남은 리스크: Vercel 정적 배포 구조에서는 실제 데이터 갱신 주기가 GitHub Actions 또는 dashboard data build 실행 주기에 묶인다.
+

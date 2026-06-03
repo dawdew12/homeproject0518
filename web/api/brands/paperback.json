@@ -1,0 +1,56 @@
+{
+  "status": "brand_detail_api_ready",
+  "generated_at": "2026-06-03T19:48:28+09:00",
+  "brand": "paperback",
+  "snapshot": {
+    "brand": "paperback",
+    "ad_records": 3,
+    "trend_records": 4,
+    "avg_ctr": 2.4396,
+    "avg_roas": 283.0,
+    "avg_cpa": 7.6706,
+    "avg_trend_score": 84.0,
+    "top_keywords": [
+      "독서 감성",
+      "라이프스타일",
+      "카페"
+    ],
+    "manager_priority": "high",
+    "creative_direction": "라이프스타일 중심의 일상 감성, 차분하고 취향이 드러나는 라이프스타일 소재",
+    "status": "mock_ready"
+  },
+  "manager": [
+    {
+      "brand": "paperback",
+      "priority": "high",
+      "creative_direction": "라이프스타일 중심의 일상 감성, 차분하고 취향이 드러나는 라이프스타일 소재",
+      "visual_concept": "취향 있는 카페와 독서 장면을 연결한 라이프스타일 컷",
+      "actions": [
+        "성과가 받쳐주는 키워드를 첫 소재 묶음의 메인 각도로 배치한다.",
+        "첫 화면 후킹 이미지를 더 명확하게 만들고 핵심 베네핏을 1개로 좁힌다."
+      ],
+      "keywords": [
+        "라이프스타일",
+        "독서 감성",
+        "카페"
+      ]
+    }
+  ],
+  "prompts": [],
+  "images": [],
+  "quality_reviews": [],
+  "learning": [
+    {
+      "creative_id": "paperback_meta_mock_001",
+      "brand": "paperback",
+      "source": "meta",
+      "label": "winner",
+      "reason": "ctr_roas_cpa_passed",
+      "ctr": 2.5,
+      "roas": 283.0,
+      "cpa": 8.875,
+      "action": "해당 소재 각도를 다음 프롬프트의 우선 콘셉트로 승격한다."
+    }
+  ],
+  "storage": []
+}

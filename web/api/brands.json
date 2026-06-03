@@ -1,0 +1,92 @@
+{
+  "status": "brands_api_ready",
+  "generated_at": "2026-06-03T19:48:28+09:00",
+  "brand_count": 5,
+  "brands": [
+    {
+      "brand": "someud",
+      "ad_records": 3,
+      "trend_records": 4,
+      "avg_ctr": 2.3159,
+      "avg_roas": 247.0,
+      "avg_cpa": 5.0497,
+      "avg_trend_score": 66.0,
+      "top_keywords": [
+        "숙면",
+        "어버이날 선물",
+        "황토침대"
+      ],
+      "manager_priority": "test",
+      "creative_direction": "황토침대 중심의 프리미엄 오가닉, 따뜻하고 신뢰감 소재",
+      "status": "mock_ready"
+    },
+    {
+      "brand": "kinda",
+      "ad_records": 3,
+      "trend_records": 4,
+      "avg_ctr": 2.3661,
+      "avg_roas": 259.0,
+      "avg_cpa": 4.9024,
+      "avg_trend_score": 72.0,
+      "top_keywords": [
+        "극손상 헤어팩",
+        "비포애프터",
+        "홈케어"
+      ],
+      "manager_priority": "test",
+      "creative_direction": "극손상 헤어팩 중심의 손상 모발 회복, 부드럽고 신뢰감 있는 뷰티 톤 소재",
+      "status": "mock_ready"
+    },
+    {
+      "brand": "melliance",
+      "ad_records": 3,
+      "trend_records": 4,
+      "avg_ctr": 2.4065,
+      "avg_roas": 271.0,
+      "avg_cpa": 8.6147,
+      "avg_trend_score": 78.0,
+      "top_keywords": [
+        "봄 컬렉션",
+        "뷰티 루틴",
+        "피부결"
+      ],
+      "manager_priority": "scale",
+      "creative_direction": "뷰티 루틴 중심의 정돈된 뷰티, 세련되고 균형 잡힌 무드 소재",
+      "status": "mock_ready"
+    },
+    {
+      "brand": "paperback",
+      "ad_records": 3,
+      "trend_records": 4,
+      "avg_ctr": 2.4396,
+      "avg_roas": 283.0,
+      "avg_cpa": 7.6706,
+      "avg_trend_score": 84.0,
+      "top_keywords": [
+        "독서 감성",
+        "라이프스타일",
+        "카페"
+      ],
+      "manager_priority": "high",
+      "creative_direction": "라이프스타일 중심의 일상 감성, 차분하고 취향이 드러나는 라이프스타일 소재",
+      "status": "mock_ready"
+    },
+    {
+      "brand": "baren",
+      "ad_records": 3,
+      "trend_records": 4,
+      "avg_ctr": 2.4673,
+      "avg_roas": 295.0,
+      "avg_cpa": 7.0679,
+      "avg_trend_score": 90.0,
+      "top_keywords": [
+        "기능성 케어",
+        "성분",
+        "인포그래픽"
+      ],
+      "manager_priority": "scale",
+      "creative_direction": "기능성 케어 중심의 기능성, 명확하고 깨끗한 정보 전달 소재",
+      "status": "mock_ready"
+    }
+  ]
+}

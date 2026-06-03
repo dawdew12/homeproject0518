@@ -175,3 +175,16 @@
 - [x] 대시보드 화면에 저장소 연동 미리보기 표시
 - [x] PHASE 9 검증 실행
 - [x] GitHub 저장 및 Vercel 반영 확인
+
+# PHASE 10 Dashboard Realtime Checklist
+
+- [x] PHASE 9 완료 상태와 대시보드 요구사항 확인
+- [x] 정적 JSON API payload 생성 구조 구현
+- [x] FastAPI dashboard API skeleton 구현
+- [x] Vercel `/api/*` rewrite 구성
+- [x] 대시보드 30초 polling 구현
+- [x] API 상태와 실행 로그 화면 표시
+- [x] Dashboard API 단위 테스트 추가
+- [x] 대시보드 JSON과 API JSON 재생성
+- [x] PHASE 10 검증 실행
+- [ ] GitHub 저장 및 Vercel 반영 확인

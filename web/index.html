@@ -221,6 +221,7 @@ section {
 .tag.quality_review_ready,
 .tag.learning_ready,
 .tag.storage_ready,
+.tag.realtime_ready,
 .tag.ready,
 .tag.configured,
 .tag.passed,
@@ -449,6 +450,10 @@ li { margin: 5px 0; }
       <div class="label">저장 계획</div>
       <div class="value info" id="storage-planned">-</div>
     </div>
+    <div class="metric">
+      <div class="label">API 갱신</div>
+      <div class="value ok" id="api-refresh-state">-</div>
+    </div>
   </div>
 
   <section>
@@ -511,6 +516,34 @@ li { margin: 5px 0; }
     <div class="pipeline" id="pipeline"></div>
   </section>
 
+  <section>
+    <h2>실시간 API 상태</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>엔드포인트</th>
+          <th>상태</th>
+          <th>갱신 시각</th>
+          <th>파일</th>
+        </tr>
+      </thead>
+      <tbody id="api-table"></tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>실행 로그</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>라인</th>
+          <th>내용</th>
+        </tr>
+      </thead>
+      <tbody id="log-table"></tbody>
+    </table>
+  </section>
+
   <div class="cols">
     <section>
       <h2>데이터 수집 상태</h2>
@@ -524,6 +557,7 @@ li { margin: 5px 0; }
           <tr><th>품질 검수</th><td id="quality-status">-</td></tr>
           <tr><th>Winner/Loser</th><td id="learning-status">-</td></tr>
           <tr><th>저장소 연동</th><td id="storage-status">-</td></tr>
+          <tr><th>Dashboard API</th><td id="api-status">-</td></tr>
           <tr><th>Daily 시장조사 출처</th><td id="daily-sources">-</td></tr>
           <tr><th>검증</th><td id="verification">-</td></tr>
         </tbody>
@@ -697,12 +731,50 @@ li { margin: 5px 0; }
 </main>
 
 <script>
-async function loadDashboard() {
-  const response = await fetch("./data/latest_status.json", { cache: "no-store" });
+const REFRESH_INTERVAL_MS = 30000;
+const API_ENDPOINTS = [
+  { key: "status", label: "GET /api/status", path: "./api/status", fallback: "./api/status.json" },
+  { key: "agents", label: "GET /api/agents", path: "./api/agents", fallback: "./api/agents.json" },
+  { key: "costs", label: "GET /api/costs", path: "./api/costs", fallback: "./api/costs.json" },
+  { key: "brands", label: "GET /api/brands", path: "./api/brands", fallback: "./api/brands.json" },
+  { key: "history_daily", label: "GET /api/history/daily", path: "./api/history/daily", fallback: "./api/history/daily.json" },
+  { key: "winner_loser", label: "GET /api/winner-loser", path: "./api/winner-loser", fallback: "./api/winner-loser.json" },
+  { key: "logs", label: "GET /api/logs", path: "./api/logs", fallback: "./api/logs.json" }
+];
+let cachedCommits = [];
+
+function cacheBust(path) {
+  return `${path}${path.includes("?") ? "&" : "?"}_=${Date.now()}`;
+}
+
+async function fetchJson(path) {
+  const response = await fetch(cacheBust(path), { cache: "no-store" });
   if (!response.ok) {
-    throw new Error("latest_status.json을 불러오지 못했습니다.");
+    throw new Error(`${path} ${response.status}`);
   }
   return response.json();
+}
+
+async function loadDashboard() {
+  return fetchJson("./data/latest_status.json");
+}
+
+async function fetchApiEndpoint(endpoint) {
+  try {
+    const data = await fetchJson(endpoint.path);
+    return { ...endpoint, ok: true, data, used: endpoint.path, fetchedAt: new Date().toLocaleTimeString("ko-KR") };
+  } catch (firstError) {
+    try {
+      const data = await fetchJson(endpoint.fallback);
+      return { ...endpoint, ok: true, data, used: endpoint.fallback, fetchedAt: new Date().toLocaleTimeString("ko-KR") };
+    } catch (fallbackError) {
+      return { ...endpoint, ok: false, error: firstError.message, used: endpoint.path, fetchedAt: new Date().toLocaleTimeString("ko-KR") };
+    }
+  }
+}
+
+async function loadApiSnapshot() {
+  return Promise.all(API_ENDPOINTS.map(fetchApiEndpoint));
 }
 
 async function loadRecentCommitsFromGitHub() {
@@ -737,6 +809,32 @@ function renderCommits(commits) {
   document.getElementById("commits").innerHTML = commits.length
     ? commits.map(commit => `<div class="commit"><span class="hash">${commit.hash}</span><span>${commit.subject}</span></div>`).join("")
     : "<div class=\"empty\">커밋 정보 없음.</div>";
+}
+
+function renderApiStatus(results) {
+  const successful = results.filter(result => result.ok).length;
+  const fetchedAt = new Date().toLocaleTimeString("ko-KR");
+  text("api-refresh-state", `${successful}/${results.length}`);
+  text("api-status", `${successful}/${results.length} endpoints · 30초 polling · ${fetchedAt}`);
+
+  document.getElementById("api-table").innerHTML = results.map(result => `
+    <tr>
+      <td><code>${result.label}</code></td>
+      <td><span class="tag ${result.ok ? "passed" : "regeneration_required"}">${result.ok ? "ok" : "failed"}</span></td>
+      <td>${result.fetchedAt}</td>
+      <td><code>${result.used}</code></td>
+    </tr>
+  `).join("");
+
+  const logs = results.find(result => result.key === "logs")?.data?.execution || [];
+  document.getElementById("log-table").innerHTML = logs.length
+    ? logs.slice(-8).reverse().map(line => `
+      <tr>
+        <td>${line.line_no}</td>
+        <td>${line.text}</td>
+      </tr>
+    `).join("")
+    : "<tr><td colspan=\"2\" class=\"empty\">실행 로그 없음.</td></tr>";
 }
 
 function render(data) {
@@ -965,24 +1063,36 @@ function render(data) {
     .map(source => `<span class="chip">${source.source_name}</span>`)
     .join("");
 
-  renderCommits(data.git?.recent_commits || []);
+  renderCommits(cachedCommits.length ? cachedCommits : data.git?.recent_commits || []);
 
   document.getElementById("risks").innerHTML = (data.risks || [])
     .map(risk => `<li>${risk}</li>`)
     .join("");
 }
 
-loadDashboard()
-  .then(data => {
-    render(data);
-    return loadRecentCommitsFromGitHub()
-      .then(renderCommits)
-      .catch(() => undefined);
+async function refreshDashboard() {
+  const data = await loadDashboard();
+  render(data);
+  const apiResults = await loadApiSnapshot();
+  renderApiStatus(apiResults);
+}
+
+refreshDashboard()
+  .then(() => loadRecentCommitsFromGitHub())
+  .then(commits => {
+    cachedCommits = commits;
+    renderCommits(cachedCommits);
   })
   .catch(error => {
     text("deploy-status", "데이터 로드 실패");
     document.body.insertAdjacentHTML("beforeend", `<pre style="padding:20px;color:#a53434">${error.message}</pre>`);
   });
+
+window.setInterval(() => {
+  refreshDashboard().catch(() => {
+    text("api-refresh-state", "fail");
+  });
+}, REFRESH_INTERVAL_MS);
 </script>
 </body>
 </html>

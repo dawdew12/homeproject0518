@@ -222,3 +222,19 @@
 - Vercel 인증 fetch로 루트 HTML과 `/data/latest_status.json` 모두 200 OK를 확인했다.
 - 일반 unauthenticated fetch는 Vercel Authentication 페이지를 반환하므로, 비로그인 공개 접근은 Deployment Protection 설정을 한 번 더 확인해야 한다.
 
+## 2026-06-03 PHASE 10 Dashboard Realtime 시작
+
+- PHASE 10의 목표는 대시보드가 정적 HTML 내부 데이터가 아니라 API 계약을 통해 상태, 에이전트, 비용, 브랜드, history, Winner/Loser, 로그를 읽게 만드는 것이다.
+- 현재 Vercel 설정은 `web` 폴더 정적 배포이므로 서버 런타임을 갑자기 바꾸지 않는다.
+- 이번 단계에서는 `web/api/*.json` 정적 API와 Vercel rewrite를 만들어 `/api/status` 같은 API 경로로 접근 가능하게 한다.
+- 로컬과 향후 서버 운영을 위해 같은 payload를 반환하는 `dashboard_api.py` FastAPI skeleton도 추가한다.
+- 화면 실시간화는 30초 polling과 cache-busting으로 구현하고, 실제 백엔드 push/SSE/WebSocket은 후속 안정화 범위로 남긴다.
+
+## 2026-06-03 PHASE 10 Dashboard Realtime 구현
+
+- `scripts/build_dashboard_data.py`가 `web/api/status.json`, `agents.json`, `costs.json`, `brands.json`, `history/daily.json`, `winner-loser.json`, `logs.json`, 브랜드 상세 JSON 5개를 생성한다.
+- `vercel.json`에 `/api/*` rewrite를 추가해 Vercel에서 확장자 없는 API 경로로 접근 가능하게 했다.
+- `dashboard_api.py`는 FastAPI가 설치된 운영 환경에서는 라우트를 등록하고, 현재 번들 Python처럼 FastAPI가 없으면 함수 호출로 payload를 검증할 수 있다.
+- `web/index.html`은 30초마다 latest status와 API endpoint를 다시 읽고, API 상태표와 실행 로그를 화면에 표시한다.
+- 로컬 검증은 `http://localhost:4173` 정적 서버에서 루트 HTML, `/api/status.json`, `/api/logs.json` 200 응답으로 확인했다.
+

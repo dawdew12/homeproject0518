@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-03T19:23:06+09:00",
+  "generated_at": "2026-06-03T19:48:28+09:00",
   "project": {
     "name": "AIPR",
     "github_repo": "https://github.com/dawdew12/homeproject0518",
@@ -7,11 +7,57 @@
     "vercel_team": "raw22226-9071s-projects",
     "custom_domain_enabled": false
   },
+  "api": {
+    "mode": "static_json_rewrite",
+    "refresh_interval_seconds": 30,
+    "endpoints": [
+      {
+        "path": "/api/status",
+        "file": "web/api/status.json",
+        "description": "현재 phase와 전체 진행도"
+      },
+      {
+        "path": "/api/agents",
+        "file": "web/api/agents.json",
+        "description": "에이전트와 파이프라인 상태"
+      },
+      {
+        "path": "/api/costs",
+        "file": "web/api/costs.json",
+        "description": "비용과 runtime 상태"
+      },
+      {
+        "path": "/api/brands",
+        "file": "web/api/brands.json",
+        "description": "브랜드별 운영 지표 목록"
+      },
+      {
+        "path": "/api/brands/{brand}",
+        "file": "web/api/brands/{brand}.json",
+        "description": "브랜드 상세 지표"
+      },
+      {
+        "path": "/api/history/daily",
+        "file": "web/api/history/daily.json",
+        "description": "daily history 산출물 요약"
+      },
+      {
+        "path": "/api/winner-loser",
+        "file": "web/api/winner-loser.json",
+        "description": "Winner/Loser 학습 결과"
+      },
+      {
+        "path": "/api/logs",
+        "file": "web/api/logs.json",
+        "description": "최근 실행 로그"
+      }
+    ]
+  },
   "current_phase": {
-    "current_phase": 9,
+    "current_phase": 10,
     "status": "completed",
     "active_brand": null,
-    "last_success": "2026-06-03 PHASE 9 storage integration completed",
+    "last_success": "2026-06-03 PHASE 10 dashboard realtime API completed",
     "last_error": null
   },
   "phase_progress": [
@@ -68,18 +114,23 @@
     {
       "phase": "PHASE 10",
       "title": "Dashboard 실시간화",
+      "status": "completed"
+    },
+    {
+      "phase": "PHASE 11",
+      "title": "GitHub Actions 자동화",
       "status": "next"
     }
   ],
   "architecture": {
     "overall_progress": {
-      "completed_phase_count": 9,
+      "completed_phase_count": 10,
       "total_phase_count": 12,
-      "percent": 75,
-      "current_phase": "PHASE 9",
-      "next_phase": "PHASE 10",
-      "dashboard_milestones_completed": 2,
-      "latest_test_count": 30,
+      "percent": 83,
+      "current_phase": "PHASE 10",
+      "next_phase": "PHASE 11",
+      "dashboard_milestones_completed": 3,
+      "latest_test_count": 33,
       "latest_test_result": "passed"
     },
     "phase_roadmap": [
@@ -140,13 +191,13 @@
       {
         "phase": "PHASE 10",
         "title": "Dashboard 실시간화",
-        "status": "next",
-        "progress": 0
+        "status": "completed",
+        "progress": 100
       },
       {
         "phase": "PHASE 11",
         "title": "GitHub Actions 자동화",
-        "status": "planned",
+        "status": "next",
         "progress": 0
       },
       {
@@ -266,13 +317,19 @@
           {
             "id": "dashboard",
             "label": "Vercel Dashboard",
-            "status": "static_ready",
-            "metric": "READY"
+            "status": "realtime_ready",
+            "metric": "30s polling"
+          },
+          {
+            "id": "dashboard_api",
+            "label": "Dashboard API",
+            "status": "realtime_ready",
+            "metric": "8 endpoints"
           },
           {
             "id": "automation",
             "label": "GitHub Actions",
-            "status": "planned",
+            "status": "next",
             "metric": "PHASE 11"
           }
         ]
@@ -370,10 +427,16 @@
         "status": "storage_ready"
       },
       {
-        "from": "history/state/git",
+        "from": "history/state/logs",
+        "to": "Dashboard API",
+        "artifact": "정적 API JSON",
+        "status": "realtime_ready"
+      },
+      {
+        "from": "Dashboard API",
         "to": "Vercel Dashboard",
-        "artifact": "latest_status.json",
-        "status": "ready"
+        "artifact": "30초 polling",
+        "status": "realtime_ready"
       }
     ],
     "storage_contracts": [
@@ -454,6 +517,18 @@
         "producer": "scripts/build_dashboard_data.py",
         "consumer": "Vercel Dashboard",
         "status": "ready"
+      },
+      {
+        "path": "web/api/{endpoint}.json",
+        "producer": "scripts/build_dashboard_data.py",
+        "consumer": "Dashboard polling, FastAPI mirror",
+        "status": "realtime_ready"
+      },
+      {
+        "path": "dashboard_api.py",
+        "producer": "PHASE 10",
+        "consumer": "FastAPI local server",
+        "status": "realtime_ready"
       }
     ]
   },
@@ -542,10 +617,18 @@
       {
         "phase": "PHASE 10",
         "scope": "Dashboard 실시간화",
-        "check": "예정: API 기반 실행 로그 갱신",
+        "check": "python -m unittest tests.test_dashboard_api",
+        "result": "passed",
+        "test_count": 3,
+        "artifact": "web/api/status.json"
+      },
+      {
+        "phase": "PHASE 11",
+        "scope": "GitHub Actions 자동화",
+        "check": "예정: workflow_dispatch와 평일 02:00 KST 검증",
         "result": "next",
         "test_count": 0,
-        "artifact": "web/data/latest_status.json"
+        "artifact": ".github/workflows/daily_run.yml"
       }
     ]
   },
@@ -1814,6 +1897,17 @@
           "daily history 요약",
           "weekly history 요약"
         ]
+      },
+      {
+        "name": "Dashboard API 실시간화",
+        "status": "realtime_ready",
+        "details": [
+          "정적 JSON API 8개",
+          "브랜드 상세 API 5개",
+          "30초 polling",
+          "실행 로그 표시",
+          "Vercel rewrite"
+        ]
       }
     ],
     "agent_status": [
@@ -1942,18 +2036,32 @@
         "step": "09",
         "title": "대시보드 실시간화",
         "owner": "dashboard",
+        "status": "realtime_ready"
+      },
+      {
+        "step": "10",
+        "title": "GitHub Actions 자동화",
+        "owner": "workflow",
         "status": "next"
       }
     ]
   },
   "verification": {
-    "last_command": "python -m unittest tests.test_trend_collector tests.test_data_collector tests.test_manager tests.test_prompt_engineer tests.test_image_designer tests.test_storage_utils tests.test_build_dashboard_data",
+    "last_command": "python -m unittest tests.test_trend_collector tests.test_data_collector tests.test_manager tests.test_prompt_engineer tests.test_image_designer tests.test_storage_utils tests.test_dashboard_api tests.test_build_dashboard_data",
     "last_result": "passed",
-    "test_count": 30
+    "test_count": 33
   },
   "git": {
     "branch": "main",
     "recent_commits": [
+      {
+        "hash": "682e85a",
+        "subject": "[DOCS] PHASE 9 배포 확인 기록"
+      },
+      {
+        "hash": "30d3079",
+        "subject": "[PHASE 9] 저장소 연동 dry-run 구현"
+      },
       {
         "hash": "9edf5ab",
         "subject": "[VERCEL] 루트 대시보드 경로 연결"
@@ -1965,21 +2073,13 @@
       {
         "hash": "537b27c",
         "subject": "[PHASE 8] Winner Loser 학습 구현"
-      },
-      {
-        "hash": "50d5647",
-        "subject": "[DOCS] Vercel 확인 보류 상태 기록"
-      },
-      {
-        "hash": "1e6e0c2",
-        "subject": "[PHASE 7] 품질 검수 및 재생성 판단 구현"
       }
     ]
   },
   "next_step": {
-    "phase": "PHASE 10",
-    "title": "Dashboard 실시간화",
-    "summary": "정적 JSON 중심 대시보드를 실행 로그와 API 기반 상태 갱신 구조로 확장한다."
+    "phase": "PHASE 11",
+    "title": "GitHub Actions 자동화",
+    "summary": "평일 02:00 KST 자동 실행, 수동 실행, 비용 초과 중단, history 커밋 흐름을 workflow에 연결한다."
   },
   "risks": [
     "광고 API와 트렌드 API는 아직 mock 수집 단계다.",
@@ -1989,6 +2089,6 @@
     "품질 검수는 dry-run 요청 메타데이터 기준이며 실제 이미지 픽셀 검수는 이미지 API 연결 후 확장한다.",
     "Winner/Loser 학습은 mock 광고 성과 기준이며 실제 캠페인 집행 일수는 API 연결 후 교체한다.",
     "Google Drive는 dry-run manifest 단계이며 실제 업로드에는 서비스 계정 또는 OAuth 인증이 필요하다.",
-    "초 단위 실행 로그 실시간화는 PHASE 10 API 연동에서 확장한다."
+    "대시보드 실시간화는 30초 polling 기반이며 서버 push 방식은 후속 안정화 단계에서 확장한다."
   ]
 }

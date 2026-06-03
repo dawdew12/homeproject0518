@@ -1,0 +1,231 @@
+{
+  "status": "brand_detail_api_ready",
+  "generated_at": "2026-06-03T19:48:28+09:00",
+  "brand": "kinda",
+  "snapshot": {
+    "brand": "kinda",
+    "ad_records": 3,
+    "trend_records": 4,
+    "avg_ctr": 2.3661,
+    "avg_roas": 259.0,
+    "avg_cpa": 4.9024,
+    "avg_trend_score": 72.0,
+    "top_keywords": [
+      "극손상 헤어팩",
+      "비포애프터",
+      "홈케어"
+    ],
+    "manager_priority": "test",
+    "creative_direction": "극손상 헤어팩 중심의 손상 모발 회복, 부드럽고 신뢰감 있는 뷰티 톤 소재",
+    "status": "mock_ready"
+  },
+  "manager": [
+    {
+      "brand": "kinda",
+      "priority": "test",
+      "creative_direction": "극손상 헤어팩 중심의 손상 모발 회복, 부드럽고 신뢰감 있는 뷰티 톤 소재",
+      "visual_concept": "손상 모발 전후 차이가 선명한 욕실·파우더룸 실사",
+      "actions": [
+        "첫 화면 후킹 이미지를 더 명확하게 만들고 핵심 베네핏을 1개로 좁힌다.",
+        "신뢰 증거와 사용 맥락을 보강해 전환 설득력을 높인다."
+      ],
+      "keywords": [
+        "극손상 헤어팩",
+        "비포애프터",
+        "홈케어"
+      ]
+    }
+  ],
+  "prompts": [
+    {
+      "prompt_id": "kinda_20260518_prompt01",
+      "brand": "kinda",
+      "image_type_label": "실사",
+      "quality": "high",
+      "file_name_preview": "kinda_20260518_실사_극손상-헤어팩-비포애프터-홈케어_v01_high.png",
+      "copy_space": "bottom_25_percent",
+      "rules": [
+        "NO text",
+        "NO watermark",
+        "NO logo",
+        "Leave 25% bottom space for copywriting"
+      ]
+    },
+    {
+      "prompt_id": "kinda_20260518_prompt02",
+      "brand": "kinda",
+      "image_type_label": "실사",
+      "quality": "high",
+      "file_name_preview": "kinda_20260518_실사_극손상-헤어팩-비포애프터-홈케어_v02_high.png",
+      "copy_space": "bottom_25_percent",
+      "rules": [
+        "NO text",
+        "NO watermark",
+        "NO logo",
+        "Leave 25% bottom space for copywriting"
+      ]
+    },
+    {
+      "prompt_id": "kinda_20260518_prompt03",
+      "brand": "kinda",
+      "image_type_label": "일러스트",
+      "quality": "medium",
+      "file_name_preview": "kinda_20260518_일러스트_극손상-헤어팩-비포애프터-홈케어_v03_medium.png",
+      "copy_space": "bottom_25_percent",
+      "rules": [
+        "NO text",
+        "NO watermark",
+        "NO logo",
+        "Leave 25% bottom space for copywriting"
+      ]
+    },
+    {
+      "prompt_id": "kinda_20260518_prompt04",
+      "brand": "kinda",
+      "image_type_label": "일러스트",
+      "quality": "medium",
+      "file_name_preview": "kinda_20260518_일러스트_극손상-헤어팩-비포애프터-홈케어_v04_medium.png",
+      "copy_space": "bottom_25_percent",
+      "rules": [
+        "NO text",
+        "NO watermark",
+        "NO logo",
+        "Leave 25% bottom space for copywriting"
+      ]
+    }
+  ],
+  "images": [
+    {
+      "prompt_id": "kinda_20260518_prompt01",
+      "brand": "kinda",
+      "image_type_label": "실사",
+      "quality": "high",
+      "estimated_cost_usd": 0.211,
+      "output_path": "outputs/kinda/2026-05-18/kinda_20260518_실사_극손상-헤어팩-비포애프터-홈케어_v01_high.png",
+      "status": "dry_run_ready"
+    },
+    {
+      "prompt_id": "kinda_20260518_prompt02",
+      "brand": "kinda",
+      "image_type_label": "실사",
+      "quality": "high",
+      "estimated_cost_usd": 0.211,
+      "output_path": "outputs/kinda/2026-05-18/kinda_20260518_실사_극손상-헤어팩-비포애프터-홈케어_v02_high.png",
+      "status": "dry_run_ready"
+    },
+    {
+      "prompt_id": "kinda_20260518_prompt03",
+      "brand": "kinda",
+      "image_type_label": "일러스트",
+      "quality": "medium",
+      "estimated_cost_usd": 0.053,
+      "output_path": "outputs/kinda/2026-05-18/kinda_20260518_일러스트_극손상-헤어팩-비포애프터-홈케어_v03_medium.png",
+      "status": "dry_run_ready"
+    },
+    {
+      "prompt_id": "kinda_20260518_prompt04",
+      "brand": "kinda",
+      "image_type_label": "일러스트",
+      "quality": "medium",
+      "estimated_cost_usd": 0.053,
+      "output_path": "outputs/kinda/2026-05-18/kinda_20260518_일러스트_극손상-헤어팩-비포애프터-홈케어_v04_medium.png",
+      "status": "dry_run_ready"
+    }
+  ],
+  "quality_reviews": [
+    {
+      "prompt_id": "kinda_20260518_prompt01",
+      "brand": "kinda",
+      "image_type_label": "실사",
+      "score": 100,
+      "status": "approved",
+      "regeneration_needed": false,
+      "reason": "all_checks_passed"
+    },
+    {
+      "prompt_id": "kinda_20260518_prompt02",
+      "brand": "kinda",
+      "image_type_label": "실사",
+      "score": 100,
+      "status": "approved",
+      "regeneration_needed": false,
+      "reason": "all_checks_passed"
+    },
+    {
+      "prompt_id": "kinda_20260518_prompt03",
+      "brand": "kinda",
+      "image_type_label": "일러스트",
+      "score": 100,
+      "status": "approved",
+      "regeneration_needed": false,
+      "reason": "all_checks_passed"
+    },
+    {
+      "prompt_id": "kinda_20260518_prompt04",
+      "brand": "kinda",
+      "image_type_label": "일러스트",
+      "score": 100,
+      "status": "approved",
+      "regeneration_needed": false,
+      "reason": "all_checks_passed"
+    }
+  ],
+  "learning": [
+    {
+      "creative_id": "kinda_meta_mock_001",
+      "brand": "kinda",
+      "source": "meta",
+      "label": "winner",
+      "reason": "ctr_roas_cpa_passed",
+      "ctr": 2.4359,
+      "roas": 259.0,
+      "cpa": 5.4,
+      "action": "해당 소재 각도를 다음 프롬프트의 우선 콘셉트로 승격한다."
+    },
+    {
+      "creative_id": "kinda_naver_sa_mock_001",
+      "brand": "kinda",
+      "source": "naver_sa",
+      "label": "winner",
+      "reason": "ctr_roas_cpa_passed",
+      "ctr": 2.3636,
+      "roas": 259.0,
+      "cpa": 4.85,
+      "action": "해당 소재 각도를 다음 프롬프트의 우선 콘셉트로 승격한다."
+    }
+  ],
+  "storage": [
+    {
+      "prompt_id": "kinda_20260518_prompt01",
+      "brand": "kinda",
+      "classification": "winner",
+      "source_exists": false,
+      "drive_path": "AIPR_소재관리/kinda/2026-05-18/winner/kinda_20260518_실사_극손상-헤어팩-비포애프터-홈케어_v01_high.png",
+      "status": "dry_run_planned"
+    },
+    {
+      "prompt_id": "kinda_20260518_prompt02",
+      "brand": "kinda",
+      "classification": "winner",
+      "source_exists": false,
+      "drive_path": "AIPR_소재관리/kinda/2026-05-18/winner/kinda_20260518_실사_극손상-헤어팩-비포애프터-홈케어_v02_high.png",
+      "status": "dry_run_planned"
+    },
+    {
+      "prompt_id": "kinda_20260518_prompt03",
+      "brand": "kinda",
+      "classification": "winner",
+      "source_exists": false,
+      "drive_path": "AIPR_소재관리/kinda/2026-05-18/winner/kinda_20260518_일러스트_극손상-헤어팩-비포애프터-홈케어_v03_medium.png",
+      "status": "dry_run_planned"
+    },
+    {
+      "prompt_id": "kinda_20260518_prompt04",
+      "brand": "kinda",
+      "classification": "winner",
+      "source_exists": false,
+      "drive_path": "AIPR_소재관리/kinda/2026-05-18/winner/kinda_20260518_일러스트_극손상-헤어팩-비포애프터-홈케어_v04_medium.png",
+      "status": "dry_run_planned"
+    }
+  ]
+}

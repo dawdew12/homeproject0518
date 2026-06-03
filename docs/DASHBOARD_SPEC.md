@@ -38,6 +38,15 @@
 - `GET /api/winner-loser`.
 - `GET /api/logs`.
 
+## PHASE 10 구현 결정
+
+- Vercel 배포는 `web` 폴더 정적 배포를 유지한다.
+- `scripts/build_dashboard_data.py`가 `web/data/latest_status.json`과 `web/api/*.json`을 함께 생성한다.
+- `vercel.json` rewrite로 `/api/status`, `/api/agents`, `/api/costs`, `/api/brands`, `/api/brands/{brand}`, `/api/history/daily`, `/api/winner-loser`, `/api/logs`를 정적 JSON에 연결한다.
+- `dashboard_api.py`는 동일 payload를 반환하는 FastAPI-compatible skeleton이다.
+- `web/index.html`은 30초 polling으로 API 상태와 실행 로그를 갱신한다.
+- 현재 실시간화는 polling 기반이며 서버 push 방식은 후속 안정화 단계에서 확장한다.
+
 ## PHASE 1 결정
 
 PHASE 1에서는 HTML 구조를 바꾸지 않는다. 정적 데이터는 유지하고, 향후 FastAPI 또는 JSON 기반 연동을 위한 데이터 계약만 문서화한다.

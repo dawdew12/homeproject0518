@@ -1,0 +1,139 @@
+{
+  "status": "agents_api_ready",
+  "generated_at": "2026-06-03T19:48:28+09:00",
+  "agents": [
+    {
+      "agent": "팀장",
+      "file": "agents/manager.py",
+      "status": "learning_ready",
+      "implemented": [
+        "광고/트렌드 종합",
+        "브랜드별 우선순위",
+        "소재 방향",
+        "프롬프트 handoff",
+        "품질 검수",
+        "Winner/Loser 학습"
+      ],
+      "output": "history/daily/{date}_winner_loser.json",
+      "next": "PHASE 10에서 대시보드 실시간화"
+    },
+    {
+      "agent": "팀원 A",
+      "file": "agents/data_collector.py",
+      "status": "mock_ready",
+      "implemented": [
+        "Meta mock 수집",
+        "네이버SA mock 수집",
+        "카카오모먼트 mock 수집",
+        "3회 retry",
+        "JSON 저장"
+      ],
+      "output": "history/daily/{date}_ad_data.json",
+      "next": "실제 광고 API 응답 매핑"
+    },
+    {
+      "agent": "팀원 B",
+      "file": "agents/trend_collector.py",
+      "status": "mock_ready",
+      "implemented": [
+        "네이버 트렌드 mock",
+        "Google Trends mock",
+        "뉴스/경쟁사 mock",
+        "시장조사 출처 카탈로그",
+        "JSON 저장"
+      ],
+      "output": "history/daily/{date}_trend_data.json",
+      "next": "실제 트렌드/뉴스 수집 연결"
+    },
+    {
+      "agent": "팀원 C",
+      "file": "agents/prompt_engineer.py",
+      "status": "prompt_ready",
+      "implemented": [
+        "브랜드별 스토리보드 4개",
+        "이미지 프롬프트 4개",
+        "no-text 규칙",
+        "파일명 preview",
+        "검수 피드백 반영"
+      ],
+      "output": "history/daily/{date}_prompts.json",
+      "next": "PHASE 6에서 팀원 D 이미지 dry-run과 연결"
+    },
+    {
+      "agent": "팀원 D",
+      "file": "agents/image_designer.py",
+      "status": "dry_run_ready",
+      "implemented": [
+        "이미지 비용 설정",
+        "브랜드별 batch dry-run",
+        "출력 경로 생성",
+        "한도 확인",
+        "재생성 제한"
+      ],
+      "output": "outputs/{brand}/{date}/",
+      "next": "실제 gpt-image-2 API 호출과 Google Drive 실업로드 연결"
+    }
+  ],
+  "pipeline_steps": [
+    {
+      "step": "01",
+      "title": "광고 성과 수집",
+      "owner": "팀원 A",
+      "status": "mock_ready"
+    },
+    {
+      "step": "02",
+      "title": "트렌드/시장조사 수집",
+      "owner": "팀원 B",
+      "status": "mock_ready"
+    },
+    {
+      "step": "03",
+      "title": "팀장 분석/개선안",
+      "owner": "팀장",
+      "status": "analysis_ready"
+    },
+    {
+      "step": "04",
+      "title": "스토리보드/프롬프트",
+      "owner": "팀원 C",
+      "status": "prompt_ready"
+    },
+    {
+      "step": "05",
+      "title": "이미지 생성",
+      "owner": "팀원 D",
+      "status": "dry_run_ready"
+    },
+    {
+      "step": "06",
+      "title": "품질 검수/재생성",
+      "owner": "팀장",
+      "status": "quality_review_ready"
+    },
+    {
+      "step": "07",
+      "title": "Winner/Loser 학습",
+      "owner": "팀장",
+      "status": "learning_ready"
+    },
+    {
+      "step": "08",
+      "title": "저장소 연동",
+      "owner": "utils",
+      "status": "storage_ready"
+    },
+    {
+      "step": "09",
+      "title": "대시보드 실시간화",
+      "owner": "dashboard",
+      "status": "realtime_ready"
+    },
+    {
+      "step": "10",
+      "title": "GitHub Actions 자동화",
+      "owner": "workflow",
+      "status": "next"
+    }
+  ]
+}

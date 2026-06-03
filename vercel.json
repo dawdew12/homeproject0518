@@ -7,6 +7,38 @@
     {
       "source": "/",
       "destination": "/index.html"
+    },
+    {
+      "source": "/api/status",
+      "destination": "/api/status.json"
+    },
+    {
+      "source": "/api/agents",
+      "destination": "/api/agents.json"
+    },
+    {
+      "source": "/api/costs",
+      "destination": "/api/costs.json"
+    },
+    {
+      "source": "/api/brands",
+      "destination": "/api/brands.json"
+    },
+    {
+      "source": "/api/brands/:brand",
+      "destination": "/api/brands/:brand.json"
+    },
+    {
+      "source": "/api/history/daily",
+      "destination": "/api/history/daily.json"
+    },
+    {
+      "source": "/api/winner-loser",
+      "destination": "/api/winner-loser.json"
+    },
+    {
+      "source": "/api/logs",
+      "destination": "/api/logs.json"
     }
   ]
 }

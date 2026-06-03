@@ -1,0 +1,152 @@
+{
+  "status": "winner_loser_api_ready",
+  "generated_at": "2026-06-03T19:48:28+09:00",
+  "summary": {
+    "exists": true,
+    "path": "history/daily/2026-05-18_winner_loser.json",
+    "date": "2026-05-18",
+    "status": "winner_loser_learning_ready",
+    "record_count": 15,
+    "winner_count": 12,
+    "loser_count": 0,
+    "pending_count": 3,
+    "mature_count": 15,
+    "winner_rate": 0.8,
+    "brand_summary": [
+      {
+        "brand": "someud",
+        "winner_count": 0,
+        "loser_count": 0,
+        "pending_count": 3,
+        "top_label": "pending"
+      },
+      {
+        "brand": "kinda",
+        "winner_count": 3,
+        "loser_count": 0,
+        "pending_count": 0,
+        "top_label": "winner"
+      },
+      {
+        "brand": "melliance",
+        "winner_count": 3,
+        "loser_count": 0,
+        "pending_count": 0,
+        "top_label": "winner"
+      },
+      {
+        "brand": "paperback",
+        "winner_count": 3,
+        "loser_count": 0,
+        "pending_count": 0,
+        "top_label": "winner"
+      },
+      {
+        "brand": "baren",
+        "winner_count": 3,
+        "loser_count": 0,
+        "pending_count": 0,
+        "top_label": "winner"
+      }
+    ]
+  },
+  "patterns": {
+    "exists": true,
+    "path": "history/winner_loser_patterns.json",
+    "updated_at": "2026-05-18",
+    "winner_count": 12,
+    "loser_count": 0,
+    "pending_count": 3,
+    "brand_count": 5
+  },
+  "preview": [
+    {
+      "creative_id": "someud_meta_mock_001",
+      "brand": "someud",
+      "source": "meta",
+      "label": "pending",
+      "reason": "mixed_signal",
+      "ctr": 2.3913,
+      "roas": 247.0,
+      "cpa": 5.6875,
+      "action": "집행 신호가 더 쌓일 때까지 관찰한다."
+    },
+    {
+      "creative_id": "kinda_meta_mock_001",
+      "brand": "kinda",
+      "source": "meta",
+      "label": "winner",
+      "reason": "ctr_roas_cpa_passed",
+      "ctr": 2.4359,
+      "roas": 259.0,
+      "cpa": 5.4,
+      "action": "해당 소재 각도를 다음 프롬프트의 우선 콘셉트로 승격한다."
+    },
+    {
+      "creative_id": "melliance_meta_mock_001",
+      "brand": "melliance",
+      "source": "meta",
+      "label": "winner",
+      "reason": "ctr_roas_cpa_passed",
+      "ctr": 2.4713,
+      "roas": 271.0,
+      "cpa": 10.4167,
+      "action": "해당 소재 각도를 다음 프롬프트의 우선 콘셉트로 승격한다."
+    },
+    {
+      "creative_id": "paperback_meta_mock_001",
+      "brand": "paperback",
+      "source": "meta",
+      "label": "winner",
+      "reason": "ctr_roas_cpa_passed",
+      "ctr": 2.5,
+      "roas": 283.0,
+      "cpa": 8.875,
+      "action": "해당 소재 각도를 다음 프롬프트의 우선 콘셉트로 승격한다."
+    },
+    {
+      "creative_id": "baren_meta_mock_001",
+      "brand": "baren",
+      "source": "meta",
+      "label": "winner",
+      "reason": "ctr_roas_cpa_passed",
+      "ctr": 2.5238,
+      "roas": 295.0,
+      "cpa": 7.95,
+      "action": "해당 소재 각도를 다음 프롬프트의 우선 콘셉트로 승격한다."
+    },
+    {
+      "creative_id": "someud_naver_sa_mock_001",
+      "brand": "someud",
+      "source": "naver_sa",
+      "label": "pending",
+      "reason": "mixed_signal",
+      "ctr": 2.3129,
+      "roas": 247.0,
+      "cpa": 4.97,
+      "action": "집행 신호가 더 쌓일 때까지 관찰한다."
+    },
+    {
+      "creative_id": "kinda_naver_sa_mock_001",
+      "brand": "kinda",
+      "source": "naver_sa",
+      "label": "winner",
+      "reason": "ctr_roas_cpa_passed",
+      "ctr": 2.3636,
+      "roas": 259.0,
+      "cpa": 4.85,
+      "action": "해당 소재 각도를 다음 프롬프트의 우선 콘셉트로 승격한다."
+    },
+    {
+      "creative_id": "melliance_naver_sa_mock_001",
+      "brand": "melliance",
+      "source": "naver_sa",
+      "label": "winner",
+      "reason": "ctr_roas_cpa_passed",
+      "ctr": 2.4044,
+      "roas": 271.0,
+      "cpa": 8.3375,
+      "action": "해당 소재 각도를 다음 프롬프트의 우선 콘셉트로 승격한다."
+    }
+  ]
+}

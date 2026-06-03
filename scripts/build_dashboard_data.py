@@ -11,6 +11,8 @@ from typing import Any
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 OUTPUT_DIR = PROJECT_ROOT / "web" / "data"
 OUTPUT_PATH = OUTPUT_DIR / "latest_status.json"
+API_OUTPUT_DIR = PROJECT_ROOT / "web" / "api"
+LOG_DIR = PROJECT_ROOT / "logs"
 KST = timezone(timedelta(hours=9))
 
 
@@ -19,6 +21,33 @@ def read_json(path: Path, default: Any) -> Any:
     if not path.exists() or not path.is_file():
         return default
     return json.loads(path.read_text(encoding="utf-8-sig"))
+
+
+def write_json(path: Path, payload: dict[str, Any]) -> Path:
+    """JSON payload를 보기 쉬운 포맷으로 저장한다."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    return path
+
+
+def normalize_path(path: Path) -> str:
+    """프로젝트 기준 경로를 대시보드용 슬래시 경로로 변환한다."""
+    try:
+        return str(path.relative_to(PROJECT_ROOT)).replace("\\", "/")
+    except ValueError:
+        return str(path).replace("\\", "/")
+
+
+def read_recent_log_lines(path: Path, limit: int = 20) -> list[dict[str, Any]]:
+    """로그 파일의 최근 줄을 대시보드 API용으로 반환한다."""
+    if not path.exists() or not path.is_file():
+        return []
+    lines = path.read_text(encoding="utf-8-sig").splitlines()
+    start = max(len(lines) - limit, 0)
+    return [
+        {"line_no": index + 1, "text": line}
+        for index, line in enumerate(lines[start:], start=start)
+    ]
 
 
 def find_latest_file(pattern: str) -> Path | None:
@@ -485,7 +514,8 @@ def build_pipeline_steps() -> list[dict[str, str]]:
         {"step": "06", "title": "품질 검수/재생성", "owner": "팀장", "status": "quality_review_ready"},
         {"step": "07", "title": "Winner/Loser 학습", "owner": "팀장", "status": "learning_ready"},
         {"step": "08", "title": "저장소 연동", "owner": "utils", "status": "storage_ready"},
-        {"step": "09", "title": "대시보드 실시간화", "owner": "dashboard", "status": "next"},
+        {"step": "09", "title": "대시보드 실시간화", "owner": "dashboard", "status": "realtime_ready"},
+        {"step": "10", "title": "GitHub Actions 자동화", "owner": "workflow", "status": "next"},
     ]
 
 
@@ -542,6 +572,11 @@ def build_feature_status() -> list[dict[str, Any]]:
             "status": "storage_ready",
             "details": ["Drive manifest 20개", "Winner 폴더 16개", "Pending 폴더 4개", "daily history 요약", "weekly history 요약"],
         },
+        {
+            "name": "Dashboard API 실시간화",
+            "status": "realtime_ready",
+            "details": ["정적 JSON API 8개", "브랜드 상세 API 5개", "30초 polling", "실행 로그 표시", "Vercel rewrite"],
+        },
     ]
 
 
@@ -567,8 +602,8 @@ def build_phase_roadmap() -> list[dict[str, Any]]:
         {"phase": "PHASE 7", "title": "품질 검수 및 재생성", "status": "completed", "progress": 100},
         {"phase": "PHASE 8", "title": "Winner/Loser 학습", "status": "completed", "progress": 100},
         {"phase": "PHASE 9", "title": "저장소 연동", "status": "completed", "progress": 100},
-        {"phase": "PHASE 10", "title": "Dashboard 실시간화", "status": "next", "progress": 0},
-        {"phase": "PHASE 11", "title": "GitHub Actions 자동화", "status": "planned", "progress": 0},
+        {"phase": "PHASE 10", "title": "Dashboard 실시간화", "status": "completed", "progress": 100},
+        {"phase": "PHASE 11", "title": "GitHub Actions 자동화", "status": "next", "progress": 0},
         {"phase": "PHASE 12", "title": "안정화", "status": "planned", "progress": 0},
     ]
 
@@ -582,10 +617,10 @@ def build_overall_progress(roadmap: list[dict[str, Any]]) -> dict[str, Any]:
         "completed_phase_count": completed,
         "total_phase_count": total,
         "percent": round(completed / total * 100),
-        "current_phase": "PHASE 9",
+        "current_phase": "PHASE 10",
         "next_phase": next_items[0]["phase"] if next_items else None,
-        "dashboard_milestones_completed": 2,
-        "latest_test_count": 30,
+        "dashboard_milestones_completed": 3,
+        "latest_test_count": 33,
         "latest_test_result": "passed",
     }
 
@@ -634,8 +669,9 @@ def build_architecture_layers() -> list[dict[str, Any]]:
                 {"id": "history", "label": "history/daily", "status": "storage_ready", "metric": "9 daily JSON"},
                 {"id": "gdrive", "label": "Google Drive manifest", "status": "storage_ready", "metric": "20 planned"},
                 {"id": "weekly_history", "label": "history/weekly", "status": "storage_ready", "metric": "2026-W21"},
-                {"id": "dashboard", "label": "Vercel Dashboard", "status": "static_ready", "metric": "READY"},
-                {"id": "automation", "label": "GitHub Actions", "status": "planned", "metric": "PHASE 11"},
+                {"id": "dashboard", "label": "Vercel Dashboard", "status": "realtime_ready", "metric": "30s polling"},
+                {"id": "dashboard_api", "label": "Dashboard API", "status": "realtime_ready", "metric": "8 endpoints"},
+                {"id": "automation", "label": "GitHub Actions", "status": "next", "metric": "PHASE 11"},
             ],
         },
     ]
@@ -659,7 +695,8 @@ def build_architecture_flow() -> list[dict[str, str]]:
         {"from": "팀장 학습", "to": "history/winner_loser_patterns.json", "artifact": "누적 패턴 15개", "status": "ready"},
         {"from": "이미지 Dry-run + 학습", "to": "Google Drive manifest", "artifact": "저장 계획 20개", "status": "storage_ready"},
         {"from": "history/daily", "to": "history/weekly", "artifact": "2026-W21 요약", "status": "storage_ready"},
-        {"from": "history/state/git", "to": "Vercel Dashboard", "artifact": "latest_status.json", "status": "ready"},
+        {"from": "history/state/logs", "to": "Dashboard API", "artifact": "정적 API JSON", "status": "realtime_ready"},
+        {"from": "Dashboard API", "to": "Vercel Dashboard", "artifact": "30초 polling", "status": "realtime_ready"},
     ]
 
 
@@ -679,6 +716,8 @@ def build_storage_contracts() -> list[dict[str, str]]:
         {"path": "history/weekly/{week}.json", "producer": "utils/github_history.py", "consumer": "주간 운영 리뷰", "status": "storage_ready"},
         {"path": "outputs/{brand}/{date}/", "producer": "팀원 D", "consumer": "팀장 검수", "status": "dry_run_ready"},
         {"path": "web/data/latest_status.json", "producer": "scripts/build_dashboard_data.py", "consumer": "Vercel Dashboard", "status": "ready"},
+        {"path": "web/api/{endpoint}.json", "producer": "scripts/build_dashboard_data.py", "consumer": "Dashboard polling, FastAPI mirror", "status": "realtime_ready"},
+        {"path": "dashboard_api.py", "producer": "PHASE 10", "consumer": "FastAPI local server", "status": "realtime_ready"},
     ]
 
 
@@ -768,12 +807,124 @@ def build_phase_test_results() -> list[dict[str, Any]]:
         {
             "phase": "PHASE 10",
             "scope": "Dashboard 실시간화",
-            "check": "예정: API 기반 실행 로그 갱신",
+            "check": "python -m unittest tests.test_dashboard_api",
+            "result": "passed",
+            "test_count": 3,
+            "artifact": "web/api/status.json",
+        },
+        {
+            "phase": "PHASE 11",
+            "scope": "GitHub Actions 자동화",
+            "check": "예정: workflow_dispatch와 평일 02:00 KST 검증",
             "result": "next",
             "test_count": 0,
-            "artifact": "web/data/latest_status.json",
+            "artifact": ".github/workflows/daily_run.yml",
         },
     ]
+
+
+def build_api_manifest() -> list[dict[str, str]]:
+    """Vercel rewrite와 FastAPI가 공유할 대시보드 API 계약을 반환한다."""
+    return [
+        {"path": "/api/status", "file": "web/api/status.json", "description": "현재 phase와 전체 진행도"},
+        {"path": "/api/agents", "file": "web/api/agents.json", "description": "에이전트와 파이프라인 상태"},
+        {"path": "/api/costs", "file": "web/api/costs.json", "description": "비용과 runtime 상태"},
+        {"path": "/api/brands", "file": "web/api/brands.json", "description": "브랜드별 운영 지표 목록"},
+        {"path": "/api/brands/{brand}", "file": "web/api/brands/{brand}.json", "description": "브랜드 상세 지표"},
+        {"path": "/api/history/daily", "file": "web/api/history/daily.json", "description": "daily history 산출물 요약"},
+        {"path": "/api/winner-loser", "file": "web/api/winner-loser.json", "description": "Winner/Loser 학습 결과"},
+        {"path": "/api/logs", "file": "web/api/logs.json", "description": "최근 실행 로그"},
+    ]
+
+
+def build_brand_detail(payload: dict[str, Any], brand_name: str) -> dict[str, Any]:
+    """브랜드 1개의 API 상세 payload를 만든다."""
+    data = payload.get("data", {})
+    return {
+        "status": "brand_detail_api_ready",
+        "generated_at": payload.get("generated_at"),
+        "brand": brand_name,
+        "snapshot": next((item for item in data.get("brand_snapshots", []) if item.get("brand") == brand_name), {}),
+        "manager": [item for item in data.get("manager_preview", []) if item.get("brand") == brand_name],
+        "prompts": [item for item in data.get("prompt_preview", []) if item.get("brand") == brand_name],
+        "images": [item for item in data.get("image_preview", []) if item.get("brand") == brand_name],
+        "quality_reviews": [item for item in data.get("quality_preview", []) if item.get("brand") == brand_name],
+        "learning": [item for item in data.get("learning_preview", []) if item.get("brand") == brand_name],
+        "storage": [item for item in data.get("storage", {}).get("gdrive_preview", []) if item.get("brand") == brand_name],
+    }
+
+
+def build_dashboard_api_payloads(payload: dict[str, Any]) -> dict[str, Any]:
+    """대시보드에서 polling할 API별 payload를 만든다."""
+    data = payload.get("data", {})
+    runtime = read_json(PROJECT_ROOT / "state" / "runtime.json", {})
+    github_history_path = data.get("storage", {}).get("github_history", {}).get("path")
+    github_history_payload = read_json(PROJECT_ROOT / github_history_path, {}) if github_history_path else {}
+    brands = data.get("brand_snapshots", [])
+
+    return {
+        "status": {
+            "status": "dashboard_status_api_ready",
+            "generated_at": payload.get("generated_at"),
+            "project": payload.get("project", {}),
+            "current_phase": payload.get("current_phase", {}),
+            "overall_progress": payload.get("architecture", {}).get("overall_progress", {}),
+            "verification": payload.get("verification", {}),
+            "next_step": payload.get("next_step", {}),
+            "api": payload.get("api", {}),
+        },
+        "agents": {
+            "status": "agents_api_ready",
+            "generated_at": payload.get("generated_at"),
+            "agents": payload.get("operations", {}).get("agent_status", []),
+            "pipeline_steps": payload.get("operations", {}).get("pipeline_steps", []),
+        },
+        "costs": {
+            "status": "costs_api_ready",
+            "generated_at": payload.get("generated_at"),
+            "runtime": runtime,
+            "image_dry_run": data.get("images", {}),
+            "storage": data.get("storage", {}).get("gdrive", {}),
+            "budget": {
+                "daily_limit_usd": 5.0,
+                "monthly_limit_usd": 79.0,
+                "image_monthly_limit_usd": 65.0,
+            },
+        },
+        "brands": {
+            "status": "brands_api_ready",
+            "generated_at": payload.get("generated_at"),
+            "brand_count": len(brands),
+            "brands": brands,
+        },
+        "brand_details": {
+            brand.get("brand"): build_brand_detail(payload, brand.get("brand"))
+            for brand in brands
+            if brand.get("brand")
+        },
+        "history_daily": {
+            "status": "history_daily_api_ready",
+            "generated_at": payload.get("generated_at"),
+            "summary": data.get("storage", {}).get("github_history", {}),
+            "artifacts": github_history_payload.get("artifacts", []),
+            "planned_commit": github_history_payload.get("planned_commit", {}),
+        },
+        "winner_loser": {
+            "status": "winner_loser_api_ready",
+            "generated_at": payload.get("generated_at"),
+            "summary": data.get("winner_loser", {}),
+            "patterns": data.get("winner_loser_patterns", {}),
+            "preview": data.get("learning_preview", []),
+        },
+        "logs": {
+            "status": "logs_api_ready",
+            "generated_at": payload.get("generated_at"),
+            "execution": read_recent_log_lines(LOG_DIR / "execution.log"),
+            "cost_tracking": read_recent_log_lines(LOG_DIR / "cost_tracking.log"),
+            "system": read_recent_log_lines(LOG_DIR / "system.log"),
+            "api_errors": read_recent_log_lines(LOG_DIR / "api_errors.log"),
+        },
+    }
 
 
 def build_dashboard_payload() -> dict[str, Any]:
@@ -819,6 +970,11 @@ def build_dashboard_payload() -> dict[str, Any]:
             "vercel_team": "raw22226-9071s-projects",
             "custom_domain_enabled": False,
         },
+        "api": {
+            "mode": "static_json_rewrite",
+            "refresh_interval_seconds": 30,
+            "endpoints": build_api_manifest(),
+        },
         "current_phase": current_phase,
         "phase_progress": [
             {"phase": "PHASE 1", "title": "프로젝트 기반 세팅", "status": "completed"},
@@ -831,7 +987,8 @@ def build_dashboard_payload() -> dict[str, Any]:
             {"phase": "PHASE 7", "title": "품질 검수 및 재생성", "status": "completed"},
             {"phase": "PHASE 8", "title": "Winner/Loser 학습", "status": "completed"},
             {"phase": "PHASE 9", "title": "저장소 연동", "status": "completed"},
-            {"phase": "PHASE 10", "title": "Dashboard 실시간화", "status": "next"},
+            {"phase": "PHASE 10", "title": "Dashboard 실시간화", "status": "completed"},
+            {"phase": "PHASE 11", "title": "GitHub Actions 자동화", "status": "next"},
         ],
         "architecture": {
             "overall_progress": build_overall_progress(phase_roadmap),
@@ -874,18 +1031,18 @@ def build_dashboard_payload() -> dict[str, Any]:
             "pipeline_steps": build_pipeline_steps(),
         },
         "verification": {
-            "last_command": "python -m unittest tests.test_trend_collector tests.test_data_collector tests.test_manager tests.test_prompt_engineer tests.test_image_designer tests.test_storage_utils tests.test_build_dashboard_data",
+            "last_command": "python -m unittest tests.test_trend_collector tests.test_data_collector tests.test_manager tests.test_prompt_engineer tests.test_image_designer tests.test_storage_utils tests.test_dashboard_api tests.test_build_dashboard_data",
             "last_result": "passed",
-            "test_count": 30,
+            "test_count": 33,
         },
         "git": {
             "branch": run_git(["branch", "--show-current"]) or "main",
             "recent_commits": recent_commits,
         },
         "next_step": {
-            "phase": "PHASE 10",
-            "title": "Dashboard 실시간화",
-            "summary": "정적 JSON 중심 대시보드를 실행 로그와 API 기반 상태 갱신 구조로 확장한다.",
+            "phase": "PHASE 11",
+            "title": "GitHub Actions 자동화",
+            "summary": "평일 02:00 KST 자동 실행, 수동 실행, 비용 초과 중단, history 커밋 흐름을 workflow에 연결한다.",
         },
         "risks": [
             "광고 API와 트렌드 API는 아직 mock 수집 단계다.",
@@ -895,22 +1052,40 @@ def build_dashboard_payload() -> dict[str, Any]:
             "품질 검수는 dry-run 요청 메타데이터 기준이며 실제 이미지 픽셀 검수는 이미지 API 연결 후 확장한다.",
             "Winner/Loser 학습은 mock 광고 성과 기준이며 실제 캠페인 집행 일수는 API 연결 후 교체한다.",
             "Google Drive는 dry-run manifest 단계이며 실제 업로드에는 서비스 계정 또는 OAuth 인증이 필요하다.",
-            "초 단위 실행 로그 실시간화는 PHASE 10 API 연동에서 확장한다.",
+            "대시보드 실시간화는 30초 polling 기반이며 서버 push 방식은 후속 안정화 단계에서 확장한다.",
         ],
     }
 
 
 def write_dashboard_payload(payload: dict[str, Any], output_path: Path = OUTPUT_PATH) -> Path:
     """대시보드 JSON 파일을 저장한다."""
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    output_path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
-    return output_path
+    return write_json(output_path, payload)
+
+
+def write_dashboard_api_payloads(payload: dict[str, Any], output_dir: Path = API_OUTPUT_DIR) -> list[Path]:
+    """대시보드 API JSON 파일들을 저장한다."""
+    api_payloads = build_dashboard_api_payloads(payload)
+    written_paths = [
+        write_json(output_dir / "status.json", api_payloads["status"]),
+        write_json(output_dir / "agents.json", api_payloads["agents"]),
+        write_json(output_dir / "costs.json", api_payloads["costs"]),
+        write_json(output_dir / "brands.json", api_payloads["brands"]),
+        write_json(output_dir / "history" / "daily.json", api_payloads["history_daily"]),
+        write_json(output_dir / "winner-loser.json", api_payloads["winner_loser"]),
+        write_json(output_dir / "logs.json", api_payloads["logs"]),
+    ]
+    for brand_name, brand_payload in api_payloads["brand_details"].items():
+        written_paths.append(write_json(output_dir / "brands" / f"{brand_name}.json", brand_payload))
+    return written_paths
 
 
 def main() -> None:
     """대시보드 JSON 생성 명령행 진입점."""
-    output_path = write_dashboard_payload(build_dashboard_payload())
+    payload = build_dashboard_payload()
+    output_path = write_dashboard_payload(payload)
+    api_paths = write_dashboard_api_payloads(payload)
     print(f"saved {output_path}")
+    print(f"saved {len(api_paths)} api files")
 
 
 if __name__ == "__main__":

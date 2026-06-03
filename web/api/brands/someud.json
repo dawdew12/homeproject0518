@@ -1,0 +1,231 @@
+{
+  "status": "brand_detail_api_ready",
+  "generated_at": "2026-06-03T19:48:28+09:00",
+  "brand": "someud",
+  "snapshot": {
+    "brand": "someud",
+    "ad_records": 3,
+    "trend_records": 4,
+    "avg_ctr": 2.3159,
+    "avg_roas": 247.0,
+    "avg_cpa": 5.0497,
+    "avg_trend_score": 66.0,
+    "top_keywords": [
+      "숙면",
+      "어버이날 선물",
+      "황토침대"
+    ],
+    "manager_priority": "test",
+    "creative_direction": "황토침대 중심의 프리미엄 오가닉, 따뜻하고 신뢰감 소재",
+    "status": "mock_ready"
+  },
+  "manager": [
+    {
+      "brand": "someud",
+      "priority": "test",
+      "creative_direction": "황토침대 중심의 프리미엄 오가닉, 따뜻하고 신뢰감 소재",
+      "visual_concept": "따뜻한 침실에서 숙면과 가족 신뢰를 보여주는 실사",
+      "actions": [
+        "첫 화면 후킹 이미지를 더 명확하게 만들고 핵심 베네핏을 1개로 좁힌다.",
+        "신뢰 증거와 사용 맥락을 보강해 전환 설득력을 높인다."
+      ],
+      "keywords": [
+        "황토침대",
+        "어버이날 선물",
+        "숙면"
+      ]
+    }
+  ],
+  "prompts": [
+    {
+      "prompt_id": "someud_20260518_prompt01",
+      "brand": "someud",
+      "image_type_label": "실사",
+      "quality": "high",
+      "file_name_preview": "someud_20260518_실사_황토침대-어버이날-선물-숙면_v01_high.png",
+      "copy_space": "bottom_25_percent",
+      "rules": [
+        "NO text",
+        "NO watermark",
+        "NO logo",
+        "Leave 25% bottom space for copywriting"
+      ]
+    },
+    {
+      "prompt_id": "someud_20260518_prompt02",
+      "brand": "someud",
+      "image_type_label": "실사",
+      "quality": "high",
+      "file_name_preview": "someud_20260518_실사_황토침대-어버이날-선물-숙면_v02_high.png",
+      "copy_space": "bottom_25_percent",
+      "rules": [
+        "NO text",
+        "NO watermark",
+        "NO logo",
+        "Leave 25% bottom space for copywriting"
+      ]
+    },
+    {
+      "prompt_id": "someud_20260518_prompt03",
+      "brand": "someud",
+      "image_type_label": "일러스트",
+      "quality": "medium",
+      "file_name_preview": "someud_20260518_일러스트_황토침대-어버이날-선물-숙면_v03_medium.png",
+      "copy_space": "bottom_25_percent",
+      "rules": [
+        "NO text",
+        "NO watermark",
+        "NO logo",
+        "Leave 25% bottom space for copywriting"
+      ]
+    },
+    {
+      "prompt_id": "someud_20260518_prompt04",
+      "brand": "someud",
+      "image_type_label": "일러스트",
+      "quality": "medium",
+      "file_name_preview": "someud_20260518_일러스트_황토침대-어버이날-선물-숙면_v04_medium.png",
+      "copy_space": "bottom_25_percent",
+      "rules": [
+        "NO text",
+        "NO watermark",
+        "NO logo",
+        "Leave 25% bottom space for copywriting"
+      ]
+    }
+  ],
+  "images": [
+    {
+      "prompt_id": "someud_20260518_prompt01",
+      "brand": "someud",
+      "image_type_label": "실사",
+      "quality": "high",
+      "estimated_cost_usd": 0.211,
+      "output_path": "outputs/someud/2026-05-18/someud_20260518_실사_황토침대-어버이날-선물-숙면_v01_high.png",
+      "status": "dry_run_ready"
+    },
+    {
+      "prompt_id": "someud_20260518_prompt02",
+      "brand": "someud",
+      "image_type_label": "실사",
+      "quality": "high",
+      "estimated_cost_usd": 0.211,
+      "output_path": "outputs/someud/2026-05-18/someud_20260518_실사_황토침대-어버이날-선물-숙면_v02_high.png",
+      "status": "dry_run_ready"
+    },
+    {
+      "prompt_id": "someud_20260518_prompt03",
+      "brand": "someud",
+      "image_type_label": "일러스트",
+      "quality": "medium",
+      "estimated_cost_usd": 0.053,
+      "output_path": "outputs/someud/2026-05-18/someud_20260518_일러스트_황토침대-어버이날-선물-숙면_v03_medium.png",
+      "status": "dry_run_ready"
+    },
+    {
+      "prompt_id": "someud_20260518_prompt04",
+      "brand": "someud",
+      "image_type_label": "일러스트",
+      "quality": "medium",
+      "estimated_cost_usd": 0.053,
+      "output_path": "outputs/someud/2026-05-18/someud_20260518_일러스트_황토침대-어버이날-선물-숙면_v04_medium.png",
+      "status": "dry_run_ready"
+    }
+  ],
+  "quality_reviews": [
+    {
+      "prompt_id": "someud_20260518_prompt01",
+      "brand": "someud",
+      "image_type_label": "실사",
+      "score": 100,
+      "status": "approved",
+      "regeneration_needed": false,
+      "reason": "all_checks_passed"
+    },
+    {
+      "prompt_id": "someud_20260518_prompt02",
+      "brand": "someud",
+      "image_type_label": "실사",
+      "score": 100,
+      "status": "approved",
+      "regeneration_needed": false,
+      "reason": "all_checks_passed"
+    },
+    {
+      "prompt_id": "someud_20260518_prompt03",
+      "brand": "someud",
+      "image_type_label": "일러스트",
+      "score": 100,
+      "status": "approved",
+      "regeneration_needed": false,
+      "reason": "all_checks_passed"
+    },
+    {
+      "prompt_id": "someud_20260518_prompt04",
+      "brand": "someud",
+      "image_type_label": "일러스트",
+      "score": 100,
+      "status": "approved",
+      "regeneration_needed": false,
+      "reason": "all_checks_passed"
+    }
+  ],
+  "learning": [
+    {
+      "creative_id": "someud_meta_mock_001",
+      "brand": "someud",
+      "source": "meta",
+      "label": "pending",
+      "reason": "mixed_signal",
+      "ctr": 2.3913,
+      "roas": 247.0,
+      "cpa": 5.6875,
+      "action": "집행 신호가 더 쌓일 때까지 관찰한다."
+    },
+    {
+      "creative_id": "someud_naver_sa_mock_001",
+      "brand": "someud",
+      "source": "naver_sa",
+      "label": "pending",
+      "reason": "mixed_signal",
+      "ctr": 2.3129,
+      "roas": 247.0,
+      "cpa": 4.97,
+      "action": "집행 신호가 더 쌓일 때까지 관찰한다."
+    }
+  ],
+  "storage": [
+    {
+      "prompt_id": "someud_20260518_prompt01",
+      "brand": "someud",
+      "classification": "pending",
+      "source_exists": false,
+      "drive_path": "AIPR_소재관리/someud/2026-05-18/pending/someud_20260518_실사_황토침대-어버이날-선물-숙면_v01_high.png",
+      "status": "dry_run_planned"
+    },
+    {
+      "prompt_id": "someud_20260518_prompt02",
+      "brand": "someud",
+      "classification": "pending",
+      "source_exists": false,
+      "drive_path": "AIPR_소재관리/someud/2026-05-18/pending/someud_20260518_실사_황토침대-어버이날-선물-숙면_v02_high.png",
+      "status": "dry_run_planned"
+    },
+    {
+      "prompt_id": "someud_20260518_prompt03",
+      "brand": "someud",
+      "classification": "pending",
+      "source_exists": false,
+      "drive_path": "AIPR_소재관리/someud/2026-05-18/pending/someud_20260518_일러스트_황토침대-어버이날-선물-숙면_v03_medium.png",
+      "status": "dry_run_planned"
+    },
+    {
+      "prompt_id": "someud_20260518_prompt04",
+      "brand": "someud",
+      "classification": "pending",
+      "source_exists": false,
+      "drive_path": "AIPR_소재관리/someud/2026-05-18/pending/someud_20260518_일러스트_황토침대-어버이날-선물-숙면_v04_medium.png",
+      "status": "dry_run_planned"
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "status": "brand_detail_api_ready",
+  "generated_at": "2026-06-03T19:48:28+09:00",
+  "brand": "melliance",
+  "snapshot": {
+    "brand": "melliance",
+    "ad_records": 3,
+    "trend_records": 4,
+    "avg_ctr": 2.4065,
+    "avg_roas": 271.0,
+    "avg_cpa": 8.6147,
+    "avg_trend_score": 78.0,
+    "top_keywords": [
+      "봄 컬렉션",
+      "뷰티 루틴",
+      "피부결"
+    ],
+    "manager_priority": "scale",
+    "creative_direction": "뷰티 루틴 중심의 정돈된 뷰티, 세련되고 균형 잡힌 무드 소재",
+    "status": "mock_ready"
+  },
+  "manager": [
+    {
+      "brand": "melliance",
+      "priority": "scale",
+      "creative_direction": "뷰티 루틴 중심의 정돈된 뷰티, 세련되고 균형 잡힌 무드 소재",
+      "visual_concept": "피부결과 루틴을 정돈된 뷰티 무드로 보여주는 클로즈업",
+      "actions": [
+        "성과가 받쳐주는 키워드를 첫 소재 묶음의 메인 각도로 배치한다.",
+        "경쟁사 소재 변화가 감지된 채널은 카피보다 비주얼 차별점을 우선 검토한다."
+      ],
+      "keywords": [
+        "뷰티 루틴",
+        "봄 컬렉션",
+        "피부결"
+      ]
+    }
+  ],
+  "prompts": [],
+  "images": [],
+  "quality_reviews": [],
+  "learning": [
+    {
+      "creative_id": "melliance_meta_mock_001",
+      "brand": "melliance",
+      "source": "meta",
+      "label": "winner",
+      "reason": "ctr_roas_cpa_passed",
+      "ctr": 2.4713,
+      "roas": 271.0,
+      "cpa": 10.4167,
+      "action": "해당 소재 각도를 다음 프롬프트의 우선 콘셉트로 승격한다."
+    },
+    {
+      "creative_id": "melliance_naver_sa_mock_001",
+      "brand": "melliance",
+      "source": "naver_sa",
+      "label": "winner",
+      "reason": "ctr_roas_cpa_passed",
+      "ctr": 2.4044,
+      "roas": 271.0,
+      "cpa": 8.3375,
+      "action": "해당 소재 각도를 다음 프롬프트의 우선 콘셉트로 승격한다."
+    }
+  ],
+  "storage": []
+}

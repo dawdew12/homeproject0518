@@ -1,0 +1,56 @@
+{
+  "status": "brand_detail_api_ready",
+  "generated_at": "2026-06-03T19:48:28+09:00",
+  "brand": "baren",
+  "snapshot": {
+    "brand": "baren",
+    "ad_records": 3,
+    "trend_records": 4,
+    "avg_ctr": 2.4673,
+    "avg_roas": 295.0,
+    "avg_cpa": 7.0679,
+    "avg_trend_score": 90.0,
+    "top_keywords": [
+      "기능성 케어",
+      "성분",
+      "인포그래픽"
+    ],
+    "manager_priority": "scale",
+    "creative_direction": "기능성 케어 중심의 기능성, 명확하고 깨끗한 정보 전달 소재",
+    "status": "mock_ready"
+  },
+  "manager": [
+    {
+      "brand": "baren",
+      "priority": "scale",
+      "creative_direction": "기능성 케어 중심의 기능성, 명확하고 깨끗한 정보 전달 소재",
+      "visual_concept": "성분과 기능을 깨끗하게 이해시키는 정보형 비주얼",
+      "actions": [
+        "성과가 받쳐주는 키워드를 첫 소재 묶음의 메인 각도로 배치한다.",
+        "경쟁사 소재 변화가 감지된 채널은 카피보다 비주얼 차별점을 우선 검토한다."
+      ],
+      "keywords": [
+        "기능성 케어",
+        "인포그래픽",
+        "성분"
+      ]
+    }
+  ],
+  "prompts": [],
+  "images": [],
+  "quality_reviews": [],
+  "learning": [
+    {
+      "creative_id": "baren_meta_mock_001",
+      "brand": "baren",
+      "source": "meta",
+      "label": "winner",
+      "reason": "ctr_roas_cpa_passed",
+      "ctr": 2.5238,
+      "roas": 295.0,
+      "cpa": 7.95,
+      "action": "해당 소재 각도를 다음 프롬프트의 우선 콘셉트로 승격한다."
+    }
+  ],
+  "storage": []
+}
