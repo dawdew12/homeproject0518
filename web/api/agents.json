@@ -1,6 +1,6 @@
 {
   "status": "agents_api_ready",
-  "generated_at": "2026-06-03T19:48:28+09:00",
+  "generated_at": "2026-06-03T20:17:21+09:00",
   "agents": [
     {
       "agent": "팀장",
@@ -15,7 +15,7 @@
         "Winner/Loser 학습"
       ],
       "output": "history/daily/{date}_winner_loser.json",
-      "next": "PHASE 10에서 대시보드 실시간화"
+      "next": "PHASE 12에서 안정화와 실제 API 연결"
     },
     {
       "agent": "팀원 A",
@@ -133,6 +133,12 @@
       "step": "10",
       "title": "GitHub Actions 자동화",
       "owner": "workflow",
+      "status": "automation_ready"
+    },
+    {
+      "step": "11",
+      "title": "안정화",
+      "owner": "ops",
       "status": "next"
     }
   ]

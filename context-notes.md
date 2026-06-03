@@ -246,3 +246,21 @@
 - 따라서 원격 콘텐츠 검증은 배포 메타데이터 확인으로 대체하고, 실제 API 응답 검증은 로컬 HTTP 서버에서 수행했다.
 - 비로그인 공개 확인이 필요하면 Vercel Deployment Protection을 프로젝트 단위로 완전히 해제하거나 Trusted Sources 또는 bypass token을 별도로 구성해야 한다.
 
+## 2026-06-03 PHASE 11 GitHub Actions Automation 시작
+
+- PHASE 11의 범위는 기존 dry-run 에이전트들을 GitHub Actions에서 평일 02:00 KST와 수동 실행으로 돌릴 수 있게 연결하는 것이다.
+- 현재 `.github/workflows/daily_run.yml`은 placeholder echo만 실행하므로 실제 runner를 먼저 만든다.
+- 실제 광고 API, 이미지 API, Google Drive 업로드는 아직 인증과 운영 승인이 없으므로 workflow 기본값은 mock과 dry-run으로 유지한다.
+- 비용 초과 중단은 이미지 dry-run 예상 비용을 기준으로 workflow 실패를 발생시키는 guard로 구현한다.
+- history 커밋은 GitHub Actions에서 변경사항이 있을 때만 `history`, `state`, `web/data`, `web/api`를 커밋하도록 한다.
+
+## 2026-06-03 PHASE 11 GitHub Actions Automation 구현
+
+- `scripts/run_daily_pipeline.py`를 추가해 광고 수집, 트렌드 수집, 팀장 분석, 프롬프트 생성, 이미지 dry-run, 비용 guard, 품질 검수, Winner/Loser 학습, Drive manifest, GitHub history 요약, 대시보드 JSON 생성을 한 번에 실행한다.
+- workflow schedule은 KST 평일 02:00을 정확히 맞추기 위해 UTC 전날 17:00 기준인 `0 17 * * 0-4`로 설정했다.
+- `workflow_dispatch`는 선택 날짜와 mock/live 선택 입력을 제공한다.
+- Slack은 `SLACK_WEBHOOK_URL` secret이 있을 때만 실행되는 조건부 알림으로 둔다.
+- Actions 커밋 step은 생성된 history, runtime, dashboard JSON 변경사항이 있을 때만 커밋하고 push한다.
+- `history/daily/2026-05-18_pipeline_run.json`에는 PHASE 11 dry-run 결과, 비용 guard 통과, 11개 artifact, dashboard 파일 13개 생성 결과가 저장됐다.
+- 전체 검증 명령은 `python -m unittest tests.test_trend_collector tests.test_data_collector tests.test_manager tests.test_prompt_engineer tests.test_image_designer tests.test_storage_utils tests.test_dashboard_api tests.test_daily_pipeline tests.test_build_dashboard_data`이며 36개 테스트가 통과했다.
+

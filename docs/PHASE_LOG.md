@@ -181,3 +181,17 @@
 - 남은 리스크: Vercel 정적 배포 구조에서는 실제 데이터 갱신 주기가 GitHub Actions 또는 dashboard data build 실행 주기에 묶인다.
 - 남은 리스크: 비로그인 공개 접근은 Vercel Deployment Protection 설정에 따라 계속 차단될 수 있다.
 
+## 2026-06-03 PHASE 11 완료
+
+- 목표: 평일 02:00 KST 자동 실행, 수동 실행, 비용 초과 중단, Slack 알림, history와 dashboard 자동 커밋 흐름을 GitHub Actions에 연결.
+- `scripts/run_daily_pipeline.py`를 추가해 기존 dry-run 에이전트와 저장 유틸을 일일 실행 순서로 묶었다.
+- `.github/workflows/daily_run.yml`은 KST 평일 02:00에 맞춰 `0 17 * * 0-4` cron을 사용하고, `workflow_dispatch` 수동 실행을 지원한다.
+- workflow는 테스트 실행, daily pipeline 실행, 생성 변경사항 커밋, Slack 조건부 알림 순서로 구성했다.
+- `history/daily/2026-05-18_pipeline_run.json`에 dry-run 실행 결과를 저장했다.
+- 비용 guard는 예상 이미지 비용 $2.64가 일일 $5와 월간 $79 한도 안에 있는지 확인했고 통과했다.
+- 현재 공식 로드맵 기준 진행률은 11/12, 92%다.
+- 검증 명령: Codex 번들 Python으로 `python -m unittest tests.test_trend_collector tests.test_data_collector tests.test_manager tests.test_prompt_engineer tests.test_image_designer tests.test_storage_utils tests.test_dashboard_api tests.test_daily_pipeline tests.test_build_dashboard_data`.
+- 결과: 36개 테스트 통과.
+- 남은 리스크: workflow live 모드는 실제 API credential과 운영 승인 후 사용해야 한다.
+- 남은 리스크: Slack 알림은 GitHub secret `SLACK_WEBHOOK_URL`이 있을 때만 전송된다.
+

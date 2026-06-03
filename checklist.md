@@ -188,3 +188,16 @@
 - [x] 대시보드 JSON과 API JSON 재생성
 - [x] PHASE 10 검증 실행
 - [x] GitHub 저장 및 Vercel 반영 확인
+
+# PHASE 11 GitHub Actions Automation Checklist
+
+- [x] PHASE 10 완료 상태와 workflow placeholder 확인
+- [x] daily pipeline runner 구현
+- [x] 비용 초과 중단 guard 구현
+- [x] GitHub Actions schedule과 workflow_dispatch 연결
+- [x] Slack 알림 step 조건부 연결
+- [x] history와 dashboard 변경사항 자동 커밋 step 연결
+- [x] PHASE 11 단위 테스트 추가
+- [x] 대시보드 JSON과 API JSON 재생성
+- [x] PHASE 11 검증 실행
+- [ ] GitHub 저장 및 Vercel 반영 확인

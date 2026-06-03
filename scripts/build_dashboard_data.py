@@ -255,6 +255,32 @@ def summarize_github_history(path: Path | None) -> dict[str, Any]:
     }
 
 
+def summarize_pipeline_run(path: Path | None) -> dict[str, Any]:
+    """GitHub Actions daily pipeline 실행 결과를 대시보드용으로 변환한다."""
+    if path is None:
+        return {"exists": False, "status": "not_run"}
+
+    payload = read_json(path, {})
+    summary = payload.get("summary", {})
+    cost_guard = payload.get("cost_guard", {})
+    return {
+        "exists": True,
+        "path": normalize_path(path),
+        "date": payload.get("date"),
+        "status": payload.get("status"),
+        "mode": payload.get("mode"),
+        "mock": payload.get("mock"),
+        "started_at": payload.get("started_at"),
+        "finished_at": payload.get("finished_at"),
+        "artifact_count": summary.get("artifact_count", 0),
+        "image_request_count": summary.get("image_request_count", 0),
+        "approved_count": summary.get("approved_count", 0),
+        "planned_upload_count": summary.get("planned_upload_count", 0),
+        "cost_guard_status": cost_guard.get("status"),
+        "estimated_cost_usd": cost_guard.get("estimated_cost_usd", 0),
+    }
+
+
 def run_git(args: list[str]) -> str:
     """가능하면 Git 명령 결과를 반환한다."""
     git_candidates = [
@@ -466,7 +492,7 @@ def build_agent_status() -> list[dict[str, Any]]:
             "status": "learning_ready",
             "implemented": ["광고/트렌드 종합", "브랜드별 우선순위", "소재 방향", "프롬프트 handoff", "품질 검수", "Winner/Loser 학습"],
             "output": "history/daily/{date}_winner_loser.json",
-            "next": "PHASE 10에서 대시보드 실시간화",
+            "next": "PHASE 12에서 안정화와 실제 API 연결",
         },
         {
             "agent": "팀원 A",
@@ -515,7 +541,8 @@ def build_pipeline_steps() -> list[dict[str, str]]:
         {"step": "07", "title": "Winner/Loser 학습", "owner": "팀장", "status": "learning_ready"},
         {"step": "08", "title": "저장소 연동", "owner": "utils", "status": "storage_ready"},
         {"step": "09", "title": "대시보드 실시간화", "owner": "dashboard", "status": "realtime_ready"},
-        {"step": "10", "title": "GitHub Actions 자동화", "owner": "workflow", "status": "next"},
+        {"step": "10", "title": "GitHub Actions 자동화", "owner": "workflow", "status": "automation_ready"},
+        {"step": "11", "title": "안정화", "owner": "ops", "status": "next"},
     ]
 
 
@@ -577,6 +604,11 @@ def build_feature_status() -> list[dict[str, Any]]:
             "status": "realtime_ready",
             "details": ["정적 JSON API 8개", "브랜드 상세 API 5개", "30초 polling", "실행 로그 표시", "Vercel rewrite"],
         },
+        {
+            "name": "GitHub Actions 자동화",
+            "status": "automation_ready",
+            "details": ["평일 02:00 KST", "workflow_dispatch", "비용 guard", "history 자동 커밋", "Slack 조건부 알림"],
+        },
     ]
 
 
@@ -603,8 +635,8 @@ def build_phase_roadmap() -> list[dict[str, Any]]:
         {"phase": "PHASE 8", "title": "Winner/Loser 학습", "status": "completed", "progress": 100},
         {"phase": "PHASE 9", "title": "저장소 연동", "status": "completed", "progress": 100},
         {"phase": "PHASE 10", "title": "Dashboard 실시간화", "status": "completed", "progress": 100},
-        {"phase": "PHASE 11", "title": "GitHub Actions 자동화", "status": "next", "progress": 0},
-        {"phase": "PHASE 12", "title": "안정화", "status": "planned", "progress": 0},
+        {"phase": "PHASE 11", "title": "GitHub Actions 자동화", "status": "completed", "progress": 100},
+        {"phase": "PHASE 12", "title": "안정화", "status": "next", "progress": 0},
     ]
 
 
@@ -617,10 +649,10 @@ def build_overall_progress(roadmap: list[dict[str, Any]]) -> dict[str, Any]:
         "completed_phase_count": completed,
         "total_phase_count": total,
         "percent": round(completed / total * 100),
-        "current_phase": "PHASE 10",
+        "current_phase": "PHASE 11",
         "next_phase": next_items[0]["phase"] if next_items else None,
         "dashboard_milestones_completed": 3,
-        "latest_test_count": 33,
+        "latest_test_count": 36,
         "latest_test_result": "passed",
     }
 
@@ -671,7 +703,7 @@ def build_architecture_layers() -> list[dict[str, Any]]:
                 {"id": "weekly_history", "label": "history/weekly", "status": "storage_ready", "metric": "2026-W21"},
                 {"id": "dashboard", "label": "Vercel Dashboard", "status": "realtime_ready", "metric": "30s polling"},
                 {"id": "dashboard_api", "label": "Dashboard API", "status": "realtime_ready", "metric": "8 endpoints"},
-                {"id": "automation", "label": "GitHub Actions", "status": "next", "metric": "PHASE 11"},
+                {"id": "automation", "label": "GitHub Actions", "status": "automation_ready", "metric": "weekday 02 KST"},
             ],
         },
     ]
@@ -697,6 +729,8 @@ def build_architecture_flow() -> list[dict[str, str]]:
         {"from": "history/daily", "to": "history/weekly", "artifact": "2026-W21 요약", "status": "storage_ready"},
         {"from": "history/state/logs", "to": "Dashboard API", "artifact": "정적 API JSON", "status": "realtime_ready"},
         {"from": "Dashboard API", "to": "Vercel Dashboard", "artifact": "30초 polling", "status": "realtime_ready"},
+        {"from": "GitHub Actions", "to": "daily runner", "artifact": "평일 02:00 KST 자동 실행", "status": "automation_ready"},
+        {"from": "daily runner", "to": "history/dashboard commit", "artifact": "생성 결과 자동 커밋", "status": "automation_ready"},
     ]
 
 
@@ -718,6 +752,9 @@ def build_storage_contracts() -> list[dict[str, str]]:
         {"path": "web/data/latest_status.json", "producer": "scripts/build_dashboard_data.py", "consumer": "Vercel Dashboard", "status": "ready"},
         {"path": "web/api/{endpoint}.json", "producer": "scripts/build_dashboard_data.py", "consumer": "Dashboard polling, FastAPI mirror", "status": "realtime_ready"},
         {"path": "dashboard_api.py", "producer": "PHASE 10", "consumer": "FastAPI local server", "status": "realtime_ready"},
+        {"path": "scripts/run_daily_pipeline.py", "producer": "PHASE 11", "consumer": "GitHub Actions", "status": "automation_ready"},
+        {"path": ".github/workflows/daily_run.yml", "producer": "PHASE 11", "consumer": "GitHub Actions scheduler", "status": "automation_ready"},
+        {"path": "history/daily/{date}_pipeline_run.json", "producer": "scripts/run_daily_pipeline.py", "consumer": "대시보드, 운영 로그", "status": "automation_ready"},
     ]
 
 
@@ -815,10 +852,18 @@ def build_phase_test_results() -> list[dict[str, Any]]:
         {
             "phase": "PHASE 11",
             "scope": "GitHub Actions 자동화",
-            "check": "예정: workflow_dispatch와 평일 02:00 KST 검증",
+            "check": "python -m unittest tests.test_daily_pipeline",
+            "result": "passed",
+            "test_count": 3,
+            "artifact": ".github/workflows/daily_run.yml",
+        },
+        {
+            "phase": "PHASE 12",
+            "scope": "안정화",
+            "check": "예정: 예외처리, 관측성, 실 API 전환 검증",
             "result": "next",
             "test_count": 0,
-            "artifact": ".github/workflows/daily_run.yml",
+            "artifact": "docs/PHASE_LOG.md",
         },
     ]
 
@@ -939,6 +984,7 @@ def build_dashboard_payload() -> dict[str, Any]:
     latest_learning_file = find_latest_file("*_winner_loser.json")
     latest_gdrive_file = find_latest_file("*_gdrive_manifest.json")
     latest_github_history_file = find_latest_file("*_github_history_summary.json")
+    latest_pipeline_file = find_latest_file("*_pipeline_run.json")
     ad_payload = load_latest_daily_payload("*_ad_data.json")
     trend_payload = load_latest_daily_payload("*_trend_data.json")
     manager_payload = load_latest_daily_payload("*_manager_brief.json")
@@ -957,6 +1003,7 @@ def build_dashboard_payload() -> dict[str, Any]:
     pattern_summary = summarize_winner_loser_patterns(PROJECT_ROOT / "history" / "winner_loser_patterns.json")
     gdrive_summary = summarize_gdrive_manifest(latest_gdrive_file)
     github_history_summary = summarize_github_history(latest_github_history_file)
+    pipeline_run_summary = summarize_pipeline_run(latest_pipeline_file)
     source_counts = count_marketing_sources()
     recent_commits = get_recent_commits()
     phase_roadmap = build_phase_roadmap()
@@ -988,7 +1035,8 @@ def build_dashboard_payload() -> dict[str, Any]:
             {"phase": "PHASE 8", "title": "Winner/Loser 학습", "status": "completed"},
             {"phase": "PHASE 9", "title": "저장소 연동", "status": "completed"},
             {"phase": "PHASE 10", "title": "Dashboard 실시간화", "status": "completed"},
-            {"phase": "PHASE 11", "title": "GitHub Actions 자동화", "status": "next"},
+            {"phase": "PHASE 11", "title": "GitHub Actions 자동화", "status": "completed"},
+            {"phase": "PHASE 12", "title": "안정화", "status": "next"},
         ],
         "architecture": {
             "overall_progress": build_overall_progress(phase_roadmap),
@@ -1029,20 +1077,21 @@ def build_dashboard_payload() -> dict[str, Any]:
             "feature_status": build_feature_status(),
             "agent_status": build_agent_status(),
             "pipeline_steps": build_pipeline_steps(),
+            "automation": pipeline_run_summary,
         },
         "verification": {
-            "last_command": "python -m unittest tests.test_trend_collector tests.test_data_collector tests.test_manager tests.test_prompt_engineer tests.test_image_designer tests.test_storage_utils tests.test_dashboard_api tests.test_build_dashboard_data",
+            "last_command": "python -m unittest tests.test_trend_collector tests.test_data_collector tests.test_manager tests.test_prompt_engineer tests.test_image_designer tests.test_storage_utils tests.test_dashboard_api tests.test_daily_pipeline tests.test_build_dashboard_data",
             "last_result": "passed",
-            "test_count": 33,
+            "test_count": 36,
         },
         "git": {
             "branch": run_git(["branch", "--show-current"]) or "main",
             "recent_commits": recent_commits,
         },
         "next_step": {
-            "phase": "PHASE 11",
-            "title": "GitHub Actions 자동화",
-            "summary": "평일 02:00 KST 자동 실행, 수동 실행, 비용 초과 중단, history 커밋 흐름을 workflow에 연결한다.",
+            "phase": "PHASE 12",
+            "title": "안정화",
+            "summary": "예외처리, 관측성, 실제 API 전환 준비, Vercel 공개 접근 검증을 마무리한다.",
         },
         "risks": [
             "광고 API와 트렌드 API는 아직 mock 수집 단계다.",
@@ -1053,6 +1102,7 @@ def build_dashboard_payload() -> dict[str, Any]:
             "Winner/Loser 학습은 mock 광고 성과 기준이며 실제 캠페인 집행 일수는 API 연결 후 교체한다.",
             "Google Drive는 dry-run manifest 단계이며 실제 업로드에는 서비스 계정 또는 OAuth 인증이 필요하다.",
             "대시보드 실시간화는 30초 polling 기반이며 서버 push 방식은 후속 안정화 단계에서 확장한다.",
+            "GitHub Actions는 mock과 dry-run을 기본값으로 실행하며 실제 API 호출은 credential과 운영 승인 후 켠다.",
         ],
     }
 

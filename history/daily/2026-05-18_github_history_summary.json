@@ -3,8 +3,8 @@
   "status": "github_history_summary_ready",
   "weekly_key": "2026-W21",
   "summary": {
-    "daily_file_count": 9,
-    "artifact_count": 9,
+    "daily_file_count": 10,
+    "artifact_count": 10,
     "weekly_key": "2026-W21",
     "commit_message": "[HISTORY] 2026-05-18 daily run summary",
     "metrics": {
@@ -54,6 +54,12 @@
       "path": "history/daily/2026-05-18_manager_brief.json",
       "status": "manager_brief_ready",
       "record_count": 0
+    },
+    {
+      "suffix": "pipeline_run",
+      "path": "history/daily/2026-05-18_pipeline_run.json",
+      "status": "daily_pipeline_completed",
+      "record_count": 20
     },
     {
       "suffix": "prompts",

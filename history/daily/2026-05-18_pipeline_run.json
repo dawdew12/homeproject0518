@@ -1,0 +1,99 @@
+{
+  "date": "2026-05-18",
+  "status": "daily_pipeline_completed",
+  "mode": "dry_run",
+  "mock": true,
+  "started_at": "2026-06-03T20:14:26+09:00",
+  "finished_at": "2026-06-03T20:14:26+09:00",
+  "cost_guard": {
+    "status": "cost_guard_passed",
+    "estimated_cost_usd": 2.64,
+    "daily_cost_usd": 0.0,
+    "monthly_cost_usd": 0.0,
+    "daily_limit_usd": 5.0,
+    "monthly_limit_usd": 79.0,
+    "daily_allowed": true,
+    "monthly_allowed": true
+  },
+  "summary": {
+    "artifact_count": 11,
+    "ad_record_count": 15,
+    "trend_record_count": 20,
+    "prompt_count": 20,
+    "image_request_count": 20,
+    "approved_count": 20,
+    "winner_count": 12,
+    "planned_upload_count": 20,
+    "dashboard_file_count": 13
+  },
+  "artifacts": [
+    {
+      "path": "history/daily/2026-05-18_ad_data.json",
+      "status": "mock_collected"
+    },
+    {
+      "path": "history/daily/2026-05-18_trend_data.json",
+      "status": "mock_collected"
+    },
+    {
+      "path": "history/daily/2026-05-18_manager_brief.json",
+      "status": "manager_brief_ready"
+    },
+    {
+      "path": "history/daily/2026-05-18_prompts.json",
+      "status": "prompts_ready"
+    },
+    {
+      "path": "history/daily/2026-05-18_image_dry_run.json",
+      "status": "image_dry_run_ready"
+    },
+    {
+      "path": "history/daily/2026-05-18_quality_review.json",
+      "status": "quality_review_ready"
+    },
+    {
+      "path": "history/daily/2026-05-18_winner_loser.json",
+      "status": "winner_loser_learning_ready"
+    },
+    {
+      "path": "history/winner_loser_patterns.json",
+      "status": "winner_loser_patterns_ready"
+    },
+    {
+      "path": "history/daily/2026-05-18_gdrive_manifest.json",
+      "status": "gdrive_upload_manifest_ready"
+    },
+    {
+      "path": "history/daily/2026-05-18_github_history_summary.json",
+      "status": "github_history_dry_run_ready"
+    },
+    {
+      "path": "history/weekly/2026-W21.json",
+      "status": "weekly_history_summary_ready"
+    }
+  ],
+  "dashboard_paths": [
+    "web/data/latest_status.json",
+    "web/api/status.json",
+    "web/api/agents.json",
+    "web/api/costs.json",
+    "web/api/brands.json",
+    "web/api/history/daily.json",
+    "web/api/winner-loser.json",
+    "web/api/logs.json",
+    "web/api/brands/someud.json",
+    "web/api/brands/kinda.json",
+    "web/api/brands/melliance.json",
+    "web/api/brands/paperback.json",
+    "web/api/brands/baren.json"
+  ],
+  "planned_commit": {
+    "message": "[HISTORY] 2026-05-18 daily run summary",
+    "paths": [
+      "history/daily",
+      "history/weekly",
+      "history/winner_loser_patterns.json"
+    ]
+  },
+  "output_path": "history/daily/2026-05-18_pipeline_run.json"
+}

@@ -1,14 +1,14 @@
 {
   "status": "history_daily_api_ready",
-  "generated_at": "2026-06-03T19:48:28+09:00",
+  "generated_at": "2026-06-03T20:17:21+09:00",
   "summary": {
     "exists": true,
     "path": "history/daily/2026-05-18_github_history_summary.json",
     "date": "2026-05-18",
     "status": "github_history_summary_ready",
     "weekly_key": "2026-W21",
-    "daily_file_count": 9,
-    "artifact_count": 9,
+    "daily_file_count": 10,
+    "artifact_count": 10,
     "commit_message": "[HISTORY] 2026-05-18 daily run summary",
     "prompt_count": 20,
     "image_request_count": 20,
@@ -46,6 +46,12 @@
       "path": "history/daily/2026-05-18_manager_brief.json",
       "status": "manager_brief_ready",
       "record_count": 0
+    },
+    {
+      "suffix": "pipeline_run",
+      "path": "history/daily/2026-05-18_pipeline_run.json",
+      "status": "daily_pipeline_completed",
+      "record_count": 20
     },
     {
       "suffix": "prompts",

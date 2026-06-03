@@ -19,7 +19,7 @@
   "daily_summaries": [
     {
       "date": "2026-05-18",
-      "artifact_count": 9,
+      "artifact_count": 10,
       "metrics": {
         "ad_record_count": 15,
         "trend_record_count": 20,

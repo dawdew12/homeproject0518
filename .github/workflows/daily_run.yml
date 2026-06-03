@@ -1,14 +1,88 @@
-﻿name: AIPR daily run
+name: AIPR daily run
 
 on:
   workflow_dispatch:
+    inputs:
+      run_date:
+        description: "YYYY-MM-DD. 비워두면 KST 오늘 날짜를 사용합니다."
+        required: false
+        type: string
+      mock:
+        description: "mock 데이터로 실행합니다."
+        required: false
+        default: "true"
+        type: choice
+        options:
+          - "true"
+          - "false"
   schedule:
-    - cron: '0 17 * * 1-5'
+    - cron: "0 17 * * 0-4"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: aipr-daily-run
+  cancel-in-progress: false
 
 jobs:
-  phase-placeholder:
+  run-pipeline:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      RUN_DATE: ${{ github.event.inputs.run_date || '' }}
+      MOCK_MODE: ${{ github.event.inputs.mock || 'true' }}
+      AIPR_DAILY_COST_LIMIT_USD: "5.00"
+      AIPR_MONTHLY_COST_LIMIT_USD: "79.00"
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
     steps:
-      - uses: actions/checkout@v4
-      - name: Phase 1 placeholder
-        run: echo "PHASE 11에서 실제 자동화 실행 단계를 연결합니다."
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run tests
+        run: |
+          python -m unittest tests.test_trend_collector tests.test_data_collector tests.test_manager tests.test_prompt_engineer tests.test_image_designer tests.test_storage_utils tests.test_dashboard_api tests.test_daily_pipeline tests.test_build_dashboard_data
+
+      - name: Run daily pipeline
+        run: |
+          LIVE_ARG=""
+          if [ "$MOCK_MODE" = "false" ]; then
+            LIVE_ARG="--live"
+          fi
+
+          if [ -n "$RUN_DATE" ]; then
+            python scripts/run_daily_pipeline.py --date "$RUN_DATE" $LIVE_ARG
+          else
+            python scripts/run_daily_pipeline.py $LIVE_ARG
+          fi
+
+      - name: Commit history and dashboard updates
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add history/daily history/weekly history/winner_loser_patterns.json state/runtime.json web/data web/api
+
+          if git diff --cached --quiet; then
+            echo "No generated changes to commit."
+          else
+            git commit -m "[HISTORY] AIPR daily automation run"
+            git push
+          fi
+
+      - name: Slack notification
+        if: always() && env.SLACK_WEBHOOK_URL != ''
+        run: |
+          curl -X POST \
+            -H "Content-type: application/json" \
+            --data "{\"text\":\"AIPR daily run finished with status: ${{ job.status }}\"}" \
+            "$SLACK_WEBHOOK_URL"
