@@ -194,3 +194,8 @@
 - Vercel 배포 `homeproject0518-fmyrldjy5-raw22226-9071s-projects.vercel.app`은 해당 커밋으로 production READY 상태가 되었다.
 - 배포 본문 fetch는 Deployment Protection으로 401이 반환되어, 콘텐츠 응답 검증은 로컬 HTTP 검증과 Vercel 배포 메타데이터 확인으로 대체했다.
 
+## 2026-06-03 Vercel Root Route Fix
+
+- Deployment Protection 해제 후 `/data/latest_status.json`과 `/index.html`은 200으로 열렸지만 루트 `/`만 인증 페이지가 남았다.
+- `vercel.json`에 `/`를 `/index.html`로 보내는 rewrite를 추가해 기본 대시보드 주소가 바로 열리도록 한다.
+
