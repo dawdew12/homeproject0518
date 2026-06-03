@@ -190,4 +190,7 @@
 - `history/daily/2026-05-18_winner_loser.json`에는 15개 광고 성과 중 Winner 12개, Loser 0개, Pending 3개가 저장되었다.
 - Pending 3개는 someud의 ROAS가 247%로 Winner 기준 250%에 미달해 `mixed_signal`로 남긴다.
 - 대시보드는 PHASE 8 완료, 전체 진행도 67%, 다음 단계 PHASE 9 저장소 연동으로 갱신한다.
+- GitHub main에 `537b27c [PHASE 8] Winner Loser 학습 구현` 커밋을 푸시했다.
+- Vercel 배포 `homeproject0518-fmyrldjy5-raw22226-9071s-projects.vercel.app`은 해당 커밋으로 production READY 상태가 되었다.
+- 배포 본문 fetch는 Deployment Protection으로 401이 반환되어, 콘텐츠 응답 검증은 로컬 HTTP 검증과 Vercel 배포 메타데이터 확인으로 대체했다.
 
