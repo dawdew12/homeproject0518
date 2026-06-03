@@ -199,3 +199,19 @@
 - Deployment Protection 해제 후 `/data/latest_status.json`과 `/index.html`은 200으로 열렸지만 루트 `/`만 인증 페이지가 남았다.
 - `vercel.json`에 `/`를 `/index.html`로 보내는 rewrite를 추가해 기본 대시보드 주소가 바로 열리도록 한다.
 
+## 2026-06-03 PHASE 9 Storage Integration 시작
+
+- PHASE 9의 범위는 이미지 산출물 저장과 GitHub history 정리를 운영 흐름에 연결하는 것이다.
+- 실제 Google Drive API 인증 정보는 아직 없으므로 이번 단계에서는 업로드 API 호출이 아니라 검증 가능한 dry-run manifest를 만든다.
+- 이미지 prompt ID와 기존 광고 creative ID는 아직 1대1로 연결되지 않는다.
+- 따라서 이번 저장 manifest는 브랜드별 Winner/Loser `top_label`을 적용해 someud 4개는 pending, 나머지 브랜드 16개는 winner 폴더에 배치한다.
+- GitHub history 유틸은 실제 git commit을 직접 실행하지 않고 daily와 weekly summary, planned commit 메시지를 생성한다.
+
+## 2026-06-03 PHASE 9 Storage Integration 구현
+
+- `utils/gdrive_upload.py`는 `history/daily/{date}_image_dry_run.json`과 `history/daily/{date}_winner_loser.json`을 읽어 `AIPR_소재관리/{brand}/{date}/{classification}/...` 경로 manifest를 만든다.
+- 현재 실제 이미지 파일은 생성되지 않았으므로 manifest에는 `missing_file_count: 20`, `ready_to_upload: false`로 기록한다.
+- `utils/github_history.py`는 daily 산출물 수와 핵심 지표를 요약하고, ISO 주차 기준 `history/weekly/2026-W21.json`을 만든다.
+- 대시보드는 저장소 연동 요약, planned upload 수, missing 파일 수, weekly history 키, Drive 경로 preview를 표시한다.
+- 실제 업로드와 실제 git commit 실행은 인증 정보와 운영 승인 조건이 갖춰진 뒤 별도 단계에서 연결한다.
+

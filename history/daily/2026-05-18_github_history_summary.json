@@ -1,0 +1,91 @@
+{
+  "date": "2026-05-18",
+  "status": "github_history_summary_ready",
+  "weekly_key": "2026-W21",
+  "summary": {
+    "daily_file_count": 9,
+    "artifact_count": 9,
+    "weekly_key": "2026-W21",
+    "commit_message": "[HISTORY] 2026-05-18 daily run summary",
+    "metrics": {
+      "ad_record_count": 15,
+      "trend_record_count": 20,
+      "manager_brand_count": 5,
+      "storyboard_count": 20,
+      "prompt_count": 20,
+      "image_request_count": 20,
+      "estimated_cost_usd": 2.64,
+      "approved_count": 20,
+      "regeneration_required_count": 0,
+      "winner_count": 12,
+      "loser_count": 0,
+      "pending_count": 3,
+      "gdrive_planned_upload_count": 20,
+      "gdrive_missing_file_count": 20
+    }
+  },
+  "artifacts": [
+    {
+      "suffix": "ad_data",
+      "path": "history/daily/2026-05-18_ad_data.json",
+      "status": "mock_collected",
+      "record_count": 15
+    },
+    {
+      "suffix": "gdrive_manifest",
+      "path": "history/daily/2026-05-18_gdrive_manifest.json",
+      "status": "gdrive_upload_manifest_ready",
+      "record_count": 20
+    },
+    {
+      "suffix": "github_history_summary",
+      "path": "history/daily/2026-05-18_github_history_summary.json",
+      "status": "github_history_summary_ready",
+      "record_count": 0
+    },
+    {
+      "suffix": "image_dry_run",
+      "path": "history/daily/2026-05-18_image_dry_run.json",
+      "status": "image_dry_run_ready",
+      "record_count": 20
+    },
+    {
+      "suffix": "manager_brief",
+      "path": "history/daily/2026-05-18_manager_brief.json",
+      "status": "manager_brief_ready",
+      "record_count": 0
+    },
+    {
+      "suffix": "prompts",
+      "path": "history/daily/2026-05-18_prompts.json",
+      "status": "prompts_ready",
+      "record_count": 0
+    },
+    {
+      "suffix": "quality_review",
+      "path": "history/daily/2026-05-18_quality_review.json",
+      "status": "quality_review_ready",
+      "record_count": 20
+    },
+    {
+      "suffix": "trend_data",
+      "path": "history/daily/2026-05-18_trend_data.json",
+      "status": "mock_collected",
+      "record_count": 20
+    },
+    {
+      "suffix": "winner_loser",
+      "path": "history/daily/2026-05-18_winner_loser.json",
+      "status": "winner_loser_learning_ready",
+      "record_count": 15
+    }
+  ],
+  "planned_commit": {
+    "message": "[HISTORY] 2026-05-18 daily run summary",
+    "paths": [
+      "history/daily",
+      "history/weekly",
+      "history/winner_loser_patterns.json"
+    ]
+  }
+}

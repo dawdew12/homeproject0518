@@ -160,3 +160,18 @@
 - [x] 대시보드 화면에 학습 결과 표시
 - [x] PHASE 8 검증 실행
 - [x] GitHub 저장 및 Vercel 반영 확인
+
+# PHASE 9 Storage Integration Checklist
+
+- [x] PHASE 8 완료 상태와 저장소 skeleton 확인
+- [x] Google Drive 저장 manifest 생성 로직 구현
+- [x] GitHub daily history 요약 로직 구현
+- [x] GitHub weekly history 요약 로직 구현
+- [x] `history/daily/{date}_gdrive_manifest.json` 저장
+- [x] `history/daily/{date}_github_history_summary.json` 저장
+- [x] `history/weekly/{week}.json` 저장
+- [x] 저장소 연동 단위 테스트 추가
+- [x] 대시보드 JSON에 저장소 연동 결과 추가
+- [x] 대시보드 화면에 저장소 연동 미리보기 표시
+- [x] PHASE 9 검증 실행
+- [ ] GitHub 저장 및 Vercel 반영 확인

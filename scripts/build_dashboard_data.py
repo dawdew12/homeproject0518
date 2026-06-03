@@ -175,6 +175,57 @@ def summarize_winner_loser_patterns(path: Path) -> dict[str, Any]:
     }
 
 
+def summarize_gdrive_manifest(path: Path | None) -> dict[str, Any]:
+    """Google Drive upload manifest를 대시보드용 요약으로 변환한다."""
+    if path is None:
+        return {"exists": False, "planned_upload_count": 0, "missing_file_count": 0}
+
+    payload = read_json(path, {})
+    summary = payload.get("summary", {})
+    classification_counts = summary.get("classification_counts", {})
+    return {
+        "exists": True,
+        "path": str(path.relative_to(PROJECT_ROOT)).replace("\\", "/"),
+        "date": payload.get("date"),
+        "status": payload.get("status"),
+        "mode": payload.get("mode"),
+        "brand_count": summary.get("brand_count", 0),
+        "planned_upload_count": summary.get("planned_upload_count", 0),
+        "existing_file_count": summary.get("existing_file_count", 0),
+        "missing_file_count": summary.get("missing_file_count", 0),
+        "winner_upload_count": classification_counts.get("winner", 0),
+        "loser_upload_count": classification_counts.get("loser", 0),
+        "pending_upload_count": classification_counts.get("pending", 0),
+        "ready_to_upload": summary.get("ready_to_upload", False),
+        "drive_root": summary.get("drive_root"),
+    }
+
+
+def summarize_github_history(path: Path | None) -> dict[str, Any]:
+    """GitHub history 요약 파일을 대시보드용으로 변환한다."""
+    if path is None:
+        return {"exists": False, "daily_file_count": 0}
+
+    payload = read_json(path, {})
+    summary = payload.get("summary", {})
+    metrics = summary.get("metrics", {})
+    return {
+        "exists": True,
+        "path": str(path.relative_to(PROJECT_ROOT)).replace("\\", "/"),
+        "date": payload.get("date"),
+        "status": payload.get("status"),
+        "weekly_key": payload.get("weekly_key"),
+        "daily_file_count": summary.get("daily_file_count", 0),
+        "artifact_count": summary.get("artifact_count", 0),
+        "commit_message": payload.get("planned_commit", {}).get("message"),
+        "prompt_count": metrics.get("prompt_count", 0),
+        "image_request_count": metrics.get("image_request_count", 0),
+        "approved_count": metrics.get("approved_count", 0),
+        "winner_count": metrics.get("winner_count", 0),
+        "planned_upload_count": metrics.get("gdrive_planned_upload_count", 0),
+    }
+
+
 def run_git(args: list[str]) -> str:
     """가능하면 Git 명령 결과를 반환한다."""
     git_candidates = [
@@ -362,6 +413,21 @@ def build_learning_preview(learning_payload: dict[str, Any], limit: int = 8) -> 
     ]
 
 
+def build_storage_preview(gdrive_payload: dict[str, Any], limit: int = 8) -> list[dict[str, Any]]:
+    """Google Drive 저장 계획 일부를 화면 미리보기용으로 줄인다."""
+    return [
+        {
+            "prompt_id": item.get("prompt_id"),
+            "brand": item.get("brand"),
+            "classification": item.get("classification"),
+            "source_exists": item.get("source_exists", False),
+            "drive_path": item.get("drive_path"),
+            "status": item.get("status"),
+        }
+        for item in gdrive_payload.get("items", [])[:limit]
+    ]
+
+
 def build_agent_status() -> list[dict[str, Any]]:
     """에이전트별 구현 범위와 다음 작업을 정리한다."""
     return [
@@ -371,7 +437,7 @@ def build_agent_status() -> list[dict[str, Any]]:
             "status": "learning_ready",
             "implemented": ["광고/트렌드 종합", "브랜드별 우선순위", "소재 방향", "프롬프트 handoff", "품질 검수", "Winner/Loser 학습"],
             "output": "history/daily/{date}_winner_loser.json",
-            "next": "PHASE 9에서 Google Drive와 GitHub 저장소 연동",
+            "next": "PHASE 10에서 대시보드 실시간화",
         },
         {
             "agent": "팀원 A",
@@ -403,7 +469,7 @@ def build_agent_status() -> list[dict[str, Any]]:
             "status": "dry_run_ready",
             "implemented": ["이미지 비용 설정", "브랜드별 batch dry-run", "출력 경로 생성", "한도 확인", "재생성 제한"],
             "output": "outputs/{brand}/{date}/",
-            "next": "실제 gpt-image-2 API 호출 연결",
+            "next": "실제 gpt-image-2 API 호출과 Google Drive 실업로드 연결",
         },
     ]
 
@@ -418,8 +484,8 @@ def build_pipeline_steps() -> list[dict[str, str]]:
         {"step": "05", "title": "이미지 생성", "owner": "팀원 D", "status": "dry_run_ready"},
         {"step": "06", "title": "품질 검수/재생성", "owner": "팀장", "status": "quality_review_ready"},
         {"step": "07", "title": "Winner/Loser 학습", "owner": "팀장", "status": "learning_ready"},
-        {"step": "08", "title": "저장소 연동", "owner": "utils", "status": "next"},
-        {"step": "09", "title": "대시보드 실시간화", "owner": "dashboard", "status": "static_ready"},
+        {"step": "08", "title": "저장소 연동", "owner": "utils", "status": "storage_ready"},
+        {"step": "09", "title": "대시보드 실시간화", "owner": "dashboard", "status": "next"},
     ]
 
 
@@ -471,6 +537,11 @@ def build_feature_status() -> list[dict[str, Any]]:
             "status": "learning_ready",
             "details": ["15개 성과 분류", "Winner 12개", "Loser 0개", "Pending 3개", "패턴 저장"],
         },
+        {
+            "name": "저장소 연동",
+            "status": "storage_ready",
+            "details": ["Drive manifest 20개", "Winner 폴더 16개", "Pending 폴더 4개", "daily history 요약", "weekly history 요약"],
+        },
     ]
 
 
@@ -495,8 +566,8 @@ def build_phase_roadmap() -> list[dict[str, Any]]:
         {"phase": "PHASE 6", "title": "이미지 생성", "status": "completed", "progress": 100},
         {"phase": "PHASE 7", "title": "품질 검수 및 재생성", "status": "completed", "progress": 100},
         {"phase": "PHASE 8", "title": "Winner/Loser 학습", "status": "completed", "progress": 100},
-        {"phase": "PHASE 9", "title": "저장소 연동", "status": "next", "progress": 0},
-        {"phase": "PHASE 10", "title": "Dashboard 실시간화", "status": "planned", "progress": 0},
+        {"phase": "PHASE 9", "title": "저장소 연동", "status": "completed", "progress": 100},
+        {"phase": "PHASE 10", "title": "Dashboard 실시간화", "status": "next", "progress": 0},
         {"phase": "PHASE 11", "title": "GitHub Actions 자동화", "status": "planned", "progress": 0},
         {"phase": "PHASE 12", "title": "안정화", "status": "planned", "progress": 0},
     ]
@@ -511,10 +582,10 @@ def build_overall_progress(roadmap: list[dict[str, Any]]) -> dict[str, Any]:
         "completed_phase_count": completed,
         "total_phase_count": total,
         "percent": round(completed / total * 100),
-        "current_phase": "PHASE 8",
+        "current_phase": "PHASE 9",
         "next_phase": next_items[0]["phase"] if next_items else None,
         "dashboard_milestones_completed": 2,
-        "latest_test_count": 26,
+        "latest_test_count": 30,
         "latest_test_result": "passed",
     }
 
@@ -560,7 +631,9 @@ def build_architecture_layers() -> list[dict[str, Any]]:
             "layer": "Storage",
             "title": "저장과 운영 화면",
             "nodes": [
-                {"id": "history", "label": "history/daily", "status": "ready", "metric": "6 daily JSON"},
+                {"id": "history", "label": "history/daily", "status": "storage_ready", "metric": "9 daily JSON"},
+                {"id": "gdrive", "label": "Google Drive manifest", "status": "storage_ready", "metric": "20 planned"},
+                {"id": "weekly_history", "label": "history/weekly", "status": "storage_ready", "metric": "2026-W21"},
                 {"id": "dashboard", "label": "Vercel Dashboard", "status": "static_ready", "metric": "READY"},
                 {"id": "automation", "label": "GitHub Actions", "status": "planned", "metric": "PHASE 11"},
             ],
@@ -584,6 +657,8 @@ def build_architecture_flow() -> list[dict[str, str]]:
         {"from": "팀장 검수", "to": "history/daily/*_quality_review.json", "artifact": "승인 20개", "status": "ready"},
         {"from": "광고 성과 JSON", "to": "Winner/Loser 학습", "artifact": "성과 분류 15개", "status": "ready"},
         {"from": "팀장 학습", "to": "history/winner_loser_patterns.json", "artifact": "누적 패턴 15개", "status": "ready"},
+        {"from": "이미지 Dry-run + 학습", "to": "Google Drive manifest", "artifact": "저장 계획 20개", "status": "storage_ready"},
+        {"from": "history/daily", "to": "history/weekly", "artifact": "2026-W21 요약", "status": "storage_ready"},
         {"from": "history/state/git", "to": "Vercel Dashboard", "artifact": "latest_status.json", "status": "ready"},
     ]
 
@@ -599,6 +674,9 @@ def build_storage_contracts() -> list[dict[str, str]]:
         {"path": "history/daily/{date}_quality_review.json", "producer": "팀장", "consumer": "팀원 C, 대시보드", "status": "quality_review_ready"},
         {"path": "history/daily/{date}_winner_loser.json", "producer": "팀장", "consumer": "프롬프트 학습, 대시보드", "status": "learning_ready"},
         {"path": "history/winner_loser_patterns.json", "producer": "팀장", "consumer": "다음 소재 판단", "status": "learning_ready"},
+        {"path": "history/daily/{date}_gdrive_manifest.json", "producer": "utils/gdrive_upload.py", "consumer": "Google Drive 업로드, 대시보드", "status": "storage_ready"},
+        {"path": "history/daily/{date}_github_history_summary.json", "producer": "utils/github_history.py", "consumer": "GitHub commit 요약, 대시보드", "status": "storage_ready"},
+        {"path": "history/weekly/{week}.json", "producer": "utils/github_history.py", "consumer": "주간 운영 리뷰", "status": "storage_ready"},
         {"path": "outputs/{brand}/{date}/", "producer": "팀원 D", "consumer": "팀장 검수", "status": "dry_run_ready"},
         {"path": "web/data/latest_status.json", "producer": "scripts/build_dashboard_data.py", "consumer": "Vercel Dashboard", "status": "ready"},
     ]
@@ -682,10 +760,18 @@ def build_phase_test_results() -> list[dict[str, Any]]:
         {
             "phase": "PHASE 9",
             "scope": "저장소 연동",
-            "check": "예정: Google Drive/GitHub 저장 유틸 검증",
+            "check": "python -m unittest tests.test_storage_utils",
+            "result": "passed",
+            "test_count": 4,
+            "artifact": "history/daily/2026-05-18_gdrive_manifest.json",
+        },
+        {
+            "phase": "PHASE 10",
+            "scope": "Dashboard 실시간화",
+            "check": "예정: API 기반 실행 로그 갱신",
             "result": "next",
             "test_count": 0,
-            "artifact": "utils/gdrive_upload.py, utils/github_history.py",
+            "artifact": "web/data/latest_status.json",
         },
     ]
 
@@ -700,6 +786,8 @@ def build_dashboard_payload() -> dict[str, Any]:
     latest_image_file = find_latest_file("*_image_dry_run.json")
     latest_quality_file = find_latest_file("*_quality_review.json")
     latest_learning_file = find_latest_file("*_winner_loser.json")
+    latest_gdrive_file = find_latest_file("*_gdrive_manifest.json")
+    latest_github_history_file = find_latest_file("*_github_history_summary.json")
     ad_payload = load_latest_daily_payload("*_ad_data.json")
     trend_payload = load_latest_daily_payload("*_trend_data.json")
     manager_payload = load_latest_daily_payload("*_manager_brief.json")
@@ -707,6 +795,7 @@ def build_dashboard_payload() -> dict[str, Any]:
     image_payload = load_latest_daily_payload("*_image_dry_run.json")
     quality_payload = load_latest_daily_payload("*_quality_review.json")
     learning_payload = load_latest_daily_payload("*_winner_loser.json")
+    gdrive_payload = load_latest_daily_payload("*_gdrive_manifest.json")
     ad_summary = summarize_daily_file(latest_ad_file)
     trend_summary = summarize_daily_file(latest_trend_file)
     manager_summary = summarize_manager_brief(latest_manager_file)
@@ -715,6 +804,8 @@ def build_dashboard_payload() -> dict[str, Any]:
     quality_summary = summarize_quality_review(latest_quality_file)
     learning_summary = summarize_winner_loser(latest_learning_file)
     pattern_summary = summarize_winner_loser_patterns(PROJECT_ROOT / "history" / "winner_loser_patterns.json")
+    gdrive_summary = summarize_gdrive_manifest(latest_gdrive_file)
+    github_history_summary = summarize_github_history(latest_github_history_file)
     source_counts = count_marketing_sources()
     recent_commits = get_recent_commits()
     phase_roadmap = build_phase_roadmap()
@@ -739,7 +830,8 @@ def build_dashboard_payload() -> dict[str, Any]:
             {"phase": "PHASE 6", "title": "이미지 생성 dry-run", "status": "completed"},
             {"phase": "PHASE 7", "title": "품질 검수 및 재생성", "status": "completed"},
             {"phase": "PHASE 8", "title": "Winner/Loser 학습", "status": "completed"},
-            {"phase": "PHASE 9", "title": "저장소 연동", "status": "next"},
+            {"phase": "PHASE 9", "title": "저장소 연동", "status": "completed"},
+            {"phase": "PHASE 10", "title": "Dashboard 실시간화", "status": "next"},
         ],
         "architecture": {
             "overall_progress": build_overall_progress(phase_roadmap),
@@ -760,6 +852,11 @@ def build_dashboard_payload() -> dict[str, Any]:
             "quality_review": quality_summary,
             "winner_loser": learning_summary,
             "winner_loser_patterns": pattern_summary,
+            "storage": {
+                "gdrive": gdrive_summary,
+                "github_history": github_history_summary,
+                "gdrive_preview": build_storage_preview(gdrive_payload),
+            },
             "marketing_source_counts": source_counts,
             "brand_snapshots": build_brand_snapshots(ad_payload, trend_payload, manager_payload),
             "ad_preview": sample_records(ad_payload),
@@ -777,18 +874,18 @@ def build_dashboard_payload() -> dict[str, Any]:
             "pipeline_steps": build_pipeline_steps(),
         },
         "verification": {
-            "last_command": "python -m unittest tests.test_trend_collector tests.test_data_collector tests.test_manager tests.test_prompt_engineer tests.test_image_designer tests.test_build_dashboard_data",
+            "last_command": "python -m unittest tests.test_trend_collector tests.test_data_collector tests.test_manager tests.test_prompt_engineer tests.test_image_designer tests.test_storage_utils tests.test_build_dashboard_data",
             "last_result": "passed",
-            "test_count": 26,
+            "test_count": 30,
         },
         "git": {
             "branch": run_git(["branch", "--show-current"]) or "main",
             "recent_commits": recent_commits,
         },
         "next_step": {
-            "phase": "PHASE 9",
-            "title": "저장소 연동",
-            "summary": "Google Drive와 GitHub 저장 유틸을 실제 운영 산출물 흐름에 연결하고 실패 시 로그를 남긴다.",
+            "phase": "PHASE 10",
+            "title": "Dashboard 실시간화",
+            "summary": "정적 JSON 중심 대시보드를 실행 로그와 API 기반 상태 갱신 구조로 확장한다.",
         },
         "risks": [
             "광고 API와 트렌드 API는 아직 mock 수집 단계다.",
@@ -797,6 +894,7 @@ def build_dashboard_payload() -> dict[str, Any]:
             "이미지 생성은 dry-run 단계이며 실제 gpt-image-2 API 호출은 아직 수행하지 않는다.",
             "품질 검수는 dry-run 요청 메타데이터 기준이며 실제 이미지 픽셀 검수는 이미지 API 연결 후 확장한다.",
             "Winner/Loser 학습은 mock 광고 성과 기준이며 실제 캠페인 집행 일수는 API 연결 후 교체한다.",
+            "Google Drive는 dry-run manifest 단계이며 실제 업로드에는 서비스 계정 또는 OAuth 인증이 필요하다.",
             "초 단위 실행 로그 실시간화는 PHASE 10 API 연동에서 확장한다.",
         ],
     }

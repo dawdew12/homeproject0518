@@ -147,3 +147,17 @@
 - 결과: 26개 테스트 통과.
 - 남은 리스크: 캠페인 집행일수는 mock 기본값 3일이며, 실제 광고 API 연결 후 매체별 집행 시작일 기준으로 교체해야 한다.
 
+## 2026-06-03 PHASE 9 완료
+
+- 목표: 이미지 산출물 저장 계획과 GitHub history 요약을 운영 흐름에 연결.
+- `utils/gdrive_upload.py`에 Google Drive dry-run manifest 생성과 저장 함수를 구현했다.
+- `history/daily/2026-05-18_gdrive_manifest.json`에는 20개 이미지 요청의 저장 계획을 저장했다.
+- 저장 분류는 브랜드별 학습 top_label 기준이며 Winner 16개, Pending 4개, Loser 0개다.
+- `utils/github_history.py`에 daily history 요약과 weekly history 요약 생성을 구현했다.
+- `history/daily/2026-05-18_github_history_summary.json`과 `history/weekly/2026-W21.json`을 생성했다.
+- `scripts/build_dashboard_data.py`와 `web/index.html`에 저장소 연동 요약과 Google Drive 경로 미리보기를 추가했다.
+- 현재 공식 로드맵 기준 진행률은 9/12, 75%다.
+- 검증 명령: Codex 번들 Python으로 `python -m unittest tests.test_trend_collector tests.test_data_collector tests.test_manager tests.test_prompt_engineer tests.test_image_designer tests.test_storage_utils tests.test_build_dashboard_data`.
+- 결과: 30개 테스트 통과.
+- 남은 리스크: 실제 Google Drive 업로드는 아직 dry-run이며, 서비스 계정 또는 OAuth 인증 연결 후 API 호출로 확장해야 한다.
+
