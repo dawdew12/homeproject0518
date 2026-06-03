@@ -159,5 +159,8 @@
 - 현재 공식 로드맵 기준 진행률은 9/12, 75%다.
 - 검증 명령: Codex 번들 Python으로 `python -m unittest tests.test_trend_collector tests.test_data_collector tests.test_manager tests.test_prompt_engineer tests.test_image_designer tests.test_storage_utils tests.test_build_dashboard_data`.
 - 결과: 30개 테스트 통과.
+- GitHub main에 `30d3079 [PHASE 9] 저장소 연동 dry-run 구현` 커밋을 push했다.
+- Vercel production deployment `dpl_AR5qNnGoCrLCj9YMUCMV7cwr7zyw`는 해당 커밋으로 READY이며, Vercel 인증 fetch로 루트 HTML과 `/data/latest_status.json` 200 OK를 확인했다.
 - 남은 리스크: 실제 Google Drive 업로드는 아직 dry-run이며, 서비스 계정 또는 OAuth 인증 연결 후 API 호출로 확장해야 한다.
+- 남은 리스크: 일반 비로그인 fetch는 Vercel Authentication 페이지를 반환하므로 공개 공유 전 Deployment Protection 설정을 확인해야 한다.
 

@@ -215,3 +215,10 @@
 - 대시보드는 저장소 연동 요약, planned upload 수, missing 파일 수, weekly history 키, Drive 경로 preview를 표시한다.
 - 실제 업로드와 실제 git commit 실행은 인증 정보와 운영 승인 조건이 갖춰진 뒤 별도 단계에서 연결한다.
 
+## 2026-06-03 PHASE 9 배포 확인
+
+- GitHub main에 `30d3079 [PHASE 9] 저장소 연동 dry-run 구현` 커밋을 push했다.
+- Vercel production deployment `dpl_AR5qNnGoCrLCj9YMUCMV7cwr7zyw`는 해당 커밋으로 READY 상태다.
+- Vercel 인증 fetch로 루트 HTML과 `/data/latest_status.json` 모두 200 OK를 확인했다.
+- 일반 unauthenticated fetch는 Vercel Authentication 페이지를 반환하므로, 비로그인 공개 접근은 Deployment Protection 설정을 한 번 더 확인해야 한다.
+
