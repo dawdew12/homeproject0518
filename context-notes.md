@@ -264,3 +264,10 @@
 - `history/daily/2026-05-18_pipeline_run.json`에는 PHASE 11 dry-run 결과, 비용 guard 통과, 11개 artifact, dashboard 파일 13개 생성 결과가 저장됐다.
 - 전체 검증 명령은 `python -m unittest tests.test_trend_collector tests.test_data_collector tests.test_manager tests.test_prompt_engineer tests.test_image_designer tests.test_storage_utils tests.test_dashboard_api tests.test_daily_pipeline tests.test_build_dashboard_data`이며 36개 테스트가 통과했다.
 
+## 2026-06-03 PHASE 11 배포 확인
+
+- GitHub main에 `9283742 [PHASE 11] GitHub Actions 자동화 구현` 커밋을 push했다.
+- Vercel production deployment `dpl_HdpmT5axyvv13XrYiC1b6e8r9iZn`은 해당 커밋으로 READY 상태다.
+- Vercel URL `https://homeproject0518-nsmuwzujb-raw22226-9071s-projects.vercel.app/api/status`는 200 OK를 반환했다.
+- 응답 payload에서 `current_phase`는 11, 전체 진행률은 92%, 다음 단계는 PHASE 12로 확인됐다.
+
