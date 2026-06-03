@@ -18,7 +18,7 @@ def read_json(path: Path, default: Any) -> Any:
     """JSON 파일이 있으면 읽고, 없으면 기본값을 반환한다."""
     if not path.exists() or not path.is_file():
         return default
-    return json.loads(path.read_text(encoding="utf-8"))
+    return json.loads(path.read_text(encoding="utf-8-sig"))
 
 
 def find_latest_file(pattern: str) -> Path | None:
@@ -135,6 +135,43 @@ def summarize_quality_review(path: Path | None) -> dict[str, Any]:
         "no_text_rule_passed": summary.get("no_text_rule_passed", False),
         "copy_space_passed": summary.get("copy_space_passed", False),
         "max_retry": summary.get("max_retry", 0),
+    }
+
+
+def summarize_winner_loser(path: Path | None) -> dict[str, Any]:
+    """Winner/Loser 학습 결과를 대시보드용 요약으로 변환한다."""
+    if path is None:
+        return {"exists": False, "record_count": 0, "winner_count": 0, "loser_count": 0, "pending_count": 0}
+
+    payload = read_json(path, {})
+    summary = payload.get("summary", {})
+    return {
+        "exists": True,
+        "path": str(path.relative_to(PROJECT_ROOT)).replace("\\", "/"),
+        "date": payload.get("date"),
+        "status": payload.get("status"),
+        "record_count": summary.get("record_count", 0),
+        "winner_count": summary.get("winner_count", 0),
+        "loser_count": summary.get("loser_count", 0),
+        "pending_count": summary.get("pending_count", 0),
+        "mature_count": summary.get("mature_count", 0),
+        "winner_rate": summary.get("winner_rate", 0),
+        "brand_summary": payload.get("brand_summary", []),
+    }
+
+
+def summarize_winner_loser_patterns(path: Path) -> dict[str, Any]:
+    """누적 Winner/Loser 패턴 저장소 상태를 요약한다."""
+    payload = read_json(path, {})
+    summary = payload.get("summary", {})
+    return {
+        "exists": bool(payload),
+        "path": str(path.relative_to(PROJECT_ROOT)).replace("\\", "/"),
+        "updated_at": payload.get("updated_at"),
+        "winner_count": summary.get("winner_count", 0),
+        "loser_count": summary.get("loser_count", 0),
+        "pending_count": summary.get("pending_count", 0),
+        "brand_count": summary.get("brand_count", 0),
     }
 
 
@@ -307,16 +344,34 @@ def build_quality_preview(quality_payload: dict[str, Any], limit: int = 8) -> li
     ]
 
 
+def build_learning_preview(learning_payload: dict[str, Any], limit: int = 8) -> list[dict[str, Any]]:
+    """Winner/Loser 학습 결과 일부를 화면 미리보기용으로 줄인다."""
+    return [
+        {
+            "creative_id": record.get("creative_id"),
+            "brand": record.get("brand"),
+            "source": record.get("source"),
+            "label": record.get("label"),
+            "reason": record.get("reason"),
+            "ctr": record.get("metrics", {}).get("ctr"),
+            "roas": record.get("metrics", {}).get("roas"),
+            "cpa": record.get("metrics", {}).get("cpa"),
+            "action": (record.get("learning_actions") or ["-"])[0],
+        }
+        for record in learning_payload.get("records", [])[:limit]
+    ]
+
+
 def build_agent_status() -> list[dict[str, Any]]:
     """에이전트별 구현 범위와 다음 작업을 정리한다."""
     return [
         {
             "agent": "팀장",
             "file": "agents/manager.py",
-            "status": "quality_review_ready",
-            "implemented": ["광고/트렌드 종합", "브랜드별 우선순위", "소재 방향", "프롬프트 handoff", "품질 검수", "재생성 판단"],
-            "output": "history/daily/{date}_quality_review.json",
-            "next": "PHASE 8에서 Winner/Loser 학습과 연결",
+            "status": "learning_ready",
+            "implemented": ["광고/트렌드 종합", "브랜드별 우선순위", "소재 방향", "프롬프트 handoff", "품질 검수", "Winner/Loser 학습"],
+            "output": "history/daily/{date}_winner_loser.json",
+            "next": "PHASE 9에서 Google Drive와 GitHub 저장소 연동",
         },
         {
             "agent": "팀원 A",
@@ -362,8 +417,8 @@ def build_pipeline_steps() -> list[dict[str, str]]:
         {"step": "04", "title": "스토리보드/프롬프트", "owner": "팀원 C", "status": "prompt_ready"},
         {"step": "05", "title": "이미지 생성", "owner": "팀원 D", "status": "dry_run_ready"},
         {"step": "06", "title": "품질 검수/재생성", "owner": "팀장", "status": "quality_review_ready"},
-        {"step": "07", "title": "Winner/Loser 학습", "owner": "팀장", "status": "next"},
-        {"step": "08", "title": "저장소 연동", "owner": "utils", "status": "planned"},
+        {"step": "07", "title": "Winner/Loser 학습", "owner": "팀장", "status": "learning_ready"},
+        {"step": "08", "title": "저장소 연동", "owner": "utils", "status": "next"},
         {"step": "09", "title": "대시보드 실시간화", "owner": "dashboard", "status": "static_ready"},
     ]
 
@@ -411,6 +466,11 @@ def build_feature_status() -> list[dict[str, Any]]:
             "status": "quality_review_ready",
             "details": ["20개 요청 승인", "평균 점수 100", "재생성 필요 0개", "no-text 검수", "카피 여백 검수"],
         },
+        {
+            "name": "Winner/Loser 학습",
+            "status": "learning_ready",
+            "details": ["15개 성과 분류", "Winner 12개", "Loser 0개", "Pending 3개", "패턴 저장"],
+        },
     ]
 
 
@@ -434,8 +494,8 @@ def build_phase_roadmap() -> list[dict[str, Any]]:
         {"phase": "PHASE 5", "title": "프롬프트 엔지니어링", "status": "completed", "progress": 100},
         {"phase": "PHASE 6", "title": "이미지 생성", "status": "completed", "progress": 100},
         {"phase": "PHASE 7", "title": "품질 검수 및 재생성", "status": "completed", "progress": 100},
-        {"phase": "PHASE 8", "title": "Winner/Loser 학습", "status": "next", "progress": 0},
-        {"phase": "PHASE 9", "title": "저장소 연동", "status": "planned", "progress": 0},
+        {"phase": "PHASE 8", "title": "Winner/Loser 학습", "status": "completed", "progress": 100},
+        {"phase": "PHASE 9", "title": "저장소 연동", "status": "next", "progress": 0},
         {"phase": "PHASE 10", "title": "Dashboard 실시간화", "status": "planned", "progress": 0},
         {"phase": "PHASE 11", "title": "GitHub Actions 자동화", "status": "planned", "progress": 0},
         {"phase": "PHASE 12", "title": "안정화", "status": "planned", "progress": 0},
@@ -451,10 +511,10 @@ def build_overall_progress(roadmap: list[dict[str, Any]]) -> dict[str, Any]:
         "completed_phase_count": completed,
         "total_phase_count": total,
         "percent": round(completed / total * 100),
-        "current_phase": "PHASE 7",
+        "current_phase": "PHASE 8",
         "next_phase": next_items[0]["phase"] if next_items else None,
         "dashboard_milestones_completed": 2,
-        "latest_test_count": 23,
+        "latest_test_count": 26,
         "latest_test_result": "passed",
     }
 
@@ -493,14 +553,14 @@ def build_architecture_layers() -> list[dict[str, Any]]:
             "nodes": [
                 {"id": "image_designer", "label": "팀원 D 이미지 생성", "status": "dry_run_ready", "metric": "20 requests"},
                 {"id": "quality_review", "label": "품질 검수", "status": "quality_review_ready", "metric": "20 approved"},
-                {"id": "learning", "label": "Winner/Loser 학습", "status": "next", "metric": "PHASE 8"},
+                {"id": "learning", "label": "Winner/Loser 학습", "status": "learning_ready", "metric": "12 winners"},
             ],
         },
         {
             "layer": "Storage",
             "title": "저장과 운영 화면",
             "nodes": [
-                {"id": "history", "label": "history/daily", "status": "ready", "metric": "5 daily JSON"},
+                {"id": "history", "label": "history/daily", "status": "ready", "metric": "6 daily JSON"},
                 {"id": "dashboard", "label": "Vercel Dashboard", "status": "static_ready", "metric": "READY"},
                 {"id": "automation", "label": "GitHub Actions", "status": "planned", "metric": "PHASE 11"},
             ],
@@ -522,6 +582,8 @@ def build_architecture_flow() -> list[dict[str, str]]:
         {"from": "팀원 D", "to": "history/daily/*_image_dry_run.json", "artifact": "dry-run 요청 20개", "status": "ready"},
         {"from": "이미지 Dry-run", "to": "팀장 검수", "artifact": "품질 점수 20개", "status": "ready"},
         {"from": "팀장 검수", "to": "history/daily/*_quality_review.json", "artifact": "승인 20개", "status": "ready"},
+        {"from": "광고 성과 JSON", "to": "Winner/Loser 학습", "artifact": "성과 분류 15개", "status": "ready"},
+        {"from": "팀장 학습", "to": "history/winner_loser_patterns.json", "artifact": "누적 패턴 15개", "status": "ready"},
         {"from": "history/state/git", "to": "Vercel Dashboard", "artifact": "latest_status.json", "status": "ready"},
     ]
 
@@ -535,6 +597,8 @@ def build_storage_contracts() -> list[dict[str, str]]:
         {"path": "history/daily/{date}_prompts.json", "producer": "팀원 C", "consumer": "팀원 D, 대시보드", "status": "ready"},
         {"path": "history/daily/{date}_image_dry_run.json", "producer": "팀원 D", "consumer": "팀장 검수, 대시보드", "status": "ready"},
         {"path": "history/daily/{date}_quality_review.json", "producer": "팀장", "consumer": "팀원 C, 대시보드", "status": "quality_review_ready"},
+        {"path": "history/daily/{date}_winner_loser.json", "producer": "팀장", "consumer": "프롬프트 학습, 대시보드", "status": "learning_ready"},
+        {"path": "history/winner_loser_patterns.json", "producer": "팀장", "consumer": "다음 소재 판단", "status": "learning_ready"},
         {"path": "outputs/{brand}/{date}/", "producer": "팀원 D", "consumer": "팀장 검수", "status": "dry_run_ready"},
         {"path": "web/data/latest_status.json", "producer": "scripts/build_dashboard_data.py", "consumer": "Vercel Dashboard", "status": "ready"},
     ]
@@ -610,10 +674,18 @@ def build_phase_test_results() -> list[dict[str, Any]]:
         {
             "phase": "PHASE 8",
             "scope": "Winner/Loser 학습",
-            "check": "예정: 성과 분류 + 패턴 저장 테스트",
+            "check": "python -m unittest tests.test_manager",
+            "result": "passed",
+            "test_count": 9,
+            "artifact": "history/winner_loser_patterns.json",
+        },
+        {
+            "phase": "PHASE 9",
+            "scope": "저장소 연동",
+            "check": "예정: Google Drive/GitHub 저장 유틸 검증",
             "result": "next",
             "test_count": 0,
-            "artifact": "history/winner_loser_patterns.json",
+            "artifact": "utils/gdrive_upload.py, utils/github_history.py",
         },
     ]
 
@@ -627,18 +699,22 @@ def build_dashboard_payload() -> dict[str, Any]:
     latest_prompt_file = find_latest_file("*_prompts.json")
     latest_image_file = find_latest_file("*_image_dry_run.json")
     latest_quality_file = find_latest_file("*_quality_review.json")
+    latest_learning_file = find_latest_file("*_winner_loser.json")
     ad_payload = load_latest_daily_payload("*_ad_data.json")
     trend_payload = load_latest_daily_payload("*_trend_data.json")
     manager_payload = load_latest_daily_payload("*_manager_brief.json")
     prompt_payload = load_latest_daily_payload("*_prompts.json")
     image_payload = load_latest_daily_payload("*_image_dry_run.json")
     quality_payload = load_latest_daily_payload("*_quality_review.json")
+    learning_payload = load_latest_daily_payload("*_winner_loser.json")
     ad_summary = summarize_daily_file(latest_ad_file)
     trend_summary = summarize_daily_file(latest_trend_file)
     manager_summary = summarize_manager_brief(latest_manager_file)
     prompt_summary = summarize_prompt_pack(latest_prompt_file)
     image_summary = summarize_image_dry_run(latest_image_file)
     quality_summary = summarize_quality_review(latest_quality_file)
+    learning_summary = summarize_winner_loser(latest_learning_file)
+    pattern_summary = summarize_winner_loser_patterns(PROJECT_ROOT / "history" / "winner_loser_patterns.json")
     source_counts = count_marketing_sources()
     recent_commits = get_recent_commits()
     phase_roadmap = build_phase_roadmap()
@@ -662,7 +738,8 @@ def build_dashboard_payload() -> dict[str, Any]:
             {"phase": "PHASE 5", "title": "스토리보드와 프롬프트 생성", "status": "completed"},
             {"phase": "PHASE 6", "title": "이미지 생성 dry-run", "status": "completed"},
             {"phase": "PHASE 7", "title": "품질 검수 및 재생성", "status": "completed"},
-            {"phase": "PHASE 8", "title": "Winner/Loser 학습", "status": "next"},
+            {"phase": "PHASE 8", "title": "Winner/Loser 학습", "status": "completed"},
+            {"phase": "PHASE 9", "title": "저장소 연동", "status": "next"},
         ],
         "architecture": {
             "overall_progress": build_overall_progress(phase_roadmap),
@@ -681,6 +758,8 @@ def build_dashboard_payload() -> dict[str, Any]:
             "prompts": prompt_summary,
             "images": image_summary,
             "quality_review": quality_summary,
+            "winner_loser": learning_summary,
+            "winner_loser_patterns": pattern_summary,
             "marketing_source_counts": source_counts,
             "brand_snapshots": build_brand_snapshots(ad_payload, trend_payload, manager_payload),
             "ad_preview": sample_records(ad_payload),
@@ -689,6 +768,7 @@ def build_dashboard_payload() -> dict[str, Any]:
             "prompt_preview": build_prompt_preview(prompt_payload),
             "image_preview": build_image_request_preview(image_payload),
             "quality_preview": build_quality_preview(quality_payload),
+            "learning_preview": build_learning_preview(learning_payload),
             "monitoring_preview": build_monitoring_preview(trend_payload),
         },
         "operations": {
@@ -699,16 +779,16 @@ def build_dashboard_payload() -> dict[str, Any]:
         "verification": {
             "last_command": "python -m unittest tests.test_trend_collector tests.test_data_collector tests.test_manager tests.test_prompt_engineer tests.test_image_designer tests.test_build_dashboard_data",
             "last_result": "passed",
-            "test_count": 23,
+            "test_count": 26,
         },
         "git": {
             "branch": run_git(["branch", "--show-current"]) or "main",
             "recent_commits": recent_commits,
         },
         "next_step": {
-            "phase": "PHASE 8",
-            "title": "Winner/Loser 학습",
-            "summary": "광고 성과 기준으로 Winner, Loser, Pending을 분류하고 다음 소재 개선 패턴을 저장한다.",
+            "phase": "PHASE 9",
+            "title": "저장소 연동",
+            "summary": "Google Drive와 GitHub 저장 유틸을 실제 운영 산출물 흐름에 연결하고 실패 시 로그를 남긴다.",
         },
         "risks": [
             "광고 API와 트렌드 API는 아직 mock 수집 단계다.",
@@ -716,6 +796,7 @@ def build_dashboard_payload() -> dict[str, Any]:
             "프롬프트 생성도 rule 기반이며 실제 OpenAI API 호출은 아직 수행하지 않는다.",
             "이미지 생성은 dry-run 단계이며 실제 gpt-image-2 API 호출은 아직 수행하지 않는다.",
             "품질 검수는 dry-run 요청 메타데이터 기준이며 실제 이미지 픽셀 검수는 이미지 API 연결 후 확장한다.",
+            "Winner/Loser 학습은 mock 광고 성과 기준이며 실제 캠페인 집행 일수는 API 연결 후 교체한다.",
             "초 단위 실행 로그 실시간화는 PHASE 10 API 연동에서 확장한다.",
         ],
     }

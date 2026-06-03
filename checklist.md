@@ -147,3 +147,16 @@
 - [x] PHASE 7 검증 실행
 - [x] GitHub 저장 확인
 - [ ] Vercel 반영 확인은 앱 토큰 재인증 후 진행
+
+# PHASE 8 Winner/Loser Learning Checklist
+
+- [x] PHASE 7 완료 상태와 기존 분류 로직 확인
+- [x] 광고 성과 mock과 브랜드별 목표 기준 확인
+- [x] Winner, Loser, Pending 판정 기준 구현
+- [x] `history/daily/{date}_winner_loser.json` 저장 구현
+- [x] `history/winner_loser_patterns.json` 학습 패턴 갱신 구현
+- [x] Winner/Loser 단위 테스트 추가
+- [x] 대시보드 JSON에 학습 결과 추가
+- [x] 대시보드 화면에 학습 결과 표시
+- [x] PHASE 8 검증 실행
+- [ ] GitHub 저장 및 Vercel 반영 확인

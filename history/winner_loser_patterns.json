@@ -1,10 +1,269 @@
-﻿{
-  "updated_at": null,
+{
+  "updated_at": "2026-05-18",
   "brands": {
-    "someud": { "winners": [], "losers": [], "pending": [] },
-    "kinda": { "winners": [], "losers": [], "pending": [] },
-    "melliance": { "winners": [], "losers": [], "pending": [] },
-    "paperback": { "winners": [], "losers": [], "pending": [] },
-    "baren": { "winners": [], "losers": [], "pending": [] }
+    "someud": {
+      "winners": [],
+      "losers": [],
+      "pending": [
+        {
+          "date": "2026-05-18",
+          "source": "meta",
+          "creative_id": "someud_meta_mock_001",
+          "label": "pending",
+          "reason": "mixed_signal",
+          "ctr": 2.3913,
+          "roas": 247.0,
+          "cpa": 5.6875,
+          "impressions": 1380,
+          "actions": [
+            "집행 신호가 더 쌓일 때까지 관찰한다.",
+            "성과가 갈리는 지표를 다음 수집일에 재확인한다."
+          ]
+        },
+        {
+          "date": "2026-05-18",
+          "source": "naver_sa",
+          "creative_id": "someud_naver_sa_mock_001",
+          "label": "pending",
+          "reason": "mixed_signal",
+          "ctr": 2.3129,
+          "roas": 247.0,
+          "cpa": 4.97,
+          "impressions": 1470,
+          "actions": [
+            "집행 신호가 더 쌓일 때까지 관찰한다.",
+            "성과가 갈리는 지표를 다음 수집일에 재확인한다."
+          ]
+        },
+        {
+          "date": "2026-05-18",
+          "source": "kakao_moment",
+          "creative_id": "someud_kakao_moment_mock_001",
+          "label": "pending",
+          "reason": "mixed_signal",
+          "ctr": 2.2436,
+          "roas": 247.0,
+          "cpa": 4.4917,
+          "impressions": 1560,
+          "actions": [
+            "집행 신호가 더 쌓일 때까지 관찰한다.",
+            "성과가 갈리는 지표를 다음 수집일에 재확인한다."
+          ]
+        }
+      ]
+    },
+    "kinda": {
+      "winners": [
+        {
+          "date": "2026-05-18",
+          "source": "meta",
+          "creative_id": "kinda_meta_mock_001",
+          "label": "winner",
+          "reason": "ctr_roas_cpa_passed",
+          "ctr": 2.4359,
+          "roas": 259.0,
+          "cpa": 5.4,
+          "impressions": 1560,
+          "actions": [
+            "해당 소재 각도를 다음 프롬프트의 우선 콘셉트로 승격한다.",
+            "동일 브랜드에서 유사 메시지를 2개 이상 변형 테스트한다."
+          ]
+        },
+        {
+          "date": "2026-05-18",
+          "source": "naver_sa",
+          "creative_id": "kinda_naver_sa_mock_001",
+          "label": "winner",
+          "reason": "ctr_roas_cpa_passed",
+          "ctr": 2.3636,
+          "roas": 259.0,
+          "cpa": 4.85,
+          "impressions": 1650,
+          "actions": [
+            "해당 소재 각도를 다음 프롬프트의 우선 콘셉트로 승격한다.",
+            "동일 브랜드에서 유사 메시지를 2개 이상 변형 테스트한다."
+          ]
+        },
+        {
+          "date": "2026-05-18",
+          "source": "kakao_moment",
+          "creative_id": "kinda_kakao_moment_mock_001",
+          "label": "winner",
+          "reason": "ctr_roas_cpa_passed",
+          "ctr": 2.2989,
+          "roas": 259.0,
+          "cpa": 4.4571,
+          "impressions": 1740,
+          "actions": [
+            "해당 소재 각도를 다음 프롬프트의 우선 콘셉트로 승격한다.",
+            "동일 브랜드에서 유사 메시지를 2개 이상 변형 테스트한다."
+          ]
+        }
+      ],
+      "losers": [],
+      "pending": []
+    },
+    "melliance": {
+      "winners": [
+        {
+          "date": "2026-05-18",
+          "source": "meta",
+          "creative_id": "melliance_meta_mock_001",
+          "label": "winner",
+          "reason": "ctr_roas_cpa_passed",
+          "ctr": 2.4713,
+          "roas": 271.0,
+          "cpa": 10.4167,
+          "impressions": 1740,
+          "actions": [
+            "해당 소재 각도를 다음 프롬프트의 우선 콘셉트로 승격한다.",
+            "동일 브랜드에서 유사 메시지를 2개 이상 변형 테스트한다."
+          ]
+        },
+        {
+          "date": "2026-05-18",
+          "source": "naver_sa",
+          "creative_id": "melliance_naver_sa_mock_001",
+          "label": "winner",
+          "reason": "ctr_roas_cpa_passed",
+          "ctr": 2.4044,
+          "roas": 271.0,
+          "cpa": 8.3375,
+          "impressions": 1830,
+          "actions": [
+            "해당 소재 각도를 다음 프롬프트의 우선 콘셉트로 승격한다.",
+            "동일 브랜드에서 유사 메시지를 2개 이상 변형 테스트한다."
+          ]
+        },
+        {
+          "date": "2026-05-18",
+          "source": "kakao_moment",
+          "creative_id": "melliance_kakao_moment_mock_001",
+          "label": "winner",
+          "reason": "ctr_roas_cpa_passed",
+          "ctr": 2.3438,
+          "roas": 271.0,
+          "cpa": 7.09,
+          "impressions": 1920,
+          "actions": [
+            "해당 소재 각도를 다음 프롬프트의 우선 콘셉트로 승격한다.",
+            "동일 브랜드에서 유사 메시지를 2개 이상 변형 테스트한다."
+          ]
+        }
+      ],
+      "losers": [],
+      "pending": []
+    },
+    "paperback": {
+      "winners": [
+        {
+          "date": "2026-05-18",
+          "source": "meta",
+          "creative_id": "paperback_meta_mock_001",
+          "label": "winner",
+          "reason": "ctr_roas_cpa_passed",
+          "ctr": 2.5,
+          "roas": 283.0,
+          "cpa": 8.875,
+          "impressions": 1920,
+          "actions": [
+            "해당 소재 각도를 다음 프롬프트의 우선 콘셉트로 승격한다.",
+            "동일 브랜드에서 유사 메시지를 2개 이상 변형 테스트한다."
+          ]
+        },
+        {
+          "date": "2026-05-18",
+          "source": "naver_sa",
+          "creative_id": "paperback_naver_sa_mock_001",
+          "label": "winner",
+          "reason": "ctr_roas_cpa_passed",
+          "ctr": 2.4378,
+          "roas": 283.0,
+          "cpa": 7.52,
+          "impressions": 2010,
+          "actions": [
+            "해당 소재 각도를 다음 프롬프트의 우선 콘셉트로 승격한다.",
+            "동일 브랜드에서 유사 메시지를 2개 이상 변형 테스트한다."
+          ]
+        },
+        {
+          "date": "2026-05-18",
+          "source": "kakao_moment",
+          "creative_id": "paperback_kakao_moment_mock_001",
+          "label": "winner",
+          "reason": "ctr_roas_cpa_passed",
+          "ctr": 2.381,
+          "roas": 283.0,
+          "cpa": 6.6167,
+          "impressions": 2100,
+          "actions": [
+            "해당 소재 각도를 다음 프롬프트의 우선 콘셉트로 승격한다.",
+            "동일 브랜드에서 유사 메시지를 2개 이상 변형 테스트한다."
+          ]
+        }
+      ],
+      "losers": [],
+      "pending": []
+    },
+    "baren": {
+      "winners": [
+        {
+          "date": "2026-05-18",
+          "source": "meta",
+          "creative_id": "baren_meta_mock_001",
+          "label": "winner",
+          "reason": "ctr_roas_cpa_passed",
+          "ctr": 2.5238,
+          "roas": 295.0,
+          "cpa": 7.95,
+          "impressions": 2100,
+          "actions": [
+            "해당 소재 각도를 다음 프롬프트의 우선 콘셉트로 승격한다.",
+            "동일 브랜드에서 유사 메시지를 2개 이상 변형 테스트한다."
+          ]
+        },
+        {
+          "date": "2026-05-18",
+          "source": "naver_sa",
+          "creative_id": "baren_naver_sa_mock_001",
+          "label": "winner",
+          "reason": "ctr_roas_cpa_passed",
+          "ctr": 2.4658,
+          "roas": 295.0,
+          "cpa": 6.975,
+          "impressions": 2190,
+          "actions": [
+            "해당 소재 각도를 다음 프롬프트의 우선 콘셉트로 승격한다.",
+            "동일 브랜드에서 유사 메시지를 2개 이상 변형 테스트한다."
+          ]
+        },
+        {
+          "date": "2026-05-18",
+          "source": "kakao_moment",
+          "creative_id": "baren_kakao_moment_mock_001",
+          "label": "winner",
+          "reason": "ctr_roas_cpa_passed",
+          "ctr": 2.4123,
+          "roas": 295.0,
+          "cpa": 6.2786,
+          "impressions": 2280,
+          "actions": [
+            "해당 소재 각도를 다음 프롬프트의 우선 콘셉트로 승격한다.",
+            "동일 브랜드에서 유사 메시지를 2개 이상 변형 테스트한다."
+          ]
+        }
+      ],
+      "losers": [],
+      "pending": []
+    }
+  },
+  "summary": {
+    "record_count": 15,
+    "brand_count": 5,
+    "winner_count": 12,
+    "loser_count": 0,
+    "pending_count": 3,
+    "mature_count": 15,
+    "winner_rate": 0.8
   }
 }

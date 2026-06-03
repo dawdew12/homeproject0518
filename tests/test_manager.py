@@ -7,7 +7,15 @@ import unittest
 from copy import deepcopy
 from pathlib import Path
 
-from agents.manager import analyze_daily_inputs, build_manager_brief, build_quality_review, read_json, review_images
+from agents.manager import (
+    analyze_daily_inputs,
+    build_manager_brief,
+    build_quality_review,
+    build_winner_loser_learning,
+    classify_winner_loser,
+    read_json,
+    review_images,
+)
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -85,6 +93,59 @@ class ManagerAnalysisTest(unittest.TestCase):
         self.assertEqual(saved["date"], "2026-05-18")
         self.assertEqual(saved["summary"]["approved_count"], 20)
         self.assertTrue(saved_path.name.endswith("_quality_review.json"))
+
+    def test_build_winner_loser_learning_classifies_mock_records(self) -> None:
+        ad_payload = read_json(PROJECT_ROOT / "history" / "daily" / "2026-05-18_ad_data.json")
+
+        payload = build_winner_loser_learning("2026-05-18", ad_payload)
+        summary = payload["summary"]
+        brand_summary = {item["brand"]: item for item in payload["brand_summary"]}
+
+        self.assertEqual(payload["status"], "winner_loser_learning_ready")
+        self.assertEqual(summary["record_count"], 15)
+        self.assertEqual(summary["winner_count"], 12)
+        self.assertEqual(summary["loser_count"], 0)
+        self.assertEqual(summary["pending_count"], 3)
+        self.assertEqual(summary["winner_rate"], 0.8)
+        self.assertEqual(brand_summary["melliance"]["winner_count"], 3)
+        self.assertEqual(brand_summary["baren"]["winner_count"], 3)
+        self.assertEqual(brand_summary["kinda"]["winner_count"], 3)
+        self.assertEqual(brand_summary["paperback"]["winner_count"], 3)
+        self.assertEqual(brand_summary["someud"]["pending_count"], 3)
+
+    def test_build_winner_loser_learning_marks_loser_when_cpa_spikes(self) -> None:
+        ad_payload = read_json(PROJECT_ROOT / "history" / "daily" / "2026-05-18_ad_data.json")
+        failing_payload = deepcopy(ad_payload)
+        failing_payload["records"][0]["metrics"]["ctr"] = 0.4
+        failing_payload["records"][0]["metrics"]["roas"] = 90
+        failing_payload["records"][0]["metrics"]["cpa"] = 99
+
+        payload = build_winner_loser_learning("2026-05-18", failing_payload)
+        first_record = payload["records"][0]
+
+        self.assertEqual(first_record["label"], "loser")
+        self.assertEqual(first_record["reason"], "performance_drop_detected")
+        self.assertGreaterEqual(payload["summary"]["loser_count"], 1)
+
+    def test_classify_winner_loser_saves_daily_and_patterns(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            output_dir = Path(tmp_dir)
+            pattern_path = output_dir / "winner_loser_patterns.json"
+            pattern_path.write_text('{"updated_at": null, "brands": {}}', encoding="utf-8-sig")
+            payload = classify_winner_loser(
+                "2026-05-18",
+                output_dir=output_dir,
+                pattern_path=pattern_path,
+            )
+            saved_path = Path(payload["output_path"])
+            saved = json.loads(saved_path.read_text(encoding="utf-8"))
+            patterns = json.loads(pattern_path.read_text(encoding="utf-8"))
+
+        self.assertTrue(saved_path.name.endswith("_winner_loser.json"))
+        self.assertEqual(saved["summary"]["winner_count"], 12)
+        self.assertEqual(patterns["summary"]["winner_count"], 12)
+        self.assertEqual(len(patterns["brands"]["baren"]["winners"]), 3)
+        self.assertEqual(len(patterns["brands"]["someud"]["pending"]), 3)
 
 
 if __name__ == "__main__":

@@ -134,3 +134,16 @@
 - 결과: 23개 테스트 통과.
 - 남은 리스크: 이번 품질 검수는 dry-run 메타데이터 기준이며, 실제 이미지 픽셀 검수는 gpt-image-2 API 연결 후 확장해야 한다.
 
+## 2026-06-03 PHASE 8 완료
+
+- 목표: 광고 성과 mock을 Winner, Loser, Pending으로 분류하고 다음 소재 개선 패턴을 저장.
+- `agents/manager.py`에 Winner/Loser 분류, 일별 학습 결과 저장, 누적 패턴 파일 갱신을 구현했다.
+- `history/daily/2026-05-18_winner_loser.json`에 15개 광고 성과 분류 결과를 저장했다.
+- 결과는 Winner 12개, Loser 0개, Pending 3개이며, Pending은 someud의 ROAS가 Winner 기준에 미달한 `mixed_signal`이다.
+- `history/winner_loser_patterns.json`에 브랜드별 winners, losers, pending 패턴을 누적 저장했다.
+- `scripts/build_dashboard_data.py`와 `web/index.html`에 Winner/Loser 요약과 학습 미리보기를 추가했다.
+- 현재 공식 로드맵 기준 진행률은 8/12, 67%다.
+- 검증 명령: Codex 번들 Python으로 `python -m unittest tests.test_trend_collector tests.test_data_collector tests.test_manager tests.test_prompt_engineer tests.test_image_designer tests.test_build_dashboard_data`.
+- 결과: 26개 테스트 통과.
+- 남은 리스크: 캠페인 집행일수는 mock 기본값 3일이며, 실제 광고 API 연결 후 매체별 집행 시작일 기준으로 교체해야 한다.
+

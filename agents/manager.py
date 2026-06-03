@@ -21,6 +21,9 @@ BRAND_VISUAL_CONCEPTS = {
 }
 QUALITY_SCORE_THRESHOLD = 90
 MAX_REGENERATION_RETRY = 2
+KRW_PER_USD = 1300
+DEFAULT_CAMPAIGN_AGE_DAYS = 3
+WINNER_LOSER_PATTERN_PATH = PROJECT_ROOT / "history" / "winner_loser_patterns.json"
 
 
 def read_json(path: Path, default: Any | None = None) -> Any:
@@ -29,7 +32,7 @@ def read_json(path: Path, default: Any | None = None) -> Any:
         if default is not None:
             return default
         raise FileNotFoundError(path)
-    return json.loads(path.read_text(encoding="utf-8"))
+    return json.loads(path.read_text(encoding="utf-8-sig"))
 
 
 def write_json(path: Path, payload: dict[str, Any]) -> Path:
@@ -472,28 +475,200 @@ def review_images(
     return payload
 
 
-def classify_winner_loser(date: str | None = None) -> dict[str, Any]:
-    """광고 성과 기준으로 Winner, Loser, Pending을 분류한다."""
-    ad_path = find_daily_file(date, "ad_data")
+def cpa_target_usd(targets: dict[str, Any]) -> float:
+    """브랜드 CPA 목표를 USD 기준으로 변환한다."""
+    if "cpa_target_usd" in targets:
+        return float(targets.get("cpa_target_usd", 0))
+    return round(float(targets.get("cpa_target_krw", 0)) / KRW_PER_USD, 4)
+
+
+def classify_performance_record(record: dict[str, Any]) -> dict[str, Any]:
+    """광고 성과 레코드 1개를 Winner, Loser, Pending으로 분류한다."""
+    brand = record.get("brand", "")
+    config = load_brand_config(brand)
+    targets = config.get("performance_targets", {})
+    metrics = record.get("metrics", {})
+    ctr = float(metrics.get("ctr", 0))
+    roas = float(metrics.get("roas", 0))
+    cpa = float(metrics.get("cpa", 0))
+    impressions = int(metrics.get("impressions", 0))
+    campaign_age_days = int(record.get("campaign_age_days", DEFAULT_CAMPAIGN_AGE_DAYS))
+    ctr_target = float(targets.get("ctr_target", 2.0))
+    roas_target = float(targets.get("roas_target", 250))
+    cpa_target = cpa_target_usd(targets)
+
+    mature = campaign_age_days >= 3 and impressions >= 1000
+    winner = mature and ctr >= 2.0 and roas >= 250 and cpa <= cpa_target * 1.2
+    loser = mature and (ctr < 0.8 or roas < 120 or cpa > cpa_target * 2.0)
+    if not mature:
+        label = "pending"
+        reason = "maturity_threshold"
+    elif winner:
+        label = "winner"
+        reason = "ctr_roas_cpa_passed"
+    elif loser:
+        label = "loser"
+        reason = "performance_drop_detected"
+    else:
+        label = "pending"
+        reason = "mixed_signal"
+
+    return {
+        "date": record.get("date"),
+        "brand": brand,
+        "source": record.get("source"),
+        "campaign_id": record.get("campaign_id"),
+        "creative_id": record.get("creative_id"),
+        "label": label,
+        "reason": reason,
+        "metrics": {
+            "ctr": ctr,
+            "roas": roas,
+            "cpa": cpa,
+            "impressions": impressions,
+            "conversions": int(metrics.get("conversions", 0)),
+        },
+        "targets": {
+            "ctr_winner_min": 2.0,
+            "roas_winner_min": 250,
+            "ctr_target": ctr_target,
+            "roas_target": roas_target,
+            "cpa_target_usd": cpa_target,
+            "cpa_winner_max": round(cpa_target * 1.2, 4),
+            "cpa_loser_min": round(cpa_target * 2.0, 4),
+        },
+        "maturity": {
+            "campaign_age_days": campaign_age_days,
+            "impressions": impressions,
+            "mature": mature,
+        },
+    }
+
+
+def build_learning_actions(classification: dict[str, Any]) -> list[str]:
+    """분류 결과에 따른 다음 소재 학습 액션을 만든다."""
+    label = classification.get("label")
+    if label == "winner":
+        return ["해당 소재 각도를 다음 프롬프트의 우선 콘셉트로 승격한다.", "동일 브랜드에서 유사 메시지를 2개 이상 변형 테스트한다."]
+    if label == "loser":
+        return ["후킹 비주얼과 전환 설득 요소를 재작성한다.", "동일 조건 재생성보다 새로운 소재 각도를 우선 테스트한다."]
+    return ["집행 신호가 더 쌓일 때까지 관찰한다.", "성과가 갈리는 지표를 다음 수집일에 재확인한다."]
+
+
+def build_winner_loser_learning(
+    date: str,
+    ad_payload: dict[str, Any],
+    input_files: dict[str, str] | None = None,
+) -> dict[str, Any]:
+    """광고 성과 전체를 분류하고 학습 가능한 패턴으로 요약한다."""
+    records = [classify_performance_record(record) for record in ad_payload.get("records", [])]
+    by_label = {
+        "winner": [record for record in records if record["label"] == "winner"],
+        "loser": [record for record in records if record["label"] == "loser"],
+        "pending": [record for record in records if record["label"] == "pending"],
+    }
+    brand_summary = []
+    for brand in BRANDS:
+        brand_records = [record for record in records if record["brand"] == brand]
+        brand_summary.append(
+            {
+                "brand": brand,
+                "winner_count": sum(1 for record in brand_records if record["label"] == "winner"),
+                "loser_count": sum(1 for record in brand_records if record["label"] == "loser"),
+                "pending_count": sum(1 for record in brand_records if record["label"] == "pending"),
+                "top_label": max(("winner", "pending", "loser"), key=lambda label: sum(1 for record in brand_records if record["label"] == label)),
+            }
+        )
+
+    return {
+        "date": date,
+        "status": "winner_loser_learning_ready",
+        "input_files": input_files or {},
+        "summary": {
+            "record_count": len(records),
+            "brand_count": len({record["brand"] for record in records}),
+            "winner_count": len(by_label["winner"]),
+            "loser_count": len(by_label["loser"]),
+            "pending_count": len(by_label["pending"]),
+            "mature_count": sum(1 for record in records if record["maturity"]["mature"]),
+            "winner_rate": round(len(by_label["winner"]) / len(records), 4) if records else 0,
+        },
+        "brand_summary": brand_summary,
+        "records": [
+            {
+                **record,
+                "learning_actions": build_learning_actions(record),
+            }
+            for record in records
+        ],
+    }
+
+
+def build_pattern_entry(record: dict[str, Any]) -> dict[str, Any]:
+    """분류 레코드를 누적 학습 패턴 항목으로 줄인다."""
+    return {
+        "date": record.get("date"),
+        "source": record.get("source"),
+        "creative_id": record.get("creative_id"),
+        "label": record.get("label"),
+        "reason": record.get("reason"),
+        "ctr": record.get("metrics", {}).get("ctr"),
+        "roas": record.get("metrics", {}).get("roas"),
+        "cpa": record.get("metrics", {}).get("cpa"),
+        "impressions": record.get("metrics", {}).get("impressions"),
+        "actions": record.get("learning_actions", []),
+    }
+
+
+def update_winner_loser_patterns(
+    learning_payload: dict[str, Any],
+    pattern_path: Path = WINNER_LOSER_PATTERN_PATH,
+) -> dict[str, Any]:
+    """누적 Winner/Loser 학습 패턴 파일을 갱신한다."""
+    patterns = read_json(pattern_path, {"updated_at": None, "brands": {}})
+    brands = patterns.setdefault("brands", {})
+    for brand in BRANDS:
+        brands.setdefault(brand, {"winners": [], "losers": [], "pending": []})
+
+    for record in learning_payload.get("records", []):
+        brand_patterns = brands.setdefault(record["brand"], {"winners": [], "losers": [], "pending": []})
+        bucket = f"{record['label']}s" if record["label"] != "pending" else "pending"
+        entry = build_pattern_entry(record)
+        existing = [item for item in brand_patterns.get(bucket, []) if item.get("creative_id") != entry["creative_id"]]
+        brand_patterns[bucket] = [*existing, entry]
+
+    patterns["updated_at"] = learning_payload["date"]
+    patterns["summary"] = learning_payload["summary"]
+    write_json(pattern_path, patterns)
+    return patterns
+
+
+def save_winner_loser_learning(payload: dict[str, Any], output_dir: Path = DEFAULT_DAILY_DIR) -> Path:
+    """일별 Winner/Loser 학습 결과를 저장한다."""
+    return write_json(output_dir / f"{payload['date']}_winner_loser.json", payload)
+
+
+def classify_winner_loser(
+    date: str | None = None,
+    daily_dir: Path = DEFAULT_DAILY_DIR,
+    output_dir: Path | None = None,
+    pattern_path: Path = WINNER_LOSER_PATTERN_PATH,
+) -> dict[str, Any]:
+    """광고 성과 기준으로 Winner, Loser, Pending을 분류하고 학습 패턴을 저장한다."""
+    ad_path = find_daily_file(date, "ad_data", daily_dir)
     ad_payload = read_json(ad_path)
-    classifications = []
-    for record in ad_payload.get("records", []):
-        brand = record.get("brand", "")
-        config = load_brand_config(brand)
-        targets = config.get("performance_targets", {})
-        metrics = record.get("metrics", {})
-        ctr = float(metrics.get("ctr", 0))
-        roas = float(metrics.get("roas", 0))
-        ctr_target = float(targets.get("ctr_target", 2.0))
-        roas_target = float(targets.get("roas_target", 250))
-        if ctr >= ctr_target and roas >= roas_target:
-            label = "winner"
-        elif ctr < ctr_target * 0.4 or roas < roas_target * 0.5:
-            label = "loser"
-        else:
-            label = "pending"
-        classifications.append({"brand": brand, "source": record.get("source"), "creative_id": record.get("creative_id"), "label": label})
-    return {"status": "classified", "step": "classification", "date": ad_payload.get("date"), "records": classifications}
+    learning_date = date or ad_payload.get("date")
+    payload = build_winner_loser_learning(
+        learning_date,
+        ad_payload,
+        {"ad": str(ad_path.relative_to(PROJECT_ROOT)).replace("\\", "/")},
+    )
+    output_path = save_winner_loser_learning(payload, output_dir or daily_dir)
+    patterns = update_winner_loser_patterns(payload, pattern_path)
+    payload["output_path"] = str(output_path)
+    payload["pattern_path"] = str(pattern_path)
+    payload["pattern_summary"] = patterns.get("summary", {})
+    return payload
 
 
 def main() -> None:
@@ -509,7 +684,7 @@ def main() -> None:
         "analyze": lambda selected_date: analyze_daily_inputs(selected_date, output_dir=output_dir),
         "storyboard": review_storyboards,
         "review": lambda selected_date: review_images(selected_date, output_dir=output_dir),
-        "classify": classify_winner_loser,
+        "classify": lambda selected_date: classify_winner_loser(selected_date, output_dir=output_dir),
     }
     result = handlers[args.step](args.date)
     print(json.dumps(result, ensure_ascii=False, indent=2))

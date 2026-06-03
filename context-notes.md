@@ -175,3 +175,19 @@
 - GitHub 원격 main은 PHASE 7 커밋을 가리키는 것을 확인했다.
 - Vercel 연결 앱 토큰은 만료되었고 배포 URL은 401 보호 상태라 원격 배포 반영 확인은 재인증 후 진행해야 한다.
 
+## 2026-06-03 PHASE 8 Winner/Loser Learning 시작
+
+- 사용자는 Vercel 재인증 후 다음 단계 진행을 승인했다.
+- PHASE 8의 범위는 광고 성과 mock을 Winner, Loser, Pending으로 분류하고 학습 패턴 저장 파일을 갱신하는 것이다.
+- AGENTS.md 기준에 따라 Winner는 CTR, ROAS, CPA 조건을 모두 통과해야 하고, Loser는 CTR, ROAS, CPA 중 하나라도 악화 기준을 넘으면 된다.
+- 광고 mock의 CPA는 USD이고 브랜드 config의 CPA 목표는 KRW이므로, 이번 단계는 1 USD = 1300 KRW 기준으로 목표 CPA를 USD로 환산해 비교한다.
+- mock 데이터에는 집행일수 필드가 없으므로 mock 기준 기본 집행일수 3일을 적용하고, 실제 API 연결 후에는 매체별 집행 시작일 또는 age 필드로 대체한다.
+
+## 2026-06-03 PHASE 8 Winner/Loser Learning 구현
+
+- `agents/manager.py`에 Winner, Loser, Pending 분류와 일별 학습 JSON 저장, 누적 패턴 파일 갱신을 구현했다.
+- 기존 `history/winner_loser_patterns.json`은 UTF-8 BOM이 포함되어 있어 `read_json`이 `utf-8-sig`로 읽도록 수정했다.
+- `history/daily/2026-05-18_winner_loser.json`에는 15개 광고 성과 중 Winner 12개, Loser 0개, Pending 3개가 저장되었다.
+- Pending 3개는 someud의 ROAS가 247%로 Winner 기준 250%에 미달해 `mixed_signal`로 남긴다.
+- 대시보드는 PHASE 8 완료, 전체 진행도 67%, 다음 단계 PHASE 9 저장소 연동으로 갱신한다.
+

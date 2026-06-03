@@ -219,10 +219,12 @@ section {
 .tag.static_ready,
 .tag.dry_run_ready,
 .tag.quality_review_ready,
+.tag.learning_ready,
 .tag.ready,
 .tag.configured,
 .tag.passed,
-.tag.approved {
+.tag.approved,
+.tag.winner {
   background: #e4f3ec;
   color: var(--green);
 }
@@ -246,6 +248,14 @@ section {
 .tag.regeneration_required {
   background: #faefd8;
   color: var(--amber);
+}
+.tag.pending {
+  background: #faefd8;
+  color: var(--amber);
+}
+.tag.loser {
+  background: #f8e5e5;
+  color: var(--red);
 }
 .phase-list {
   display: grid;
@@ -426,6 +436,10 @@ li { margin: 5px 0; }
       <div class="label">검수 승인</div>
       <div class="value ok" id="quality-approved">-</div>
     </div>
+    <div class="metric">
+      <div class="label">Winner</div>
+      <div class="value ok" id="winner-count">-</div>
+    </div>
   </div>
 
   <section>
@@ -499,6 +513,7 @@ li { margin: 5px 0; }
           <tr><th>프롬프트 Pack</th><td id="prompt-status">-</td></tr>
           <tr><th>이미지 Dry-run</th><td id="image-status">-</td></tr>
           <tr><th>품질 검수</th><td id="quality-status">-</td></tr>
+          <tr><th>Winner/Loser</th><td id="learning-status">-</td></tr>
           <tr><th>Daily 시장조사 출처</th><td id="daily-sources">-</td></tr>
           <tr><th>검증</th><td id="verification">-</td></tr>
         </tbody>
@@ -578,6 +593,26 @@ li { margin: 5px 0; }
         </tr>
       </thead>
       <tbody id="quality-table"></tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Winner/Loser 학습</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Creative ID</th>
+          <th>브랜드</th>
+          <th>매체</th>
+          <th>분류</th>
+          <th>CTR</th>
+          <th>ROAS</th>
+          <th>CPA</th>
+          <th>사유</th>
+          <th>다음 액션</th>
+        </tr>
+      </thead>
+      <tbody id="learning-table"></tbody>
     </table>
   </section>
 
@@ -685,6 +720,7 @@ function render(data) {
   const prompts = data.data?.prompts || {};
   const images = data.data?.images || {};
   const qualityReview = data.data?.quality_review || {};
+  const learning = data.data?.winner_loser || {};
   const sourceCounts = data.data?.marketing_source_counts || {};
 
   text("deploy-status", `생성 시각 ${data.generated_at || "-"}`);
@@ -696,12 +732,14 @@ function render(data) {
   text("prompt-count", prompts.prompt_count ?? 0);
   text("image-requests", images.request_count ?? 0);
   text("quality-approved", qualityReview.approved_count ?? 0);
+  text("winner-count", learning.winner_count ?? 0);
   text("ad-status", `${ad.status || "-"} · ${ad.record_count ?? 0} records · ${ad.source_count ?? 0} sources`);
   text("trend-status", `${trend.status || "-"} · ${trend.record_count ?? 0} records · ${trend.source_count ?? 0} sources`);
   text("manager-status", `${manager.status || "-"} · ${manager.brand_count ?? 0} brands · ${manager.handoff_count ?? 0} handoff`);
   text("prompt-status", `${prompts.status || "-"} · ${prompts.storyboard_count ?? 0} storyboards · ${prompts.prompt_count ?? 0} prompts`);
   text("image-status", `${images.status || "-"} · ${images.request_count ?? 0} requests · $${images.estimated_cost_usd ?? 0} · charged ${images.charged ? "yes" : "no"}`);
   text("quality-status", `${qualityReview.status || "-"} · ${qualityReview.approved_count ?? 0}/${qualityReview.request_count ?? 0} approved · score ${qualityReview.avg_score ?? 0} · regen ${qualityReview.regeneration_required_count ?? 0}`);
+  text("learning-status", `${learning.status || "-"} · winner ${learning.winner_count ?? 0} · loser ${learning.loser_count ?? 0} · pending ${learning.pending_count ?? 0}`);
   text("daily-sources", `${sourceCounts.daily ?? 0} daily · ${sourceCounts.weekly ?? 0} weekly · ${sourceCounts.monthly ?? 0} monthly`);
   text("verification", `${data.verification?.last_result || "-"} · ${data.verification?.test_count ?? 0} tests`);
   text("next-phase", `${data.next_step?.phase || "-"} · ${data.next_step?.title || ""}`);
@@ -830,6 +868,20 @@ function render(data) {
       <td><span class="tag ${tagClass(item.status)}">${item.status}</span></td>
       <td>${item.regeneration_needed ? "필요" : "없음"}</td>
       <td>${item.reason || "-"}</td>
+    </tr>
+  `).join("");
+
+  document.getElementById("learning-table").innerHTML = (data.data?.learning_preview || []).map(item => `
+    <tr>
+      <td><code>${item.creative_id}</code></td>
+      <td>${item.brand}</td>
+      <td>${item.source}</td>
+      <td><span class="tag ${tagClass(item.label)}">${item.label}</span></td>
+      <td>${fmt(item.ctr, "%")}</td>
+      <td>${fmt(item.roas, "%")}</td>
+      <td>$${fmt(item.cpa)}</td>
+      <td>${item.reason || "-"}</td>
+      <td>${item.action || "-"}</td>
     </tr>
   `).join("");
 
