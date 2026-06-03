@@ -175,5 +175,9 @@
 - 검증 명령: Codex 번들 Python으로 `python -m unittest tests.test_trend_collector tests.test_data_collector tests.test_manager tests.test_prompt_engineer tests.test_image_designer tests.test_storage_utils tests.test_dashboard_api tests.test_build_dashboard_data`.
 - 결과: 33개 테스트 통과.
 - 로컬 HTTP 검증: `http://localhost:4173/`, `http://localhost:4173/api/status.json`, `http://localhost:4173/api/logs.json` 모두 200 응답.
+- GitHub main에 `3f7947f [PHASE 10] Dashboard API 실시간화 구현` 커밋을 push했다.
+- Vercel production deployment `dpl_7WWBYC8RmWsddjDH4xDUzxhQFThi`는 해당 커밋으로 READY 상태다.
+- 배포 URL의 `/api/status` 직접 fetch는 Vercel Authentication 401을 반환해, 원격 콘텐츠 검증은 보호 설정 해제 후 재확인이 필요하다.
 - 남은 리스크: Vercel 정적 배포 구조에서는 실제 데이터 갱신 주기가 GitHub Actions 또는 dashboard data build 실행 주기에 묶인다.
+- 남은 리스크: 비로그인 공개 접근은 Vercel Deployment Protection 설정에 따라 계속 차단될 수 있다.
 

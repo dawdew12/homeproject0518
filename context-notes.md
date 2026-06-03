@@ -238,3 +238,11 @@
 - `web/index.html`은 30초마다 latest status와 API endpoint를 다시 읽고, API 상태표와 실행 로그를 화면에 표시한다.
 - 로컬 검증은 `http://localhost:4173` 정적 서버에서 루트 HTML, `/api/status.json`, `/api/logs.json` 200 응답으로 확인했다.
 
+## 2026-06-03 PHASE 10 배포 확인
+
+- GitHub main에 `3f7947f [PHASE 10] Dashboard API 실시간화 구현` 커밋을 push했다.
+- Vercel production deployment `dpl_7WWBYC8RmWsddjDH4xDUzxhQFThi`는 해당 커밋으로 READY 상태다.
+- 배포 URL의 `/api/status` 직접 fetch는 Vercel Authentication 401을 반환했다.
+- 따라서 원격 콘텐츠 검증은 배포 메타데이터 확인으로 대체하고, 실제 API 응답 검증은 로컬 HTTP 서버에서 수행했다.
+- 비로그인 공개 확인이 필요하면 Vercel Deployment Protection을 프로젝트 단위로 완전히 해제하거나 Trusted Sources 또는 bypass token을 별도로 구성해야 한다.
+
