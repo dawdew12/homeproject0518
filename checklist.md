@@ -201,3 +201,16 @@
 - [x] 대시보드 JSON과 API JSON 재생성
 - [x] PHASE 11 검증 실행
 - [x] GitHub 저장 및 Vercel 반영 확인
+
+# PHASE 12 Stabilization Checklist
+
+- [x] PHASE 11 완료 상태와 안정화 요구사항 확인
+- [x] 운영 preflight 유틸 구현
+- [x] 브랜드 설정 검증과 추가 가이드 구현
+- [x] 비용 최적화 리포트 구현
+- [x] pipeline 실패 기록과 error log 저장 보강
+- [x] 대시보드 안정화 섹션 추가
+- [x] PHASE 12 단위 테스트 추가
+- [x] 대시보드 JSON과 API JSON 재생성
+- [x] PHASE 12 검증 실행
+- [ ] GitHub 저장 및 Vercel 반영 확인

@@ -198,3 +198,16 @@
 - 남은 리스크: workflow live 모드는 실제 API credential과 운영 승인 후 사용해야 한다.
 - 남은 리스크: Slack 알림은 GitHub secret `SLACK_WEBHOOK_URL`이 있을 때만 전송된다.
 
+## 2026-06-03 PHASE 12 완료
+
+- 목표: mock/dry-run 운영을 실제 일정에 올리기 전에 preflight, 브랜드 설정 검증, 비용 리포트, 실패 기록, 대시보드 안정화 화면을 보강.
+- `utils/operation_guard.py`에 운영 guard 유틸을 추가해 브랜드 config/context, credential readiness, 비용 한도, preflight 결과, error log를 한 번에 검증할 수 있게 했다.
+- `scripts/run_daily_pipeline.py`는 daily 실행마다 `history/daily/{date}_preflight.json`을 저장하고, pipeline summary와 dashboard status에 안정화 결과를 포함한다.
+- pipeline 예외 발생 시 `history/daily/{date}_errors.log`, 실패 summary, `state/runtime.json`의 마지막 오류 정보를 기록하도록 보강했다.
+- `web/index.html`과 `scripts/build_dashboard_data.py`는 운영 안정화 섹션, 비용 guard, 브랜드 registry, 신규 브랜드 체크리스트를 표시한다.
+- 현재 공식 로드맵 기준 진행률은 12/12, 100%다.
+- 검증 명령: Codex 번들 Python으로 `python -m unittest tests.test_trend_collector tests.test_data_collector tests.test_manager tests.test_prompt_engineer tests.test_image_designer tests.test_storage_utils tests.test_dashboard_api tests.test_daily_pipeline tests.test_operation_guard tests.test_build_dashboard_data`.
+- 결과: 41개 테스트 통과.
+- 남은 리스크: live 모드는 실제 API credential과 비용 승인 후 사용해야 한다.
+- 남은 리스크: Google Drive 업로드와 이미지 API 호출은 여전히 dry-run이며, 운영 credential을 넣은 뒤 별도 검증이 필요하다.
+

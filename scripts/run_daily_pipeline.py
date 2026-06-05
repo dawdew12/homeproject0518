@@ -22,6 +22,7 @@ from agents.trend_collector import collect_trend_data, save_trend_data
 from scripts.build_dashboard_data import build_dashboard_payload, write_dashboard_api_payloads, write_dashboard_payload
 from utils.gdrive_upload import upload_outputs
 from utils.github_history import commit_history
+from utils.operation_guard import append_error_log, build_preflight_report, save_preflight_report
 
 
 KST = timezone(timedelta(hours=9))
@@ -125,6 +126,39 @@ def build_artifact(path: Path, status: str) -> dict[str, str]:
     return {"path": display_path(path), "status": status}
 
 
+def build_failure_summary(
+    error: BaseException,
+    run_date: str,
+    step: str,
+    history_root: Path,
+    runtime_path: Path,
+) -> dict[str, Any]:
+    """예상 밖 실패를 history와 runtime에 남긴다."""
+    finished_at = datetime.now(KST).isoformat(timespec="seconds")
+    error_path = history_root / "daily" / f"{run_date}_errors.log"
+    error_record = append_error_log(error, step, run_date, error_path)
+    summary = {
+        "date": run_date,
+        "status": "pipeline_failed",
+        "failed_step": step,
+        "finished_at": finished_at,
+        "error": error_record,
+        "error_log_path": display_path(error_path),
+    }
+    summary_path = write_pipeline_summary(run_date, history_root, summary)
+    summary["output_path"] = display_path(summary_path)
+    update_runtime(
+        runtime_path,
+        {
+            "execution_end": finished_at,
+            "last_status": "pipeline_failed",
+            "last_error": str(error),
+            "last_failed_step": step,
+        },
+    )
+    return summary
+
+
 def run_daily_pipeline(
     run_date: str | None = None,
     history_root: Path = DEFAULT_HISTORY_ROOT,
@@ -177,6 +211,19 @@ def run_daily_pipeline(
     image_payload = generate_daily_image_dry_run(selected_date, daily_dir=daily_dir, output_dir=daily_dir)
     artifacts.append(build_artifact(Path(image_payload["output_path"]), image_payload["status"]))
 
+    estimated_cost = float(image_payload.get("summary", {}).get("estimated_cost_usd", 0))
+    preflight_report = build_preflight_report(
+        selected_date,
+        runtime,
+        estimated_cost,
+        daily_cost_limit_usd,
+        monthly_cost_limit_usd,
+        PROJECT_ROOT,
+        live=not mock,
+    )
+    preflight_path = save_preflight_report(preflight_report, history_root, selected_date)
+    artifacts.append(build_artifact(preflight_path, preflight_report["status"]))
+
     cost_guard = build_cost_guard(image_payload, runtime, daily_cost_limit_usd, monthly_cost_limit_usd)
     if cost_guard["status"] != "cost_guard_passed":
         finished_at = datetime.now(KST).isoformat(timespec="seconds")
@@ -187,6 +234,7 @@ def run_daily_pipeline(
             "started_at": started_at,
             "finished_at": finished_at,
             "cost_guard": cost_guard,
+            "preflight": preflight_report,
             "artifacts": artifacts,
         }
         summary_path = write_pipeline_summary(selected_date, history_root, summary)
@@ -235,6 +283,7 @@ def run_daily_pipeline(
         "started_at": started_at,
         "finished_at": finished_at,
         "cost_guard": cost_guard,
+        "preflight": preflight_report,
         "summary": {
             "artifact_count": len(artifacts),
             "ad_record_count": ad_payload["summary"]["record_count"],
@@ -299,18 +348,27 @@ def parse_args() -> argparse.Namespace:
 def main() -> int:
     """명령행 실행 진입점."""
     args = parse_args()
-    result = run_daily_pipeline(
-        run_date=args.date,
-        history_root=Path(args.history_root),
-        output_root=Path(args.output_root),
-        mock=not args.live,
-        write_dashboard=not args.no_dashboard,
-        fail_on_cost_exceeded=False,
-        daily_cost_limit_usd=args.daily_cost_limit_usd,
-        monthly_cost_limit_usd=args.monthly_cost_limit_usd,
-    )
+    history_root = Path(args.history_root)
+    selected_date = resolve_run_date(args.date)
+    try:
+        result = run_daily_pipeline(
+            run_date=selected_date,
+            history_root=history_root,
+            output_root=Path(args.output_root),
+            mock=not args.live,
+            write_dashboard=not args.no_dashboard,
+            fail_on_cost_exceeded=False,
+            daily_cost_limit_usd=args.daily_cost_limit_usd,
+            monthly_cost_limit_usd=args.monthly_cost_limit_usd,
+        )
+    except Exception as error:
+        result = build_failure_summary(error, selected_date, "daily_pipeline", history_root, DEFAULT_RUNTIME_PATH)
     print(json.dumps(result, ensure_ascii=False, indent=2))
-    return 2 if result["status"] == "cost_limit_exceeded" else 0
+    if result["status"] == "cost_limit_exceeded":
+        return 2
+    if result["status"] == "pipeline_failed":
+        return 1
+    return 0
 
 
 if __name__ == "__main__":

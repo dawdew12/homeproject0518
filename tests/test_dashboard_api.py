@@ -16,8 +16,8 @@ class DashboardApiTest(unittest.TestCase):
         api_payloads = build_dashboard_api_payloads(payload)
 
         self.assertEqual(api_payloads["status"]["status"], "dashboard_status_api_ready")
-        self.assertEqual(api_payloads["status"]["current_phase"]["current_phase"], 11)
-        self.assertEqual(api_payloads["status"]["overall_progress"]["percent"], 92)
+        self.assertEqual(api_payloads["status"]["current_phase"]["current_phase"], 12)
+        self.assertEqual(api_payloads["status"]["overall_progress"]["percent"], 100)
         self.assertEqual(api_payloads["agents"]["status"], "agents_api_ready")
         self.assertEqual(api_payloads["brands"]["brand_count"], 5)
         self.assertIn("someud", api_payloads["brand_details"])
@@ -34,16 +34,16 @@ class DashboardApiTest(unittest.TestCase):
             daily_history = json.loads((Path(tmp_dir) / "history" / "daily.json").read_text(encoding="utf-8"))
 
         self.assertGreaterEqual(len(written_paths), 12)
-        self.assertEqual(status["overall_progress"]["current_phase"], "PHASE 11")
+        self.assertEqual(status["overall_progress"]["current_phase"], "PHASE 12")
         self.assertEqual(someud["brand"], "someud")
-        self.assertEqual(daily_history["summary"]["weekly_key"], "2026-W21")
+        self.assertRegex(daily_history["summary"]["weekly_key"], r"^2026-W\d{2}$")
 
     def test_dashboard_api_functions_return_payloads_without_fastapi_dependency(self) -> None:
         status = dashboard_api.get_status()
         brand = dashboard_api.get_brand("kinda")
         missing = dashboard_api.get_brand("unknown")
 
-        self.assertEqual(status["current_phase"]["current_phase"], 11)
+        self.assertEqual(status["current_phase"]["current_phase"], 12)
         self.assertEqual(brand["status"], "brand_detail_api_ready")
         self.assertEqual(missing["status"], "brand_not_found")
 

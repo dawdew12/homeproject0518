@@ -222,6 +222,12 @@ section {
 .tag.learning_ready,
 .tag.storage_ready,
 .tag.realtime_ready,
+.tag.automation_ready,
+.tag.stabilized,
+.tag.preflight_passed,
+.tag.cost_within_limits,
+.tag.brand_registry_ready,
+.tag.mock_safe,
 .tag.ready,
 .tag.configured,
 .tag.passed,
@@ -542,6 +548,22 @@ li { margin: 5px 0; }
       </thead>
       <tbody id="log-table"></tbody>
     </table>
+  </section>
+
+  <section>
+    <h2>운영 안정화</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>항목</th>
+          <th>상태</th>
+          <th>수치</th>
+          <th>비고</th>
+        </tr>
+      </thead>
+      <tbody id="stability-table"></tbody>
+    </table>
+    <div class="chips" id="brand-checklist"></div>
   </section>
 
   <div class="cols">
@@ -955,6 +977,41 @@ function render(data) {
       <span class="tag ${tagClass(step.status)}">${step.status}</span>
     </div>
   `).join("");
+
+  const stability = data.operations?.stability || {};
+  const preflight = stability.preflight || {};
+  const brandRegistry = stability.brand_registry || {};
+  const costReport = stability.cost_report || {};
+  document.getElementById("stability-table").innerHTML = [
+    {
+      label: "Preflight",
+      status: preflight.status || "-",
+      metric: preflight.exists ? `${preflight.date || "-"} / $${preflight.estimated_next_run_usd || 0}` : "-",
+      note: preflight.path || "-"
+    },
+    {
+      label: "브랜드 Registry",
+      status: brandRegistry.status || "-",
+      metric: `${brandRegistry.ready_brand_count || 0}/${brandRegistry.brand_count || 0} ready`,
+      note: "config/context"
+    },
+    {
+      label: "비용 Guard",
+      status: costReport.status || "-",
+      metric: `$${costReport.daily_remaining_usd ?? "-"} daily left`,
+      note: `$${costReport.monthly_remaining_usd ?? "-"} monthly left`
+    }
+  ].map(item => `
+    <tr>
+      <td><strong>${item.label}</strong></td>
+      <td><span class="tag ${tagClass(item.status)}">${item.status}</span></td>
+      <td>${item.metric}</td>
+      <td>${item.note}</td>
+    </tr>
+  `).join("");
+  document.getElementById("brand-checklist").innerHTML = (brandRegistry.new_brand_checklist || [])
+    .map(item => `<span class="chip">${item}</span>`)
+    .join("");
 
   document.getElementById("manager-table").innerHTML = (data.data?.manager_preview || []).map(item => `
     <tr>

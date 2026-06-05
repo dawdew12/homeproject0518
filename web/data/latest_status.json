@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-04T08:23:12+09:00",
+  "generated_at": "2026-06-05T20:22:49+09:00",
   "project": {
     "name": "AIPR",
     "github_repo": "https://github.com/dawdew12/homeproject0518",
@@ -54,10 +54,10 @@
     ]
   },
   "current_phase": {
-    "current_phase": 11,
+    "current_phase": 12,
     "status": "completed",
     "active_brand": null,
-    "last_success": "2026-06-03 PHASE 11 GitHub Actions automation completed",
+    "last_success": "2026-06-03 PHASE 12 stabilization completed",
     "last_error": null
   },
   "phase_progress": [
@@ -124,18 +124,18 @@
     {
       "phase": "PHASE 12",
       "title": "안정화",
-      "status": "next"
+      "status": "completed"
     }
   ],
   "architecture": {
     "overall_progress": {
-      "completed_phase_count": 11,
+      "completed_phase_count": 12,
       "total_phase_count": 12,
-      "percent": 92,
-      "current_phase": "PHASE 11",
-      "next_phase": "PHASE 12",
+      "percent": 100,
+      "current_phase": "PHASE 12",
+      "next_phase": null,
       "dashboard_milestones_completed": 3,
-      "latest_test_count": 36,
+      "latest_test_count": 41,
       "latest_test_result": "passed"
     },
     "phase_roadmap": [
@@ -208,8 +208,8 @@
       {
         "phase": "PHASE 12",
         "title": "안정화",
-        "status": "next",
-        "progress": 0
+        "status": "completed",
+        "progress": 100
       }
     ],
     "layers": [
@@ -336,6 +336,12 @@
             "label": "GitHub Actions",
             "status": "automation_ready",
             "metric": "weekday 02 KST"
+          },
+          {
+            "id": "stability",
+            "label": "운영 안정화",
+            "status": "stabilized",
+            "metric": "preflight pass"
           }
         ]
       }
@@ -454,6 +460,12 @@
         "to": "history/dashboard commit",
         "artifact": "생성 결과 자동 커밋",
         "status": "automation_ready"
+      },
+      {
+        "from": "preflight",
+        "to": "daily runner",
+        "artifact": "브랜드, 비용, credential 점검",
+        "status": "stabilized"
       }
     ],
     "storage_contracts": [
@@ -564,6 +576,18 @@
         "producer": "scripts/run_daily_pipeline.py",
         "consumer": "대시보드, 운영 로그",
         "status": "automation_ready"
+      },
+      {
+        "path": "history/daily/{date}_preflight.json",
+        "producer": "utils/operation_guard.py",
+        "consumer": "daily runner, 대시보드",
+        "status": "stabilized"
+      },
+      {
+        "path": "history/daily/{date}_errors.log",
+        "producer": "utils/operation_guard.py",
+        "consumer": "운영자, Slack 알림",
+        "status": "stabilized"
       }
     ]
   },
@@ -668,10 +692,10 @@
       {
         "phase": "PHASE 12",
         "scope": "안정화",
-        "check": "예정: 예외처리, 관측성, 실 API 전환 검증",
-        "result": "next",
-        "test_count": 0,
-        "artifact": "docs/PHASE_LOG.md"
+        "check": "python -m unittest tests.test_operation_guard",
+        "result": "passed",
+        "test_count": 4,
+        "artifact": "history/daily/2026-05-18_preflight.json"
       }
     ]
   },
@@ -1962,6 +1986,17 @@
           "history 자동 커밋",
           "Slack 조건부 알림"
         ]
+      },
+      {
+        "name": "운영 안정화",
+        "status": "stabilized",
+        "details": [
+          "preflight",
+          "브랜드 검증",
+          "비용 리포트",
+          "실패 로그",
+          "대시보드 UX"
+        ]
       }
     ],
     "agent_status": [
@@ -2102,7 +2137,7 @@
         "step": "11",
         "title": "안정화",
         "owner": "ops",
-        "status": "next"
+        "status": "stabilized"
       }
     ],
     "automation": {
@@ -2120,26 +2155,149 @@
       "planned_upload_count": 20,
       "cost_guard_status": "cost_guard_passed",
       "estimated_cost_usd": 2.64
+    },
+    "stability": {
+      "status": "stabilized",
+      "preflight": {
+        "exists": true,
+        "path": "history/daily/2026-05-18_preflight.json",
+        "date": "2026-05-18",
+        "status": "preflight_passed",
+        "brand_registry_status": "brand_registry_ready",
+        "ready_brand_count": 5,
+        "brand_count": 5,
+        "credential_status": "mock_safe",
+        "cost_status": "cost_within_limits",
+        "estimated_next_run_usd": 2.64,
+        "daily_remaining_usd": 2.36,
+        "monthly_remaining_usd": 76.36
+      },
+      "brand_registry": {
+        "status": "brand_registry_ready",
+        "brand_count": 5,
+        "active_brand_count": 5,
+        "ready_brand_count": 5,
+        "brands": [
+          {
+            "brand_key": "baren",
+            "display_name": "바렌",
+            "active": true,
+            "config_path": "brands/baren/config.toml",
+            "context_path": "brands/baren/brand_context.md",
+            "real_photo_count": 2,
+            "illustration_count": 2,
+            "status": "ready",
+            "issues": []
+          },
+          {
+            "brand_key": "kinda",
+            "display_name": "킨다",
+            "active": true,
+            "config_path": "brands/kinda/config.toml",
+            "context_path": "brands/kinda/brand_context.md",
+            "real_photo_count": 2,
+            "illustration_count": 2,
+            "status": "ready",
+            "issues": []
+          },
+          {
+            "brand_key": "melliance",
+            "display_name": "멜리언스",
+            "active": true,
+            "config_path": "brands/melliance/config.toml",
+            "context_path": "brands/melliance/brand_context.md",
+            "real_photo_count": 2,
+            "illustration_count": 2,
+            "status": "ready",
+            "issues": []
+          },
+          {
+            "brand_key": "paperback",
+            "display_name": "페이퍼백",
+            "active": true,
+            "config_path": "brands/paperback/config.toml",
+            "context_path": "brands/paperback/brand_context.md",
+            "real_photo_count": 2,
+            "illustration_count": 2,
+            "status": "ready",
+            "issues": []
+          },
+          {
+            "brand_key": "someud",
+            "display_name": "소머드",
+            "active": true,
+            "config_path": "brands/someud/config.toml",
+            "context_path": "brands/someud/brand_context.md",
+            "real_photo_count": 2,
+            "illustration_count": 2,
+            "status": "ready",
+            "issues": []
+          }
+        ],
+        "new_brand_checklist": [
+          "brands/{brand}/config.toml 생성",
+          "brands/{brand}/brand_context.md 생성",
+          "brand.name_en을 폴더명과 동일하게 설정",
+          "performance_targets에 CTR, CVR, CPA, ROAS 목표 입력",
+          "image_config에 실사와 일러스트 생산 수량 입력"
+        ]
+      },
+      "cost_report": {
+        "status": "cost_within_limits",
+        "estimated_next_run_usd": 2.64,
+        "daily_cost_usd": 0.0,
+        "monthly_cost_usd": 0.0,
+        "projected_daily_cost_usd": 2.64,
+        "projected_monthly_cost_usd": 2.64,
+        "daily_limit_usd": 5.0,
+        "monthly_limit_usd": 79.0,
+        "daily_remaining_usd": 2.36,
+        "monthly_remaining_usd": 76.36,
+        "agent_monthly_budgets_usd": {
+          "manager": 7.0,
+          "data_collector": 2.0,
+          "trend_collector": 1.0,
+          "prompt_engineer": 5.0,
+          "image_designer": 61.0,
+          "history_analysis": 3.0
+        }
+      }
     }
   },
   "verification": {
-    "last_command": "python -m unittest tests.test_trend_collector tests.test_data_collector tests.test_manager tests.test_prompt_engineer tests.test_image_designer tests.test_storage_utils tests.test_dashboard_api tests.test_daily_pipeline tests.test_build_dashboard_data",
+    "last_command": "python -m unittest tests.test_trend_collector tests.test_data_collector tests.test_manager tests.test_prompt_engineer tests.test_image_designer tests.test_storage_utils tests.test_dashboard_api tests.test_daily_pipeline tests.test_operation_guard tests.test_build_dashboard_data",
     "last_result": "passed",
-    "test_count": 36
+    "test_count": 41
   },
   "git": {
     "branch": "main",
     "recent_commits": [
       {
+        "hash": "67c5c94",
+        "subject": "[HISTORY] AIPR daily automation run"
+      },
+      {
         "hash": "201753a",
         "subject": "[DOCS] PHASE 11 배포 확인 기록"
+      },
+      {
+        "hash": "9283742",
+        "subject": "[PHASE 11] GitHub Actions 자동화 구현"
+      },
+      {
+        "hash": "f1d049d",
+        "subject": "[DOCS] PHASE 10 배포 확인 기록"
+      },
+      {
+        "hash": "3f7947f",
+        "subject": "[PHASE 10] Dashboard API 실시간화 구현"
       }
     ]
   },
   "next_step": {
-    "phase": "PHASE 12",
-    "title": "안정화",
-    "summary": "예외처리, 관측성, 실제 API 전환 준비, Vercel 공개 접근 검증을 마무리한다."
+    "phase": "운영 전환",
+    "title": "실 API 연결 준비",
+    "summary": "Secrets와 실제 계정 권한을 준비한 뒤 live 모드를 제한적으로 검증한다."
   },
   "risks": [
     "광고 API와 트렌드 API는 아직 mock 수집 단계다.",

@@ -3,12 +3,17 @@ from __future__ import annotations
 
 import json
 import subprocess
+import sys
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from typing import Any
 
-
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
+from utils.operation_guard import build_brand_registry, build_cost_report
+
 OUTPUT_DIR = PROJECT_ROOT / "web" / "data"
 OUTPUT_PATH = OUTPUT_DIR / "latest_status.json"
 API_OUTPUT_DIR = PROJECT_ROOT / "web" / "api"
@@ -281,6 +286,31 @@ def summarize_pipeline_run(path: Path | None) -> dict[str, Any]:
     }
 
 
+def summarize_preflight(path: Path | None) -> dict[str, Any]:
+    """일일 preflight 결과를 대시보드용으로 요약한다."""
+    if path is None:
+        return {"exists": False, "status": "not_run"}
+
+    payload = read_json(path, {})
+    cost_report = payload.get("cost_report", {})
+    brand_registry = payload.get("brand_registry", {})
+    credential_readiness = payload.get("credential_readiness", {})
+    return {
+        "exists": True,
+        "path": normalize_path(path),
+        "date": payload.get("date"),
+        "status": payload.get("status"),
+        "brand_registry_status": brand_registry.get("status"),
+        "ready_brand_count": brand_registry.get("ready_brand_count", 0),
+        "brand_count": brand_registry.get("brand_count", 0),
+        "credential_status": credential_readiness.get("status"),
+        "cost_status": cost_report.get("status"),
+        "estimated_next_run_usd": cost_report.get("estimated_next_run_usd", 0),
+        "daily_remaining_usd": cost_report.get("daily_remaining_usd", 0),
+        "monthly_remaining_usd": cost_report.get("monthly_remaining_usd", 0),
+    }
+
+
 def run_git(args: list[str]) -> str:
     """가능하면 Git 명령 결과를 반환한다."""
     git_candidates = [
@@ -542,7 +572,7 @@ def build_pipeline_steps() -> list[dict[str, str]]:
         {"step": "08", "title": "저장소 연동", "owner": "utils", "status": "storage_ready"},
         {"step": "09", "title": "대시보드 실시간화", "owner": "dashboard", "status": "realtime_ready"},
         {"step": "10", "title": "GitHub Actions 자동화", "owner": "workflow", "status": "automation_ready"},
-        {"step": "11", "title": "안정화", "owner": "ops", "status": "next"},
+        {"step": "11", "title": "안정화", "owner": "ops", "status": "stabilized"},
     ]
 
 
@@ -609,6 +639,11 @@ def build_feature_status() -> list[dict[str, Any]]:
             "status": "automation_ready",
             "details": ["평일 02:00 KST", "workflow_dispatch", "비용 guard", "history 자동 커밋", "Slack 조건부 알림"],
         },
+        {
+            "name": "운영 안정화",
+            "status": "stabilized",
+            "details": ["preflight", "브랜드 검증", "비용 리포트", "실패 로그", "대시보드 UX"],
+        },
     ]
 
 
@@ -636,7 +671,7 @@ def build_phase_roadmap() -> list[dict[str, Any]]:
         {"phase": "PHASE 9", "title": "저장소 연동", "status": "completed", "progress": 100},
         {"phase": "PHASE 10", "title": "Dashboard 실시간화", "status": "completed", "progress": 100},
         {"phase": "PHASE 11", "title": "GitHub Actions 자동화", "status": "completed", "progress": 100},
-        {"phase": "PHASE 12", "title": "안정화", "status": "next", "progress": 0},
+        {"phase": "PHASE 12", "title": "안정화", "status": "completed", "progress": 100},
     ]
 
 
@@ -649,10 +684,10 @@ def build_overall_progress(roadmap: list[dict[str, Any]]) -> dict[str, Any]:
         "completed_phase_count": completed,
         "total_phase_count": total,
         "percent": round(completed / total * 100),
-        "current_phase": "PHASE 11",
+        "current_phase": "PHASE 12",
         "next_phase": next_items[0]["phase"] if next_items else None,
         "dashboard_milestones_completed": 3,
-        "latest_test_count": 36,
+        "latest_test_count": 41,
         "latest_test_result": "passed",
     }
 
@@ -704,6 +739,7 @@ def build_architecture_layers() -> list[dict[str, Any]]:
                 {"id": "dashboard", "label": "Vercel Dashboard", "status": "realtime_ready", "metric": "30s polling"},
                 {"id": "dashboard_api", "label": "Dashboard API", "status": "realtime_ready", "metric": "8 endpoints"},
                 {"id": "automation", "label": "GitHub Actions", "status": "automation_ready", "metric": "weekday 02 KST"},
+                {"id": "stability", "label": "운영 안정화", "status": "stabilized", "metric": "preflight pass"},
             ],
         },
     ]
@@ -731,6 +767,7 @@ def build_architecture_flow() -> list[dict[str, str]]:
         {"from": "Dashboard API", "to": "Vercel Dashboard", "artifact": "30초 polling", "status": "realtime_ready"},
         {"from": "GitHub Actions", "to": "daily runner", "artifact": "평일 02:00 KST 자동 실행", "status": "automation_ready"},
         {"from": "daily runner", "to": "history/dashboard commit", "artifact": "생성 결과 자동 커밋", "status": "automation_ready"},
+        {"from": "preflight", "to": "daily runner", "artifact": "브랜드, 비용, credential 점검", "status": "stabilized"},
     ]
 
 
@@ -755,6 +792,8 @@ def build_storage_contracts() -> list[dict[str, str]]:
         {"path": "scripts/run_daily_pipeline.py", "producer": "PHASE 11", "consumer": "GitHub Actions", "status": "automation_ready"},
         {"path": ".github/workflows/daily_run.yml", "producer": "PHASE 11", "consumer": "GitHub Actions scheduler", "status": "automation_ready"},
         {"path": "history/daily/{date}_pipeline_run.json", "producer": "scripts/run_daily_pipeline.py", "consumer": "대시보드, 운영 로그", "status": "automation_ready"},
+        {"path": "history/daily/{date}_preflight.json", "producer": "utils/operation_guard.py", "consumer": "daily runner, 대시보드", "status": "stabilized"},
+        {"path": "history/daily/{date}_errors.log", "producer": "utils/operation_guard.py", "consumer": "운영자, Slack 알림", "status": "stabilized"},
     ]
 
 
@@ -860,10 +899,10 @@ def build_phase_test_results() -> list[dict[str, Any]]:
         {
             "phase": "PHASE 12",
             "scope": "안정화",
-            "check": "예정: 예외처리, 관측성, 실 API 전환 검증",
-            "result": "next",
-            "test_count": 0,
-            "artifact": "docs/PHASE_LOG.md",
+            "check": "python -m unittest tests.test_operation_guard",
+            "result": "passed",
+            "test_count": 4,
+            "artifact": "history/daily/2026-05-18_preflight.json",
         },
     ]
 
@@ -985,6 +1024,7 @@ def build_dashboard_payload() -> dict[str, Any]:
     latest_gdrive_file = find_latest_file("*_gdrive_manifest.json")
     latest_github_history_file = find_latest_file("*_github_history_summary.json")
     latest_pipeline_file = find_latest_file("*_pipeline_run.json")
+    latest_preflight_file = find_latest_file("*_preflight.json")
     ad_payload = load_latest_daily_payload("*_ad_data.json")
     trend_payload = load_latest_daily_payload("*_trend_data.json")
     manager_payload = load_latest_daily_payload("*_manager_brief.json")
@@ -1004,6 +1044,14 @@ def build_dashboard_payload() -> dict[str, Any]:
     gdrive_summary = summarize_gdrive_manifest(latest_gdrive_file)
     github_history_summary = summarize_github_history(latest_github_history_file)
     pipeline_run_summary = summarize_pipeline_run(latest_pipeline_file)
+    preflight_summary = summarize_preflight(latest_preflight_file)
+    runtime_payload = read_json(PROJECT_ROOT / "state" / "runtime.json", {})
+    cost_summary = build_cost_report(
+        runtime_payload,
+        float(image_summary.get("estimated_cost_usd", 0)),
+        5.0,
+        79.0,
+    )
     source_counts = count_marketing_sources()
     recent_commits = get_recent_commits()
     phase_roadmap = build_phase_roadmap()
@@ -1036,7 +1084,7 @@ def build_dashboard_payload() -> dict[str, Any]:
             {"phase": "PHASE 9", "title": "저장소 연동", "status": "completed"},
             {"phase": "PHASE 10", "title": "Dashboard 실시간화", "status": "completed"},
             {"phase": "PHASE 11", "title": "GitHub Actions 자동화", "status": "completed"},
-            {"phase": "PHASE 12", "title": "안정화", "status": "next"},
+            {"phase": "PHASE 12", "title": "안정화", "status": "completed"},
         ],
         "architecture": {
             "overall_progress": build_overall_progress(phase_roadmap),
@@ -1078,20 +1126,26 @@ def build_dashboard_payload() -> dict[str, Any]:
             "agent_status": build_agent_status(),
             "pipeline_steps": build_pipeline_steps(),
             "automation": pipeline_run_summary,
+            "stability": {
+                "status": "stabilized",
+                "preflight": preflight_summary,
+                "brand_registry": build_brand_registry(PROJECT_ROOT),
+                "cost_report": cost_summary,
+            },
         },
         "verification": {
-            "last_command": "python -m unittest tests.test_trend_collector tests.test_data_collector tests.test_manager tests.test_prompt_engineer tests.test_image_designer tests.test_storage_utils tests.test_dashboard_api tests.test_daily_pipeline tests.test_build_dashboard_data",
+            "last_command": "python -m unittest tests.test_trend_collector tests.test_data_collector tests.test_manager tests.test_prompt_engineer tests.test_image_designer tests.test_storage_utils tests.test_dashboard_api tests.test_daily_pipeline tests.test_operation_guard tests.test_build_dashboard_data",
             "last_result": "passed",
-            "test_count": 36,
+            "test_count": 41,
         },
         "git": {
             "branch": run_git(["branch", "--show-current"]) or "main",
             "recent_commits": recent_commits,
         },
         "next_step": {
-            "phase": "PHASE 12",
-            "title": "안정화",
-            "summary": "예외처리, 관측성, 실제 API 전환 준비, Vercel 공개 접근 검증을 마무리한다.",
+            "phase": "운영 전환",
+            "title": "실 API 연결 준비",
+            "summary": "Secrets와 실제 계정 권한을 준비한 뒤 live 모드를 제한적으로 검증한다.",
         },
         "risks": [
             "광고 API와 트렌드 API는 아직 mock 수집 단계다.",

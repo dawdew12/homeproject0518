@@ -5,7 +5,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from scripts.run_daily_pipeline import PROJECT_ROOT, run_daily_pipeline
+from scripts.run_daily_pipeline import PROJECT_ROOT, build_failure_summary, run_daily_pipeline
 
 
 class DailyPipelineTest(unittest.TestCase):
@@ -29,7 +29,9 @@ class DailyPipelineTest(unittest.TestCase):
             self.assertEqual(result["summary"]["image_request_count"], 20)
             self.assertEqual(result["summary"]["approved_count"], 20)
             self.assertEqual(result["summary"]["planned_upload_count"], 20)
+            self.assertEqual(result["preflight"]["status"], "preflight_passed")
             self.assertTrue((root / "history" / "daily" / "2026-05-18_pipeline_run.json").exists())
+            self.assertTrue((root / "history" / "daily" / "2026-05-18_preflight.json").exists())
             self.assertTrue((root / "history" / "weekly" / "2026-W21.json").exists())
 
     def test_run_daily_pipeline_stops_when_cost_limit_is_exceeded(self) -> None:
@@ -49,8 +51,19 @@ class DailyPipelineTest(unittest.TestCase):
 
             self.assertEqual(result["status"], "cost_limit_exceeded")
             self.assertEqual(result["cost_guard"]["estimated_cost_usd"], 2.64)
+            self.assertEqual(result["preflight"]["status"], "preflight_blocked")
             self.assertFalse((root / "history" / "daily" / "2026-05-18_quality_review.json").exists())
             self.assertTrue((root / "history" / "daily" / "2026-05-18_pipeline_run.json").exists())
+
+    def test_build_failure_summary_writes_error_log_and_runtime(self) -> None:
+        with tempfile.TemporaryDirectory(dir=PROJECT_ROOT) as tmp_dir:
+            root = Path(tmp_dir)
+            runtime_path = root / "state" / "runtime.json"
+            result = build_failure_summary(RuntimeError("boom"), "2026-05-18", "unit_step", root / "history", runtime_path)
+
+            self.assertEqual(result["status"], "pipeline_failed")
+            self.assertTrue((root / "history" / "daily" / "2026-05-18_errors.log").exists())
+            self.assertTrue(runtime_path.exists())
 
     def test_daily_workflow_contains_schedule_dispatch_commit_and_slack_steps(self) -> None:
         workflow = (PROJECT_ROOT / ".github" / "workflows" / "daily_run.yml").read_text(encoding="utf-8")

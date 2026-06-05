@@ -1,6 +1,6 @@
 {
   "status": "costs_api_ready",
-  "generated_at": "2026-06-04T08:23:12+09:00",
+  "generated_at": "2026-06-05T20:22:49+09:00",
   "runtime": {
     "daily_cost_usd": 0,
     "monthly_cost_usd": 0,
@@ -8,9 +8,9 @@
     "images_approved": 20,
     "retry_count": 0,
     "execution_start": "2026-06-04T08:23:12+09:00",
-    "execution_end": null,
+    "execution_end": "2026-06-04T08:23:12+09:00",
     "last_run_date": "2026-06-04",
-    "last_status": "running",
+    "last_status": "daily_pipeline_completed",
     "last_error": null,
     "last_estimated_cost_usd": 2.64
   },

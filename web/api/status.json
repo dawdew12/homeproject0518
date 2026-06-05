@@ -1,6 +1,6 @@
 {
   "status": "dashboard_status_api_ready",
-  "generated_at": "2026-06-04T08:23:12+09:00",
+  "generated_at": "2026-06-05T20:22:49+09:00",
   "project": {
     "name": "AIPR",
     "github_repo": "https://github.com/dawdew12/homeproject0518",
@@ -9,31 +9,31 @@
     "custom_domain_enabled": false
   },
   "current_phase": {
-    "current_phase": 11,
+    "current_phase": 12,
     "status": "completed",
     "active_brand": null,
-    "last_success": "2026-06-03 PHASE 11 GitHub Actions automation completed",
+    "last_success": "2026-06-03 PHASE 12 stabilization completed",
     "last_error": null
   },
   "overall_progress": {
-    "completed_phase_count": 11,
+    "completed_phase_count": 12,
     "total_phase_count": 12,
-    "percent": 92,
-    "current_phase": "PHASE 11",
-    "next_phase": "PHASE 12",
+    "percent": 100,
+    "current_phase": "PHASE 12",
+    "next_phase": null,
     "dashboard_milestones_completed": 3,
-    "latest_test_count": 36,
+    "latest_test_count": 41,
     "latest_test_result": "passed"
   },
   "verification": {
-    "last_command": "python -m unittest tests.test_trend_collector tests.test_data_collector tests.test_manager tests.test_prompt_engineer tests.test_image_designer tests.test_storage_utils tests.test_dashboard_api tests.test_daily_pipeline tests.test_build_dashboard_data",
+    "last_command": "python -m unittest tests.test_trend_collector tests.test_data_collector tests.test_manager tests.test_prompt_engineer tests.test_image_designer tests.test_storage_utils tests.test_dashboard_api tests.test_daily_pipeline tests.test_operation_guard tests.test_build_dashboard_data",
     "last_result": "passed",
-    "test_count": 36
+    "test_count": 41
   },
   "next_step": {
-    "phase": "PHASE 12",
-    "title": "안정화",
-    "summary": "예외처리, 관측성, 실제 API 전환 준비, Vercel 공개 접근 검증을 마무리한다."
+    "phase": "운영 전환",
+    "title": "실 API 연결 준비",
+    "summary": "Secrets와 실제 계정 권한을 준비한 뒤 live 모드를 제한적으로 검증한다."
   },
   "api": {
     "mode": "static_json_rewrite",

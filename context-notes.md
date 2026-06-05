@@ -271,3 +271,18 @@
 - Vercel URL `https://homeproject0518-nsmuwzujb-raw22226-9071s-projects.vercel.app/api/status`는 200 OK를 반환했다.
 - 응답 payload에서 `current_phase`는 11, 전체 진행률은 92%, 다음 단계는 PHASE 12로 확인됐다.
 
+## 2026-06-03 PHASE 12 Stabilization 시작
+
+- PHASE 12의 범위는 예외처리 강화, 비용 최적화, 로그 가독성, 테스트 추가, 신규 브랜드 추가 편의성, Dashboard UX 개선이다.
+- 실제 API live 전환은 credential과 운영 승인 없이는 켜지 않는다.
+- 이번 안정화는 mock/dry-run 운영을 기준으로 preflight, 브랜드 설정 검증, 비용 리포트, 실패 기록, 대시보드 안정화 섹션을 추가한다.
+- 신규 브랜드 추가는 자동 생성보다 검증 가능한 체크리스트와 config/context 누락 감지 쪽을 우선한다.
+
+## 2026-06-03 PHASE 12 Stabilization 구현
+
+- `utils/operation_guard.py`에 브랜드 설정 검증, `.env.example` 기반 credential readiness, 비용 리포트, preflight 저장, 실패 로그 저장 유틸을 추가했다.
+- `scripts/run_daily_pipeline.py`는 이미지 dry-run 이후 preflight artifact를 만들고, 비용 guard와 성공 summary에 안정화 결과를 포함한다.
+- runner 예외 발생 시 `history/daily/{date}_errors.log`, pipeline 실패 summary, `state/runtime.json`의 마지막 오류 상태를 함께 기록하도록 보강했다.
+- 대시보드는 운영 안정화 섹션을 추가해 preflight, 브랜드 registry, 비용 guard, 신규 브랜드 추가 체크리스트를 표시한다.
+- PHASE 12 완료 기준은 전체 unittest 41개 통과, dashboard API JSON 재생성, GitHub push, Vercel READY 확인이다.
+
