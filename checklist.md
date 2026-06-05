@@ -214,3 +214,14 @@
 - [x] 대시보드 JSON과 API JSON 재생성
 - [x] PHASE 12 검증 실행
 - [x] GitHub 저장 및 Vercel 반영 확인
+
+# ChatGPT Image Generation Test Checklist
+
+- [x] `AGENTS.md`와 현재 작업트리 확인
+- [x] OpenAI API 키 존재 여부 확인
+- [x] 실제 이미지 생성 테스트 실행
+- [x] 이미지 생성 테스트 결과를 history에 기록
+- [x] `AIPR_Dashboard.html` 제작 여부와 해시 확인
+- [x] 대시보드 데이터 재생성 또는 보강
+- [x] 검증 실행
+- [ ] GitHub 저장 및 Vercel 반영 확인

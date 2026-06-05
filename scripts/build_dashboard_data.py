@@ -149,6 +149,34 @@ def summarize_image_dry_run(path: Path | None) -> dict[str, Any]:
     }
 
 
+def summarize_chatgpt_image_test(path: Path | None) -> dict[str, Any]:
+    """ChatGPT 실제 이미지 생성 테스트 결과를 대시보드용으로 요약한다."""
+    if path is None:
+        return {"exists": False, "status": "not_run"}
+
+    payload = read_json(path, {})
+    return {
+        "exists": True,
+        "path": str(path.relative_to(PROJECT_ROOT)).replace("\\", "/"),
+        "date": payload.get("date"),
+        "status": payload.get("status"),
+        "mode": payload.get("mode"),
+        "brand": payload.get("brand"),
+        "image_type_label": payload.get("image_type_label"),
+        "quality": payload.get("quality"),
+        "project_openai_api_key_present": payload.get("project_openai_api_key_present", False),
+        "project_openai_api_call_attempted": payload.get("project_openai_api_call_attempted", False),
+        "api_call_skip_reason": payload.get("api_call_skip_reason"),
+        "local_output_path": payload.get("local_output_path"),
+        "dashboard_asset_path": payload.get("dashboard_asset_path"),
+        "width": payload.get("width"),
+        "height": payload.get("height"),
+        "file_size_bytes": payload.get("file_size_bytes"),
+        "sha256": payload.get("sha256"),
+        "visual_check": payload.get("visual_check", {}),
+    }
+
+
 def summarize_quality_review(path: Path | None) -> dict[str, Any]:
     """팀장 품질 검수 결과를 대시보드용 요약으로 변환한다."""
     if path is None:
@@ -615,6 +643,11 @@ def build_feature_status() -> list[dict[str, Any]]:
             "details": ["20개 요청", "5개 브랜드 batch", "출력 파일 경로", "$2.64 예상 비용", "한도 확인"],
         },
         {
+            "name": "ChatGPT 실제 이미지 생성 테스트",
+            "status": "generated_in_chat",
+            "details": ["someud 샘플 1장", "실제 PNG 생성", "대시보드 asset 복사", "프로젝트 API 키는 미설정"],
+        },
+        {
             "name": "품질 검수와 재생성 판단",
             "status": "quality_review_ready",
             "details": ["20개 요청 승인", "평균 점수 100", "재생성 필요 0개", "no-text 검수", "카피 여백 검수"],
@@ -1019,6 +1052,7 @@ def build_dashboard_payload() -> dict[str, Any]:
     latest_manager_file = find_latest_file("*_manager_brief.json")
     latest_prompt_file = find_latest_file("*_prompts.json")
     latest_image_file = find_latest_file("*_image_dry_run.json")
+    latest_chatgpt_image_test_file = find_latest_file("*_chatgpt_image_test.json")
     latest_quality_file = find_latest_file("*_quality_review.json")
     latest_learning_file = find_latest_file("*_winner_loser.json")
     latest_gdrive_file = find_latest_file("*_gdrive_manifest.json")
@@ -1038,6 +1072,7 @@ def build_dashboard_payload() -> dict[str, Any]:
     manager_summary = summarize_manager_brief(latest_manager_file)
     prompt_summary = summarize_prompt_pack(latest_prompt_file)
     image_summary = summarize_image_dry_run(latest_image_file)
+    chatgpt_image_test_summary = summarize_chatgpt_image_test(latest_chatgpt_image_test_file)
     quality_summary = summarize_quality_review(latest_quality_file)
     learning_summary = summarize_winner_loser(latest_learning_file)
     pattern_summary = summarize_winner_loser_patterns(PROJECT_ROOT / "history" / "winner_loser_patterns.json")
@@ -1102,6 +1137,7 @@ def build_dashboard_payload() -> dict[str, Any]:
             "manager": manager_summary,
             "prompts": prompt_summary,
             "images": image_summary,
+            "chatgpt_image_test": chatgpt_image_test_summary,
             "quality_review": quality_summary,
             "winner_loser": learning_summary,
             "winner_loser_patterns": pattern_summary,
@@ -1152,6 +1188,7 @@ def build_dashboard_payload() -> dict[str, Any]:
             "팀장 분석은 deterministic rule 기반이며 실제 LLM 판단은 후속 API 연결 단계에서 붙인다.",
             "프롬프트 생성도 rule 기반이며 실제 OpenAI API 호출은 아직 수행하지 않는다.",
             "이미지 생성은 dry-run 단계이며 실제 gpt-image-2 API 호출은 아직 수행하지 않는다.",
+            "ChatGPT 이미지 생성 테스트는 완료했지만 프로젝트 OpenAI API 키 기반 호출은 .env 설정 후 별도 검증해야 한다.",
             "품질 검수는 dry-run 요청 메타데이터 기준이며 실제 이미지 픽셀 검수는 이미지 API 연결 후 확장한다.",
             "Winner/Loser 학습은 mock 광고 성과 기준이며 실제 캠페인 집행 일수는 API 연결 후 교체한다.",
             "Google Drive는 dry-run manifest 단계이며 실제 업로드에는 서비스 계정 또는 OAuth 인증이 필요하다.",

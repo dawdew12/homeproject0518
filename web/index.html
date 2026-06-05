@@ -224,6 +224,7 @@ section {
 .tag.realtime_ready,
 .tag.automation_ready,
 .tag.stabilized,
+.tag.generated_in_chat,
 .tag.preflight_passed,
 .tag.cost_within_limits,
 .tag.brand_registry_ready,
@@ -386,11 +387,24 @@ li { margin: 5px 0; }
   color: var(--muted);
   padding: 14px;
 }
+.generated-image-wrap {
+  display: grid;
+  grid-template-columns: minmax(180px, 320px) 1fr;
+  gap: 16px;
+  align-items: start;
+}
+.generated-image-wrap img {
+  width: 100%;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: var(--soft);
+}
 @media (max-width: 980px) {
   header,
   .grid,
   .cols,
   .wide-cols,
+  .generated-image-wrap,
   .tiles,
   .phase-list,
   .pipeline,
@@ -564,6 +578,22 @@ li { margin: 5px 0; }
       <tbody id="stability-table"></tbody>
     </table>
     <div class="chips" id="brand-checklist"></div>
+  </section>
+
+  <section>
+    <h2>실제 이미지 생성 테스트</h2>
+    <div class="generated-image-wrap">
+      <img id="generated-image-preview" alt="ChatGPT generated someud test image" src="" hidden>
+      <table>
+        <tbody>
+          <tr><th>상태</th><td id="generated-image-status">-</td></tr>
+          <tr><th>브랜드</th><td id="generated-image-brand">-</td></tr>
+          <tr><th>크기</th><td id="generated-image-size">-</td></tr>
+          <tr><th>프로젝트 API 호출</th><td id="generated-image-api">-</td></tr>
+          <tr><th>저장 위치</th><td id="generated-image-path">-</td></tr>
+        </tbody>
+      </table>
+    </div>
   </section>
 
   <div class="cols">
@@ -866,6 +896,7 @@ function render(data) {
   const manager = data.data?.manager || {};
   const prompts = data.data?.prompts || {};
   const images = data.data?.images || {};
+  const chatgptImage = data.data?.chatgpt_image_test || {};
   const qualityReview = data.data?.quality_review || {};
   const learning = data.data?.winner_loser || {};
   const storage = data.data?.storage || {};
@@ -889,6 +920,18 @@ function render(data) {
   text("manager-status", `${manager.status || "-"} · ${manager.brand_count ?? 0} brands · ${manager.handoff_count ?? 0} handoff`);
   text("prompt-status", `${prompts.status || "-"} · ${prompts.storyboard_count ?? 0} storyboards · ${prompts.prompt_count ?? 0} prompts`);
   text("image-status", `${images.status || "-"} · ${images.request_count ?? 0} requests · $${images.estimated_cost_usd ?? 0} · charged ${images.charged ? "yes" : "no"}`);
+  text("generated-image-status", `${chatgptImage.status || "-"} · ${chatgptImage.mode || "-"}`);
+  text("generated-image-brand", `${chatgptImage.brand || "-"} · ${chatgptImage.image_type_label || "-"} · ${chatgptImage.quality || "-"}`);
+  text("generated-image-size", chatgptImage.exists ? `${chatgptImage.width || "-"}x${chatgptImage.height || "-"} · ${chatgptImage.file_size_bytes || 0} bytes` : "-");
+  text("generated-image-api", chatgptImage.project_openai_api_call_attempted ? "project OpenAI API called" : `not called · ${chatgptImage.api_call_skip_reason || "-"}`);
+  text("generated-image-path", chatgptImage.local_output_path || "-");
+  const generatedPreview = document.getElementById("generated-image-preview");
+  if (chatgptImage.dashboard_asset_path) {
+    generatedPreview.src = chatgptImage.dashboard_asset_path;
+    generatedPreview.hidden = false;
+  } else {
+    generatedPreview.hidden = true;
+  }
   text("quality-status", `${qualityReview.status || "-"} · ${qualityReview.approved_count ?? 0}/${qualityReview.request_count ?? 0} approved · score ${qualityReview.avg_score ?? 0} · regen ${qualityReview.regeneration_required_count ?? 0}`);
   text("learning-status", `${learning.status || "-"} · winner ${learning.winner_count ?? 0} · loser ${learning.loser_count ?? 0} · pending ${learning.pending_count ?? 0}`);
   text("storage-status", `${gdrive.status || "-"} · planned ${gdrive.planned_upload_count ?? 0} · missing ${gdrive.missing_file_count ?? 0} · weekly ${githubHistory.weekly_key || "-"}`);
@@ -1000,6 +1043,12 @@ function render(data) {
       status: costReport.status || "-",
       metric: `$${costReport.daily_remaining_usd ?? "-"} daily left`,
       note: `$${costReport.monthly_remaining_usd ?? "-"} monthly left`
+    },
+    {
+      label: "ChatGPT 이미지 테스트",
+      status: chatgptImage.status || "-",
+      metric: chatgptImage.exists ? `${chatgptImage.width || "-"}x${chatgptImage.height || "-"}` : "-",
+      note: chatgptImage.project_openai_api_key_present ? "project API key present" : "project API key missing"
     }
   ].map(item => `
     <tr>

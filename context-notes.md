@@ -293,3 +293,20 @@
 - Vercel production deployment `dpl_AHF7GHbUMtHcARNK9NkAM1h2m527`는 `21da62e` 커밋으로 READY 상태다.
 - Vercel `/api/status`는 200 OK를 반환했고, PHASE 12, 진행률 100%, 테스트 41개 통과 상태를 확인했다.
 
+## 2026-06-05 ChatGPT Image Generation Test 시작
+
+- 사용자 요청은 ChatGPT로 실제 이미지를 생성해 테스트하고, `AIPR_Dashboard` 제작 여부를 확인하는 것이다.
+- `D:\AIPR\.env`가 없어 프로젝트 OpenAI API 키 기반 실제 과금 API 호출은 지금 실행할 수 없다.
+- 이번 테스트는 이 채팅의 이미지 생성 기능으로 실제 샘플 이미지를 생성하고, 프로젝트에는 API 키 부재와 생성 테스트 결과를 기록한다.
+- `AIPR_Dashboard.html`은 루트와 `dashboard` 폴더에 모두 존재하며 SHA256 해시가 같아 동일 산출물로 확인됐다.
+
+## 2026-06-05 ChatGPT Image Generation Test 구현
+
+- ChatGPT 이미지 생성 기능으로 someud 황토 매트리스 실사 광고 샘플 1장을 생성했다.
+- 생성 이미지는 `outputs/someud/2026-06-05/someud_20260605_실사_황토매트리스-부부-웰니스_high.png`에 복사했다.
+- Vercel 대시보드 표시용으로 같은 이미지를 `web/assets/generated/someud_20260605_chatgpt_image_test.png`에 복사했다.
+- `history/daily/2026-06-05_chatgpt_image_test.json`에 생성 방식, API 키 부재, 파일 크기, 해시, 시각 검수 결과를 기록했다.
+- `scripts/build_dashboard_data.py`와 `web/index.html`에 실제 이미지 생성 테스트 섹션을 추가했다.
+- 로컬 HTTP 검증에서 `/`, `/api/status.json`, `/data/latest_status.json`, 이미지 asset이 모두 200 응답을 반환했다.
+- 인앱 브라우저 검증에서 실제 이미지 생성 테스트 섹션과 1254x1254 이미지 로딩을 확인했다.
+

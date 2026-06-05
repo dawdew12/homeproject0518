@@ -1,0 +1,25 @@
+{
+  "date": "2026-06-05",
+  "status": "generated_in_chat",
+  "mode": "chatgpt_image_generation",
+  "project_openai_api_key_present": false,
+  "project_openai_api_call_attempted": false,
+  "api_call_skip_reason": "D:\\AIPR\\.env file was not present, so the project OpenAI API key could not be loaded.",
+  "brand": "someud",
+  "image_type_label": "실사",
+  "quality": "high",
+  "prompt_summary": "황토 매트리스 브랜드 someud의 40-60대 여성 타겟용 프리미엄 침실 광고 이미지. 텍스트와 로고 없이 오른쪽 카피 여백을 확보.",
+  "generated_source_path": "C:/Users/town5/.codex/generated_images/019e0bc6-bc9c-78f0-9acf-d0a86d644b6b/ig_0d9f884a14232690016a22c29d620c8191b4ff15143b1b11cb.png",
+  "local_output_path": "outputs/someud/2026-06-05/someud_20260605_실사_황토매트리스-부부-웰니스_high.png",
+  "dashboard_asset_path": "assets/generated/someud_20260605_chatgpt_image_test.png",
+  "width": 1254,
+  "height": 1254,
+  "file_size_bytes": 2251108,
+  "sha256": "881694E5015A0B949F4591A31EFE7CD79806AA374C91316F47D360E8B3FAA416",
+  "visual_check": {
+    "non_blank": true,
+    "no_text": true,
+    "copy_space": "right",
+    "notes": "Warm bedroom image with older Korean couple and ocher mattress. Right side has clear empty copy space."
+  }
+}

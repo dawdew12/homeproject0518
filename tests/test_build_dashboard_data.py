@@ -23,6 +23,8 @@ class BuildDashboardDataTest(unittest.TestCase):
         self.assertEqual(payload["data"]["prompts"]["storyboard_count"], 20)
         self.assertEqual(payload["data"]["images"]["request_count"], 20)
         self.assertEqual(payload["data"]["images"]["estimated_cost_usd"], 2.64)
+        self.assertEqual(payload["data"]["chatgpt_image_test"]["status"], "generated_in_chat")
+        self.assertEqual(payload["data"]["chatgpt_image_test"]["brand"], "someud")
         self.assertEqual(payload["data"]["quality_review"]["approved_count"], 20)
         self.assertEqual(payload["data"]["quality_review"]["regeneration_required_count"], 0)
         self.assertEqual(payload["data"]["quality_review"]["avg_score"], 100.0)

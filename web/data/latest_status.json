@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-05T20:22:49+09:00",
+  "generated_at": "2026-06-05T23:10:14+09:00",
   "project": {
     "name": "AIPR",
     "github_repo": "https://github.com/dawdew12/homeproject0518",
@@ -789,6 +789,31 @@
       "daily_cost_allowed": true,
       "monthly_cost_allowed": true,
       "charged": false
+    },
+    "chatgpt_image_test": {
+      "exists": true,
+      "path": "history/daily/2026-06-05_chatgpt_image_test.json",
+      "date": "2026-06-05",
+      "status": "generated_in_chat",
+      "mode": "chatgpt_image_generation",
+      "brand": "someud",
+      "image_type_label": "실사",
+      "quality": "high",
+      "project_openai_api_key_present": false,
+      "project_openai_api_call_attempted": false,
+      "api_call_skip_reason": "D:\\AIPR\\.env file was not present, so the project OpenAI API key could not be loaded.",
+      "local_output_path": "outputs/someud/2026-06-05/someud_20260605_실사_황토매트리스-부부-웰니스_high.png",
+      "dashboard_asset_path": "assets/generated/someud_20260605_chatgpt_image_test.png",
+      "width": 1254,
+      "height": 1254,
+      "file_size_bytes": 2251108,
+      "sha256": "881694E5015A0B949F4591A31EFE7CD79806AA374C91316F47D360E8B3FAA416",
+      "visual_check": {
+        "non_blank": true,
+        "no_text": true,
+        "copy_space": "right",
+        "notes": "Warm bedroom image with older Korean couple and ocher mattress. Right side has clear empty copy space."
+      }
     },
     "quality_review": {
       "exists": true,
@@ -1933,6 +1958,16 @@
         ]
       },
       {
+        "name": "ChatGPT 실제 이미지 생성 테스트",
+        "status": "generated_in_chat",
+        "details": [
+          "someud 샘플 1장",
+          "실제 PNG 생성",
+          "대시보드 asset 복사",
+          "프로젝트 API 키는 미설정"
+        ]
+      },
+      {
         "name": "품질 검수와 재생성 판단",
         "status": "quality_review_ready",
         "details": [
@@ -2273,6 +2308,14 @@
     "branch": "main",
     "recent_commits": [
       {
+        "hash": "1783f35",
+        "subject": "[DOCS] PHASE 12 배포 확인 기록"
+      },
+      {
+        "hash": "21da62e",
+        "subject": "[PHASE 12] 운영 안정화 구현"
+      },
+      {
         "hash": "67c5c94",
         "subject": "[HISTORY] AIPR daily automation run"
       },
@@ -2283,14 +2326,6 @@
       {
         "hash": "9283742",
         "subject": "[PHASE 11] GitHub Actions 자동화 구현"
-      },
-      {
-        "hash": "f1d049d",
-        "subject": "[DOCS] PHASE 10 배포 확인 기록"
-      },
-      {
-        "hash": "3f7947f",
-        "subject": "[PHASE 10] Dashboard API 실시간화 구현"
       }
     ]
   },
@@ -2304,6 +2339,7 @@
     "팀장 분석은 deterministic rule 기반이며 실제 LLM 판단은 후속 API 연결 단계에서 붙인다.",
     "프롬프트 생성도 rule 기반이며 실제 OpenAI API 호출은 아직 수행하지 않는다.",
     "이미지 생성은 dry-run 단계이며 실제 gpt-image-2 API 호출은 아직 수행하지 않는다.",
+    "ChatGPT 이미지 생성 테스트는 완료했지만 프로젝트 OpenAI API 키 기반 호출은 .env 설정 후 별도 검증해야 한다.",
     "품질 검수는 dry-run 요청 메타데이터 기준이며 실제 이미지 픽셀 검수는 이미지 API 연결 후 확장한다.",
     "Winner/Loser 학습은 mock 광고 성과 기준이며 실제 캠페인 집행 일수는 API 연결 후 교체한다.",
     "Google Drive는 dry-run manifest 단계이며 실제 업로드에는 서비스 계정 또는 OAuth 인증이 필요하다.",
