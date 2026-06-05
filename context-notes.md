@@ -310,3 +310,11 @@
 - 로컬 HTTP 검증에서 `/`, `/api/status.json`, `/data/latest_status.json`, 이미지 asset이 모두 200 응답을 반환했다.
 - 인앱 브라우저 검증에서 실제 이미지 생성 테스트 섹션과 1254x1254 이미지 로딩을 확인했다.
 
+## 2026-06-05 ChatGPT Image Generation Test 배포 확인
+
+- GitHub main에 `ce5c714 [IMAGE] ChatGPT 실제 생성 테스트 반영` 커밋을 push했다.
+- Vercel production deployment `dpl_HSJcayPxCukyQcChZyvmvebiLixA`는 해당 커밋으로 READY 상태다.
+- Vercel branch alias의 `/data/latest_status.json`은 200 OK를 반환했고, ChatGPT 이미지 테스트 payload가 포함된 것을 확인했다.
+- Vercel Authentication 보호로 asset 직접 URL은 401을 반환하므로, 화면 확인은 로그인 또는 임시 공유 링크로 진행한다.
+- 임시 공유 링크는 `https://homeproject0518-git-main-raw22226-9071s-projects.vercel.app/?_vercel_share=R4iajFxIXUkE1dSvCDjS8MZVQCeraiGy`이며 만료 시각은 2026-06-06 14:21 KST 기준이다.
+

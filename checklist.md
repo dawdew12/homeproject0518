@@ -224,4 +224,4 @@
 - [x] `AIPR_Dashboard.html` 제작 여부와 해시 확인
 - [x] 대시보드 데이터 재생성 또는 보강
 - [x] 검증 실행
-- [ ] GitHub 저장 및 Vercel 반영 확인
+- [x] GitHub 저장 및 Vercel 반영 확인
