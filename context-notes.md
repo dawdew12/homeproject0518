@@ -286,3 +286,10 @@
 - 대시보드는 운영 안정화 섹션을 추가해 preflight, 브랜드 registry, 비용 guard, 신규 브랜드 추가 체크리스트를 표시한다.
 - PHASE 12 완료 기준은 전체 unittest 41개 통과, dashboard API JSON 재생성, GitHub push, Vercel READY 확인이다.
 
+## 2026-06-05 PHASE 12 배포 확인
+
+- GitHub main에 `21da62e [PHASE 12] 운영 안정화 구현` 커밋을 push했다.
+- push 전에 원격 GitHub Actions 자동 실행 커밋 `67c5c94 [HISTORY] AIPR daily automation run`을 rebase로 보존했다.
+- Vercel production deployment `dpl_AHF7GHbUMtHcARNK9NkAM1h2m527`는 `21da62e` 커밋으로 READY 상태다.
+- Vercel `/api/status`는 200 OK를 반환했고, PHASE 12, 진행률 100%, 테스트 41개 통과 상태를 확인했다.
+
