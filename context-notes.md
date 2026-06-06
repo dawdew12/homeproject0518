@@ -354,3 +354,8 @@
 - 루트 `AIPR_Dashboard.html`과 `dashboard/AIPR_Dashboard.html`에는 같은 20개 항목을 카드형 정적 목록으로 추가했다.
 - 검증은 JSON 재생성, HTML 스크립트 파싱, 전체 unittest 41개, 로컬 HTTP, 인앱 브라우저 렌더링으로 진행했다.
 
+## 2026-06-06 Trend Briefing Dashboard 배포 확인
+
+- GitHub main에 `8010627 [DASHBOARD] 트렌드 수집 브리핑 목록 추가` 커밋을 push했다.
+- Vercel production deployment `dpl_D7QzX3R9rjPMPJf4dx4rzDp2wXi7`는 `8010627` 커밋으로 READY 상태다.
+

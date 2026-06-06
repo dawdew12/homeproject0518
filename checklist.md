@@ -246,4 +246,4 @@
 - [x] 루트 `AIPR_Dashboard.html`에 트렌드 브리핑 목록 표시
 - [x] 대시보드 JSON과 API JSON 재생성
 - [x] 검증 실행
-- [ ] GitHub 저장 및 Vercel 반영 확인
+- [x] GitHub 저장 및 Vercel 반영 확인
