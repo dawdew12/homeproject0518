@@ -1,6 +1,6 @@
 {
   "status": "brand_detail_api_ready",
-  "generated_at": "2026-06-06T21:10:09+09:00",
+  "generated_at": "2026-06-07T01:25:14+09:00",
   "brand": "kinda",
   "snapshot": {
     "brand": "kinda",
@@ -210,8 +210,43 @@
       "briefing": "킨다는 극손상 헤어팩, 비포애프터, 홈케어 키워드가 경쟁사 이슈 수집에서 점수 78, 전주 대비 10.9%로 확인됐다. 킨다 관련 핵심 키워드가 전주 대비 10.9% 상승했다. 경쟁사 신호는 감지됨."
     }
   ],
+  "portal_sns_article_links": [
+    {
+      "sequence": 4,
+      "date": "2026-06-07",
+      "brand": "kinda",
+      "display_name": "킨다",
+      "source_site": "부산일보",
+      "title": "“머릿결 관리도 집에서~” 셀프 헤어케어 전성시대 - 부산일보",
+      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1qbnlMR000TjdpNllmdUJwVk5DTkJ0UmJaZUV2MTJtLVJDbVQ4ckVJN1FseTZ6QktkSGJsbVRleDdZOGZvVEdrNFp3QnNMUFc0WF9HR3pfaElmdndhZWxsQk94cE1iV2JvclRncjZ3?oc=5",
+      "query": "헤어팩 홈케어 트리트먼트",
+      "published_at": "Mon, 05 Apr 2021 07:00:00 GMT"
+    },
+    {
+      "sequence": 5,
+      "date": "2026-06-07",
+      "brand": "kinda",
+      "display_name": "킨다",
+      "source_site": "코스인코리아닷컴",
+      "title": "헤어트리트먼트, 제품별 모발 개선성능 차이 \"가격 최대 22배 차이\" - 코스인코리아닷컴",
+      "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5zM3pNMnIzUS1hQzl6RERhNzRDYWpCa09nYzlvdUtzM0U3T0lWM2dqc2JYMDMwOWZiV0o3NmJfZjNJT2JhWDdCNUtMZUxjMzNDeE9ZVXZobjhpU25rcmc?oc=5",
+      "query": "헤어팩 홈케어 트리트먼트",
+      "published_at": "Fri, 11 Oct 2024 07:00:00 GMT"
+    },
+    {
+      "sequence": 6,
+      "date": "2026-06-07",
+      "brand": "kinda",
+      "display_name": "킨다",
+      "source_site": "의학신문",
+      "title": "두피부터 모발까지 전문가처럼 ‘홈살롱템’ 인기 - 의학신문",
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9aRGVSd2ozbHhLRmVTVnN0OHoyQ2FWUTFaMEFrNmNTdXRVRS1zR0I4eTVxQ1M2bUxPdEc1SnptX01LQktNSHNUa2hBcGhycXkzclRtM2t6T3o0dlpPckQwdk9jU0xVMkNfc2c?oc=5",
+      "query": "헤어팩 홈케어 트리트먼트",
+      "published_at": "Fri, 22 Jan 2021 08:00:00 GMT"
+    }
+  ],
   "portal_sns_daily_brief": {
-    "date": "2026-06-06",
+    "date": "2026-06-07",
     "brand": "kinda",
     "display_name": "킨다",
     "keywords": [

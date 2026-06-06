@@ -390,3 +390,27 @@
 - GitHub main에 `aa843b2 [DASHBOARD] 포털 SNS 일간 클리핑 요약 추가` 커밋을 push했다.
 - Vercel production deployment `dpl_6vufozMqCjp4Jn7NaHNntKNc3kKq`는 `aa843b26e0a2e3824c562c144919306fa7d714a6` 커밋으로 READY 상태다.
 - 배포 URL은 `https://homeproject0518-nlv16nt8m-raw22226-9071s-projects.vercel.app`이며, Vercel Authentication 보호가 켜져 있으면 직접 접속 시 로그인이 필요할 수 있다.
+
+## 2026-06-07 Team B Article Link Brief 시작
+
+- 사용자 요청은 팀원 B가 트렌드 데이터를 수집할 때 함께 수집한 관련 기사 링크를 한곳에 모으고, 그 모든 링크가 시사하는 바를 맨 위 한 줄로 보여주는 것이다.
+- 여기서 기사 링크는 `portal_sns_clipper`가 Google News RSS에서 수집한 `portal_news` 클립으로 한정한다.
+- SNS 공개 검색 링크는 기사 링크 목록에는 섞지 않고, 기존 브랜드별 SNS 근거 링크로 유지한다.
+- 이번 변경은 새 수집원을 늘리기보다 현재 팀원 B 클리핑 산출물의 `article_links`와 `overall_implication` 필드를 추가하고 대시보드 상단에 표시하는 것이다.
+
+## 2026-06-07 Team B Article Link Brief 구현
+
+- `agents/portal_sns_clipper.py`에 `build_article_links`와 `build_overall_article_implication`을 추가했다.
+- 2026-06-07 live 수집은 `python agents\portal_sns_clipper.py --date 2026-06-07 --live`로 실행했고, `history/daily/2026-06-07_portal_sns_clips.json`을 생성했다.
+- 오늘 산출물에는 포털 기사 링크 15건, SNS 공개 검색 링크 15건, 총 클립 30건이 들어 있다.
+- 전체 시사점은 “수집 기사 15건은 황토침대, 숙면 / 극손상 헤어팩, 홈케어 / 뷰티 루틴, 피부결 / 독서 감성, 카페 / 기능성 케어, 성분 전반에서 개인 루틴, 체감 증거, 사용 장면을 짧게 보여주는 소재가 공통 기회임을 시사한다.”로 생성됐다.
+- `scripts/build_dashboard_data.py`는 `portal_sns_article_links`와 `portal_sns_clips.overall_implication`을 `latest_status.json`, `/api/brands.json`, `/api/brands/{brand}.json`에 노출한다.
+- `web/index.html`, `AIPR_Dashboard.html`, `dashboard/AIPR_Dashboard.html`에는 브랜드별 3줄 요약보다 위에 전체 시사점과 기사 링크 목록을 표시한다.
+
+## 2026-06-07 Team B Article Link Brief 검증
+
+- `python -m unittest tests.test_portal_sns_clipper tests.test_build_dashboard_data`는 5개 테스트 통과로 확인했다.
+- 전체 관련 테스트 명령은 `python -m unittest tests.test_trend_collector tests.test_portal_sns_clipper tests.test_data_collector tests.test_manager tests.test_prompt_engineer tests.test_image_designer tests.test_storage_utils tests.test_dashboard_api tests.test_daily_pipeline tests.test_operation_guard tests.test_build_dashboard_data`이며 44개 테스트가 통과했다.
+- HTML 스크립트 파싱은 `web/index.html`, `AIPR_Dashboard.html`, `dashboard/AIPR_Dashboard.html` 모두 통과했다.
+- 루트 대시보드 DOM 실행 검증에서 기사 링크 카드 15개, 상단 시사점, 브랜드별 포털/SNS 카드 5개가 생성되는 것을 확인했다.
+- 로컬 HTTP 검증에서 `AIPR_Dashboard.html`, `web/index.html`, `web/data/latest_status.json`, `web/api/brands.json`이 모두 200 응답을 반환했다.

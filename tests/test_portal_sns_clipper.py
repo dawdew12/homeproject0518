@@ -22,6 +22,9 @@ class PortalSnsClipperTest(unittest.TestCase):
         self.assertEqual(payload["summary"]["brand_count"], 5)
         self.assertEqual(payload["summary"]["summary_line_count"], 15)
         self.assertGreaterEqual(payload["summary"]["clip_count"], 25)
+        self.assertEqual(payload["summary"]["article_link_count"], len(payload["article_links"]))
+        self.assertGreaterEqual(len(payload["article_links"]), 10)
+        self.assertIn("시사한다", payload["overall_implication"])
         self.assertEqual(len(payload["brands"]), 5)
         self.assertEqual(len(payload["brands"][0]["summary_3_lines"]), 3)
         self.assertIn("clips", payload["brands"][0])
@@ -63,6 +66,8 @@ class PortalSnsClipperTest(unittest.TestCase):
 
         self.assertEqual(output_path.name, "2026-06-06_portal_sns_clips.json")
         self.assertEqual(saved["summary"]["brand_count"], 5)
+        self.assertIn("overall_implication", saved)
+        self.assertIn("article_links", saved)
         self.assertEqual(len(saved["brands"][0]["summary_3_lines"]), 3)
 
 

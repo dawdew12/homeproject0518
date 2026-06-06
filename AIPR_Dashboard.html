@@ -154,6 +154,11 @@ html, body {
 .portal-sns-lines { margin: 7px 0 0; padding-left: 17px; font-size: 11px; line-height: 1.55; color: var(--color-text-primary); }
 .portal-sns-links { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; }
 .portal-sns-link { font-size: 10px; border: .5px solid var(--color-border-tertiary); border-radius: 20px; padding: 3px 7px; color: var(--color-text-info); text-decoration: none; background: var(--color-background-secondary); }
+.article-brief { border: .5px solid var(--color-border-success); border-radius: var(--border-radius-md); background: var(--color-background-success); color: var(--color-text-primary); padding: 10px; font-size: 12px; line-height: 1.55; margin-bottom: 8px; }
+.article-brief strong { color: var(--color-text-success); }
+.article-link-list { display: grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap: 8px; margin-bottom: 8px; }
+.article-link-item { border: .5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); padding: 9px; background: var(--color-background-primary); font-size: 11px; line-height: 1.45; }
+.article-link-item a { color: var(--color-text-info); text-decoration: none; font-weight: 500; }
 
 .bfolder { border: .5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); padding: 14px 10px; cursor: pointer; text-align: center; transition: border-color .15s; background: var(--color-background-primary); }
 .bfolder:hover { border-color: var(--color-border-secondary); }
@@ -447,6 +452,8 @@ html, body {
 
 <div class="sec">
 <div class="sec-label">포털/SNS 일간 브랜드별 3줄 요약</div>
+<div class="article-brief" id="portal-article-brief"></div>
+<div class="article-link-list" id="portal-article-links"></div>
 <div class="portal-sns-list" id="portal-sns-list"></div>
 </div>
 
@@ -690,6 +697,27 @@ const trendBriefingData = [
   {no:20,brand:'baren',source:'경쟁사 이슈 수집',keywords:'기능성 케어, 인포그래픽, 성분',score:96,change:16.0,issue:'기능성 케어 관심 증가',level:'high',competitor:true,summary:'바렌은 경쟁사 이슈 수집에서 기능성 케어 관련 소재 변화가 감지됐다.'}
 ];
 
+const articleLinkBriefData = {
+  implication:'수집 기사 15건은 황토침대, 숙면 / 극손상 헤어팩, 홈케어 / 뷰티 루틴, 피부결 / 독서 감성, 카페 / 기능성 케어, 성분 전반에서 개인 루틴, 체감 증거, 사용 장면을 짧게 보여주는 소재가 공통 기회임을 시사한다.',
+  links:[
+    {brand:'someud',display:'소머드',source:'이투데이',title:'[금주의 SNS핫템] 월동 준비 시작…동서가구 흙침대·설화수 맨 본윤 화장품 인기',url:'https://news.google.com/rss/articles/CBMiVEFVX3lxTFBGS2k3YnJfOUU3dnZYR2RiaUNJQnd3OERYV1ZIWFNpcHNuTlJtVXVhTm5yYkhOZGVWaDlLMFVQdThCSjFhenFVSWVnbGdVa1hHR29HOA?oc=5'},
+    {brand:'someud',display:'소머드',source:'미주중앙일보',title:'[현대 돌·흙침대] 여름에 시원한 돌·흙침대 70% 초특가 세일',url:'https://news.google.com/rss/articles/CBMiYkFVX3lxTE5MZnF6RHFqeE1ZbzZzdzh5dDV3YzBtUENnZUNQTF91aWRGbllXd2I5ekNvU2RXN2Fpb0V5bUNUWkdoQi1tR3RuSXgyOFZWYldVOWdWQ0NXZkRBZ3JfX0ZXdDh3?oc=5'},
+    {brand:'someud',display:'소머드',source:'이데일리',title:'혈액순환 촉진 교원 웰스, 흙표흙침대와 미네랄황토 흙매트 출시',url:'https://news.google.com/rss/articles/CBMigAFBVV95cUxPb0ZfN0RZLWxsQkZDZWZPSTBWbnBzQlBSNzlCVVJxOExSTEhneTBnS2tpMHhVY0pDY0xvNk9mTEtqSDJnMFVBZ0owSllBcXI2UTcycmhLWFQ4bjd4QXdIaVNHY2tkUHZKSHI5X05vTlBmdlV3YmtCWUg3UFNyR0lrWg?oc=5'},
+    {brand:'kinda',display:'킨다',source:'부산일보',title:'머릿결 관리도 집에서, 셀프 헤어케어 전성시대',url:'https://news.google.com/rss/articles/CBMibkFVX3lxTE1qbnlMR000TjdpNllmdUJwVk5DTkJ0UmJaZUV2MTJtLVJDbVQ4ckVJN1FseTZ6QktkSGJsbVRleDdZOGZvVEdrNFp3QnNMUFc0WF9HR3pfaElmdndhZWxsQk94cE1iV2JvclRncjZ3?oc=5'},
+    {brand:'kinda',display:'킨다',source:'코스인코리아닷컴',title:'헤어트리트먼트, 제품별 모발 개선성능 차이 가격 최대 22배 차이',url:'https://news.google.com/rss/articles/CBMiXkFVX3lxTE5zM3pNMnIzUS1hQzl6RERhNzRDYWpCa09nYzlvdUtzM0U3T0lWM2dqc2JYMDMwOWZiV0o3NmJfZjNJT2JhWDdCNUtMZUxjMzNDeE9ZVXZobjhpU25rcmc?oc=5'},
+    {brand:'kinda',display:'킨다',source:'의학신문',title:'두피부터 모발까지 전문가처럼 홈살롱템 인기',url:'https://news.google.com/rss/articles/CBMiakFVX3lxTE9aRGVSd2ozbHhLRmVTVnN0OHoyQ2FWUTFaMEFrNmNTdXRVRS1zR0I4eTVxQ1M2bUxPdEc1SnptX01LQktNSHNUa2hBcGhycXkzclRtM2t6T3o0dlpPckQwdk9jU0xVMkNfc2c?oc=5'},
+    {brand:'melliance',display:'멜리언스',source:'THE K BEAUTY SCIENCE',title:'AI·피부과학·INCI 성분 데이터로 맞춤형 루틴 추천',url:'https://news.google.com/rss/articles/CBMiakFVX3lxTE95TmJXWXJxWmpSNk56Uy1fa3FuSWpHQVRUMTBmUU9HdUN1aWRVNDdkZ09pN3ZaZUJDaXVsX3Nucml3QjJNQ2R6WFRqaEZtc2lCaXo2TllCX0kxM0I4WTlEaFBPUEo2MGF4TVHSAW5BVV95cUxNa0hkeUV2NTY3T3BpeEJqSTFJV0xuOVlkM1N6XzE0aEFZQ1FRRjdSZWQzRG93RDZTeFhZQmg3UWFvYzFyVERUQnpsVVNOTm1oUS1LU3l1azdkSUoyT3R3YzE2Yl9RZU9zSFFIc0Q3QQ?oc=5'},
+    {brand:'melliance',display:'멜리언스',source:'농민신문',title:'깨끗한 피부보다 또렷한 OO, K-뷰티 미국서 통하려면',url:'https://news.google.com/rss/articles/CBMiWkFVX3lxTE1oN192THFkczN3c09QUG1JdW11eDM0SXpHR25qQ0Z2ZU53b0FzOURsLU15UzVray1LUXc4eE01U3d4QVN5NDJGaGlUMk93aUE5dkhVdkxtVXR3dw?oc=5'},
+    {brand:'melliance',display:'멜리언스',source:'esquirekorea.co.kr',title:'환절기 꿀피부 관리 루틴 5',url:'https://news.google.com/rss/articles/CBMiWkFVX3lxTE1IMnBRRDhsZ2EzM3V4SU1mNy1oY0RaZE05TENoVGt6d2c2LVpleEJXRkZ3LWZkOWhxMFBrOWQwNFdjclhRbktXdm1mWnlpQlhDczV5N1MxNlBiZw?oc=5'},
+    {brand:'paperback',display:'페이퍼백',source:'서울특별시',title:'광진구 도서관, 무엇이 달라졌나? 슬기로운 독서생활 가이드',url:'https://news.google.com/rss/articles/CBMiWEFVX3lxTE9wYm9vaElWeWdETEhzcGxmSzVHaVQ2NWpzRWI1ZldNa1NjSXJ2Zk51V3JMZ3A2UWEzZzZNVzY3XzBKaFFUcFVJY0N3SjgwLWFBWU9vbDE0YXE?oc=5'},
+    {brand:'paperback',display:'페이퍼백',source:'harpersbazaar.co.kr',title:'독서를 부르는 책갈피',url:'https://news.google.com/rss/articles/CBMiW0FVX3lxTE9yTjVEZnpLc2x2amJ3VTRnWjhwSjE4dHV4LVdqWmVUUEt4WF80WE4xQzh5WVl6WkFwMVk5c0FvVXJwdC0zZUthUmNiWVl1MTRrbjd0cmkwbGJOM2s?oc=5'},
+    {brand:'paperback',display:'페이퍼백',source:'서울특별시',title:'헌책방에서 취향저격 큐레이션 서가로 변신한 서울책보고',url:'https://news.google.com/rss/articles/CBMiWEFVX3lxTE5yS3A3aEVZd1ZGWkY4cnFIMEdBU0RGbmtXcVF5eXBhcENsMHE0TzFfRk1CeEZObU8yYmwxSmZEM0NiZ1g3d0p0U1lLMUlra1NQcFpNb3NIRms?oc=5'},
+    {brand:'baren',display:'바렌',source:'일요주간',title:'글러브인어보틀, 프리미엄 스킨케어 라인업 3종 한국 상륙',url:'https://news.google.com/rss/articles/CBMidkFVX3lxTE5nWUFLZ0VDaDV3Rzl2LVplUHMxUllMYTFTUkJjTk03YUVQMU50Q2xDWEQ2MGZIX2tmYWp3ZkZ6c2RDSEpuWTFUUklaVjY3TnRVNFVFNkRyUEVMR3ZhbUpab1JfUlJhWktrZGtSU3N1ZjBuREdjenc?oc=5'},
+    {brand:'baren',display:'바렌',source:'코스인코리아닷컴',title:'디오프러스, 올리브영 온라인몰서 기능성 선케어 2종 출시',url:'https://news.google.com/rss/articles/CBMiY0FVX3lxTFBQOVFUc0xpMmdTN1pJMlpBYXh1Wi1Zdnc0c1lnMmstUzA4WlVjbExXa2pBSmg1cFlIV1NjTHFxRXQ2REZfYmdVRmQ5V0V5VER3dlNjU1FCaTZYb3g5MFktSnJhdw?oc=5'},
+    {brand:'baren',display:'바렌',source:'장업신문',title:'디어달리아, 신제품 화이트 젤리 스킨케어 3종',url:'https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9ucDk0OFI5U3Fyb0VYblA0clVIOC1lZ2o1dmg4VnFpSUdXRGZsdjBwdW8zRlNfZTB4Zjh4RElpLXNld3pEbXNWd19KNjhnd2dXV2hPVUtMdUl0djlvZWFiUTVmUFV3SlE?oc=5'}
+  ]
+};
+
 const portalSnsData = [
   {
     brand:'someud', date:'2026-06-06', portal:3, sns:3,
@@ -832,6 +860,19 @@ function renderPortalSnsBriefs() {
   `}).join('');
 }
 
+function renderArticleLinkBrief() {
+  const brief = document.getElementById('portal-article-brief');
+  const links = document.getElementById('portal-article-links');
+  if (!brief || !links) return;
+  brief.innerHTML = `<strong>전체 시사점.</strong> ${articleLinkBriefData.implication}`;
+  links.innerHTML = articleLinkBriefData.links.map(item => `
+    <div class="article-link-item">
+      <div class="trend-brief-meta">${item.display} · ${item.source}</div>
+      <a href="${item.url}" target="_blank" rel="noreferrer">${item.title}</a>
+    </div>
+  `).join('');
+}
+
 function showPage(idx, el) {
   ['page0','page1','page2'].forEach((id,i) => {
     document.getElementById(id).style.display = i === idx ? '' : 'none';
@@ -893,6 +934,7 @@ function renderBrand(id, period) {
 
 document.getElementById('current-date').textContent = new Date().toLocaleDateString('ko-KR', {year:'numeric',month:'long',day:'numeric',weekday:'short'});
 renderRoutine();
+renderArticleLinkBrief();
 renderPortalSnsBriefs();
 renderTrendBriefings();
 renderBrand('someud', '일간');

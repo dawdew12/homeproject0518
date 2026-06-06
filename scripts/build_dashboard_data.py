@@ -110,7 +110,9 @@ def summarize_portal_sns_clips(path: Path | None) -> dict[str, Any]:
         "portal_clip_count": summary.get("portal_clip_count", 0),
         "sns_clip_count": summary.get("sns_clip_count", 0),
         "clip_count": summary.get("clip_count", 0),
+        "article_link_count": summary.get("article_link_count", 0),
         "summary_line_count": summary.get("summary_line_count", 0),
+        "overall_implication": payload.get("overall_implication", ""),
         "collection_note": payload.get("collection_note", ""),
     }
 
@@ -1198,6 +1200,9 @@ def build_brand_detail(payload: dict[str, Any], brand_name: str) -> dict[str, An
         "snapshot": next((item for item in data.get("brand_snapshots", []) if item.get("brand") == brand_name), {}),
         "routine": next((item for item in data.get("brand_routine_matrix", []) if item.get("brand") == brand_name), {}),
         "trend_briefings": [item for item in data.get("trend_briefing_list", []) if item.get("brand") == brand_name],
+        "portal_sns_article_links": [
+            item for item in data.get("portal_sns_article_links", []) if item.get("brand") == brand_name
+        ],
         "portal_sns_daily_brief": next(
             (item for item in data.get("portal_sns_daily_briefs", []) if item.get("brand") == brand_name),
             {},
@@ -1255,6 +1260,7 @@ def build_dashboard_api_payloads(payload: dict[str, Any]) -> dict[str, Any]:
             "brands": brands,
             "brand_routine_matrix": data.get("brand_routine_matrix", []),
             "trend_briefing_list": data.get("trend_briefing_list", []),
+            "portal_sns_article_links": data.get("portal_sns_article_links", []),
             "portal_sns_daily_briefs": data.get("portal_sns_daily_briefs", []),
         },
         "brand_details": {
@@ -1403,6 +1409,7 @@ def build_dashboard_payload() -> dict[str, Any]:
                 image_payload,
             ),
             "trend_briefing_list": build_trend_briefing_list(trend_payload),
+            "portal_sns_article_links": portal_sns_clip_payload.get("article_links", []),
             "portal_sns_daily_briefs": portal_sns_clip_payload.get("brands", []),
             "ad_preview": sample_records(ad_payload),
             "trend_preview": sample_records(trend_payload),

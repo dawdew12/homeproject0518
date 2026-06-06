@@ -1,6 +1,6 @@
 {
   "status": "brand_detail_api_ready",
-  "generated_at": "2026-06-06T21:10:09+09:00",
+  "generated_at": "2026-06-07T01:25:14+09:00",
   "brand": "baren",
   "snapshot": {
     "brand": "baren",
@@ -209,8 +209,43 @@
       "briefing": "바렌는 기능성 케어, 인포그래픽, 성분 키워드가 경쟁사 이슈 수집에서 점수 96, 전주 대비 16.0%로 확인됐다. 바렌 관련 핵심 키워드가 전주 대비 16.0% 상승했다. 경쟁사 신호는 감지됨."
     }
   ],
+  "portal_sns_article_links": [
+    {
+      "sequence": 13,
+      "date": "2026-06-07",
+      "brand": "baren",
+      "display_name": "바렌",
+      "source_site": "일요주간",
+      "title": "'쉴딩로션 신화' 글러브인어보틀, 프리미엄 스킨케어 라인업 3종 한국 상륙 - 일요주간",
+      "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5nWUFLZ0VDaDV3Rzl2LVplUHMxUllMYTFTUkJjTk03YUVQMU50Q2xDWEQ2MGZIX2tmYWp3ZkZ6c2RDSEpuWTFUUklaVjY3TnRVNFVFNkRyUEVMR3ZhbUpab1JfUlJhWktrZGtSU3N1ZjBuREdjenc?oc=5",
+      "query": "기능성 케어 성분 스킨케어",
+      "published_at": "Mon, 01 Jun 2026 07:29:12 GMT"
+    },
+    {
+      "sequence": 14,
+      "date": "2026-06-07",
+      "brand": "baren",
+      "display_name": "바렌",
+      "source_site": "코스인코리아닷컴",
+      "title": "디오프러스, 올리브영 온라인몰서 기능성 선케어 2종 출시 - 코스인코리아닷컴",
+      "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFBQOVFUc0xpMmdTN1pJMlpBYXh1Wi1Zdnc0c1lnMmstUzA4WlVjbExXa2pBSmg1cFlIV1NjTHFxRXQ2REZfYmdVRmQ5V0V5VER3dlNjU1FCaTZYb3g5MFktSnJhdw?oc=5",
+      "query": "기능성 케어 성분 스킨케어",
+      "published_at": "Thu, 28 May 2026 15:53:16 GMT"
+    },
+    {
+      "sequence": 15,
+      "date": "2026-06-07",
+      "brand": "baren",
+      "display_name": "바렌",
+      "source_site": "장업신문",
+      "title": "디어달리아, 신제품 ‘화이트 젤리’ 스킨케어 3종 - 장업신문",
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9ucDk0OFI5U3Fyb0VYblA0clVIOC1lZ2o1dmg4VnFpSUdXRGZsdjBwdW8zRlNfZTB4Zjh4RElpLXNld3pEbXNWd19KNjhnd2dXV2hPVUtMdUl0djlvZWFiUTVmUFV3SlE?oc=5",
+      "query": "기능성 케어 성분 스킨케어",
+      "published_at": "Mon, 01 Jun 2026 00:35:27 GMT"
+    }
+  ],
   "portal_sns_daily_brief": {
-    "date": "2026-06-06",
+    "date": "2026-06-07",
     "brand": "baren",
     "display_name": "바렌",
     "keywords": [

@@ -64,6 +64,9 @@ class BuildDashboardDataTest(unittest.TestCase):
         self.assertIn("황토침대", first_trend_briefing["briefing"])
         self.assertIn("경쟁사 신호", first_trend_briefing["briefing"])
         self.assertEqual(payload["data"]["portal_sns_clips"]["brand_count"], 5)
+        self.assertGreaterEqual(payload["data"]["portal_sns_clips"]["article_link_count"], 10)
+        self.assertIn("시사한다", payload["data"]["portal_sns_clips"]["overall_implication"])
+        self.assertGreaterEqual(len(payload["data"]["portal_sns_article_links"]), 10)
         self.assertEqual(payload["data"]["portal_sns_clips"]["summary_line_count"], 15)
         self.assertEqual(len(payload["data"]["portal_sns_daily_briefs"]), 5)
         first_portal_sns_brief = payload["data"]["portal_sns_daily_briefs"][0]

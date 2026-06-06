@@ -1,6 +1,6 @@
 {
   "status": "brands_api_ready",
-  "generated_at": "2026-06-06T21:10:09+09:00",
+  "generated_at": "2026-06-07T01:25:14+09:00",
   "brand_count": 5,
   "brands": [
     {
@@ -1036,9 +1036,176 @@
       "briefing": "바렌는 기능성 케어, 인포그래픽, 성분 키워드가 경쟁사 이슈 수집에서 점수 96, 전주 대비 16.0%로 확인됐다. 바렌 관련 핵심 키워드가 전주 대비 16.0% 상승했다. 경쟁사 신호는 감지됨."
     }
   ],
+  "portal_sns_article_links": [
+    {
+      "sequence": 1,
+      "date": "2026-06-07",
+      "brand": "someud",
+      "display_name": "소머드",
+      "source_site": "이투데이",
+      "title": "[금주의 SNS핫템] 월동 준비 시작…동서가구 ‘흙침대’·설화수 ‘맨 본윤’ 화장품 인기 - 이투데이",
+      "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBGS2k3YnJfOUU3dnZYR2RiaUNJQnd3OERYV1ZIWFNpcHNuTlJtVXVhTm5yYkhOZGVWaDlLMFVQdThCSjFhenFVSWVnbGdVa1hHR29HOA?oc=5",
+      "query": "황토침대 숙면 부모님 선물",
+      "published_at": "Sat, 17 Oct 2020 07:00:00 GMT"
+    },
+    {
+      "sequence": 2,
+      "date": "2026-06-07",
+      "brand": "someud",
+      "display_name": "소머드",
+      "source_site": "미주중앙일보",
+      "title": "[현대 돌·흙침대] 여름에 시원한 '돌·흙침대' 70% 초특가 세일 - 미주중앙일보",
+      "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE5MZnF6RHFqeE1ZbzZzdzh5dDV3YzBtUENnZUNQTF91aWRGbllXd2I5ekNvU2RXN2Fpb0V5bUNUWkdoQi1tR3RuSXgyOFZWYldVOWdWQ0NXZkRBZ3JfX0ZXdDh3?oc=5",
+      "query": "흙침대 건강침대 숙면",
+      "published_at": "Sun, 27 Jul 2025 07:00:00 GMT"
+    },
+    {
+      "sequence": 3,
+      "date": "2026-06-07",
+      "brand": "someud",
+      "display_name": "소머드",
+      "source_site": "이데일리",
+      "title": "“혈액순환 촉진” 교원 웰스, 흙표흙침대와 ‘미네랄황토 흙매트’ 출시 - 이데일리",
+      "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPb0ZfN0RZLWxsQkZDZWZPSTBWbnBzQlBSNzlCVVJxOExSTEhneTBnS2tpMHhVY0pDY0xvNk9mTEtqSDJnMFVBZ0owSllBcXI2UTcycmhLWFQ4bjd4QXdIaVNHY2tkUHZKSHI5X05vTlBmdlV3YmtCWUg3UFNyR0lrWg?oc=5",
+      "query": "흙침대 건강침대 숙면",
+      "published_at": "Mon, 01 Sep 2025 07:00:00 GMT"
+    },
+    {
+      "sequence": 4,
+      "date": "2026-06-07",
+      "brand": "kinda",
+      "display_name": "킨다",
+      "source_site": "부산일보",
+      "title": "“머릿결 관리도 집에서~” 셀프 헤어케어 전성시대 - 부산일보",
+      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1qbnlMR000TjdpNllmdUJwVk5DTkJ0UmJaZUV2MTJtLVJDbVQ4ckVJN1FseTZ6QktkSGJsbVRleDdZOGZvVEdrNFp3QnNMUFc0WF9HR3pfaElmdndhZWxsQk94cE1iV2JvclRncjZ3?oc=5",
+      "query": "헤어팩 홈케어 트리트먼트",
+      "published_at": "Mon, 05 Apr 2021 07:00:00 GMT"
+    },
+    {
+      "sequence": 5,
+      "date": "2026-06-07",
+      "brand": "kinda",
+      "display_name": "킨다",
+      "source_site": "코스인코리아닷컴",
+      "title": "헤어트리트먼트, 제품별 모발 개선성능 차이 \"가격 최대 22배 차이\" - 코스인코리아닷컴",
+      "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5zM3pNMnIzUS1hQzl6RERhNzRDYWpCa09nYzlvdUtzM0U3T0lWM2dqc2JYMDMwOWZiV0o3NmJfZjNJT2JhWDdCNUtMZUxjMzNDeE9ZVXZobjhpU25rcmc?oc=5",
+      "query": "헤어팩 홈케어 트리트먼트",
+      "published_at": "Fri, 11 Oct 2024 07:00:00 GMT"
+    },
+    {
+      "sequence": 6,
+      "date": "2026-06-07",
+      "brand": "kinda",
+      "display_name": "킨다",
+      "source_site": "의학신문",
+      "title": "두피부터 모발까지 전문가처럼 ‘홈살롱템’ 인기 - 의학신문",
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9aRGVSd2ozbHhLRmVTVnN0OHoyQ2FWUTFaMEFrNmNTdXRVRS1zR0I4eTVxQ1M2bUxPdEc1SnptX01LQktNSHNUa2hBcGhycXkzclRtM2t6T3o0dlpPckQwdk9jU0xVMkNfc2c?oc=5",
+      "query": "헤어팩 홈케어 트리트먼트",
+      "published_at": "Fri, 22 Jan 2021 08:00:00 GMT"
+    },
+    {
+      "sequence": 7,
+      "date": "2026-06-07",
+      "brand": "melliance",
+      "display_name": "멜리언스",
+      "source_site": "THE K BEAUTY SCIENCE",
+      "title": "AI·피부과학·INCI 성분 데이터로 ‘맞춤형 루틴’ 추천 - THE K BEAUTY SCIENCE",
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE95TmJXWXJxWmpSNk56Uy1fa3FuSWpHQVRUMTBmUU9HdUN1aWRVNDdkZ09pN3ZaZUJDaXVsX3Nucml3QjJNQ2R6WFRqaEZtc2lCaXo2TllCX0kxM0I4WTlEaFBPUEo2MGF4TVHSAW5BVV95cUxNa0hkeUV2NTY3T3BpeEJqSTFJV0xuOVlkM1N6XzE0aEFZQ1FRRjdSZWQzRG93RDZTeFhZQmg3UWFvYzFyVERUQnpsVVNOTm1oUS1LU3l1azdkSUoyT3R3YzE2Yl9RZU9zSFFIc0Q3QQ?oc=5",
+      "query": "뷰티 루틴 피부결 스킨케어",
+      "published_at": "Tue, 12 May 2026 07:00:00 GMT"
+    },
+    {
+      "sequence": 8,
+      "date": "2026-06-07",
+      "brand": "melliance",
+      "display_name": "멜리언스",
+      "source_site": "농민신문",
+      "title": "“깨끗한 피부보다 또렷한 OO”… K-뷰티, 미국서 통하려면? - 농민신문",
+      "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1oN192THFkczN3c09QUG1JdW11eDM0SXpHR25qQ0Z2ZU53b0FzOURsLU15UzVray1LUXc4eE01U3d4QVN5NDJGaGlUMk93aUE5dkhVdkxtVXR3dw?oc=5",
+      "query": "뷰티 루틴 피부결 스킨케어",
+      "published_at": "Tue, 13 Jan 2026 08:00:00 GMT"
+    },
+    {
+      "sequence": 9,
+      "date": "2026-06-07",
+      "brand": "melliance",
+      "display_name": "멜리언스",
+      "source_site": "esquirekorea.co.kr",
+      "title": "르세라핌 사쿠라부터 엔하이픈 선우까지, 환절기 꿀피부 관리 루틴 5 - esquirekorea.co.kr",
+      "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1IMnBRRDhsZ2EzM3V4SU1mNy1oY0RaZE05TENoVGt6d2c2LVpleEJXRkZ3LWZkOWhxMFBrOWQwNFdjclhRbktXdm1mWnlpQlhDczV5N1MxNlBiZw?oc=5",
+      "query": "뷰티 루틴 피부결 스킨케어",
+      "published_at": "Mon, 23 Feb 2026 08:00:00 GMT"
+    },
+    {
+      "sequence": 10,
+      "date": "2026-06-07",
+      "brand": "paperback",
+      "display_name": "페이퍼백",
+      "source_site": "서울특별시",
+      "title": "광진구 도서관, 무엇이 달라졌나? 슬기로운 독서생활 가이드 - 서울특별시",
+      "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9wYm9vaElWeWdETEhzcGxmSzVHaVQ2NWpzRWI1ZldNa1NjSXJ2Zk51V3JMZ3A2UWEzZzZNVzY3XzBKaFFUcFVJY0N3SjgwLWFBWU9vbDE0YXE?oc=5",
+      "query": "독서 감성 카페 라이프스타일",
+      "published_at": "Thu, 23 Apr 2026 07:00:00 GMT"
+    },
+    {
+      "sequence": 11,
+      "date": "2026-06-07",
+      "brand": "paperback",
+      "display_name": "페이퍼백",
+      "source_site": "harpersbazaar.co.kr",
+      "title": "독서를 부르는 책갈피 - harpersbazaar.co.kr",
+      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9yTjVEZnpLc2x2amJ3VTRnWjhwSjE4dHV4LVdqWmVUUEt4WF80WE4xQzh5WVl6WkFwMVk5c0FvVXJwdC0zZUthUmNiWVl1MTRrbjd0cmkwbGJOM2s?oc=5",
+      "query": "독서 감성 카페 라이프스타일",
+      "published_at": "Tue, 09 Sep 2025 07:00:00 GMT"
+    },
+    {
+      "sequence": 12,
+      "date": "2026-06-07",
+      "brand": "paperback",
+      "display_name": "페이퍼백",
+      "source_site": "서울특별시",
+      "title": "헌책방에서 취향저격 큐레이션 서가로 변신한 ‘서울책보고’ - 서울특별시",
+      "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5yS3A3aEVZd1ZGWkY4cnFIMEdBU0RGbmtXcVF5eXBhcENsMHE0TzFfRk1CeEZObU8yYmwxSmZEM0NiZ1g3d0p0U1lLMUlra1NQcFpNb3NIRms?oc=5",
+      "query": "독서 감성 카페 라이프스타일",
+      "published_at": "Fri, 26 Dec 2025 08:00:00 GMT"
+    },
+    {
+      "sequence": 13,
+      "date": "2026-06-07",
+      "brand": "baren",
+      "display_name": "바렌",
+      "source_site": "일요주간",
+      "title": "'쉴딩로션 신화' 글러브인어보틀, 프리미엄 스킨케어 라인업 3종 한국 상륙 - 일요주간",
+      "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5nWUFLZ0VDaDV3Rzl2LVplUHMxUllMYTFTUkJjTk03YUVQMU50Q2xDWEQ2MGZIX2tmYWp3ZkZ6c2RDSEpuWTFUUklaVjY3TnRVNFVFNkRyUEVMR3ZhbUpab1JfUlJhWktrZGtSU3N1ZjBuREdjenc?oc=5",
+      "query": "기능성 케어 성분 스킨케어",
+      "published_at": "Mon, 01 Jun 2026 07:29:12 GMT"
+    },
+    {
+      "sequence": 14,
+      "date": "2026-06-07",
+      "brand": "baren",
+      "display_name": "바렌",
+      "source_site": "코스인코리아닷컴",
+      "title": "디오프러스, 올리브영 온라인몰서 기능성 선케어 2종 출시 - 코스인코리아닷컴",
+      "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFBQOVFUc0xpMmdTN1pJMlpBYXh1Wi1Zdnc0c1lnMmstUzA4WlVjbExXa2pBSmg1cFlIV1NjTHFxRXQ2REZfYmdVRmQ5V0V5VER3dlNjU1FCaTZYb3g5MFktSnJhdw?oc=5",
+      "query": "기능성 케어 성분 스킨케어",
+      "published_at": "Thu, 28 May 2026 15:53:16 GMT"
+    },
+    {
+      "sequence": 15,
+      "date": "2026-06-07",
+      "brand": "baren",
+      "display_name": "바렌",
+      "source_site": "장업신문",
+      "title": "디어달리아, 신제품 ‘화이트 젤리’ 스킨케어 3종 - 장업신문",
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9ucDk0OFI5U3Fyb0VYblA0clVIOC1lZ2o1dmg4VnFpSUdXRGZsdjBwdW8zRlNfZTB4Zjh4RElpLXNld3pEbXNWd19KNjhnd2dXV2hPVUtMdUl0djlvZWFiUTVmUFV3SlE?oc=5",
+      "query": "기능성 케어 성분 스킨케어",
+      "published_at": "Mon, 01 Jun 2026 00:35:27 GMT"
+    }
+  ],
   "portal_sns_daily_briefs": [
     {
-      "date": "2026-06-06",
+      "date": "2026-06-07",
       "brand": "someud",
       "display_name": "소머드",
       "keywords": [
@@ -1117,7 +1284,7 @@
       ]
     },
     {
-      "date": "2026-06-06",
+      "date": "2026-06-07",
       "brand": "kinda",
       "display_name": "킨다",
       "keywords": [
@@ -1196,7 +1363,7 @@
       ]
     },
     {
-      "date": "2026-06-06",
+      "date": "2026-06-07",
       "brand": "melliance",
       "display_name": "멜리언스",
       "keywords": [
@@ -1275,7 +1442,7 @@
       ]
     },
     {
-      "date": "2026-06-06",
+      "date": "2026-06-07",
       "brand": "paperback",
       "display_name": "페이퍼백",
       "keywords": [
@@ -1354,7 +1521,7 @@
       ]
     },
     {
-      "date": "2026-06-06",
+      "date": "2026-06-07",
       "brand": "baren",
       "display_name": "바렌",
       "keywords": [

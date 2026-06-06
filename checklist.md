@@ -257,3 +257,14 @@
 - [x] 루트 `AIPR_Dashboard.html`에 브랜드별 클리핑 요약 표시
 - [x] 테스트와 브라우저 렌더링 검증
 - [x] GitHub 저장 및 Vercel 배포 확인
+
+# Team B Article Link Brief Checklist
+
+- [x] `AGENTS.md`와 기존 팀원 B 클리핑 구조 확인
+- [x] 전체 관련 기사 링크 목록 생성
+- [x] 모든 기사 링크의 공통 시사점 한 줄 생성
+- [x] Vercel용 대시보드 상단에 시사점과 기사 링크 표시
+- [x] 루트 `AIPR_Dashboard.html` 상단에 시사점과 기사 링크 표시
+- [x] 오늘 날짜 live 수집과 대시보드 JSON 재생성
+- [x] 테스트와 로컬 렌더링 검증
+- [ ] GitHub 저장 및 Vercel 배포 확인

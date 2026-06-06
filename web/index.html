@@ -397,6 +397,34 @@ section {
   font-size: 12px;
   text-decoration: none;
 }
+.article-brief {
+  border: 1px solid #c9e7d8;
+  border-radius: 8px;
+  background: #f0f8f4;
+  padding: 12px;
+  margin-top: 10px;
+}
+.article-brief strong {
+  color: var(--green);
+}
+.article-link-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-top: 10px;
+}
+.article-link-item {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  padding: 9px;
+  font-size: 12px;
+}
+.article-link-item a {
+  color: var(--blue);
+  font-weight: 700;
+  text-decoration: none;
+}
 table {
   width: 100%;
   border-collapse: collapse;
@@ -496,6 +524,7 @@ li { margin: 5px 0; }
   .flow-list,
   .routine-board,
   .portal-sns-board,
+  .article-link-list,
   .routine-parts {
     display: grid;
     grid-template-columns: 1fr;
@@ -840,6 +869,8 @@ li { margin: 5px 0; }
   <section>
     <h2>포털/SNS 일간 3줄 요약</h2>
     <p class="sub">공개 포털 뉴스와 SNS 검색 링크를 브랜드별로 묶은 당일 클리핑 요약입니다.</p>
+    <div class="article-brief" id="portal-article-brief"></div>
+    <div class="article-link-list" id="portal-article-links"></div>
     <div class="portal-sns-board" id="portal-sns-board"></div>
   </section>
 
@@ -1071,6 +1102,21 @@ function renderPortalSnsBoard(briefs) {
     : "<div class=\"empty\">포털/SNS 일간 클리핑 데이터 없음.</div>";
 }
 
+function renderPortalArticleBrief(summary, articleLinks) {
+  const implication = summary?.overall_implication || "기사 링크 시사점 데이터 없음.";
+  document.getElementById("portal-article-brief").innerHTML = `
+    <strong>전체 시사점.</strong> ${implication}
+  `;
+  document.getElementById("portal-article-links").innerHTML = articleLinks.length
+    ? articleLinks.map(item => `
+      <div class="article-link-item">
+        <div class="label">${item.display_name || item.brand} · ${item.source_site || "기사"}</div>
+        <a href="${item.url}" target="_blank" rel="noreferrer">${item.title || item.query || "기사 링크"}</a>
+      </div>
+    `).join("")
+    : "<div class=\"empty\">수집된 기사 링크 없음.</div>";
+}
+
 function renderApiStatus(results) {
   const successful = results.filter(result => result.ok).length;
   const fetchedAt = new Date().toLocaleTimeString("ko-KR");
@@ -1112,9 +1158,12 @@ function render(data) {
   const githubHistory = storage.github_history || {};
   const sourceCounts = data.data?.marketing_source_counts || {};
   const brandRoutines = data.data?.brand_routine_matrix || [];
+  const portalSnsSummary = data.data?.portal_sns_clips || {};
+  const portalArticleLinks = data.data?.portal_sns_article_links || [];
   const portalSnsBriefs = data.data?.portal_sns_daily_briefs || [];
 
   renderBrandRoutineBoard(brandRoutines);
+  renderPortalArticleBrief(portalSnsSummary, portalArticleLinks);
   renderPortalSnsBoard(portalSnsBriefs);
   text("deploy-status", `생성 시각 ${data.generated_at || "-"}`);
   text("current-phase", current.current_phase ?? "-");

@@ -220,6 +220,45 @@ def collect_brand_clips(
     }
 
 
+def build_article_links(brands: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """브랜드별 포털 뉴스 클립만 전체 기사 링크 목록으로 펼친다."""
+    article_links = []
+    for brand_item in brands:
+        for clip in brand_item.get("clips", []):
+            if clip.get("source_type") != "portal_news":
+                continue
+            article_links.append(
+                {
+                    "sequence": len(article_links) + 1,
+                    "date": brand_item.get("date"),
+                    "brand": brand_item.get("brand"),
+                    "display_name": brand_item.get("display_name"),
+                    "source_site": clip.get("source_site") or clip.get("source_name"),
+                    "title": clip.get("title"),
+                    "url": clip.get("url"),
+                    "query": clip.get("query"),
+                    "published_at": clip.get("published_at"),
+                }
+            )
+    return article_links
+
+
+def build_overall_article_implication(brands: list[dict[str, Any]], article_links: list[dict[str, Any]]) -> str:
+    """수집 기사 전체가 시사하는 공통 소재 방향을 한 줄로 만든다."""
+    keyword_groups = []
+    for brand_item in brands:
+        keywords = brand_item.get("keywords", [])
+        if keywords:
+            keyword_groups.append(", ".join(keywords[:2]))
+    keyword_text = " / ".join(keyword_groups[:5])
+    if not article_links:
+        return "오늘 포털 기사 신호는 아직 부족하므로 SNS 검색 링크와 기존 트렌드 점수를 함께 확인해야 한다."
+    return (
+        f"수집 기사 {len(article_links)}건은 {keyword_text} 전반에서 "
+        "개인 루틴, 체감 증거, 사용 장면을 짧게 보여주는 소재가 공통 기회임을 시사한다."
+    )
+
+
 def collect_daily_portal_sns_clips(date: str | None = None, live: bool = False) -> dict[str, Any]:
     """전체 브랜드의 일간 포털/SNS 클리핑 산출물을 만든다."""
     target_date = resolve_date(date)
@@ -227,6 +266,8 @@ def collect_daily_portal_sns_clips(date: str | None = None, live: bool = False) 
         collect_brand_clips(brand, config, target_date, live=live)
         for brand, config in BRAND_CLIP_CONFIGS.items()
     ]
+    article_links = build_article_links(brands)
+    overall_implication = build_overall_article_implication(brands, article_links)
     portal_count = sum(item["portal_clip_count"] for item in brands)
     sns_count = sum(item["sns_clip_count"] for item in brands)
 
@@ -235,13 +276,16 @@ def collect_daily_portal_sns_clips(date: str | None = None, live: bool = False) 
         "generated_at": datetime.now(KST).isoformat(timespec="seconds"),
         "status": "live_collected" if live else "fallback_collected",
         "collection_note": "SNS 내부 게시물 본문 수집은 플랫폼 로그인 또는 공식 API 권한 연결 후 확장한다.",
+        "overall_implication": overall_implication,
         "summary": {
             "brand_count": len(brands),
             "portal_clip_count": portal_count,
             "sns_clip_count": sns_count,
             "clip_count": portal_count + sns_count,
+            "article_link_count": len(article_links),
             "summary_line_count": len(brands) * 3,
         },
+        "article_links": article_links,
         "brands": brands,
     }
 

@@ -1,6 +1,6 @@
 {
   "status": "brand_detail_api_ready",
-  "generated_at": "2026-06-06T21:10:09+09:00",
+  "generated_at": "2026-06-07T01:25:14+09:00",
   "brand": "melliance",
   "snapshot": {
     "brand": "melliance",
@@ -209,8 +209,43 @@
       "briefing": "멜리언스는 뷰티 루틴, 봄 컬렉션, 피부결 키워드가 경쟁사 이슈 수집에서 점수 84, 전주 대비 12.6%로 확인됐다. 멜리언스 관련 핵심 키워드가 전주 대비 12.6% 상승했다. 경쟁사 신호는 감지됨."
     }
   ],
+  "portal_sns_article_links": [
+    {
+      "sequence": 7,
+      "date": "2026-06-07",
+      "brand": "melliance",
+      "display_name": "멜리언스",
+      "source_site": "THE K BEAUTY SCIENCE",
+      "title": "AI·피부과학·INCI 성분 데이터로 ‘맞춤형 루틴’ 추천 - THE K BEAUTY SCIENCE",
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE95TmJXWXJxWmpSNk56Uy1fa3FuSWpHQVRUMTBmUU9HdUN1aWRVNDdkZ09pN3ZaZUJDaXVsX3Nucml3QjJNQ2R6WFRqaEZtc2lCaXo2TllCX0kxM0I4WTlEaFBPUEo2MGF4TVHSAW5BVV95cUxNa0hkeUV2NTY3T3BpeEJqSTFJV0xuOVlkM1N6XzE0aEFZQ1FRRjdSZWQzRG93RDZTeFhZQmg3UWFvYzFyVERUQnpsVVNOTm1oUS1LU3l1azdkSUoyT3R3YzE2Yl9RZU9zSFFIc0Q3QQ?oc=5",
+      "query": "뷰티 루틴 피부결 스킨케어",
+      "published_at": "Tue, 12 May 2026 07:00:00 GMT"
+    },
+    {
+      "sequence": 8,
+      "date": "2026-06-07",
+      "brand": "melliance",
+      "display_name": "멜리언스",
+      "source_site": "농민신문",
+      "title": "“깨끗한 피부보다 또렷한 OO”… K-뷰티, 미국서 통하려면? - 농민신문",
+      "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1oN192THFkczN3c09QUG1JdW11eDM0SXpHR25qQ0Z2ZU53b0FzOURsLU15UzVray1LUXc4eE01U3d4QVN5NDJGaGlUMk93aUE5dkhVdkxtVXR3dw?oc=5",
+      "query": "뷰티 루틴 피부결 스킨케어",
+      "published_at": "Tue, 13 Jan 2026 08:00:00 GMT"
+    },
+    {
+      "sequence": 9,
+      "date": "2026-06-07",
+      "brand": "melliance",
+      "display_name": "멜리언스",
+      "source_site": "esquirekorea.co.kr",
+      "title": "르세라핌 사쿠라부터 엔하이픈 선우까지, 환절기 꿀피부 관리 루틴 5 - esquirekorea.co.kr",
+      "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1IMnBRRDhsZ2EzM3V4SU1mNy1oY0RaZE05TENoVGt6d2c2LVpleEJXRkZ3LWZkOWhxMFBrOWQwNFdjclhRbktXdm1mWnlpQlhDczV5N1MxNlBiZw?oc=5",
+      "query": "뷰티 루틴 피부결 스킨케어",
+      "published_at": "Mon, 23 Feb 2026 08:00:00 GMT"
+    }
+  ],
   "portal_sns_daily_brief": {
-    "date": "2026-06-06",
+    "date": "2026-06-07",
     "brand": "melliance",
     "display_name": "멜리언스",
     "keywords": [

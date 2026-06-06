@@ -1,6 +1,6 @@
 {
   "status": "brand_detail_api_ready",
-  "generated_at": "2026-06-06T21:10:09+09:00",
+  "generated_at": "2026-06-07T01:25:14+09:00",
   "brand": "paperback",
   "snapshot": {
     "brand": "paperback",
@@ -210,8 +210,43 @@
       "briefing": "페이퍼백는 라이프스타일, 독서 감성, 카페 키워드가 경쟁사 이슈 수집에서 점수 90, 전주 대비 14.3%로 확인됐다. 페이퍼백 관련 핵심 키워드가 전주 대비 14.3% 상승했다. 경쟁사 신호는 감지됨."
     }
   ],
+  "portal_sns_article_links": [
+    {
+      "sequence": 10,
+      "date": "2026-06-07",
+      "brand": "paperback",
+      "display_name": "페이퍼백",
+      "source_site": "서울특별시",
+      "title": "광진구 도서관, 무엇이 달라졌나? 슬기로운 독서생활 가이드 - 서울특별시",
+      "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9wYm9vaElWeWdETEhzcGxmSzVHaVQ2NWpzRWI1ZldNa1NjSXJ2Zk51V3JMZ3A2UWEzZzZNVzY3XzBKaFFUcFVJY0N3SjgwLWFBWU9vbDE0YXE?oc=5",
+      "query": "독서 감성 카페 라이프스타일",
+      "published_at": "Thu, 23 Apr 2026 07:00:00 GMT"
+    },
+    {
+      "sequence": 11,
+      "date": "2026-06-07",
+      "brand": "paperback",
+      "display_name": "페이퍼백",
+      "source_site": "harpersbazaar.co.kr",
+      "title": "독서를 부르는 책갈피 - harpersbazaar.co.kr",
+      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9yTjVEZnpLc2x2amJ3VTRnWjhwSjE4dHV4LVdqWmVUUEt4WF80WE4xQzh5WVl6WkFwMVk5c0FvVXJwdC0zZUthUmNiWVl1MTRrbjd0cmkwbGJOM2s?oc=5",
+      "query": "독서 감성 카페 라이프스타일",
+      "published_at": "Tue, 09 Sep 2025 07:00:00 GMT"
+    },
+    {
+      "sequence": 12,
+      "date": "2026-06-07",
+      "brand": "paperback",
+      "display_name": "페이퍼백",
+      "source_site": "서울특별시",
+      "title": "헌책방에서 취향저격 큐레이션 서가로 변신한 ‘서울책보고’ - 서울특별시",
+      "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5yS3A3aEVZd1ZGWkY4cnFIMEdBU0RGbmtXcVF5eXBhcENsMHE0TzFfRk1CeEZObU8yYmwxSmZEM0NiZ1g3d0p0U1lLMUlra1NQcFpNb3NIRms?oc=5",
+      "query": "독서 감성 카페 라이프스타일",
+      "published_at": "Fri, 26 Dec 2025 08:00:00 GMT"
+    }
+  ],
   "portal_sns_daily_brief": {
-    "date": "2026-06-06",
+    "date": "2026-06-07",
     "brand": "paperback",
     "display_name": "페이퍼백",
     "keywords": [
