@@ -316,6 +316,55 @@ section {
   font-weight: 800;
   font-size: 12px;
 }
+.routine-board {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+.routine-brand {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 13px;
+  background: var(--soft);
+}
+.routine-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+.routine-parts {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+.routine-part {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px;
+  background: #fff;
+  min-height: 132px;
+}
+.routine-part-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+.routine-no {
+  color: var(--blue);
+  font-weight: 800;
+  font-size: 12px;
+}
+.routine-lines {
+  color: var(--muted);
+  font-size: 12px;
+}
+.routine-lines div {
+  margin-top: 4px;
+}
 table {
   width: 100%;
   border-collapse: collapse;
@@ -412,7 +461,9 @@ li { margin: 5px 0; }
   .progress-layout,
   .roadmap-grid,
   .architecture-map,
-  .flow-list {
+  .flow-list,
+  .routine-board,
+  .routine-parts {
     display: grid;
     grid-template-columns: 1fr;
   }
@@ -534,6 +585,11 @@ li { margin: 5px 0; }
   <section>
     <h2>자동화 파이프라인</h2>
     <div class="pipeline" id="pipeline"></div>
+  </section>
+
+  <section>
+    <h2>브랜드별 자동화 실행 확인판</h2>
+    <div class="routine-board" id="brand-routine-board"></div>
   </section>
 
   <section>
@@ -863,6 +919,70 @@ function renderCommits(commits) {
     : "<div class=\"empty\">커밋 정보 없음.</div>";
 }
 
+function routinePartLines(part) {
+  const metrics = part.metrics || {};
+  if (part.part_no === "1") {
+    return [
+      `광고 ${metrics.record_count ?? 0}건 · 매체 ${metrics.source_count ?? 0}`,
+      `CTR ${fmt(metrics.avg_ctr, "%")} · ROAS ${fmt(metrics.avg_roas, "%")}`,
+      `클릭 ${metrics.total_clicks ?? 0} · 전환 ${metrics.total_conversions ?? 0}`
+    ];
+  }
+  if (part.part_no === "2") {
+    return [
+      `트렌드 ${metrics.record_count ?? 0}건 · 출처 ${metrics.source_count ?? 0}`,
+      `점수 ${metrics.avg_trend_score ?? 0} · 변화율 ${fmt(metrics.avg_trend_change_pct, "%")}`,
+      (metrics.top_keywords || []).slice(0, 3).join(", ") || "-"
+    ];
+  }
+  if (part.part_no === "3") {
+    return [
+      `우선순위 ${metrics.priority || "-"}`,
+      `점수 ${metrics.score || 0}`,
+      metrics.creative_direction || "-"
+    ];
+  }
+  return [
+    `스토리보드 ${metrics.storyboard_count ?? 0}개 · 프롬프트 ${metrics.prompt_count ?? 0}개`,
+    `이미지 요청 ${metrics.image_request_count ?? 0}개 · 비용 $${metrics.estimated_cost_usd ?? 0}`,
+    metrics.output_dir || "-"
+  ];
+}
+
+function renderBrandRoutineBoard(routines) {
+  document.getElementById("brand-routine-board").innerHTML = routines.length
+    ? routines.map(brand => `
+      <div class="routine-brand">
+        <div class="routine-head">
+          <div>
+            <h3>${brand.display_name || brand.brand}</h3>
+            <div class="label">${brand.brand} · ${brand.date || "-"}</div>
+          </div>
+          <span class="tag ${tagClass(brand.status)}">${brand.ready_part_count}/${brand.total_part_count}</span>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" style="width:${brand.completion_percent || 0}%"></div></div>
+        <div class="routine-parts" style="margin-top:10px">
+          ${(brand.parts || []).map(part => `
+            <div class="routine-part">
+              <div class="routine-part-top">
+                <div>
+                  <div class="routine-no">PART ${part.part_no}</div>
+                  <strong>${part.label}</strong>
+                  <div class="label">${part.owner}</div>
+                </div>
+                <span class="tag ${tagClass(part.status)}">${part.status}</span>
+              </div>
+              <div class="routine-lines">
+                ${routinePartLines(part).map(line => `<div>${line}</div>`).join("")}
+              </div>
+            </div>
+          `).join("")}
+        </div>
+      </div>
+    `).join("")
+    : "<div class=\"empty\">브랜드별 자동화 실행 데이터 없음.</div>";
+}
+
 function renderApiStatus(results) {
   const successful = results.filter(result => result.ok).length;
   const fetchedAt = new Date().toLocaleTimeString("ko-KR");
@@ -903,7 +1023,9 @@ function render(data) {
   const gdrive = storage.gdrive || {};
   const githubHistory = storage.github_history || {};
   const sourceCounts = data.data?.marketing_source_counts || {};
+  const brandRoutines = data.data?.brand_routine_matrix || [];
 
+  renderBrandRoutineBoard(brandRoutines);
   text("deploy-status", `생성 시각 ${data.generated_at || "-"}`);
   text("current-phase", current.current_phase ?? "-");
   text("phase-status", current.status || "-");

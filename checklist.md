@@ -225,3 +225,14 @@
 - [x] 대시보드 데이터 재생성 또는 보강
 - [x] 검증 실행
 - [x] GitHub 저장 및 Vercel 반영 확인
+
+# Brand Routine Dashboard Checklist
+
+- [x] `AGENTS.md`와 현재 자동화 산출물 구조 확인
+- [x] 기존 `AIPR_Dashboard.html`과 `web/index.html` 표시 범위 확인
+- [x] 브랜드별 파트별 실행 결과 payload 생성
+- [x] 광고성과, 트렌드, 분석·개선안, 소재 생성 UI 추가
+- [x] 루트 `AIPR_Dashboard.html`에서도 바로 확인 가능하게 반영
+- [x] 대시보드 JSON과 API JSON 재생성
+- [x] 검증 실행
+- [ ] GitHub 저장 및 Vercel 반영 확인

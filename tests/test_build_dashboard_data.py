@@ -46,6 +46,18 @@ class BuildDashboardDataTest(unittest.TestCase):
         self.assertGreaterEqual(len(payload["architecture"]["flow"]), 8)
         self.assertGreaterEqual(len(payload["quality"]["phase_test_results"]), 7)
         self.assertEqual(len(payload["data"]["brand_snapshots"]), 5)
+        self.assertEqual(len(payload["data"]["brand_routine_matrix"]), 5)
+        someud_routine = next(
+            item for item in payload["data"]["brand_routine_matrix"] if item["brand"] == "someud"
+        )
+        self.assertEqual(someud_routine["ready_part_count"], 4)
+        self.assertEqual(someud_routine["completion_percent"], 100)
+        self.assertEqual(
+            [part["part_no"] for part in someud_routine["parts"]],
+            ["1", "2", "3", "5"],
+        )
+        self.assertEqual(someud_routine["parts"][0]["metrics"]["record_count"], 3)
+        self.assertEqual(someud_routine["parts"][3]["metrics"]["image_request_count"], 4)
         self.assertEqual(len(payload["data"]["manager_preview"]), 5)
         self.assertGreaterEqual(len(payload["data"]["prompt_preview"]), 5)
         self.assertGreaterEqual(len(payload["data"]["image_preview"]), 5)

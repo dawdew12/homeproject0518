@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-05T23:10:14+09:00",
+  "generated_at": "2026-06-06T17:00:31+09:00",
   "project": {
     "name": "AIPR",
     "github_repo": "https://github.com/dawdew12/homeproject0518",
@@ -1076,6 +1076,531 @@
         "manager_priority": "scale",
         "creative_direction": "기능성 케어 중심의 기능성, 명확하고 깨끗한 정보 전달 소재",
         "status": "mock_ready"
+      }
+    ],
+    "brand_routine_matrix": [
+      {
+        "brand": "someud",
+        "display_name": "소머드",
+        "date": "2026-06-04",
+        "ready_part_count": 4,
+        "total_part_count": 4,
+        "completion_percent": 100,
+        "status": "routine_ready",
+        "parts": [
+          {
+            "part_no": "1",
+            "label": "광고성과지표 수집",
+            "owner": "팀원 A",
+            "status": "mock_ready",
+            "metrics": {
+              "record_count": 3,
+              "source_count": 3,
+              "avg_ctr": 2.3159,
+              "avg_roas": 247.0,
+              "avg_cpa": 5.0497,
+              "total_impressions": 4410,
+              "total_clicks": 102,
+              "total_conversions": 15,
+              "total_cost": 74.55
+            },
+            "evidence": [
+              "meta",
+              "naver_sa",
+              "kakao_moment"
+            ]
+          },
+          {
+            "part_no": "2",
+            "label": "트렌드 수집",
+            "owner": "팀원 B",
+            "status": "mock_ready",
+            "metrics": {
+              "record_count": 4,
+              "source_count": 4,
+              "avg_trend_score": 66.0,
+              "avg_trend_change_pct": 7.7,
+              "top_keywords": [
+                "황토침대",
+                "어버이날 선물",
+                "숙면"
+              ],
+              "issue_titles": [
+                "황토침대 관심 증가"
+              ],
+              "competitor_signal_count": 4
+            },
+            "evidence": [
+              "naver_trends",
+              "google_trends",
+              "news",
+              "competitor"
+            ]
+          },
+          {
+            "part_no": "3",
+            "label": "분석 및 개선안 도출",
+            "owner": "팀장",
+            "status": "analysis_ready",
+            "metrics": {
+              "priority": "test",
+              "score": 161.559,
+              "creative_direction": "황토침대 중심의 프리미엄 오가닉, 따뜻하고 신뢰감 소재",
+              "visual_concept": "따뜻한 침실에서 숙면과 가족 신뢰를 보여주는 실사",
+              "recommended_actions": [
+                "첫 화면 후킹 이미지를 더 명확하게 만들고 핵심 베네핏을 1개로 좁힌다.",
+                "신뢰 증거와 사용 맥락을 보강해 전환 설득력을 높인다.",
+                "경쟁사 소재 변화가 감지된 채널은 카피보다 비주얼 차별점을 우선 검토한다."
+              ],
+              "rationale": [
+                "평균 CTR 2.3159%, 평균 ROAS 247.0% 기준으로 판단했다.",
+                "평균 트렌드 점수 66.0와 변화율 7.7%를 반영했다."
+              ]
+            },
+            "evidence": [
+              "텍스트 삽입 금지",
+              "하단 카피 영역 확보",
+              "경쟁사명 노출 금지"
+            ]
+          },
+          {
+            "part_no": "5",
+            "label": "소재 생성",
+            "owner": "팀원 C/D",
+            "status": "dry_run_ready",
+            "metrics": {
+              "storyboard_count": 4,
+              "prompt_count": 4,
+              "image_request_count": 4,
+              "real_photo_count": 2,
+              "illustration_count": 2,
+              "estimated_cost_usd": 0.528,
+              "output_dir": "outputs/someud/2026-06-04/"
+            },
+            "evidence": [
+              "outputs/someud/2026-06-04/someud_20260604_실사_황토침대-어버이날-선물-숙면_v01_high.png",
+              "outputs/someud/2026-06-04/someud_20260604_실사_황토침대-어버이날-선물-숙면_v02_high.png"
+            ]
+          }
+        ]
+      },
+      {
+        "brand": "kinda",
+        "display_name": "킨다",
+        "date": "2026-06-04",
+        "ready_part_count": 4,
+        "total_part_count": 4,
+        "completion_percent": 100,
+        "status": "routine_ready",
+        "parts": [
+          {
+            "part_no": "1",
+            "label": "광고성과지표 수집",
+            "owner": "팀원 A",
+            "status": "mock_ready",
+            "metrics": {
+              "record_count": 3,
+              "source_count": 3,
+              "avg_ctr": 2.3661,
+              "avg_roas": 259.0,
+              "avg_cpa": 4.9024,
+              "total_impressions": 4950,
+              "total_clicks": 117,
+              "total_conversions": 18,
+              "total_cost": 87.3
+            },
+            "evidence": [
+              "meta",
+              "naver_sa",
+              "kakao_moment"
+            ]
+          },
+          {
+            "part_no": "2",
+            "label": "트렌드 수집",
+            "owner": "팀원 B",
+            "status": "mock_ready",
+            "metrics": {
+              "record_count": 4,
+              "source_count": 4,
+              "avg_trend_score": 72.0,
+              "avg_trend_change_pct": 9.4,
+              "top_keywords": [
+                "극손상 헤어팩",
+                "비포애프터",
+                "홈케어"
+              ],
+              "issue_titles": [
+                "극손상 헤어팩 관심 증가"
+              ],
+              "competitor_signal_count": 4
+            },
+            "evidence": [
+              "naver_trends",
+              "google_trends",
+              "news",
+              "competitor"
+            ]
+          },
+          {
+            "part_no": "3",
+            "label": "분석 및 개선안 도출",
+            "owner": "팀장",
+            "status": "analysis_ready",
+            "metrics": {
+              "priority": "test",
+              "score": 170.461,
+              "creative_direction": "극손상 헤어팩 중심의 손상 모발 회복, 부드럽고 신뢰감 있는 뷰티 톤 소재",
+              "visual_concept": "손상 모발 전후 차이가 선명한 욕실·파우더룸 실사",
+              "recommended_actions": [
+                "첫 화면 후킹 이미지를 더 명확하게 만들고 핵심 베네핏을 1개로 좁힌다.",
+                "신뢰 증거와 사용 맥락을 보강해 전환 설득력을 높인다.",
+                "경쟁사 소재 변화가 감지된 채널은 카피보다 비주얼 차별점을 우선 검토한다."
+              ],
+              "rationale": [
+                "평균 CTR 2.3661%, 평균 ROAS 259.0% 기준으로 판단했다.",
+                "평균 트렌드 점수 72.0와 변화율 9.4%를 반영했다."
+              ]
+            },
+            "evidence": [
+              "텍스트 삽입 금지",
+              "하단 카피 영역 확보",
+              "경쟁사명 노출 금지"
+            ]
+          },
+          {
+            "part_no": "5",
+            "label": "소재 생성",
+            "owner": "팀원 C/D",
+            "status": "dry_run_ready",
+            "metrics": {
+              "storyboard_count": 4,
+              "prompt_count": 4,
+              "image_request_count": 4,
+              "real_photo_count": 2,
+              "illustration_count": 2,
+              "estimated_cost_usd": 0.528,
+              "output_dir": "outputs/kinda/2026-06-04/"
+            },
+            "evidence": [
+              "outputs/kinda/2026-06-04/kinda_20260604_실사_극손상-헤어팩-비포애프터-홈케어_v01_high.png",
+              "outputs/kinda/2026-06-04/kinda_20260604_실사_극손상-헤어팩-비포애프터-홈케어_v02_high.png"
+            ]
+          }
+        ]
+      },
+      {
+        "brand": "melliance",
+        "display_name": "멜리언스",
+        "date": "2026-06-04",
+        "ready_part_count": 4,
+        "total_part_count": 4,
+        "completion_percent": 100,
+        "status": "routine_ready",
+        "parts": [
+          {
+            "part_no": "1",
+            "label": "광고성과지표 수집",
+            "owner": "팀원 A",
+            "status": "mock_ready",
+            "metrics": {
+              "record_count": 3,
+              "source_count": 3,
+              "avg_ctr": 2.4065,
+              "avg_roas": 271.0,
+              "avg_cpa": 8.6147,
+              "total_impressions": 5490,
+              "total_clicks": 132,
+              "total_conversions": 12,
+              "total_cost": 100.05
+            },
+            "evidence": [
+              "meta",
+              "naver_sa",
+              "kakao_moment"
+            ]
+          },
+          {
+            "part_no": "2",
+            "label": "트렌드 수집",
+            "owner": "팀원 B",
+            "status": "mock_ready",
+            "metrics": {
+              "record_count": 4,
+              "source_count": 4,
+              "avg_trend_score": 78.0,
+              "avg_trend_change_pct": 11.1,
+              "top_keywords": [
+                "뷰티 루틴",
+                "봄 컬렉션",
+                "피부결"
+              ],
+              "issue_titles": [
+                "뷰티 루틴 관심 증가"
+              ],
+              "competitor_signal_count": 4
+            },
+            "evidence": [
+              "naver_trends",
+              "google_trends",
+              "news",
+              "competitor"
+            ]
+          },
+          {
+            "part_no": "3",
+            "label": "분석 및 개선안 도출",
+            "owner": "팀장",
+            "status": "analysis_ready",
+            "metrics": {
+              "priority": "scale",
+              "score": 179.265,
+              "creative_direction": "뷰티 루틴 중심의 정돈된 뷰티, 세련되고 균형 잡힌 무드 소재",
+              "visual_concept": "피부결과 루틴을 정돈된 뷰티 무드로 보여주는 클로즈업",
+              "recommended_actions": [
+                "성과가 받쳐주는 키워드를 첫 소재 묶음의 메인 각도로 배치한다.",
+                "경쟁사 소재 변화가 감지된 채널은 카피보다 비주얼 차별점을 우선 검토한다."
+              ],
+              "rationale": [
+                "평균 CTR 2.4065%, 평균 ROAS 271.0% 기준으로 판단했다.",
+                "평균 트렌드 점수 78.0와 변화율 11.1%를 반영했다."
+              ]
+            },
+            "evidence": [
+              "텍스트 삽입 금지",
+              "하단 카피 영역 확보",
+              "경쟁사명 노출 금지"
+            ]
+          },
+          {
+            "part_no": "5",
+            "label": "소재 생성",
+            "owner": "팀원 C/D",
+            "status": "dry_run_ready",
+            "metrics": {
+              "storyboard_count": 4,
+              "prompt_count": 4,
+              "image_request_count": 4,
+              "real_photo_count": 2,
+              "illustration_count": 2,
+              "estimated_cost_usd": 0.528,
+              "output_dir": "outputs/melliance/2026-06-04/"
+            },
+            "evidence": [
+              "outputs/melliance/2026-06-04/melliance_20260604_실사_뷰티-루틴-봄-컬렉션-피부결_v01_high.png",
+              "outputs/melliance/2026-06-04/melliance_20260604_실사_뷰티-루틴-봄-컬렉션-피부결_v02_high.png"
+            ]
+          }
+        ]
+      },
+      {
+        "brand": "paperback",
+        "display_name": "페이퍼백",
+        "date": "2026-06-04",
+        "ready_part_count": 4,
+        "total_part_count": 4,
+        "completion_percent": 100,
+        "status": "routine_ready",
+        "parts": [
+          {
+            "part_no": "1",
+            "label": "광고성과지표 수집",
+            "owner": "팀원 A",
+            "status": "mock_ready",
+            "metrics": {
+              "record_count": 3,
+              "source_count": 3,
+              "avg_ctr": 2.4396,
+              "avg_roas": 283.0,
+              "avg_cpa": 7.6706,
+              "total_impressions": 6030,
+              "total_clicks": 147,
+              "total_conversions": 15,
+              "total_cost": 112.8
+            },
+            "evidence": [
+              "meta",
+              "naver_sa",
+              "kakao_moment"
+            ]
+          },
+          {
+            "part_no": "2",
+            "label": "트렌드 수집",
+            "owner": "팀원 B",
+            "status": "mock_ready",
+            "metrics": {
+              "record_count": 4,
+              "source_count": 4,
+              "avg_trend_score": 84.0,
+              "avg_trend_change_pct": 12.8,
+              "top_keywords": [
+                "라이프스타일",
+                "독서 감성",
+                "카페"
+              ],
+              "issue_titles": [
+                "라이프스타일 관심 증가"
+              ],
+              "competitor_signal_count": 4
+            },
+            "evidence": [
+              "naver_trends",
+              "google_trends",
+              "news",
+              "competitor"
+            ]
+          },
+          {
+            "part_no": "3",
+            "label": "분석 및 개선안 도출",
+            "owner": "팀장",
+            "status": "analysis_ready",
+            "metrics": {
+              "priority": "high",
+              "score": 187.996,
+              "creative_direction": "라이프스타일 중심의 일상 감성, 차분하고 취향이 드러나는 라이프스타일 소재",
+              "visual_concept": "취향 있는 카페와 독서 장면을 연결한 라이프스타일 컷",
+              "recommended_actions": [
+                "성과가 받쳐주는 키워드를 첫 소재 묶음의 메인 각도로 배치한다.",
+                "첫 화면 후킹 이미지를 더 명확하게 만들고 핵심 베네핏을 1개로 좁힌다.",
+                "신뢰 증거와 사용 맥락을 보강해 전환 설득력을 높인다."
+              ],
+              "rationale": [
+                "평균 CTR 2.4396%, 평균 ROAS 283.0% 기준으로 판단했다.",
+                "평균 트렌드 점수 84.0와 변화율 12.8%를 반영했다."
+              ]
+            },
+            "evidence": [
+              "텍스트 삽입 금지",
+              "하단 카피 영역 확보",
+              "경쟁사명 노출 금지"
+            ]
+          },
+          {
+            "part_no": "5",
+            "label": "소재 생성",
+            "owner": "팀원 C/D",
+            "status": "dry_run_ready",
+            "metrics": {
+              "storyboard_count": 4,
+              "prompt_count": 4,
+              "image_request_count": 4,
+              "real_photo_count": 2,
+              "illustration_count": 2,
+              "estimated_cost_usd": 0.528,
+              "output_dir": "outputs/paperback/2026-06-04/"
+            },
+            "evidence": [
+              "outputs/paperback/2026-06-04/paperback_20260604_실사_라이프스타일-독서-감성-카페_v01_high.png",
+              "outputs/paperback/2026-06-04/paperback_20260604_실사_라이프스타일-독서-감성-카페_v02_high.png"
+            ]
+          }
+        ]
+      },
+      {
+        "brand": "baren",
+        "display_name": "바렌",
+        "date": "2026-06-04",
+        "ready_part_count": 4,
+        "total_part_count": 4,
+        "completion_percent": 100,
+        "status": "routine_ready",
+        "parts": [
+          {
+            "part_no": "1",
+            "label": "광고성과지표 수집",
+            "owner": "팀원 A",
+            "status": "mock_ready",
+            "metrics": {
+              "record_count": 3,
+              "source_count": 3,
+              "avg_ctr": 2.4673,
+              "avg_roas": 295.0,
+              "avg_cpa": 7.0679,
+              "total_impressions": 6570,
+              "total_clicks": 162,
+              "total_conversions": 18,
+              "total_cost": 125.55
+            },
+            "evidence": [
+              "meta",
+              "naver_sa",
+              "kakao_moment"
+            ]
+          },
+          {
+            "part_no": "2",
+            "label": "트렌드 수집",
+            "owner": "팀원 B",
+            "status": "mock_ready",
+            "metrics": {
+              "record_count": 4,
+              "source_count": 4,
+              "avg_trend_score": 90.0,
+              "avg_trend_change_pct": 14.5,
+              "top_keywords": [
+                "기능성 케어",
+                "인포그래픽",
+                "성분"
+              ],
+              "issue_titles": [
+                "기능성 케어 관심 증가"
+              ],
+              "competitor_signal_count": 4
+            },
+            "evidence": [
+              "naver_trends",
+              "google_trends",
+              "news",
+              "competitor"
+            ]
+          },
+          {
+            "part_no": "3",
+            "label": "분석 및 개선안 도출",
+            "owner": "팀장",
+            "status": "analysis_ready",
+            "metrics": {
+              "priority": "scale",
+              "score": 196.673,
+              "creative_direction": "기능성 케어 중심의 기능성, 명확하고 깨끗한 정보 전달 소재",
+              "visual_concept": "성분과 기능을 깨끗하게 이해시키는 정보형 비주얼",
+              "recommended_actions": [
+                "성과가 받쳐주는 키워드를 첫 소재 묶음의 메인 각도로 배치한다.",
+                "경쟁사 소재 변화가 감지된 채널은 카피보다 비주얼 차별점을 우선 검토한다."
+              ],
+              "rationale": [
+                "평균 CTR 2.4673%, 평균 ROAS 295.0% 기준으로 판단했다.",
+                "평균 트렌드 점수 90.0와 변화율 14.5%를 반영했다."
+              ]
+            },
+            "evidence": [
+              "텍스트 삽입 금지",
+              "하단 카피 영역 확보",
+              "경쟁사명 노출 금지"
+            ]
+          },
+          {
+            "part_no": "5",
+            "label": "소재 생성",
+            "owner": "팀원 C/D",
+            "status": "dry_run_ready",
+            "metrics": {
+              "storyboard_count": 4,
+              "prompt_count": 4,
+              "image_request_count": 4,
+              "real_photo_count": 2,
+              "illustration_count": 2,
+              "estimated_cost_usd": 0.528,
+              "output_dir": "outputs/baren/2026-06-04/"
+            },
+            "evidence": [
+              "outputs/baren/2026-06-04/baren_20260604_실사_기능성-케어-인포그래픽-성분_v01_high.png",
+              "outputs/baren/2026-06-04/baren_20260604_실사_기능성-케어-인포그래픽-성분_v02_high.png"
+            ]
+          }
+        ]
       }
     ],
     "ad_preview": [
@@ -2308,6 +2833,14 @@
     "branch": "main",
     "recent_commits": [
       {
+        "hash": "8dae222",
+        "subject": "[DOCS] ChatGPT 이미지 테스트 배포 확인"
+      },
+      {
+        "hash": "ce5c714",
+        "subject": "[IMAGE] ChatGPT 실제 생성 테스트 반영"
+      },
+      {
         "hash": "1783f35",
         "subject": "[DOCS] PHASE 12 배포 확인 기록"
       },
@@ -2318,14 +2851,6 @@
       {
         "hash": "67c5c94",
         "subject": "[HISTORY] AIPR daily automation run"
-      },
-      {
-        "hash": "201753a",
-        "subject": "[DOCS] PHASE 11 배포 확인 기록"
-      },
-      {
-        "hash": "9283742",
-        "subject": "[PHASE 11] GitHub Actions 자동화 구현"
       }
     ]
   },

@@ -19,6 +19,7 @@ OUTPUT_PATH = OUTPUT_DIR / "latest_status.json"
 API_OUTPUT_DIR = PROJECT_ROOT / "web" / "api"
 LOG_DIR = PROJECT_ROOT / "logs"
 KST = timezone(timedelta(hours=9))
+BRAND_ORDER = ["someud", "kinda", "melliance", "paperback", "baren"]
 
 
 def read_json(path: Path, default: Any) -> Any:
@@ -398,13 +399,32 @@ def average(values: list[float]) -> float:
     return round(sum(values) / len(values), 4)
 
 
+def unique_values(values: list[Any], limit: int | None = None) -> list[Any]:
+    """순서를 유지하며 중복 값을 제거한다."""
+    seen = set()
+    items = []
+    for value in values:
+        if not value or value in seen:
+            continue
+        seen.add(value)
+        items.append(value)
+        if limit and len(items) >= limit:
+            break
+    return items
+
+
+def sum_metric(records: list[dict[str, Any]], key: str) -> float:
+    """광고 records의 metrics 합계를 계산한다."""
+    return round(sum(record.get("metrics", {}).get(key, 0) for record in records), 4)
+
+
 def build_brand_snapshots(
     ad_payload: dict[str, Any],
     trend_payload: dict[str, Any],
     manager_payload: dict[str, Any] | None = None,
 ) -> list[dict[str, Any]]:
     """브랜드별 광고와 트렌드 mock 데이터를 운영 화면용으로 요약한다."""
-    brands = ["someud", "kinda", "melliance", "paperback", "baren"]
+    brands = BRAND_ORDER
     ad_records = ad_payload.get("records", [])
     trend_records = trend_payload.get("records", [])
     manager_by_brand = {item.get("brand"): item for item in (manager_payload or {}).get("brands", [])}
@@ -438,6 +458,138 @@ def build_brand_snapshots(
         )
 
     return snapshots
+
+
+def build_brand_routine_matrix(
+    ad_payload: dict[str, Any],
+    trend_payload: dict[str, Any],
+    manager_payload: dict[str, Any],
+    prompt_payload: dict[str, Any],
+    image_payload: dict[str, Any],
+) -> list[dict[str, Any]]:
+    """자동화 루틴 1, 2, 3, 5번 실행 결과를 브랜드별 확인판 데이터로 묶는다."""
+    ad_records = ad_payload.get("records", [])
+    trend_records = trend_payload.get("records", [])
+    managers = {item.get("brand"): item for item in manager_payload.get("brands", [])}
+    prompt_brands = {item.get("brand"): item for item in prompt_payload.get("brands", [])}
+    image_batches = {item.get("brand"): item for item in image_payload.get("batches", [])}
+    prompts_by_brand: dict[str, list[dict[str, Any]]] = {brand: [] for brand in BRAND_ORDER}
+    image_requests_by_brand: dict[str, list[dict[str, Any]]] = {brand: [] for brand in BRAND_ORDER}
+
+    for prompt in prompt_payload.get("prompts", []):
+        brand = prompt.get("brand")
+        if brand in prompts_by_brand:
+            prompts_by_brand[brand].append(prompt)
+
+    for request in image_payload.get("requests", []):
+        brand = request.get("brand")
+        if brand in image_requests_by_brand:
+            image_requests_by_brand[brand].append(request)
+
+    matrix = []
+    for brand in BRAND_ORDER:
+        brand_ad_records = [record for record in ad_records if record.get("brand") == brand]
+        brand_trend_records = [record for record in trend_records if record.get("brand") == brand]
+        manager = managers.get(brand, {})
+        prompt_brand = prompt_brands.get(brand, {})
+        brand_prompts = prompts_by_brand.get(brand, [])
+        image_batch = image_batches.get(brand, {})
+        image_requests = image_requests_by_brand.get(brand, [])
+        trend_keywords = []
+        issue_titles = []
+
+        for record in brand_trend_records:
+            trend_keywords.extend(record.get("keywords", []))
+            title = record.get("seasonal_issue", {}).get("title")
+            if title:
+                issue_titles.append(title)
+
+        ad_metrics = {
+            "record_count": len(brand_ad_records),
+            "source_count": len(unique_values([record.get("source") for record in brand_ad_records])),
+            "avg_ctr": average([record.get("metrics", {}).get("ctr", 0) for record in brand_ad_records]),
+            "avg_roas": average([record.get("metrics", {}).get("roas", 0) for record in brand_ad_records]),
+            "avg_cpa": average([record.get("metrics", {}).get("cpa", 0) for record in brand_ad_records]),
+            "total_impressions": int(sum_metric(brand_ad_records, "impressions")),
+            "total_clicks": int(sum_metric(brand_ad_records, "clicks")),
+            "total_conversions": int(sum_metric(brand_ad_records, "conversions")),
+            "total_cost": sum_metric(brand_ad_records, "cost"),
+        }
+        trend_metrics = {
+            "record_count": len(brand_trend_records),
+            "source_count": len(unique_values([record.get("source") for record in brand_trend_records])),
+            "avg_trend_score": average([record.get("trend_score", 0) for record in brand_trend_records]),
+            "avg_trend_change_pct": average([record.get("trend_change_pct", 0) for record in brand_trend_records]),
+            "top_keywords": unique_values(trend_keywords, 5),
+            "issue_titles": unique_values(issue_titles, 3),
+            "competitor_signal_count": sum(1 for record in brand_trend_records if record.get("competitor_signal")),
+        }
+        creative_metrics = {
+            "storyboard_count": len(prompt_brand.get("storyboards", [])),
+            "prompt_count": len(brand_prompts),
+            "image_request_count": len(image_requests),
+            "real_photo_count": image_batch.get("real_photo_count", 0),
+            "illustration_count": image_batch.get("illustration_count", 0),
+            "estimated_cost_usd": image_batch.get("estimated_cost_usd", 0),
+            "output_dir": image_batch.get("output_dir", ""),
+        }
+        parts = [
+            {
+                "part_no": "1",
+                "label": "광고성과지표 수집",
+                "owner": "팀원 A",
+                "status": "mock_ready" if brand_ad_records else "pending",
+                "metrics": ad_metrics,
+                "evidence": unique_values([record.get("source") for record in brand_ad_records]),
+            },
+            {
+                "part_no": "2",
+                "label": "트렌드 수집",
+                "owner": "팀원 B",
+                "status": "mock_ready" if brand_trend_records else "pending",
+                "metrics": trend_metrics,
+                "evidence": unique_values([record.get("source") for record in brand_trend_records]),
+            },
+            {
+                "part_no": "3",
+                "label": "분석 및 개선안 도출",
+                "owner": "팀장",
+                "status": "analysis_ready" if manager else "pending",
+                "metrics": {
+                    "priority": manager.get("priority", "pending"),
+                    "score": manager.get("score", 0),
+                    "creative_direction": manager.get("creative_direction", ""),
+                    "visual_concept": manager.get("visual_concept", ""),
+                    "recommended_actions": manager.get("recommended_actions", [])[:3],
+                    "rationale": manager.get("rationale", [])[:2],
+                },
+                "evidence": manager.get("handoff", {}).get("constraints", []),
+            },
+            {
+                "part_no": "5",
+                "label": "소재 생성",
+                "owner": "팀원 C/D",
+                "status": "dry_run_ready" if image_requests else "pending",
+                "metrics": creative_metrics,
+                "evidence": [request.get("output_path") for request in image_requests[:2]],
+            },
+        ]
+        ready_count = sum(1 for part in parts if part["status"] != "pending")
+
+        matrix.append(
+            {
+                "brand": brand,
+                "display_name": manager.get("display_name") or prompt_brand.get("display_name") or brand,
+                "date": manager_payload.get("date") or ad_payload.get("date") or trend_payload.get("date"),
+                "ready_part_count": ready_count,
+                "total_part_count": len(parts),
+                "completion_percent": round((ready_count / len(parts)) * 100),
+                "status": "routine_ready" if ready_count == len(parts) else "partial",
+                "parts": parts,
+            }
+        )
+
+    return matrix
 
 
 def sample_records(payload: dict[str, Any], limit: int = 5) -> list[dict[str, Any]]:
@@ -962,6 +1114,7 @@ def build_brand_detail(payload: dict[str, Any], brand_name: str) -> dict[str, An
         "generated_at": payload.get("generated_at"),
         "brand": brand_name,
         "snapshot": next((item for item in data.get("brand_snapshots", []) if item.get("brand") == brand_name), {}),
+        "routine": next((item for item in data.get("brand_routine_matrix", []) if item.get("brand") == brand_name), {}),
         "manager": [item for item in data.get("manager_preview", []) if item.get("brand") == brand_name],
         "prompts": [item for item in data.get("prompt_preview", []) if item.get("brand") == brand_name],
         "images": [item for item in data.get("image_preview", []) if item.get("brand") == brand_name],
@@ -1013,6 +1166,7 @@ def build_dashboard_api_payloads(payload: dict[str, Any]) -> dict[str, Any]:
             "generated_at": payload.get("generated_at"),
             "brand_count": len(brands),
             "brands": brands,
+            "brand_routine_matrix": data.get("brand_routine_matrix", []),
         },
         "brand_details": {
             brand.get("brand"): build_brand_detail(payload, brand.get("brand"))
@@ -1148,6 +1302,13 @@ def build_dashboard_payload() -> dict[str, Any]:
             },
             "marketing_source_counts": source_counts,
             "brand_snapshots": build_brand_snapshots(ad_payload, trend_payload, manager_payload),
+            "brand_routine_matrix": build_brand_routine_matrix(
+                ad_payload,
+                trend_payload,
+                manager_payload,
+                prompt_payload,
+                image_payload,
+            ),
             "ad_preview": sample_records(ad_payload),
             "trend_preview": sample_records(trend_payload),
             "manager_preview": build_manager_preview(manager_payload),

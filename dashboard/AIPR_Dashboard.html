@@ -130,6 +130,17 @@ html, body {
 .ssub { font-size: 11px; color: var(--color-text-secondary); margin-top: 2px; }
 .sexec { font-size: 11px; font-weight: 500; padding: 2px 8px; border-radius: 20px; background: var(--color-background-secondary); color: var(--color-text-secondary); white-space: nowrap; flex-shrink: 0; }
 .rindent { margin-left: 32px; border-left: 2px solid var(--color-border-danger); padding-left: 10px; margin-bottom: 8px; }
+.routine-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 8px; }
+.routine-card { border: .5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); padding: 11px; background: var(--color-background-primary); }
+.routine-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
+.routine-name { font-size: 13px; font-weight: 500; color: var(--color-text-primary); }
+.routine-sub { font-size: 10px; color: var(--color-text-secondary); margin-top: 2px; }
+.routine-ready { font-size: 10px; font-weight: 500; color: var(--color-text-success); background: var(--color-background-success); border-radius: 20px; padding: 2px 7px; white-space: nowrap; }
+.routine-part { border-top: .5px solid var(--color-border-tertiary); padding-top: 8px; margin-top: 8px; }
+.routine-part-head { display: flex; align-items: center; gap: 5px; margin-bottom: 4px; }
+.routine-num { width: 18px; height: 18px; border-radius: 50%; background: var(--color-background-info); color: var(--color-text-info); display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 500; flex-shrink: 0; }
+.routine-title { font-size: 11px; font-weight: 500; color: var(--color-text-primary); }
+.routine-stat { font-size: 10px; color: var(--color-text-secondary); line-height: 1.45; }
 
 .bfolder { border: .5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); padding: 14px 10px; cursor: pointer; text-align: center; transition: border-color .15s; background: var(--color-background-primary); }
 .bfolder:hover { border-color: var(--color-border-secondary); }
@@ -175,6 +186,9 @@ html, body {
 .cost-item:last-child { border-bottom: none; }
 .total-row { display: flex; justify-content: space-between; padding: 10px 0 0; font-size: 15px; font-weight: 500; color: var(--color-text-primary); }
 .cost-box { border: .5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); padding: 12px 14px; background: var(--color-background-primary); }
+@media (max-width: 980px) {
+  .routine-grid { grid-template-columns: 1fr; }
+}
 </style>
 </head>
 <body>
@@ -413,6 +427,11 @@ html, body {
 </div>
 </div>
 
+<div class="sec">
+<div class="sec-label">브랜드별 자동화 실행 확인판</div>
+<div class="routine-grid" id="routine-grid"></div>
+</div>
+
 </div>
 
 <!-- PAGE 2: 브랜드 분석 -->
@@ -567,6 +586,89 @@ const brandData = {
   }
 };
 
+const routineData = [
+  {
+    brand:'someud',
+    name:'소머드',
+    date:'2026-06-04',
+    parts:[
+      {no:'1',title:'광고성과지표 수집',stat:'3건 · 3매체\nCTR 2.3159% · ROAS 247.0%\nCPA $5.0497'},
+      {no:'2',title:'트렌드 수집',stat:'4건 · 4출처\n점수 66.0 · 변화율 7.7%\n황토침대, 어버이날 선물, 숙면'},
+      {no:'3',title:'분석 및 개선안 도출',stat:'우선순위 test · 점수 161.559\n황토침대 중심 소재\n따뜻하고 신뢰감 있는 실사 방향'},
+      {no:'5',title:'소재 생성',stat:'스토리보드 4개 · 프롬프트 4개\n이미지 요청 4개 · 예상 $0.528\noutputs/someud/2026-06-04/'}
+    ]
+  },
+  {
+    brand:'kinda',
+    name:'킨다',
+    date:'2026-06-04',
+    parts:[
+      {no:'1',title:'광고성과지표 수집',stat:'3건 · 3매체\nCTR 2.3661% · ROAS 259.0%\nCPA $4.9024'},
+      {no:'2',title:'트렌드 수집',stat:'4건 · 4출처\n점수 72.0 · 변화율 9.4%\n극손상 헤어팩, 비포애프터, 홈케어'},
+      {no:'3',title:'분석 및 개선안 도출',stat:'우선순위 test · 점수 170.461\n손상 모발 회복 소재\n전후 차이가 선명한 뷰티 실사 방향'},
+      {no:'5',title:'소재 생성',stat:'스토리보드 4개 · 프롬프트 4개\n이미지 요청 4개 · 예상 $0.528\noutputs/kinda/2026-06-04/'}
+    ]
+  },
+  {
+    brand:'melliance',
+    name:'멜리언스',
+    date:'2026-06-04',
+    parts:[
+      {no:'1',title:'광고성과지표 수집',stat:'3건 · 3매체\nCTR 2.4065% · ROAS 271.0%\nCPA $8.6147'},
+      {no:'2',title:'트렌드 수집',stat:'4건 · 4출처\n점수 78.0 · 변화율 11.1%\n뷰티 루틴, 봄 컬렉션, 피부결'},
+      {no:'3',title:'분석 및 개선안 도출',stat:'우선순위 scale · 점수 179.265\n뷰티 루틴 중심 소재\n정돈된 뷰티 무드 방향'},
+      {no:'5',title:'소재 생성',stat:'스토리보드 4개 · 프롬프트 4개\n이미지 요청 4개 · 예상 $0.528\noutputs/melliance/2026-06-04/'}
+    ]
+  },
+  {
+    brand:'paperback',
+    name:'페이퍼백',
+    date:'2026-06-04',
+    parts:[
+      {no:'1',title:'광고성과지표 수집',stat:'3건 · 3매체\nCTR 2.4396% · ROAS 283.0%\nCPA $7.6706'},
+      {no:'2',title:'트렌드 수집',stat:'4건 · 4출처\n점수 84.0 · 변화율 12.8%\n라이프스타일, 독서 감성, 카페'},
+      {no:'3',title:'분석 및 개선안 도출',stat:'우선순위 high · 점수 187.996\n라이프스타일 중심 소재\n일상 감성 실사 방향'},
+      {no:'5',title:'소재 생성',stat:'스토리보드 4개 · 프롬프트 4개\n이미지 요청 4개 · 예상 $0.528\noutputs/paperback/2026-06-04/'}
+    ]
+  },
+  {
+    brand:'baren',
+    name:'바렌',
+    date:'2026-06-04',
+    parts:[
+      {no:'1',title:'광고성과지표 수집',stat:'3건 · 3매체\nCTR 2.4673% · ROAS 295.0%\nCPA $7.0679'},
+      {no:'2',title:'트렌드 수집',stat:'4건 · 4출처\n점수 90.0 · 변화율 14.5%\n기능성 케어, 인포그래픽, 성분'},
+      {no:'3',title:'분석 및 개선안 도출',stat:'우선순위 scale · 점수 196.673\n기능성 케어 중심 소재\n명확한 정보 전달 방향'},
+      {no:'5',title:'소재 생성',stat:'스토리보드 4개 · 프롬프트 4개\n이미지 요청 4개 · 예상 $0.528\noutputs/baren/2026-06-04/'}
+    ]
+  }
+];
+
+function renderRoutine() {
+  const target = document.getElementById('routine-grid');
+  if (!target) return;
+  target.innerHTML = routineData.map(brand => `
+    <div class="routine-card">
+      <div class="routine-top">
+        <div>
+          <div class="routine-name">${brand.name}</div>
+          <div class="routine-sub">${brand.brand} · ${brand.date}</div>
+        </div>
+        <div class="routine-ready">4/4 완료</div>
+      </div>
+      ${brand.parts.map(part => `
+        <div class="routine-part">
+          <div class="routine-part-head">
+            <div class="routine-num">${part.no}</div>
+            <div class="routine-title">${part.title}</div>
+          </div>
+          ${part.stat.split('\n').map(line => `<div class="routine-stat">${line}</div>`).join('')}
+        </div>
+      `).join('')}
+    </div>
+  `).join('');
+}
+
 function showPage(idx, el) {
   ['page0','page1','page2'].forEach((id,i) => {
     document.getElementById(id).style.display = i === idx ? '' : 'none';
@@ -627,6 +729,7 @@ function renderBrand(id, period) {
 }
 
 document.getElementById('current-date').textContent = new Date().toLocaleDateString('ko-KR', {year:'numeric',month:'long',day:'numeric',weekday:'short'});
+renderRoutine();
 renderBrand('someud', '일간');
 </script>
 </body>

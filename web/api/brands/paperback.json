@@ -1,6 +1,6 @@
 {
   "status": "brand_detail_api_ready",
-  "generated_at": "2026-06-05T23:10:14+09:00",
+  "generated_at": "2026-06-06T17:00:31+09:00",
   "brand": "paperback",
   "snapshot": {
     "brand": "paperback",
@@ -18,6 +18,111 @@
     "manager_priority": "high",
     "creative_direction": "라이프스타일 중심의 일상 감성, 차분하고 취향이 드러나는 라이프스타일 소재",
     "status": "mock_ready"
+  },
+  "routine": {
+    "brand": "paperback",
+    "display_name": "페이퍼백",
+    "date": "2026-06-04",
+    "ready_part_count": 4,
+    "total_part_count": 4,
+    "completion_percent": 100,
+    "status": "routine_ready",
+    "parts": [
+      {
+        "part_no": "1",
+        "label": "광고성과지표 수집",
+        "owner": "팀원 A",
+        "status": "mock_ready",
+        "metrics": {
+          "record_count": 3,
+          "source_count": 3,
+          "avg_ctr": 2.4396,
+          "avg_roas": 283.0,
+          "avg_cpa": 7.6706,
+          "total_impressions": 6030,
+          "total_clicks": 147,
+          "total_conversions": 15,
+          "total_cost": 112.8
+        },
+        "evidence": [
+          "meta",
+          "naver_sa",
+          "kakao_moment"
+        ]
+      },
+      {
+        "part_no": "2",
+        "label": "트렌드 수집",
+        "owner": "팀원 B",
+        "status": "mock_ready",
+        "metrics": {
+          "record_count": 4,
+          "source_count": 4,
+          "avg_trend_score": 84.0,
+          "avg_trend_change_pct": 12.8,
+          "top_keywords": [
+            "라이프스타일",
+            "독서 감성",
+            "카페"
+          ],
+          "issue_titles": [
+            "라이프스타일 관심 증가"
+          ],
+          "competitor_signal_count": 4
+        },
+        "evidence": [
+          "naver_trends",
+          "google_trends",
+          "news",
+          "competitor"
+        ]
+      },
+      {
+        "part_no": "3",
+        "label": "분석 및 개선안 도출",
+        "owner": "팀장",
+        "status": "analysis_ready",
+        "metrics": {
+          "priority": "high",
+          "score": 187.996,
+          "creative_direction": "라이프스타일 중심의 일상 감성, 차분하고 취향이 드러나는 라이프스타일 소재",
+          "visual_concept": "취향 있는 카페와 독서 장면을 연결한 라이프스타일 컷",
+          "recommended_actions": [
+            "성과가 받쳐주는 키워드를 첫 소재 묶음의 메인 각도로 배치한다.",
+            "첫 화면 후킹 이미지를 더 명확하게 만들고 핵심 베네핏을 1개로 좁힌다.",
+            "신뢰 증거와 사용 맥락을 보강해 전환 설득력을 높인다."
+          ],
+          "rationale": [
+            "평균 CTR 2.4396%, 평균 ROAS 283.0% 기준으로 판단했다.",
+            "평균 트렌드 점수 84.0와 변화율 12.8%를 반영했다."
+          ]
+        },
+        "evidence": [
+          "텍스트 삽입 금지",
+          "하단 카피 영역 확보",
+          "경쟁사명 노출 금지"
+        ]
+      },
+      {
+        "part_no": "5",
+        "label": "소재 생성",
+        "owner": "팀원 C/D",
+        "status": "dry_run_ready",
+        "metrics": {
+          "storyboard_count": 4,
+          "prompt_count": 4,
+          "image_request_count": 4,
+          "real_photo_count": 2,
+          "illustration_count": 2,
+          "estimated_cost_usd": 0.528,
+          "output_dir": "outputs/paperback/2026-06-04/"
+        },
+        "evidence": [
+          "outputs/paperback/2026-06-04/paperback_20260604_실사_라이프스타일-독서-감성-카페_v01_high.png",
+          "outputs/paperback/2026-06-04/paperback_20260604_실사_라이프스타일-독서-감성-카페_v02_high.png"
+        ]
+      }
+    ]
   },
   "manager": [
     {

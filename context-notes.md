@@ -318,3 +318,18 @@
 - Vercel Authentication 보호로 asset 직접 URL은 401을 반환하므로, 화면 확인은 로그인 또는 임시 공유 링크로 진행한다.
 - 임시 공유 링크는 `https://homeproject0518-git-main-raw22226-9071s-projects.vercel.app/?_vercel_share=R4iajFxIXUkE1dSvCDjS8MZVQCeraiGy`이며 만료 시각은 2026-06-06 14:21 KST 기준이다.
 
+## 2026-06-06 Brand Routine Dashboard 시작
+
+- 사용자 요청은 자동화 루틴의 1번 광고성과지표 수집, 2번 트렌드 수집, 3번 분석 및 개선안 도출, 5번 소재 생성 실행 결과를 브랜드별 파트별로 눈에 보이게 만드는 것이다.
+- 산출물은 최신 `history/daily/*_ad_data.json`, `*_trend_data.json`, `*_manager_brief.json`, `*_prompts.json`, `*_image_dry_run.json`에 이미 존재한다.
+- 이번 변경은 새 수집이나 새 이미지 생성이 아니라 기존 자동화 결과를 브랜드별 운영 확인 화면으로 재구성하는 것이다.
+- 사용자가 현재 `file:///D:/AIPR/AIPR_Dashboard.html`을 보고 있으므로 루트 HTML에서도 바로 보이게 하고, Vercel용 `web/index.html`에도 같은 관점을 추가한다.
+
+## 2026-06-06 Brand Routine Dashboard 구현
+
+- `scripts/build_dashboard_data.py`에 `brand_routine_matrix`를 추가해 5개 브랜드 각각에 1번 광고성과지표 수집, 2번 트렌드 수집, 3번 분석 및 개선안 도출, 5번 소재 생성 파트를 묶었다.
+- `/data/latest_status.json`, `/api/brands.json`, `/api/brands/{brand}.json`에서 같은 루틴 데이터를 확인할 수 있게 했다.
+- `web/index.html`에는 JSON 기반 브랜드별 자동화 실행 확인판을 추가했다.
+- 루트 `AIPR_Dashboard.html`과 `dashboard/AIPR_Dashboard.html`에는 2026-06-04 자동화 실행 결과를 정적 카드로 내장했다.
+- 검증은 HTML 스크립트 파싱, 전체 unittest 41개, 로컬 HTTP 응답, 인앱 브라우저 렌더링으로 진행했다.
+
