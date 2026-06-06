@@ -333,3 +333,9 @@
 - 루트 `AIPR_Dashboard.html`과 `dashboard/AIPR_Dashboard.html`에는 2026-06-04 자동화 실행 결과를 정적 카드로 내장했다.
 - 검증은 HTML 스크립트 파싱, 전체 unittest 41개, 로컬 HTTP 응답, 인앱 브라우저 렌더링으로 진행했다.
 
+## 2026-06-06 Brand Routine Dashboard 배포 확인
+
+- GitHub main에 `328764c [DASHBOARD] 브랜드별 자동화 실행 확인판 추가` 커밋을 push했다.
+- Vercel production deployment `dpl_7qQ3vGbhYBhsB4PMbTWY7rxDtxfG`는 `328764c` 커밋으로 READY 상태다.
+- 배포 URL의 `/data/latest_status.json` 직접 조회는 Vercel Authentication 보호로 401을 반환했으며, 배포 상태 확인은 Vercel 커넥터 기준으로 완료했다.
+
