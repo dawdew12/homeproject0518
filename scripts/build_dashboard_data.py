@@ -89,6 +89,32 @@ def summarize_daily_file(path: Path | None) -> dict[str, Any]:
     }
 
 
+def summarize_portal_sns_clips(path: Path | None) -> dict[str, Any]:
+    """포털/SNS 일간 클리핑 산출물을 대시보드 요약으로 변환한다."""
+    if path is None:
+        return {
+            "exists": False,
+            "brand_count": 0,
+            "clip_count": 0,
+            "summary_line_count": 0,
+        }
+
+    payload = read_json(path, {})
+    summary = payload.get("summary", {})
+    return {
+        "exists": True,
+        "path": normalize_path(path),
+        "date": payload.get("date"),
+        "status": payload.get("status"),
+        "brand_count": summary.get("brand_count", 0),
+        "portal_clip_count": summary.get("portal_clip_count", 0),
+        "sns_clip_count": summary.get("sns_clip_count", 0),
+        "clip_count": summary.get("clip_count", 0),
+        "summary_line_count": summary.get("summary_line_count", 0),
+        "collection_note": payload.get("collection_note", ""),
+    }
+
+
 def summarize_manager_brief(path: Path | None) -> dict[str, Any]:
     """팀장 분석 Brief를 대시보드용 요약으로 변환한다."""
     if path is None:
@@ -928,7 +954,7 @@ def build_overall_progress(roadmap: list[dict[str, Any]]) -> dict[str, Any]:
         "current_phase": "PHASE 12",
         "next_phase": next_items[0]["phase"] if next_items else None,
         "dashboard_milestones_completed": 3,
-        "latest_test_count": 41,
+        "latest_test_count": 44,
         "latest_test_result": "passed",
     }
 
@@ -1172,6 +1198,10 @@ def build_brand_detail(payload: dict[str, Any], brand_name: str) -> dict[str, An
         "snapshot": next((item for item in data.get("brand_snapshots", []) if item.get("brand") == brand_name), {}),
         "routine": next((item for item in data.get("brand_routine_matrix", []) if item.get("brand") == brand_name), {}),
         "trend_briefings": [item for item in data.get("trend_briefing_list", []) if item.get("brand") == brand_name],
+        "portal_sns_daily_brief": next(
+            (item for item in data.get("portal_sns_daily_briefs", []) if item.get("brand") == brand_name),
+            {},
+        ),
         "manager": [item for item in data.get("manager_preview", []) if item.get("brand") == brand_name],
         "prompts": [item for item in data.get("prompt_preview", []) if item.get("brand") == brand_name],
         "images": [item for item in data.get("image_preview", []) if item.get("brand") == brand_name],
@@ -1225,6 +1255,7 @@ def build_dashboard_api_payloads(payload: dict[str, Any]) -> dict[str, Any]:
             "brands": brands,
             "brand_routine_matrix": data.get("brand_routine_matrix", []),
             "trend_briefing_list": data.get("trend_briefing_list", []),
+            "portal_sns_daily_briefs": data.get("portal_sns_daily_briefs", []),
         },
         "brand_details": {
             brand.get("brand"): build_brand_detail(payload, brand.get("brand"))
@@ -1261,6 +1292,7 @@ def build_dashboard_payload() -> dict[str, Any]:
     current_phase = read_json(PROJECT_ROOT / "state" / "current_phase.json", {})
     latest_ad_file = find_latest_file("*_ad_data.json")
     latest_trend_file = find_latest_file("*_trend_data.json")
+    latest_portal_sns_clip_file = find_latest_file("*_portal_sns_clips.json")
     latest_manager_file = find_latest_file("*_manager_brief.json")
     latest_prompt_file = find_latest_file("*_prompts.json")
     latest_image_file = find_latest_file("*_image_dry_run.json")
@@ -1273,6 +1305,7 @@ def build_dashboard_payload() -> dict[str, Any]:
     latest_preflight_file = find_latest_file("*_preflight.json")
     ad_payload = load_latest_daily_payload("*_ad_data.json")
     trend_payload = load_latest_daily_payload("*_trend_data.json")
+    portal_sns_clip_payload = load_latest_daily_payload("*_portal_sns_clips.json")
     manager_payload = load_latest_daily_payload("*_manager_brief.json")
     prompt_payload = load_latest_daily_payload("*_prompts.json")
     image_payload = load_latest_daily_payload("*_image_dry_run.json")
@@ -1281,6 +1314,7 @@ def build_dashboard_payload() -> dict[str, Any]:
     gdrive_payload = load_latest_daily_payload("*_gdrive_manifest.json")
     ad_summary = summarize_daily_file(latest_ad_file)
     trend_summary = summarize_daily_file(latest_trend_file)
+    portal_sns_clip_summary = summarize_portal_sns_clips(latest_portal_sns_clip_file)
     manager_summary = summarize_manager_brief(latest_manager_file)
     prompt_summary = summarize_prompt_pack(latest_prompt_file)
     image_summary = summarize_image_dry_run(latest_image_file)
@@ -1346,6 +1380,7 @@ def build_dashboard_payload() -> dict[str, Any]:
         "data": {
             "ad": ad_summary,
             "trend": trend_summary,
+            "portal_sns_clips": portal_sns_clip_summary,
             "manager": manager_summary,
             "prompts": prompt_summary,
             "images": image_summary,
@@ -1368,6 +1403,7 @@ def build_dashboard_payload() -> dict[str, Any]:
                 image_payload,
             ),
             "trend_briefing_list": build_trend_briefing_list(trend_payload),
+            "portal_sns_daily_briefs": portal_sns_clip_payload.get("brands", []),
             "ad_preview": sample_records(ad_payload),
             "trend_preview": sample_records(trend_payload),
             "manager_preview": build_manager_preview(manager_payload),
@@ -1390,9 +1426,9 @@ def build_dashboard_payload() -> dict[str, Any]:
             },
         },
         "verification": {
-            "last_command": "python -m unittest tests.test_trend_collector tests.test_data_collector tests.test_manager tests.test_prompt_engineer tests.test_image_designer tests.test_storage_utils tests.test_dashboard_api tests.test_daily_pipeline tests.test_operation_guard tests.test_build_dashboard_data",
+            "last_command": "python -m unittest tests.test_trend_collector tests.test_portal_sns_clipper tests.test_data_collector tests.test_manager tests.test_prompt_engineer tests.test_image_designer tests.test_storage_utils tests.test_dashboard_api tests.test_daily_pipeline tests.test_operation_guard tests.test_build_dashboard_data",
             "last_result": "passed",
-            "test_count": 41,
+            "test_count": 44,
         },
         "git": {
             "branch": run_git(["branch", "--show-current"]) or "main",

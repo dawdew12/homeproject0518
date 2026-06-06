@@ -1,6 +1,6 @@
 {
   "status": "brand_detail_api_ready",
-  "generated_at": "2026-06-06T18:49:51+09:00",
+  "generated_at": "2026-06-06T21:10:09+09:00",
   "brand": "paperback",
   "snapshot": {
     "brand": "paperback",
@@ -210,6 +210,85 @@
       "briefing": "페이퍼백는 라이프스타일, 독서 감성, 카페 키워드가 경쟁사 이슈 수집에서 점수 90, 전주 대비 14.3%로 확인됐다. 페이퍼백 관련 핵심 키워드가 전주 대비 14.3% 상승했다. 경쟁사 신호는 감지됨."
     }
   ],
+  "portal_sns_daily_brief": {
+    "date": "2026-06-06",
+    "brand": "paperback",
+    "display_name": "페이퍼백",
+    "keywords": [
+      "독서 감성",
+      "카페",
+      "라이프스타일"
+    ],
+    "summary_3_lines": [
+      "포털 신호는 독서 감성, 카페, 라이프스타일 중심으로 확인했고, 대표 클립은 광진구 도서관, 무엇이 달라졌나? 슬기로운 독서생활 가이드 - 서울특별시이다.",
+      "SNS 확인은 YouTube, Instagram, TikTok 공개 검색 링크로 묶었고, 관찰 포인트는 카페 브이로그, 북스타그램 감성, 취향 큐레이션이다.",
+      "오늘 소재 액션은 카페 공간과 독서 루틴을 묶어 저장하고 싶은 생활 장면으로 만든다."
+    ],
+    "portal_clip_count": 3,
+    "sns_clip_count": 3,
+    "clips": [
+      {
+        "source_type": "portal_news",
+        "source_name": "Google News RSS",
+        "source_site": "서울특별시",
+        "query": "독서 감성 카페 라이프스타일",
+        "title": "광진구 도서관, 무엇이 달라졌나? 슬기로운 독서생활 가이드 - 서울특별시",
+        "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9wYm9vaElWeWdETEhzcGxmSzVHaVQ2NWpzRWI1ZldNa1NjSXJ2Zk51V3JMZ3A2UWEzZzZNVzY3XzBKaFFUcFVJY0N3SjgwLWFBWU9vbDE0YXE?oc=5",
+        "published_at": "Thu, 23 Apr 2026 07:00:00 GMT",
+        "snippet": "광진구 도서관, 무엇이 달라졌나? 슬기로운 독서생활 가이드 - 서울특별시"
+      },
+      {
+        "source_type": "portal_news",
+        "source_name": "Google News RSS",
+        "source_site": "harpersbazaar.co.kr",
+        "query": "독서 감성 카페 라이프스타일",
+        "title": "독서를 부르는 책갈피 - harpersbazaar.co.kr",
+        "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9yTjVEZnpLc2x2amJ3VTRnWjhwSjE4dHV4LVdqWmVUUEt4WF80WE4xQzh5WVl6WkFwMVk5c0FvVXJwdC0zZUthUmNiWVl1MTRrbjd0cmkwbGJOM2s?oc=5",
+        "published_at": "Tue, 09 Sep 2025 07:00:00 GMT",
+        "snippet": "독서를 부르는 책갈피 - harpersbazaar.co.kr"
+      },
+      {
+        "source_type": "portal_news",
+        "source_name": "Google News RSS",
+        "source_site": "서울특별시",
+        "query": "독서 감성 카페 라이프스타일",
+        "title": "헌책방에서 취향저격 큐레이션 서가로 변신한 ‘서울책보고’ - 서울특별시",
+        "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5yS3A3aEVZd1ZGWkY4cnFIMEdBU0RGbmtXcVF5eXBhcENsMHE0TzFfRk1CeEZObU8yYmwxSmZEM0NiZ1g3d0p0U1lLMUlra1NQcFpNb3NIRms?oc=5",
+        "published_at": "Fri, 26 Dec 2025 08:00:00 GMT",
+        "snippet": "헌책방에서 취향저격 큐레이션 서가로 변신한 ‘서울책보고’ - 서울특별시"
+      },
+      {
+        "source_type": "sns_search",
+        "source_name": "YouTube",
+        "source_site": "YouTube",
+        "query": "독서 감성 카페 브이로그",
+        "title": "YouTube 공개 검색: 독서 감성 카페 브이로그",
+        "url": "https://www.youtube.com/results?search_query=%EB%8F%85%EC%84%9C%20%EA%B0%90%EC%84%B1%20%EC%B9%B4%ED%8E%98%20%EB%B8%8C%EC%9D%B4%EB%A1%9C%EA%B7%B8",
+        "published_at": "",
+        "snippet": "카페 브이로그, 북스타그램 감성, 취향 큐레이션"
+      },
+      {
+        "source_type": "sns_search",
+        "source_name": "Instagram",
+        "source_site": "Instagram",
+        "query": "독서 감성 카페 브이로그",
+        "title": "Instagram 공개 검색: 독서 감성 카페 브이로그",
+        "url": "https://www.instagram.com/explore/search/keyword/?q=%EB%8F%85%EC%84%9C%20%EA%B0%90%EC%84%B1%20%EC%B9%B4%ED%8E%98%20%EB%B8%8C%EC%9D%B4%EB%A1%9C%EA%B7%B8",
+        "published_at": "",
+        "snippet": "카페 브이로그, 북스타그램 감성, 취향 큐레이션"
+      },
+      {
+        "source_type": "sns_search",
+        "source_name": "TikTok",
+        "source_site": "TikTok",
+        "query": "독서 감성 카페 브이로그",
+        "title": "TikTok 공개 검색: 독서 감성 카페 브이로그",
+        "url": "https://www.tiktok.com/search?q=%EB%8F%85%EC%84%9C%20%EA%B0%90%EC%84%B1%20%EC%B9%B4%ED%8E%98%20%EB%B8%8C%EC%9D%B4%EB%A1%9C%EA%B7%B8",
+        "published_at": "",
+        "snippet": "카페 브이로그, 북스타그램 감성, 취향 큐레이션"
+      }
+    ]
+  },
   "manager": [
     {
       "brand": "paperback",

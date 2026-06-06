@@ -1,6 +1,6 @@
 {
   "status": "dashboard_status_api_ready",
-  "generated_at": "2026-06-06T18:49:51+09:00",
+  "generated_at": "2026-06-06T21:10:09+09:00",
   "project": {
     "name": "AIPR",
     "github_repo": "https://github.com/dawdew12/homeproject0518",
@@ -22,13 +22,13 @@
     "current_phase": "PHASE 12",
     "next_phase": null,
     "dashboard_milestones_completed": 3,
-    "latest_test_count": 41,
+    "latest_test_count": 44,
     "latest_test_result": "passed"
   },
   "verification": {
-    "last_command": "python -m unittest tests.test_trend_collector tests.test_data_collector tests.test_manager tests.test_prompt_engineer tests.test_image_designer tests.test_storage_utils tests.test_dashboard_api tests.test_daily_pipeline tests.test_operation_guard tests.test_build_dashboard_data",
+    "last_command": "python -m unittest tests.test_trend_collector tests.test_portal_sns_clipper tests.test_data_collector tests.test_manager tests.test_prompt_engineer tests.test_image_designer tests.test_storage_utils tests.test_dashboard_api tests.test_daily_pipeline tests.test_operation_guard tests.test_build_dashboard_data",
     "last_result": "passed",
-    "test_count": 41
+    "test_count": 44
   },
   "next_step": {
     "phase": "운영 전환",

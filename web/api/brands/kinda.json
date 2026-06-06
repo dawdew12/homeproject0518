@@ -1,6 +1,6 @@
 {
   "status": "brand_detail_api_ready",
-  "generated_at": "2026-06-06T18:49:51+09:00",
+  "generated_at": "2026-06-06T21:10:09+09:00",
   "brand": "kinda",
   "snapshot": {
     "brand": "kinda",
@@ -210,6 +210,85 @@
       "briefing": "킨다는 극손상 헤어팩, 비포애프터, 홈케어 키워드가 경쟁사 이슈 수집에서 점수 78, 전주 대비 10.9%로 확인됐다. 킨다 관련 핵심 키워드가 전주 대비 10.9% 상승했다. 경쟁사 신호는 감지됨."
     }
   ],
+  "portal_sns_daily_brief": {
+    "date": "2026-06-06",
+    "brand": "kinda",
+    "display_name": "킨다",
+    "keywords": [
+      "극손상 헤어팩",
+      "홈케어",
+      "비포애프터"
+    ],
+    "summary_3_lines": [
+      "포털 신호는 극손상 헤어팩, 홈케어, 비포애프터 중심으로 확인했고, 대표 클립은 “머릿결 관리도 집에서~” 셀프 헤어케어 전성시대 - 부산일보이다.",
+      "SNS 확인은 YouTube, Instagram, TikTok 공개 검색 링크로 묶었고, 관찰 포인트는 비포애프터 컷, 손상모 회복 루틴, 홈살롱 사용 순서이다.",
+      "오늘 소재 액션은 비포애프터 증거 화면과 홈살롱 루틴을 짧은 영상 구조로 전환한다."
+    ],
+    "portal_clip_count": 3,
+    "sns_clip_count": 3,
+    "clips": [
+      {
+        "source_type": "portal_news",
+        "source_name": "Google News RSS",
+        "source_site": "부산일보",
+        "query": "헤어팩 홈케어 트리트먼트",
+        "title": "“머릿결 관리도 집에서~” 셀프 헤어케어 전성시대 - 부산일보",
+        "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1qbnlMR000TjdpNllmdUJwVk5DTkJ0UmJaZUV2MTJtLVJDbVQ4ckVJN1FseTZ6QktkSGJsbVRleDdZOGZvVEdrNFp3QnNMUFc0WF9HR3pfaElmdndhZWxsQk94cE1iV2JvclRncjZ3?oc=5",
+        "published_at": "Mon, 05 Apr 2021 07:00:00 GMT",
+        "snippet": "“머릿결 관리도 집에서~” 셀프 헤어케어 전성시대 - 부산일보"
+      },
+      {
+        "source_type": "portal_news",
+        "source_name": "Google News RSS",
+        "source_site": "코스인코리아닷컴",
+        "query": "헤어팩 홈케어 트리트먼트",
+        "title": "헤어트리트먼트, 제품별 모발 개선성능 차이 \"가격 최대 22배 차이\" - 코스인코리아닷컴",
+        "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5zM3pNMnIzUS1hQzl6RERhNzRDYWpCa09nYzlvdUtzM0U3T0lWM2dqc2JYMDMwOWZiV0o3NmJfZjNJT2JhWDdCNUtMZUxjMzNDeE9ZVXZobjhpU25rcmc?oc=5",
+        "published_at": "Fri, 11 Oct 2024 07:00:00 GMT",
+        "snippet": "헤어트리트먼트, 제품별 모발 개선성능 차이 \"가격 최대 22배 차이\" - 코스인코리아닷컴"
+      },
+      {
+        "source_type": "portal_news",
+        "source_name": "Google News RSS",
+        "source_site": "의학신문",
+        "query": "헤어팩 홈케어 트리트먼트",
+        "title": "두피부터 모발까지 전문가처럼 ‘홈살롱템’ 인기 - 의학신문",
+        "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9aRGVSd2ozbHhLRmVTVnN0OHoyQ2FWUTFaMEFrNmNTdXRVRS1zR0I4eTVxQ1M2bUxPdEc1SnptX01LQktNSHNUa2hBcGhycXkzclRtM2t6T3o0dlpPckQwdk9jU0xVMkNfc2c?oc=5",
+        "published_at": "Fri, 22 Jan 2021 08:00:00 GMT",
+        "snippet": "두피부터 모발까지 전문가처럼 ‘홈살롱템’ 인기 - 의학신문"
+      },
+      {
+        "source_type": "sns_search",
+        "source_name": "YouTube",
+        "source_site": "YouTube",
+        "query": "극손상 헤어팩 비포애프터",
+        "title": "YouTube 공개 검색: 극손상 헤어팩 비포애프터",
+        "url": "https://www.youtube.com/results?search_query=%EA%B7%B9%EC%86%90%EC%83%81%20%ED%97%A4%EC%96%B4%ED%8C%A9%20%EB%B9%84%ED%8F%AC%EC%95%A0%ED%94%84%ED%84%B0",
+        "published_at": "",
+        "snippet": "비포애프터 컷, 손상모 회복 루틴, 홈살롱 사용 순서"
+      },
+      {
+        "source_type": "sns_search",
+        "source_name": "Instagram",
+        "source_site": "Instagram",
+        "query": "극손상 헤어팩 비포애프터",
+        "title": "Instagram 공개 검색: 극손상 헤어팩 비포애프터",
+        "url": "https://www.instagram.com/explore/search/keyword/?q=%EA%B7%B9%EC%86%90%EC%83%81%20%ED%97%A4%EC%96%B4%ED%8C%A9%20%EB%B9%84%ED%8F%AC%EC%95%A0%ED%94%84%ED%84%B0",
+        "published_at": "",
+        "snippet": "비포애프터 컷, 손상모 회복 루틴, 홈살롱 사용 순서"
+      },
+      {
+        "source_type": "sns_search",
+        "source_name": "TikTok",
+        "source_site": "TikTok",
+        "query": "극손상 헤어팩 비포애프터",
+        "title": "TikTok 공개 검색: 극손상 헤어팩 비포애프터",
+        "url": "https://www.tiktok.com/search?q=%EA%B7%B9%EC%86%90%EC%83%81%20%ED%97%A4%EC%96%B4%ED%8C%A9%20%EB%B9%84%ED%8F%AC%EC%95%A0%ED%94%84%ED%84%B0",
+        "published_at": "",
+        "snippet": "비포애프터 컷, 손상모 회복 루틴, 홈살롱 사용 순서"
+      }
+    ]
+  },
   "manager": [
     {
       "brand": "kinda",

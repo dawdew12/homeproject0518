@@ -1,0 +1,410 @@
+{
+  "date": "2026-06-06",
+  "generated_at": "2026-06-06T20:58:38+09:00",
+  "status": "live_collected",
+  "collection_note": "SNS 내부 게시물 본문 수집은 플랫폼 로그인 또는 공식 API 권한 연결 후 확장한다.",
+  "summary": {
+    "brand_count": 5,
+    "portal_clip_count": 15,
+    "sns_clip_count": 15,
+    "clip_count": 30,
+    "summary_line_count": 15
+  },
+  "brands": [
+    {
+      "date": "2026-06-06",
+      "brand": "someud",
+      "display_name": "소머드",
+      "keywords": [
+        "황토침대",
+        "숙면",
+        "부모님 선물"
+      ],
+      "summary_3_lines": [
+        "포털 신호는 황토침대, 숙면, 부모님 선물 중심으로 확인했고, 대표 클립은 [금주의 SNS핫템] 월동 준비 시작…동서가구 ‘흙침대’·설화수 ‘맨 본윤’ 화장품 인기 - 이투데이이다.",
+        "SNS 확인은 YouTube, Instagram, TikTok 공개 검색 링크로 묶었고, 관찰 포인트는 후기형 콘텐츠, 부모님 선물 반응, 설치 전후 체감 포인트이다.",
+        "오늘 소재 액션은 부모님 선물형 후킹과 숙면 체감 후기를 소재 첫 문장에 배치한다."
+      ],
+      "portal_clip_count": 3,
+      "sns_clip_count": 3,
+      "clips": [
+        {
+          "source_type": "portal_news",
+          "source_name": "Google News RSS",
+          "source_site": "이투데이",
+          "query": "황토침대 숙면 부모님 선물",
+          "title": "[금주의 SNS핫템] 월동 준비 시작…동서가구 ‘흙침대’·설화수 ‘맨 본윤’ 화장품 인기 - 이투데이",
+          "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBGS2k3YnJfOUU3dnZYR2RiaUNJQnd3OERYV1ZIWFNpcHNuTlJtVXVhTm5yYkhOZGVWaDlLMFVQdThCSjFhenFVSWVnbGdVa1hHR29HOA?oc=5",
+          "published_at": "Sat, 17 Oct 2020 07:00:00 GMT",
+          "snippet": "[금주의 SNS핫템] 월동 준비 시작…동서가구 ‘흙침대’·설화수 ‘맨 본윤’ 화장품 인기 - 이투데이"
+        },
+        {
+          "source_type": "portal_news",
+          "source_name": "Google News RSS",
+          "source_site": "미주중앙일보",
+          "query": "흙침대 건강침대 숙면",
+          "title": "[현대 돌·흙침대] 여름에 시원한 '돌·흙침대' 70% 초특가 세일 - 미주중앙일보",
+          "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE5MZnF6RHFqeE1ZbzZzdzh5dDV3YzBtUENnZUNQTF91aWRGbllXd2I5ekNvU2RXN2Fpb0V5bUNUWkdoQi1tR3RuSXgyOFZWYldVOWdWQ0NXZkRBZ3JfX0ZXdDh3?oc=5",
+          "published_at": "Sun, 27 Jul 2025 07:00:00 GMT",
+          "snippet": "[현대 돌·흙침대] 여름에 시원한 '돌·흙침대' 70% 초특가 세일 - 미주중앙일보"
+        },
+        {
+          "source_type": "portal_news",
+          "source_name": "Google News RSS",
+          "source_site": "이데일리",
+          "query": "흙침대 건강침대 숙면",
+          "title": "“혈액순환 촉진” 교원 웰스, 흙표흙침대와 ‘미네랄황토 흙매트’ 출시 - 이데일리",
+          "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPb0ZfN0RZLWxsQkZDZWZPSTBWbnBzQlBSNzlCVVJxOExSTEhneTBnS2tpMHhVY0pDY0xvNk9mTEtqSDJnMFVBZ0owSllBcXI2UTcycmhLWFQ4bjd4QXdIaVNHY2tkUHZKSHI5X05vTlBmdlV3YmtCWUg3UFNyR0lrWg?oc=5",
+          "published_at": "Mon, 01 Sep 2025 07:00:00 GMT",
+          "snippet": "“혈액순환 촉진” 교원 웰스, 흙표흙침대와 ‘미네랄황토 흙매트’ 출시 - 이데일리"
+        },
+        {
+          "source_type": "sns_search",
+          "source_name": "YouTube",
+          "source_site": "YouTube",
+          "query": "황토침대 숙면 후기",
+          "title": "YouTube 공개 검색: 황토침대 숙면 후기",
+          "url": "https://www.youtube.com/results?search_query=%ED%99%A9%ED%86%A0%EC%B9%A8%EB%8C%80%20%EC%88%99%EB%A9%B4%20%ED%9B%84%EA%B8%B0",
+          "published_at": "",
+          "snippet": "후기형 콘텐츠, 부모님 선물 반응, 설치 전후 체감 포인트"
+        },
+        {
+          "source_type": "sns_search",
+          "source_name": "Instagram",
+          "source_site": "Instagram",
+          "query": "황토침대 숙면 후기",
+          "title": "Instagram 공개 검색: 황토침대 숙면 후기",
+          "url": "https://www.instagram.com/explore/search/keyword/?q=%ED%99%A9%ED%86%A0%EC%B9%A8%EB%8C%80%20%EC%88%99%EB%A9%B4%20%ED%9B%84%EA%B8%B0",
+          "published_at": "",
+          "snippet": "후기형 콘텐츠, 부모님 선물 반응, 설치 전후 체감 포인트"
+        },
+        {
+          "source_type": "sns_search",
+          "source_name": "TikTok",
+          "source_site": "TikTok",
+          "query": "황토침대 숙면 후기",
+          "title": "TikTok 공개 검색: 황토침대 숙면 후기",
+          "url": "https://www.tiktok.com/search?q=%ED%99%A9%ED%86%A0%EC%B9%A8%EB%8C%80%20%EC%88%99%EB%A9%B4%20%ED%9B%84%EA%B8%B0",
+          "published_at": "",
+          "snippet": "후기형 콘텐츠, 부모님 선물 반응, 설치 전후 체감 포인트"
+        }
+      ]
+    },
+    {
+      "date": "2026-06-06",
+      "brand": "kinda",
+      "display_name": "킨다",
+      "keywords": [
+        "극손상 헤어팩",
+        "홈케어",
+        "비포애프터"
+      ],
+      "summary_3_lines": [
+        "포털 신호는 극손상 헤어팩, 홈케어, 비포애프터 중심으로 확인했고, 대표 클립은 “머릿결 관리도 집에서~” 셀프 헤어케어 전성시대 - 부산일보이다.",
+        "SNS 확인은 YouTube, Instagram, TikTok 공개 검색 링크로 묶었고, 관찰 포인트는 비포애프터 컷, 손상모 회복 루틴, 홈살롱 사용 순서이다.",
+        "오늘 소재 액션은 비포애프터 증거 화면과 홈살롱 루틴을 짧은 영상 구조로 전환한다."
+      ],
+      "portal_clip_count": 3,
+      "sns_clip_count": 3,
+      "clips": [
+        {
+          "source_type": "portal_news",
+          "source_name": "Google News RSS",
+          "source_site": "부산일보",
+          "query": "헤어팩 홈케어 트리트먼트",
+          "title": "“머릿결 관리도 집에서~” 셀프 헤어케어 전성시대 - 부산일보",
+          "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1qbnlMR000TjdpNllmdUJwVk5DTkJ0UmJaZUV2MTJtLVJDbVQ4ckVJN1FseTZ6QktkSGJsbVRleDdZOGZvVEdrNFp3QnNMUFc0WF9HR3pfaElmdndhZWxsQk94cE1iV2JvclRncjZ3?oc=5",
+          "published_at": "Mon, 05 Apr 2021 07:00:00 GMT",
+          "snippet": "“머릿결 관리도 집에서~” 셀프 헤어케어 전성시대 - 부산일보"
+        },
+        {
+          "source_type": "portal_news",
+          "source_name": "Google News RSS",
+          "source_site": "코스인코리아닷컴",
+          "query": "헤어팩 홈케어 트리트먼트",
+          "title": "헤어트리트먼트, 제품별 모발 개선성능 차이 \"가격 최대 22배 차이\" - 코스인코리아닷컴",
+          "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5zM3pNMnIzUS1hQzl6RERhNzRDYWpCa09nYzlvdUtzM0U3T0lWM2dqc2JYMDMwOWZiV0o3NmJfZjNJT2JhWDdCNUtMZUxjMzNDeE9ZVXZobjhpU25rcmc?oc=5",
+          "published_at": "Fri, 11 Oct 2024 07:00:00 GMT",
+          "snippet": "헤어트리트먼트, 제품별 모발 개선성능 차이 \"가격 최대 22배 차이\" - 코스인코리아닷컴"
+        },
+        {
+          "source_type": "portal_news",
+          "source_name": "Google News RSS",
+          "source_site": "의학신문",
+          "query": "헤어팩 홈케어 트리트먼트",
+          "title": "두피부터 모발까지 전문가처럼 ‘홈살롱템’ 인기 - 의학신문",
+          "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9aRGVSd2ozbHhLRmVTVnN0OHoyQ2FWUTFaMEFrNmNTdXRVRS1zR0I4eTVxQ1M2bUxPdEc1SnptX01LQktNSHNUa2hBcGhycXkzclRtM2t6T3o0dlpPckQwdk9jU0xVMkNfc2c?oc=5",
+          "published_at": "Fri, 22 Jan 2021 08:00:00 GMT",
+          "snippet": "두피부터 모발까지 전문가처럼 ‘홈살롱템’ 인기 - 의학신문"
+        },
+        {
+          "source_type": "sns_search",
+          "source_name": "YouTube",
+          "source_site": "YouTube",
+          "query": "극손상 헤어팩 비포애프터",
+          "title": "YouTube 공개 검색: 극손상 헤어팩 비포애프터",
+          "url": "https://www.youtube.com/results?search_query=%EA%B7%B9%EC%86%90%EC%83%81%20%ED%97%A4%EC%96%B4%ED%8C%A9%20%EB%B9%84%ED%8F%AC%EC%95%A0%ED%94%84%ED%84%B0",
+          "published_at": "",
+          "snippet": "비포애프터 컷, 손상모 회복 루틴, 홈살롱 사용 순서"
+        },
+        {
+          "source_type": "sns_search",
+          "source_name": "Instagram",
+          "source_site": "Instagram",
+          "query": "극손상 헤어팩 비포애프터",
+          "title": "Instagram 공개 검색: 극손상 헤어팩 비포애프터",
+          "url": "https://www.instagram.com/explore/search/keyword/?q=%EA%B7%B9%EC%86%90%EC%83%81%20%ED%97%A4%EC%96%B4%ED%8C%A9%20%EB%B9%84%ED%8F%AC%EC%95%A0%ED%94%84%ED%84%B0",
+          "published_at": "",
+          "snippet": "비포애프터 컷, 손상모 회복 루틴, 홈살롱 사용 순서"
+        },
+        {
+          "source_type": "sns_search",
+          "source_name": "TikTok",
+          "source_site": "TikTok",
+          "query": "극손상 헤어팩 비포애프터",
+          "title": "TikTok 공개 검색: 극손상 헤어팩 비포애프터",
+          "url": "https://www.tiktok.com/search?q=%EA%B7%B9%EC%86%90%EC%83%81%20%ED%97%A4%EC%96%B4%ED%8C%A9%20%EB%B9%84%ED%8F%AC%EC%95%A0%ED%94%84%ED%84%B0",
+          "published_at": "",
+          "snippet": "비포애프터 컷, 손상모 회복 루틴, 홈살롱 사용 순서"
+        }
+      ]
+    },
+    {
+      "date": "2026-06-06",
+      "brand": "melliance",
+      "display_name": "멜리언스",
+      "keywords": [
+        "뷰티 루틴",
+        "피부결",
+        "스킨케어"
+      ],
+      "summary_3_lines": [
+        "포털 신호는 뷰티 루틴, 피부결, 스킨케어 중심으로 확인했고, 대표 클립은 AI·피부과학·INCI 성분 데이터로 ‘맞춤형 루틴’ 추천 - THE K BEAUTY SCIENCE이다.",
+        "SNS 확인은 YouTube, Instagram, TikTok 공개 검색 링크로 묶었고, 관찰 포인트는 루틴 공개형 콘텐츠, 피부결 근접 컷, 성분 기반 설명이다.",
+        "오늘 소재 액션은 피부결 개선 루틴을 단계별 카드와 근접 컷 조합으로 제안한다."
+      ],
+      "portal_clip_count": 3,
+      "sns_clip_count": 3,
+      "clips": [
+        {
+          "source_type": "portal_news",
+          "source_name": "Google News RSS",
+          "source_site": "THE K BEAUTY SCIENCE",
+          "query": "뷰티 루틴 피부결 스킨케어",
+          "title": "AI·피부과학·INCI 성분 데이터로 ‘맞춤형 루틴’ 추천 - THE K BEAUTY SCIENCE",
+          "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE95TmJXWXJxWmpSNk56Uy1fa3FuSWpHQVRUMTBmUU9HdUN1aWRVNDdkZ09pN3ZaZUJDaXVsX3Nucml3QjJNQ2R6WFRqaEZtc2lCaXo2TllCX0kxM0I4WTlEaFBPUEo2MGF4TVHSAW5BVV95cUxNa0hkeUV2NTY3T3BpeEJqSTFJV0xuOVlkM1N6XzE0aEFZQ1FRRjdSZWQzRG93RDZTeFhZQmg3UWFvYzFyVERUQnpsVVNOTm1oUS1LU3l1azdkSUoyT3R3YzE2Yl9RZU9zSFFIc0Q3QQ?oc=5",
+          "published_at": "Tue, 12 May 2026 07:00:00 GMT",
+          "snippet": "AI·피부과학·INCI 성분 데이터로 ‘맞춤형 루틴’ 추천 - THE K BEAUTY SCIENCE"
+        },
+        {
+          "source_type": "portal_news",
+          "source_name": "Google News RSS",
+          "source_site": "농민신문",
+          "query": "뷰티 루틴 피부결 스킨케어",
+          "title": "“깨끗한 피부보다 또렷한 OO”… K-뷰티, 미국서 통하려면? - 농민신문",
+          "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1oN192THFkczN3c09QUG1JdW11eDM0SXpHR25qQ0Z2ZU53b0FzOURsLU15UzVray1LUXc4eE01U3d4QVN5NDJGaGlUMk93aUE5dkhVdkxtVXR3dw?oc=5",
+          "published_at": "Tue, 13 Jan 2026 08:00:00 GMT",
+          "snippet": "“깨끗한 피부보다 또렷한 OO”… K-뷰티, 미국서 통하려면? - 농민신문"
+        },
+        {
+          "source_type": "portal_news",
+          "source_name": "Google News RSS",
+          "source_site": "esquirekorea.co.kr",
+          "query": "뷰티 루틴 피부결 스킨케어",
+          "title": "르세라핌 사쿠라부터 엔하이픈 선우까지, 환절기 꿀피부 관리 루틴 5 - esquirekorea.co.kr",
+          "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1IMnBRRDhsZ2EzM3V4SU1mNy1oY0RaZE05TENoVGt6d2c2LVpleEJXRkZ3LWZkOWhxMFBrOWQwNFdjclhRbktXdm1mWnlpQlhDczV5N1MxNlBiZw?oc=5",
+          "published_at": "Mon, 23 Feb 2026 08:00:00 GMT",
+          "snippet": "르세라핌 사쿠라부터 엔하이픈 선우까지, 환절기 꿀피부 관리 루틴 5 - esquirekorea.co.kr"
+        },
+        {
+          "source_type": "sns_search",
+          "source_name": "YouTube",
+          "source_site": "YouTube",
+          "query": "피부결 루틴 스킨케어",
+          "title": "YouTube 공개 검색: 피부결 루틴 스킨케어",
+          "url": "https://www.youtube.com/results?search_query=%ED%94%BC%EB%B6%80%EA%B2%B0%20%EB%A3%A8%ED%8B%B4%20%EC%8A%A4%ED%82%A8%EC%BC%80%EC%96%B4",
+          "published_at": "",
+          "snippet": "루틴 공개형 콘텐츠, 피부결 근접 컷, 성분 기반 설명"
+        },
+        {
+          "source_type": "sns_search",
+          "source_name": "Instagram",
+          "source_site": "Instagram",
+          "query": "피부결 루틴 스킨케어",
+          "title": "Instagram 공개 검색: 피부결 루틴 스킨케어",
+          "url": "https://www.instagram.com/explore/search/keyword/?q=%ED%94%BC%EB%B6%80%EA%B2%B0%20%EB%A3%A8%ED%8B%B4%20%EC%8A%A4%ED%82%A8%EC%BC%80%EC%96%B4",
+          "published_at": "",
+          "snippet": "루틴 공개형 콘텐츠, 피부결 근접 컷, 성분 기반 설명"
+        },
+        {
+          "source_type": "sns_search",
+          "source_name": "TikTok",
+          "source_site": "TikTok",
+          "query": "피부결 루틴 스킨케어",
+          "title": "TikTok 공개 검색: 피부결 루틴 스킨케어",
+          "url": "https://www.tiktok.com/search?q=%ED%94%BC%EB%B6%80%EA%B2%B0%20%EB%A3%A8%ED%8B%B4%20%EC%8A%A4%ED%82%A8%EC%BC%80%EC%96%B4",
+          "published_at": "",
+          "snippet": "루틴 공개형 콘텐츠, 피부결 근접 컷, 성분 기반 설명"
+        }
+      ]
+    },
+    {
+      "date": "2026-06-06",
+      "brand": "paperback",
+      "display_name": "페이퍼백",
+      "keywords": [
+        "독서 감성",
+        "카페",
+        "라이프스타일"
+      ],
+      "summary_3_lines": [
+        "포털 신호는 독서 감성, 카페, 라이프스타일 중심으로 확인했고, 대표 클립은 광진구 도서관, 무엇이 달라졌나? 슬기로운 독서생활 가이드 - 서울특별시이다.",
+        "SNS 확인은 YouTube, Instagram, TikTok 공개 검색 링크로 묶었고, 관찰 포인트는 카페 브이로그, 북스타그램 감성, 취향 큐레이션이다.",
+        "오늘 소재 액션은 카페 공간과 독서 루틴을 묶어 저장하고 싶은 생활 장면으로 만든다."
+      ],
+      "portal_clip_count": 3,
+      "sns_clip_count": 3,
+      "clips": [
+        {
+          "source_type": "portal_news",
+          "source_name": "Google News RSS",
+          "source_site": "서울특별시",
+          "query": "독서 감성 카페 라이프스타일",
+          "title": "광진구 도서관, 무엇이 달라졌나? 슬기로운 독서생활 가이드 - 서울특별시",
+          "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9wYm9vaElWeWdETEhzcGxmSzVHaVQ2NWpzRWI1ZldNa1NjSXJ2Zk51V3JMZ3A2UWEzZzZNVzY3XzBKaFFUcFVJY0N3SjgwLWFBWU9vbDE0YXE?oc=5",
+          "published_at": "Thu, 23 Apr 2026 07:00:00 GMT",
+          "snippet": "광진구 도서관, 무엇이 달라졌나? 슬기로운 독서생활 가이드 - 서울특별시"
+        },
+        {
+          "source_type": "portal_news",
+          "source_name": "Google News RSS",
+          "source_site": "harpersbazaar.co.kr",
+          "query": "독서 감성 카페 라이프스타일",
+          "title": "독서를 부르는 책갈피 - harpersbazaar.co.kr",
+          "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9yTjVEZnpLc2x2amJ3VTRnWjhwSjE4dHV4LVdqWmVUUEt4WF80WE4xQzh5WVl6WkFwMVk5c0FvVXJwdC0zZUthUmNiWVl1MTRrbjd0cmkwbGJOM2s?oc=5",
+          "published_at": "Tue, 09 Sep 2025 07:00:00 GMT",
+          "snippet": "독서를 부르는 책갈피 - harpersbazaar.co.kr"
+        },
+        {
+          "source_type": "portal_news",
+          "source_name": "Google News RSS",
+          "source_site": "서울특별시",
+          "query": "독서 감성 카페 라이프스타일",
+          "title": "헌책방에서 취향저격 큐레이션 서가로 변신한 ‘서울책보고’ - 서울특별시",
+          "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5yS3A3aEVZd1ZGWkY4cnFIMEdBU0RGbmtXcVF5eXBhcENsMHE0TzFfRk1CeEZObU8yYmwxSmZEM0NiZ1g3d0p0U1lLMUlra1NQcFpNb3NIRms?oc=5",
+          "published_at": "Fri, 26 Dec 2025 08:00:00 GMT",
+          "snippet": "헌책방에서 취향저격 큐레이션 서가로 변신한 ‘서울책보고’ - 서울특별시"
+        },
+        {
+          "source_type": "sns_search",
+          "source_name": "YouTube",
+          "source_site": "YouTube",
+          "query": "독서 감성 카페 브이로그",
+          "title": "YouTube 공개 검색: 독서 감성 카페 브이로그",
+          "url": "https://www.youtube.com/results?search_query=%EB%8F%85%EC%84%9C%20%EA%B0%90%EC%84%B1%20%EC%B9%B4%ED%8E%98%20%EB%B8%8C%EC%9D%B4%EB%A1%9C%EA%B7%B8",
+          "published_at": "",
+          "snippet": "카페 브이로그, 북스타그램 감성, 취향 큐레이션"
+        },
+        {
+          "source_type": "sns_search",
+          "source_name": "Instagram",
+          "source_site": "Instagram",
+          "query": "독서 감성 카페 브이로그",
+          "title": "Instagram 공개 검색: 독서 감성 카페 브이로그",
+          "url": "https://www.instagram.com/explore/search/keyword/?q=%EB%8F%85%EC%84%9C%20%EA%B0%90%EC%84%B1%20%EC%B9%B4%ED%8E%98%20%EB%B8%8C%EC%9D%B4%EB%A1%9C%EA%B7%B8",
+          "published_at": "",
+          "snippet": "카페 브이로그, 북스타그램 감성, 취향 큐레이션"
+        },
+        {
+          "source_type": "sns_search",
+          "source_name": "TikTok",
+          "source_site": "TikTok",
+          "query": "독서 감성 카페 브이로그",
+          "title": "TikTok 공개 검색: 독서 감성 카페 브이로그",
+          "url": "https://www.tiktok.com/search?q=%EB%8F%85%EC%84%9C%20%EA%B0%90%EC%84%B1%20%EC%B9%B4%ED%8E%98%20%EB%B8%8C%EC%9D%B4%EB%A1%9C%EA%B7%B8",
+          "published_at": "",
+          "snippet": "카페 브이로그, 북스타그램 감성, 취향 큐레이션"
+        }
+      ]
+    },
+    {
+      "date": "2026-06-06",
+      "brand": "baren",
+      "display_name": "바렌",
+      "keywords": [
+        "기능성 케어",
+        "성분",
+        "인포그래픽"
+      ],
+      "summary_3_lines": [
+        "포털 신호는 기능성 케어, 성분, 인포그래픽 중심으로 확인했고, 대표 클립은 '쉴딩로션 신화' 글러브인어보틀, 프리미엄 스킨케어 라인업 3종 한국 상륙 - 일요주간이다.",
+        "SNS 확인은 YouTube, Instagram, TikTok 공개 검색 링크로 묶었고, 관찰 포인트는 성분 요약형 카드, 사용법 숏폼, 기능성 전후 비교이다.",
+        "오늘 소재 액션은 성분 근거와 사용법을 한 화면에서 이해되는 인포그래픽 소재로 정리한다."
+      ],
+      "portal_clip_count": 3,
+      "sns_clip_count": 3,
+      "clips": [
+        {
+          "source_type": "portal_news",
+          "source_name": "Google News RSS",
+          "source_site": "일요주간",
+          "query": "기능성 케어 성분 스킨케어",
+          "title": "'쉴딩로션 신화' 글러브인어보틀, 프리미엄 스킨케어 라인업 3종 한국 상륙 - 일요주간",
+          "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5nWUFLZ0VDaDV3Rzl2LVplUHMxUllMYTFTUkJjTk03YUVQMU50Q2xDWEQ2MGZIX2tmYWp3ZkZ6c2RDSEpuWTFUUklaVjY3TnRVNFVFNkRyUEVMR3ZhbUpab1JfUlJhWktrZGtSU3N1ZjBuREdjenc?oc=5",
+          "published_at": "Mon, 01 Jun 2026 07:29:12 GMT",
+          "snippet": "'쉴딩로션 신화' 글러브인어보틀, 프리미엄 스킨케어 라인업 3종 한국 상륙 - 일요주간"
+        },
+        {
+          "source_type": "portal_news",
+          "source_name": "Google News RSS",
+          "source_site": "코스인코리아닷컴",
+          "query": "기능성 케어 성분 스킨케어",
+          "title": "디오프러스, 올리브영 온라인몰서 기능성 선케어 2종 출시 - 코스인코리아닷컴",
+          "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFBQOVFUc0xpMmdTN1pJMlpBYXh1Wi1Zdnc0c1lnMmstUzA4WlVjbExXa2pBSmg1cFlIV1NjTHFxRXQ2REZfYmdVRmQ5V0V5VER3dlNjU1FCaTZYb3g5MFktSnJhdw?oc=5",
+          "published_at": "Thu, 28 May 2026 15:53:16 GMT",
+          "snippet": "디오프러스, 올리브영 온라인몰서 기능성 선케어 2종 출시 - 코스인코리아닷컴"
+        },
+        {
+          "source_type": "portal_news",
+          "source_name": "Google News RSS",
+          "source_site": "장업신문",
+          "query": "기능성 케어 성분 스킨케어",
+          "title": "디어달리아, 신제품 ‘화이트 젤리’ 스킨케어 3종 - 장업신문",
+          "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9ucDk0OFI5U3Fyb0VYblA0clVIOC1lZ2o1dmg4VnFpSUdXRGZsdjBwdW8zRlNfZTB4Zjh4RElpLXNld3pEbXNWd19KNjhnd2dXV2hPVUtMdUl0djlvZWFiUTVmUFV3SlE?oc=5",
+          "published_at": "Mon, 01 Jun 2026 00:35:27 GMT",
+          "snippet": "디어달리아, 신제품 ‘화이트 젤리’ 스킨케어 3종 - 장업신문"
+        },
+        {
+          "source_type": "sns_search",
+          "source_name": "YouTube",
+          "source_site": "YouTube",
+          "query": "성분 인포그래픽 스킨케어",
+          "title": "YouTube 공개 검색: 성분 인포그래픽 스킨케어",
+          "url": "https://www.youtube.com/results?search_query=%EC%84%B1%EB%B6%84%20%EC%9D%B8%ED%8F%AC%EA%B7%B8%EB%9E%98%ED%94%BD%20%EC%8A%A4%ED%82%A8%EC%BC%80%EC%96%B4",
+          "published_at": "",
+          "snippet": "성분 요약형 카드, 사용법 숏폼, 기능성 전후 비교"
+        },
+        {
+          "source_type": "sns_search",
+          "source_name": "Instagram",
+          "source_site": "Instagram",
+          "query": "성분 인포그래픽 스킨케어",
+          "title": "Instagram 공개 검색: 성분 인포그래픽 스킨케어",
+          "url": "https://www.instagram.com/explore/search/keyword/?q=%EC%84%B1%EB%B6%84%20%EC%9D%B8%ED%8F%AC%EA%B7%B8%EB%9E%98%ED%94%BD%20%EC%8A%A4%ED%82%A8%EC%BC%80%EC%96%B4",
+          "published_at": "",
+          "snippet": "성분 요약형 카드, 사용법 숏폼, 기능성 전후 비교"
+        },
+        {
+          "source_type": "sns_search",
+          "source_name": "TikTok",
+          "source_site": "TikTok",
+          "query": "성분 인포그래픽 스킨케어",
+          "title": "TikTok 공개 검색: 성분 인포그래픽 스킨케어",
+          "url": "https://www.tiktok.com/search?q=%EC%84%B1%EB%B6%84%20%EC%9D%B8%ED%8F%AC%EA%B7%B8%EB%9E%98%ED%94%BD%20%EC%8A%A4%ED%82%A8%EC%BC%80%EC%96%B4",
+          "published_at": "",
+          "snippet": "성분 요약형 카드, 사용법 숏폼, 기능성 전후 비교"
+        }
+      ]
+    }
+  ]
+}

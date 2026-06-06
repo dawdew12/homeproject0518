@@ -149,6 +149,11 @@ html, body {
 .trend-brief-copy { font-size: 11px; color: var(--color-text-primary); line-height: 1.55; margin-top: 7px; }
 .trend-brief-signal { font-size: 10px; border-radius: 20px; padding: 2px 7px; background: var(--color-background-secondary); color: var(--color-text-secondary); white-space: nowrap; }
 .trend-brief-signal.on { background: var(--color-background-warning); color: var(--color-text-warning); }
+.portal-sns-list { display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap: 8px; }
+.portal-sns-card { border: .5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); padding: 11px; background: var(--color-background-primary); }
+.portal-sns-lines { margin: 7px 0 0; padding-left: 17px; font-size: 11px; line-height: 1.55; color: var(--color-text-primary); }
+.portal-sns-links { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; }
+.portal-sns-link { font-size: 10px; border: .5px solid var(--color-border-tertiary); border-radius: 20px; padding: 3px 7px; color: var(--color-text-info); text-decoration: none; background: var(--color-background-secondary); }
 
 .bfolder { border: .5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); padding: 14px 10px; cursor: pointer; text-align: center; transition: border-color .15s; background: var(--color-background-primary); }
 .bfolder:hover { border-color: var(--color-border-secondary); }
@@ -441,6 +446,11 @@ html, body {
 </div>
 
 <div class="sec">
+<div class="sec-label">포털/SNS 일간 브랜드별 3줄 요약</div>
+<div class="portal-sns-list" id="portal-sns-list"></div>
+</div>
+
+<div class="sec">
 <div class="sec-label">2번 트렌드 수집 브리핑 목록</div>
 <div class="trend-brief-list" id="trend-brief-list"></div>
 </div>
@@ -680,6 +690,79 @@ const trendBriefingData = [
   {no:20,brand:'baren',source:'경쟁사 이슈 수집',keywords:'기능성 케어, 인포그래픽, 성분',score:96,change:16.0,issue:'기능성 케어 관심 증가',level:'high',competitor:true,summary:'바렌은 경쟁사 이슈 수집에서 기능성 케어 관련 소재 변화가 감지됐다.'}
 ];
 
+const portalSnsData = [
+  {
+    brand:'someud', date:'2026-06-06', portal:3, sns:3,
+    summary:[
+      '포털 신호는 황토침대, 숙면, 부모님 선물 중심으로 확인했고, 대표 클립은 흙침대 SNS핫템 기사다.',
+      'SNS 확인은 YouTube, Instagram, TikTok 공개 검색 링크로 묶었고, 후기형 콘텐츠와 부모님 선물 반응을 본다.',
+      '오늘 소재 액션은 부모님 선물형 후킹과 숙면 체감 후기를 소재 첫 문장에 배치한다.'
+    ],
+    clips:[
+      {type:'포털',source:'이투데이',url:'https://news.google.com/rss/articles/CBMiVEFVX3lxTFBGS2k3YnJfOUU3dnZYR2RiaUNJQnd3OERYV1ZIWFNpcHNuTlJtVXVhTm5yYkhOZGVWaDlLMFVQdThCSjFhenFVSWVnbGdVa1hHR29HOA?oc=5'},
+      {type:'SNS',source:'YouTube',url:'https://www.youtube.com/results?search_query=%ED%99%A9%ED%86%A0%EC%B9%A8%EB%8C%80%20%EC%88%99%EB%A9%B4%20%ED%9B%84%EA%B8%B0'},
+      {type:'SNS',source:'Instagram',url:'https://www.instagram.com/explore/search/keyword/?q=%ED%99%A9%ED%86%A0%EC%B9%A8%EB%8C%80%20%EC%88%99%EB%A9%B4%20%ED%9B%84%EA%B8%B0'},
+      {type:'SNS',source:'TikTok',url:'https://www.tiktok.com/search?q=%ED%99%A9%ED%86%A0%EC%B9%A8%EB%8C%80%20%EC%88%99%EB%A9%B4%20%ED%9B%84%EA%B8%B0'}
+    ]
+  },
+  {
+    brand:'kinda', date:'2026-06-06', portal:3, sns:3,
+    summary:[
+      '포털 신호는 극손상 헤어팩, 홈케어, 비포애프터 중심으로 확인했고, 대표 클립은 셀프 헤어케어 기사다.',
+      'SNS 확인은 YouTube, Instagram, TikTok 공개 검색 링크로 묶었고, 비포애프터 컷과 홈살롱 사용 순서를 본다.',
+      '오늘 소재 액션은 비포애프터 증거 화면과 홈살롱 루틴을 짧은 영상 구조로 전환한다.'
+    ],
+    clips:[
+      {type:'포털',source:'부산일보',url:'https://news.google.com/rss/articles/CBMibkFVX3lxTE1qbnlMR000TjdpNllmdUJwVk5DTkJ0UmJaZUV2MTJtLVJDbVQ4ckVJN1FseTZ6QktkSGJsbVRleDdZOGZvVEdrNFp3QnNMUFc0WF9HR3pfaElmdndhZWxsQk94cE1iV2JvclRncjZ3?oc=5'},
+      {type:'SNS',source:'YouTube',url:'https://www.youtube.com/results?search_query=%EA%B7%B9%EC%86%90%EC%83%81%20%ED%97%A4%EC%96%B4%ED%8C%A9%20%EB%B9%84%ED%8F%AC%EC%95%A0%ED%94%84%ED%84%B0'},
+      {type:'SNS',source:'Instagram',url:'https://www.instagram.com/explore/search/keyword/?q=%EA%B7%B9%EC%86%90%EC%83%81%20%ED%97%A4%EC%96%B4%ED%8C%A9%20%EB%B9%84%ED%8F%AC%EC%95%A0%ED%94%84%ED%84%B0'},
+      {type:'SNS',source:'TikTok',url:'https://www.tiktok.com/search?q=%EA%B7%B9%EC%86%90%EC%83%81%20%ED%97%A4%EC%96%B4%ED%8C%A9%20%EB%B9%84%ED%8F%AC%EC%95%A0%ED%94%84%ED%84%B0'}
+    ]
+  },
+  {
+    brand:'melliance', date:'2026-06-06', portal:3, sns:3,
+    summary:[
+      '포털 신호는 뷰티 루틴, 피부결, 스킨케어 중심으로 확인했고, 대표 클립은 맞춤형 루틴 추천 기사다.',
+      'SNS 확인은 YouTube, Instagram, TikTok 공개 검색 링크로 묶었고, 루틴 공개형 콘텐츠와 피부결 근접 컷을 본다.',
+      '오늘 소재 액션은 피부결 개선 루틴을 단계별 카드와 근접 컷 조합으로 제안한다.'
+    ],
+    clips:[
+      {type:'포털',source:'THE K BEAUTY SCIENCE',url:'https://news.google.com/rss/articles/CBMiakFVX3lxTE95TmJXWXJxWmpSNk56Uy1fa3FuSWpHQVRUMTBmUU9HdUN1aWRVNDdkZ09pN3ZaZUJDaXVsX3Nucml3QjJNQ2R6WFRqaEZtc2lCaXo2TllCX0kxM0I4WTlEaFBPUEo2MGF4TVHSAW5BVV95cUxNa0hkeUV2NTY3T3BpeEJqSTFJV0xuOVlkM1N6XzE0aEFZQ1FRRjdSZWQzRG93RDZTeFhZQmg3UWFvYzFyVERUQnpsVVNOTm1oUS1LU3l1azdkSUoyT3R3YzE2Yl9RZU9zSFFIc0Q3QQ?oc=5'},
+      {type:'SNS',source:'YouTube',url:'https://www.youtube.com/results?search_query=%ED%94%BC%EB%B6%80%EA%B2%B0%20%EB%A3%A8%ED%8B%B4%20%EC%8A%A4%ED%82%A8%EC%BC%80%EC%96%B4'},
+      {type:'SNS',source:'Instagram',url:'https://www.instagram.com/explore/search/keyword/?q=%ED%94%BC%EB%B6%80%EA%B2%B0%20%EB%A3%A8%ED%8B%B4%20%EC%8A%A4%ED%82%A8%EC%BC%80%EC%96%B4'},
+      {type:'SNS',source:'TikTok',url:'https://www.tiktok.com/search?q=%ED%94%BC%EB%B6%80%EA%B2%B0%20%EB%A3%A8%ED%8B%B4%20%EC%8A%A4%ED%82%A8%EC%BC%80%EC%96%B4'}
+    ]
+  },
+  {
+    brand:'paperback', date:'2026-06-06', portal:3, sns:3,
+    summary:[
+      '포털 신호는 독서 감성, 카페, 라이프스타일 중심으로 확인했고, 대표 클립은 독서생활 가이드 기사다.',
+      'SNS 확인은 YouTube, Instagram, TikTok 공개 검색 링크로 묶었고, 카페 브이로그와 북스타그램 감성을 본다.',
+      '오늘 소재 액션은 카페 공간과 독서 루틴을 묶어 저장하고 싶은 생활 장면으로 만든다.'
+    ],
+    clips:[
+      {type:'포털',source:'서울특별시',url:'https://news.google.com/rss/articles/CBMiWEFVX3lxTE9wYm9vaElWeWdETEhzcGxmSzVHaVQ2NWpzRWI1ZldNa1NjSXJ2Zk51V3JMZ3A2UWEzZzZNVzY3XzBKaFFUcFVJY0N3SjgwLWFBWU9vbDE0YXE?oc=5'},
+      {type:'SNS',source:'YouTube',url:'https://www.youtube.com/results?search_query=%EB%8F%85%EC%84%9C%20%EA%B0%90%EC%84%B1%20%EC%B9%B4%ED%8E%98%20%EB%B8%8C%EC%9D%B4%EB%A1%9C%EA%B7%B8'},
+      {type:'SNS',source:'Instagram',url:'https://www.instagram.com/explore/search/keyword/?q=%EB%8F%85%EC%84%9C%20%EA%B0%90%EC%84%B1%20%EC%B9%B4%ED%8E%98%20%EB%B8%8C%EC%9D%B4%EB%A1%9C%EA%B7%B8'},
+      {type:'SNS',source:'TikTok',url:'https://www.tiktok.com/search?q=%EB%8F%85%EC%84%9C%20%EA%B0%90%EC%84%B1%20%EC%B9%B4%ED%8E%98%20%EB%B8%8C%EC%9D%B4%EB%A1%9C%EA%B7%B8'}
+    ]
+  },
+  {
+    brand:'baren', date:'2026-06-06', portal:3, sns:3,
+    summary:[
+      '포털 신호는 기능성 케어, 성분, 인포그래픽 중심으로 확인했고, 대표 클립은 프리미엄 스킨케어 라인업 기사다.',
+      'SNS 확인은 YouTube, Instagram, TikTok 공개 검색 링크로 묶었고, 성분 요약형 카드와 사용법 숏폼을 본다.',
+      '오늘 소재 액션은 성분 근거와 사용법을 한 화면에서 이해되는 인포그래픽 소재로 정리한다.'
+    ],
+    clips:[
+      {type:'포털',source:'일요주간',url:'https://news.google.com/rss/articles/CBMidkFVX3lxTE5nWUFLZ0VDaDV3Rzl2LVplUHMxUllMYTFTUkJjTk03YUVQMU50Q2xDWEQ2MGZIX2tmYWp3ZkZ6c2RDSEpuWTFUUklaVjY3TnRVNFVFNkRyUEVMR3ZhbUpab1JfUlJhWktrZGtSU3N1ZjBuREdjenc?oc=5'},
+      {type:'SNS',source:'YouTube',url:'https://www.youtube.com/results?search_query=%EC%84%B1%EB%B6%84%20%EC%9D%B8%ED%8F%AC%EA%B7%B8%EB%9E%98%ED%94%BD%20%EC%8A%A4%ED%82%A8%EC%BC%80%EC%96%B4'},
+      {type:'SNS',source:'Instagram',url:'https://www.instagram.com/explore/search/keyword/?q=%EC%84%B1%EB%B6%84%20%EC%9D%B8%ED%8F%AC%EA%B7%B8%EB%9E%98%ED%94%BD%20%EC%8A%A4%ED%82%A8%EC%BC%80%EC%96%B4'},
+      {type:'SNS',source:'TikTok',url:'https://www.tiktok.com/search?q=%EC%84%B1%EB%B6%84%20%EC%9D%B8%ED%8F%AC%EA%B7%B8%EB%9E%98%ED%94%BD%20%EC%8A%A4%ED%82%A8%EC%BC%80%EC%96%B4'}
+    ]
+  }
+];
+
 function renderRoutine() {
   const target = document.getElementById('routine-grid');
   if (!target) return;
@@ -721,6 +804,30 @@ function renderTrendBriefings() {
       </div>
       <div class="trend-brief-meta">점수 ${item.score} · 변화율 ${item.change}% · ${item.issue} · ${item.level}</div>
       <div class="trend-brief-copy">${item.summary}</div>
+    </div>
+  `}).join('');
+}
+
+function renderPortalSnsBriefs() {
+  const target = document.getElementById('portal-sns-list');
+  if (!target) return;
+  target.innerHTML = portalSnsData.map(item => {
+    const brandLabel = brandData[item.brand]?.name || item.brand;
+    return `
+    <div class="portal-sns-card">
+      <div class="trend-brief-top">
+        <div>
+          <div class="trend-brief-title">${brandLabel} · ${item.brand} · ${item.date}</div>
+          <div class="trend-brief-meta">포털 ${item.portal}건 · SNS ${item.sns}건</div>
+        </div>
+        <div class="trend-brief-signal on">일간 요약</div>
+      </div>
+      <ol class="portal-sns-lines">
+        ${item.summary.map(line => `<li>${line}</li>`).join('')}
+      </ol>
+      <div class="portal-sns-links">
+        ${item.clips.map(clip => `<a class="portal-sns-link" href="${clip.url}" target="_blank" rel="noreferrer">${clip.type} · ${clip.source}</a>`).join('')}
+      </div>
     </div>
   `}).join('');
 }
@@ -786,6 +893,7 @@ function renderBrand(id, period) {
 
 document.getElementById('current-date').textContent = new Date().toLocaleDateString('ko-KR', {year:'numeric',month:'long',day:'numeric',weekday:'short'});
 renderRoutine();
+renderPortalSnsBriefs();
 renderTrendBriefings();
 renderBrand('someud', '일간');
 </script>

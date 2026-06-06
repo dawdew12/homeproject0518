@@ -1,6 +1,6 @@
 {
   "status": "brand_detail_api_ready",
-  "generated_at": "2026-06-06T18:49:51+09:00",
+  "generated_at": "2026-06-06T21:10:09+09:00",
   "brand": "melliance",
   "snapshot": {
     "brand": "melliance",
@@ -209,6 +209,85 @@
       "briefing": "멜리언스는 뷰티 루틴, 봄 컬렉션, 피부결 키워드가 경쟁사 이슈 수집에서 점수 84, 전주 대비 12.6%로 확인됐다. 멜리언스 관련 핵심 키워드가 전주 대비 12.6% 상승했다. 경쟁사 신호는 감지됨."
     }
   ],
+  "portal_sns_daily_brief": {
+    "date": "2026-06-06",
+    "brand": "melliance",
+    "display_name": "멜리언스",
+    "keywords": [
+      "뷰티 루틴",
+      "피부결",
+      "스킨케어"
+    ],
+    "summary_3_lines": [
+      "포털 신호는 뷰티 루틴, 피부결, 스킨케어 중심으로 확인했고, 대표 클립은 AI·피부과학·INCI 성분 데이터로 ‘맞춤형 루틴’ 추천 - THE K BEAUTY SCIENCE이다.",
+      "SNS 확인은 YouTube, Instagram, TikTok 공개 검색 링크로 묶었고, 관찰 포인트는 루틴 공개형 콘텐츠, 피부결 근접 컷, 성분 기반 설명이다.",
+      "오늘 소재 액션은 피부결 개선 루틴을 단계별 카드와 근접 컷 조합으로 제안한다."
+    ],
+    "portal_clip_count": 3,
+    "sns_clip_count": 3,
+    "clips": [
+      {
+        "source_type": "portal_news",
+        "source_name": "Google News RSS",
+        "source_site": "THE K BEAUTY SCIENCE",
+        "query": "뷰티 루틴 피부결 스킨케어",
+        "title": "AI·피부과학·INCI 성분 데이터로 ‘맞춤형 루틴’ 추천 - THE K BEAUTY SCIENCE",
+        "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE95TmJXWXJxWmpSNk56Uy1fa3FuSWpHQVRUMTBmUU9HdUN1aWRVNDdkZ09pN3ZaZUJDaXVsX3Nucml3QjJNQ2R6WFRqaEZtc2lCaXo2TllCX0kxM0I4WTlEaFBPUEo2MGF4TVHSAW5BVV95cUxNa0hkeUV2NTY3T3BpeEJqSTFJV0xuOVlkM1N6XzE0aEFZQ1FRRjdSZWQzRG93RDZTeFhZQmg3UWFvYzFyVERUQnpsVVNOTm1oUS1LU3l1azdkSUoyT3R3YzE2Yl9RZU9zSFFIc0Q3QQ?oc=5",
+        "published_at": "Tue, 12 May 2026 07:00:00 GMT",
+        "snippet": "AI·피부과학·INCI 성분 데이터로 ‘맞춤형 루틴’ 추천 - THE K BEAUTY SCIENCE"
+      },
+      {
+        "source_type": "portal_news",
+        "source_name": "Google News RSS",
+        "source_site": "농민신문",
+        "query": "뷰티 루틴 피부결 스킨케어",
+        "title": "“깨끗한 피부보다 또렷한 OO”… K-뷰티, 미국서 통하려면? - 농민신문",
+        "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1oN192THFkczN3c09QUG1JdW11eDM0SXpHR25qQ0Z2ZU53b0FzOURsLU15UzVray1LUXc4eE01U3d4QVN5NDJGaGlUMk93aUE5dkhVdkxtVXR3dw?oc=5",
+        "published_at": "Tue, 13 Jan 2026 08:00:00 GMT",
+        "snippet": "“깨끗한 피부보다 또렷한 OO”… K-뷰티, 미국서 통하려면? - 농민신문"
+      },
+      {
+        "source_type": "portal_news",
+        "source_name": "Google News RSS",
+        "source_site": "esquirekorea.co.kr",
+        "query": "뷰티 루틴 피부결 스킨케어",
+        "title": "르세라핌 사쿠라부터 엔하이픈 선우까지, 환절기 꿀피부 관리 루틴 5 - esquirekorea.co.kr",
+        "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1IMnBRRDhsZ2EzM3V4SU1mNy1oY0RaZE05TENoVGt6d2c2LVpleEJXRkZ3LWZkOWhxMFBrOWQwNFdjclhRbktXdm1mWnlpQlhDczV5N1MxNlBiZw?oc=5",
+        "published_at": "Mon, 23 Feb 2026 08:00:00 GMT",
+        "snippet": "르세라핌 사쿠라부터 엔하이픈 선우까지, 환절기 꿀피부 관리 루틴 5 - esquirekorea.co.kr"
+      },
+      {
+        "source_type": "sns_search",
+        "source_name": "YouTube",
+        "source_site": "YouTube",
+        "query": "피부결 루틴 스킨케어",
+        "title": "YouTube 공개 검색: 피부결 루틴 스킨케어",
+        "url": "https://www.youtube.com/results?search_query=%ED%94%BC%EB%B6%80%EA%B2%B0%20%EB%A3%A8%ED%8B%B4%20%EC%8A%A4%ED%82%A8%EC%BC%80%EC%96%B4",
+        "published_at": "",
+        "snippet": "루틴 공개형 콘텐츠, 피부결 근접 컷, 성분 기반 설명"
+      },
+      {
+        "source_type": "sns_search",
+        "source_name": "Instagram",
+        "source_site": "Instagram",
+        "query": "피부결 루틴 스킨케어",
+        "title": "Instagram 공개 검색: 피부결 루틴 스킨케어",
+        "url": "https://www.instagram.com/explore/search/keyword/?q=%ED%94%BC%EB%B6%80%EA%B2%B0%20%EB%A3%A8%ED%8B%B4%20%EC%8A%A4%ED%82%A8%EC%BC%80%EC%96%B4",
+        "published_at": "",
+        "snippet": "루틴 공개형 콘텐츠, 피부결 근접 컷, 성분 기반 설명"
+      },
+      {
+        "source_type": "sns_search",
+        "source_name": "TikTok",
+        "source_site": "TikTok",
+        "query": "피부결 루틴 스킨케어",
+        "title": "TikTok 공개 검색: 피부결 루틴 스킨케어",
+        "url": "https://www.tiktok.com/search?q=%ED%94%BC%EB%B6%80%EA%B2%B0%20%EB%A3%A8%ED%8B%B4%20%EC%8A%A4%ED%82%A8%EC%BC%80%EC%96%B4",
+        "published_at": "",
+        "snippet": "루틴 공개형 콘텐츠, 피부결 근접 컷, 성분 기반 설명"
+      }
+    ]
+  },
   "manager": [
     {
       "brand": "melliance",

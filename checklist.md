@@ -247,3 +247,13 @@
 - [x] 대시보드 JSON과 API JSON 재생성
 - [x] 검증 실행
 - [x] GitHub 저장 및 Vercel 반영 확인
+ 
+# Portal SNS Daily Clip Checklist
+
+- [x] `AGENTS.md`와 기존 트렌드 수집 구조 확인
+- [x] 포털 뉴스와 SNS 공개 검색 기준 수집 범위 확정
+- [x] 일간 브랜드별 3줄 요약 JSON 산출물 생성
+- [x] Vercel용 대시보드에 브랜드별 클리핑 요약 표시
+- [x] 루트 `AIPR_Dashboard.html`에 브랜드별 클리핑 요약 표시
+- [x] 테스트와 브라우저 렌더링 검증
+- [ ] GitHub 저장 및 Vercel 배포 확인

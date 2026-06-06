@@ -63,6 +63,12 @@ class BuildDashboardDataTest(unittest.TestCase):
         self.assertEqual(first_trend_briefing["source_label"], "네이버 트렌드 API")
         self.assertIn("황토침대", first_trend_briefing["briefing"])
         self.assertIn("경쟁사 신호", first_trend_briefing["briefing"])
+        self.assertEqual(payload["data"]["portal_sns_clips"]["brand_count"], 5)
+        self.assertEqual(payload["data"]["portal_sns_clips"]["summary_line_count"], 15)
+        self.assertEqual(len(payload["data"]["portal_sns_daily_briefs"]), 5)
+        first_portal_sns_brief = payload["data"]["portal_sns_daily_briefs"][0]
+        self.assertEqual(len(first_portal_sns_brief["summary_3_lines"]), 3)
+        self.assertGreaterEqual(len(first_portal_sns_brief["clips"]), 5)
         self.assertEqual(len(payload["data"]["manager_preview"]), 5)
         self.assertGreaterEqual(len(payload["data"]["prompt_preview"]), 5)
         self.assertGreaterEqual(len(payload["data"]["image_preview"]), 5)
@@ -85,7 +91,7 @@ class BuildDashboardDataTest(unittest.TestCase):
             saved = json.loads(output_path.read_text(encoding="utf-8"))
 
         self.assertEqual(saved["project"]["github_repo"], "https://github.com/dawdew12/homeproject0518")
-        self.assertEqual(saved["verification"]["test_count"], 41)
+        self.assertEqual(saved["verification"]["test_count"], 44)
         self.assertIn("feature_status", saved["operations"])
         self.assertTrue(output_path.name.endswith(".json"))
 

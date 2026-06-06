@@ -359,3 +359,28 @@
 - GitHub main에 `8010627 [DASHBOARD] 트렌드 수집 브리핑 목록 추가` 커밋을 push했다.
 - Vercel production deployment `dpl_D7QzX3R9rjPMPJf4dx4rzDp2wXi7`는 `8010627` 커밋으로 READY 상태다.
 
+ 
+## 2026-06-06 Portal SNS Daily Clip 시작
+
+- 사용자 요청은 포털사이트와 SNS에서 트렌드 데이터를 모아 클리핑하고, 일간 각 브랜드별 3줄 요약으로 확인하는 것이다.
+- 기존 2번 트렌드 수집은 mock 기반 네이버 트렌드, Google Trends, 뉴스, 경쟁사 신호 20건을 대시보드에 보여준다.
+- 이번 변경은 기존 수집 결과를 대체하지 않고, 공개 접근 가능한 포털 뉴스 RSS와 SNS 공개 검색 링크 기반 클리핑 산출물을 추가한다.
+- Instagram, TikTok, YouTube 내부 게시물의 완전 자동 수집은 로그인 또는 공식 API 권한이 필요하므로, 이번 단계에서는 인증 없는 공개 확인 링크와 포털 뉴스 근거를 함께 저장한다.
+- 브랜드명 자체 검색은 공개 데이터가 적어 노이즈가 크므로, 기존 트렌드 키워드군을 브랜드별 수집 키워드로 사용한다.
+
+## 2026-06-06 Portal SNS Daily Clip 구현
+
+- `agents/portal_sns_clipper.py`를 추가해 브랜드별 포털 뉴스 RSS 클립과 SNS 공개 검색 링크를 일간 JSON으로 저장한다.
+- 실제 실행은 `python agents\portal_sns_clipper.py --date 2026-06-06 --live`로 수행했고, `history/daily/2026-06-06_portal_sns_clips.json`을 생성했다.
+- 생성 결과는 5개 브랜드, 포털 뉴스 15건, SNS 공개 검색 링크 15건, 총 30건 클립과 브랜드별 3줄 요약 15줄이다.
+- `scripts/build_dashboard_data.py`는 최신 `*_portal_sns_clips.json`을 읽어 `portal_sns_clips` 요약과 `portal_sns_daily_briefs` 목록을 대시보드 JSON/API에 포함한다.
+- `web/index.html`은 JSON 기반으로 포털/SNS 일간 3줄 요약 카드를 렌더링한다.
+- 루트 `AIPR_Dashboard.html`과 `dashboard/AIPR_Dashboard.html`에는 오늘 수집 결과의 핵심 요약을 정적 카드로 내장했다.
+
+## 2026-06-06 Portal SNS Daily Clip 검증
+
+- `python -m unittest tests.test_portal_sns_clipper tests.test_build_dashboard_data`는 5개 테스트 통과로 확인했다.
+- HTML 스크립트 파싱은 `web/index.html`, `AIPR_Dashboard.html`, `dashboard/AIPR_Dashboard.html` 모두 통과했다.
+- 전체 관련 테스트 명령은 `python -m unittest tests.test_trend_collector tests.test_portal_sns_clipper tests.test_data_collector tests.test_manager tests.test_prompt_engineer tests.test_image_designer tests.test_storage_utils tests.test_dashboard_api tests.test_daily_pipeline tests.test_operation_guard tests.test_build_dashboard_data`이며 44개 테스트가 통과했다.
+- 루트 대시보드 스크립트 DOM 실행 검증에서 포털/SNS 카드 5개와 트렌드 카드 20개가 생성되는 것을 확인했다.
+- 로컬 HTTP 검증에서 `AIPR_Dashboard.html`, `web/index.html`, `web/data/latest_status.json`, `web/api/brands.json`이 모두 200 응답을 반환했다.

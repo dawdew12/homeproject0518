@@ -1,6 +1,6 @@
 {
   "status": "brand_detail_api_ready",
-  "generated_at": "2026-06-06T18:49:51+09:00",
+  "generated_at": "2026-06-06T21:10:09+09:00",
   "brand": "baren",
   "snapshot": {
     "brand": "baren",
@@ -209,6 +209,85 @@
       "briefing": "바렌는 기능성 케어, 인포그래픽, 성분 키워드가 경쟁사 이슈 수집에서 점수 96, 전주 대비 16.0%로 확인됐다. 바렌 관련 핵심 키워드가 전주 대비 16.0% 상승했다. 경쟁사 신호는 감지됨."
     }
   ],
+  "portal_sns_daily_brief": {
+    "date": "2026-06-06",
+    "brand": "baren",
+    "display_name": "바렌",
+    "keywords": [
+      "기능성 케어",
+      "성분",
+      "인포그래픽"
+    ],
+    "summary_3_lines": [
+      "포털 신호는 기능성 케어, 성분, 인포그래픽 중심으로 확인했고, 대표 클립은 '쉴딩로션 신화' 글러브인어보틀, 프리미엄 스킨케어 라인업 3종 한국 상륙 - 일요주간이다.",
+      "SNS 확인은 YouTube, Instagram, TikTok 공개 검색 링크로 묶었고, 관찰 포인트는 성분 요약형 카드, 사용법 숏폼, 기능성 전후 비교이다.",
+      "오늘 소재 액션은 성분 근거와 사용법을 한 화면에서 이해되는 인포그래픽 소재로 정리한다."
+    ],
+    "portal_clip_count": 3,
+    "sns_clip_count": 3,
+    "clips": [
+      {
+        "source_type": "portal_news",
+        "source_name": "Google News RSS",
+        "source_site": "일요주간",
+        "query": "기능성 케어 성분 스킨케어",
+        "title": "'쉴딩로션 신화' 글러브인어보틀, 프리미엄 스킨케어 라인업 3종 한국 상륙 - 일요주간",
+        "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5nWUFLZ0VDaDV3Rzl2LVplUHMxUllMYTFTUkJjTk03YUVQMU50Q2xDWEQ2MGZIX2tmYWp3ZkZ6c2RDSEpuWTFUUklaVjY3TnRVNFVFNkRyUEVMR3ZhbUpab1JfUlJhWktrZGtSU3N1ZjBuREdjenc?oc=5",
+        "published_at": "Mon, 01 Jun 2026 07:29:12 GMT",
+        "snippet": "'쉴딩로션 신화' 글러브인어보틀, 프리미엄 스킨케어 라인업 3종 한국 상륙 - 일요주간"
+      },
+      {
+        "source_type": "portal_news",
+        "source_name": "Google News RSS",
+        "source_site": "코스인코리아닷컴",
+        "query": "기능성 케어 성분 스킨케어",
+        "title": "디오프러스, 올리브영 온라인몰서 기능성 선케어 2종 출시 - 코스인코리아닷컴",
+        "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFBQOVFUc0xpMmdTN1pJMlpBYXh1Wi1Zdnc0c1lnMmstUzA4WlVjbExXa2pBSmg1cFlIV1NjTHFxRXQ2REZfYmdVRmQ5V0V5VER3dlNjU1FCaTZYb3g5MFktSnJhdw?oc=5",
+        "published_at": "Thu, 28 May 2026 15:53:16 GMT",
+        "snippet": "디오프러스, 올리브영 온라인몰서 기능성 선케어 2종 출시 - 코스인코리아닷컴"
+      },
+      {
+        "source_type": "portal_news",
+        "source_name": "Google News RSS",
+        "source_site": "장업신문",
+        "query": "기능성 케어 성분 스킨케어",
+        "title": "디어달리아, 신제품 ‘화이트 젤리’ 스킨케어 3종 - 장업신문",
+        "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9ucDk0OFI5U3Fyb0VYblA0clVIOC1lZ2o1dmg4VnFpSUdXRGZsdjBwdW8zRlNfZTB4Zjh4RElpLXNld3pEbXNWd19KNjhnd2dXV2hPVUtMdUl0djlvZWFiUTVmUFV3SlE?oc=5",
+        "published_at": "Mon, 01 Jun 2026 00:35:27 GMT",
+        "snippet": "디어달리아, 신제품 ‘화이트 젤리’ 스킨케어 3종 - 장업신문"
+      },
+      {
+        "source_type": "sns_search",
+        "source_name": "YouTube",
+        "source_site": "YouTube",
+        "query": "성분 인포그래픽 스킨케어",
+        "title": "YouTube 공개 검색: 성분 인포그래픽 스킨케어",
+        "url": "https://www.youtube.com/results?search_query=%EC%84%B1%EB%B6%84%20%EC%9D%B8%ED%8F%AC%EA%B7%B8%EB%9E%98%ED%94%BD%20%EC%8A%A4%ED%82%A8%EC%BC%80%EC%96%B4",
+        "published_at": "",
+        "snippet": "성분 요약형 카드, 사용법 숏폼, 기능성 전후 비교"
+      },
+      {
+        "source_type": "sns_search",
+        "source_name": "Instagram",
+        "source_site": "Instagram",
+        "query": "성분 인포그래픽 스킨케어",
+        "title": "Instagram 공개 검색: 성분 인포그래픽 스킨케어",
+        "url": "https://www.instagram.com/explore/search/keyword/?q=%EC%84%B1%EB%B6%84%20%EC%9D%B8%ED%8F%AC%EA%B7%B8%EB%9E%98%ED%94%BD%20%EC%8A%A4%ED%82%A8%EC%BC%80%EC%96%B4",
+        "published_at": "",
+        "snippet": "성분 요약형 카드, 사용법 숏폼, 기능성 전후 비교"
+      },
+      {
+        "source_type": "sns_search",
+        "source_name": "TikTok",
+        "source_site": "TikTok",
+        "query": "성분 인포그래픽 스킨케어",
+        "title": "TikTok 공개 검색: 성분 인포그래픽 스킨케어",
+        "url": "https://www.tiktok.com/search?q=%EC%84%B1%EB%B6%84%20%EC%9D%B8%ED%8F%AC%EA%B7%B8%EB%9E%98%ED%94%BD%20%EC%8A%A4%ED%82%A8%EC%BC%80%EC%96%B4",
+        "published_at": "",
+        "snippet": "성분 요약형 카드, 사용법 숏폼, 기능성 전후 비교"
+      }
+    ]
+  },
   "manager": [
     {
       "brand": "baren",
