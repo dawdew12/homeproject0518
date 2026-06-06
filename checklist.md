@@ -256,4 +256,4 @@
 - [x] Vercel용 대시보드에 브랜드별 클리핑 요약 표시
 - [x] 루트 `AIPR_Dashboard.html`에 브랜드별 클리핑 요약 표시
 - [x] 테스트와 브라우저 렌더링 검증
-- [ ] GitHub 저장 및 Vercel 배포 확인
+- [x] GitHub 저장 및 Vercel 배포 확인

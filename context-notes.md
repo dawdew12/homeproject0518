@@ -384,3 +384,9 @@
 - 전체 관련 테스트 명령은 `python -m unittest tests.test_trend_collector tests.test_portal_sns_clipper tests.test_data_collector tests.test_manager tests.test_prompt_engineer tests.test_image_designer tests.test_storage_utils tests.test_dashboard_api tests.test_daily_pipeline tests.test_operation_guard tests.test_build_dashboard_data`이며 44개 테스트가 통과했다.
 - 루트 대시보드 스크립트 DOM 실행 검증에서 포털/SNS 카드 5개와 트렌드 카드 20개가 생성되는 것을 확인했다.
 - 로컬 HTTP 검증에서 `AIPR_Dashboard.html`, `web/index.html`, `web/data/latest_status.json`, `web/api/brands.json`이 모두 200 응답을 반환했다.
+
+## 2026-06-06 Portal SNS Daily Clip 배포 확인
+
+- GitHub main에 `aa843b2 [DASHBOARD] 포털 SNS 일간 클리핑 요약 추가` 커밋을 push했다.
+- Vercel production deployment `dpl_6vufozMqCjp4Jn7NaHNntKNc3kKq`는 `aa843b26e0a2e3824c562c144919306fa7d714a6` 커밋으로 READY 상태다.
+- 배포 URL은 `https://homeproject0518-nlv16nt8m-raw22226-9071s-projects.vercel.app`이며, Vercel Authentication 보호가 켜져 있으면 직접 접속 시 로그인이 필요할 수 있다.
