@@ -1,6 +1,6 @@
 {
   "status": "brand_detail_api_ready",
-  "generated_at": "2026-06-06T17:00:31+09:00",
+  "generated_at": "2026-06-06T18:49:51+09:00",
   "brand": "melliance",
   "snapshot": {
     "brand": "melliance",
@@ -123,6 +123,92 @@
       }
     ]
   },
+  "trend_briefings": [
+    {
+      "sequence": 3,
+      "date": "2026-06-04",
+      "brand": "melliance",
+      "display_name": "멜리언스",
+      "source": "naver_trends",
+      "source_label": "네이버 트렌드 API",
+      "keywords": [
+        "뷰티 루틴",
+        "봄 컬렉션",
+        "피부결"
+      ],
+      "trend_score": 72,
+      "trend_change_pct": 9.6,
+      "seasonal_issue_title": "뷰티 루틴 관심 증가",
+      "seasonal_issue_level": "medium",
+      "seasonal_issue_summary": "멜리언스 관련 핵심 키워드가 전주 대비 9.6% 상승했다.",
+      "competitor_detected": false,
+      "competitor_summary": "경쟁사 변화 없음.",
+      "briefing": "멜리언스는 뷰티 루틴, 봄 컬렉션, 피부결 키워드가 네이버 트렌드 API에서 점수 72, 전주 대비 9.6%로 확인됐다. 멜리언스 관련 핵심 키워드가 전주 대비 9.6% 상승했다. 경쟁사 신호는 없음."
+    },
+    {
+      "sequence": 8,
+      "date": "2026-06-04",
+      "brand": "melliance",
+      "display_name": "멜리언스",
+      "source": "google_trends",
+      "source_label": "Google Trends",
+      "keywords": [
+        "뷰티 루틴",
+        "봄 컬렉션",
+        "피부결"
+      ],
+      "trend_score": 76,
+      "trend_change_pct": 10.6,
+      "seasonal_issue_title": "뷰티 루틴 관심 증가",
+      "seasonal_issue_level": "medium",
+      "seasonal_issue_summary": "멜리언스 관련 핵심 키워드가 전주 대비 10.6% 상승했다.",
+      "competitor_detected": false,
+      "competitor_summary": "경쟁사 변화 없음.",
+      "briefing": "멜리언스는 뷰티 루틴, 봄 컬렉션, 피부결 키워드가 Google Trends에서 점수 76, 전주 대비 10.6%로 확인됐다. 멜리언스 관련 핵심 키워드가 전주 대비 10.6% 상승했다. 경쟁사 신호는 없음."
+    },
+    {
+      "sequence": 13,
+      "date": "2026-06-04",
+      "brand": "melliance",
+      "display_name": "멜리언스",
+      "source": "news",
+      "source_label": "네이버 뉴스 API",
+      "keywords": [
+        "뷰티 루틴",
+        "봄 컬렉션",
+        "피부결"
+      ],
+      "trend_score": 80,
+      "trend_change_pct": 11.6,
+      "seasonal_issue_title": "뷰티 루틴 관심 증가",
+      "seasonal_issue_level": "high",
+      "seasonal_issue_summary": "멜리언스 관련 핵심 키워드가 전주 대비 11.6% 상승했다.",
+      "competitor_detected": true,
+      "competitor_summary": "경쟁사 소재 변화는 mock 데이터 기준으로 관찰됨.",
+      "briefing": "멜리언스는 뷰티 루틴, 봄 컬렉션, 피부결 키워드가 네이버 뉴스 API에서 점수 80, 전주 대비 11.6%로 확인됐다. 멜리언스 관련 핵심 키워드가 전주 대비 11.6% 상승했다. 경쟁사 신호는 감지됨."
+    },
+    {
+      "sequence": 18,
+      "date": "2026-06-04",
+      "brand": "melliance",
+      "display_name": "멜리언스",
+      "source": "competitor",
+      "source_label": "경쟁사 이슈 수집",
+      "keywords": [
+        "뷰티 루틴",
+        "봄 컬렉션",
+        "피부결"
+      ],
+      "trend_score": 84,
+      "trend_change_pct": 12.6,
+      "seasonal_issue_title": "뷰티 루틴 관심 증가",
+      "seasonal_issue_level": "high",
+      "seasonal_issue_summary": "멜리언스 관련 핵심 키워드가 전주 대비 12.6% 상승했다.",
+      "competitor_detected": true,
+      "competitor_summary": "경쟁사 소재 변화는 mock 데이터 기준으로 관찰됨.",
+      "briefing": "멜리언스는 뷰티 루틴, 봄 컬렉션, 피부결 키워드가 경쟁사 이슈 수집에서 점수 84, 전주 대비 12.6%로 확인됐다. 멜리언스 관련 핵심 키워드가 전주 대비 12.6% 상승했다. 경쟁사 신호는 감지됨."
+    }
+  ],
   "manager": [
     {
       "brand": "melliance",

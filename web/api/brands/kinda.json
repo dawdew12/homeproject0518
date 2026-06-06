@@ -1,6 +1,6 @@
 {
   "status": "brand_detail_api_ready",
-  "generated_at": "2026-06-06T17:00:31+09:00",
+  "generated_at": "2026-06-06T18:49:51+09:00",
   "brand": "kinda",
   "snapshot": {
     "brand": "kinda",
@@ -124,6 +124,92 @@
       }
     ]
   },
+  "trend_briefings": [
+    {
+      "sequence": 2,
+      "date": "2026-06-04",
+      "brand": "kinda",
+      "display_name": "킨다",
+      "source": "naver_trends",
+      "source_label": "네이버 트렌드 API",
+      "keywords": [
+        "극손상 헤어팩",
+        "비포애프터",
+        "홈케어"
+      ],
+      "trend_score": 66,
+      "trend_change_pct": 7.9,
+      "seasonal_issue_title": "극손상 헤어팩 관심 증가",
+      "seasonal_issue_level": "medium",
+      "seasonal_issue_summary": "킨다 관련 핵심 키워드가 전주 대비 7.9% 상승했다.",
+      "competitor_detected": false,
+      "competitor_summary": "경쟁사 변화 없음.",
+      "briefing": "킨다는 극손상 헤어팩, 비포애프터, 홈케어 키워드가 네이버 트렌드 API에서 점수 66, 전주 대비 7.9%로 확인됐다. 킨다 관련 핵심 키워드가 전주 대비 7.9% 상승했다. 경쟁사 신호는 없음."
+    },
+    {
+      "sequence": 7,
+      "date": "2026-06-04",
+      "brand": "kinda",
+      "display_name": "킨다",
+      "source": "google_trends",
+      "source_label": "Google Trends",
+      "keywords": [
+        "극손상 헤어팩",
+        "비포애프터",
+        "홈케어"
+      ],
+      "trend_score": 70,
+      "trend_change_pct": 8.9,
+      "seasonal_issue_title": "극손상 헤어팩 관심 증가",
+      "seasonal_issue_level": "medium",
+      "seasonal_issue_summary": "킨다 관련 핵심 키워드가 전주 대비 8.9% 상승했다.",
+      "competitor_detected": false,
+      "competitor_summary": "경쟁사 변화 없음.",
+      "briefing": "킨다는 극손상 헤어팩, 비포애프터, 홈케어 키워드가 Google Trends에서 점수 70, 전주 대비 8.9%로 확인됐다. 킨다 관련 핵심 키워드가 전주 대비 8.9% 상승했다. 경쟁사 신호는 없음."
+    },
+    {
+      "sequence": 12,
+      "date": "2026-06-04",
+      "brand": "kinda",
+      "display_name": "킨다",
+      "source": "news",
+      "source_label": "네이버 뉴스 API",
+      "keywords": [
+        "극손상 헤어팩",
+        "비포애프터",
+        "홈케어"
+      ],
+      "trend_score": 74,
+      "trend_change_pct": 9.9,
+      "seasonal_issue_title": "극손상 헤어팩 관심 증가",
+      "seasonal_issue_level": "medium",
+      "seasonal_issue_summary": "킨다 관련 핵심 키워드가 전주 대비 9.9% 상승했다.",
+      "competitor_detected": true,
+      "competitor_summary": "경쟁사 소재 변화는 mock 데이터 기준으로 관찰됨.",
+      "briefing": "킨다는 극손상 헤어팩, 비포애프터, 홈케어 키워드가 네이버 뉴스 API에서 점수 74, 전주 대비 9.9%로 확인됐다. 킨다 관련 핵심 키워드가 전주 대비 9.9% 상승했다. 경쟁사 신호는 감지됨."
+    },
+    {
+      "sequence": 17,
+      "date": "2026-06-04",
+      "brand": "kinda",
+      "display_name": "킨다",
+      "source": "competitor",
+      "source_label": "경쟁사 이슈 수집",
+      "keywords": [
+        "극손상 헤어팩",
+        "비포애프터",
+        "홈케어"
+      ],
+      "trend_score": 78,
+      "trend_change_pct": 10.9,
+      "seasonal_issue_title": "극손상 헤어팩 관심 증가",
+      "seasonal_issue_level": "high",
+      "seasonal_issue_summary": "킨다 관련 핵심 키워드가 전주 대비 10.9% 상승했다.",
+      "competitor_detected": true,
+      "competitor_summary": "경쟁사 소재 변화는 mock 데이터 기준으로 관찰됨.",
+      "briefing": "킨다는 극손상 헤어팩, 비포애프터, 홈케어 키워드가 경쟁사 이슈 수집에서 점수 78, 전주 대비 10.9%로 확인됐다. 킨다 관련 핵심 키워드가 전주 대비 10.9% 상승했다. 경쟁사 신호는 감지됨."
+    }
+  ],
   "manager": [
     {
       "brand": "kinda",

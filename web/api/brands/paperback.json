@@ -1,6 +1,6 @@
 {
   "status": "brand_detail_api_ready",
-  "generated_at": "2026-06-06T17:00:31+09:00",
+  "generated_at": "2026-06-06T18:49:51+09:00",
   "brand": "paperback",
   "snapshot": {
     "brand": "paperback",
@@ -124,6 +124,92 @@
       }
     ]
   },
+  "trend_briefings": [
+    {
+      "sequence": 4,
+      "date": "2026-06-04",
+      "brand": "paperback",
+      "display_name": "페이퍼백",
+      "source": "naver_trends",
+      "source_label": "네이버 트렌드 API",
+      "keywords": [
+        "라이프스타일",
+        "독서 감성",
+        "카페"
+      ],
+      "trend_score": 78,
+      "trend_change_pct": 11.3,
+      "seasonal_issue_title": "라이프스타일 관심 증가",
+      "seasonal_issue_level": "high",
+      "seasonal_issue_summary": "페이퍼백 관련 핵심 키워드가 전주 대비 11.3% 상승했다.",
+      "competitor_detected": false,
+      "competitor_summary": "경쟁사 변화 없음.",
+      "briefing": "페이퍼백는 라이프스타일, 독서 감성, 카페 키워드가 네이버 트렌드 API에서 점수 78, 전주 대비 11.3%로 확인됐다. 페이퍼백 관련 핵심 키워드가 전주 대비 11.3% 상승했다. 경쟁사 신호는 없음."
+    },
+    {
+      "sequence": 9,
+      "date": "2026-06-04",
+      "brand": "paperback",
+      "display_name": "페이퍼백",
+      "source": "google_trends",
+      "source_label": "Google Trends",
+      "keywords": [
+        "라이프스타일",
+        "독서 감성",
+        "카페"
+      ],
+      "trend_score": 82,
+      "trend_change_pct": 12.3,
+      "seasonal_issue_title": "라이프스타일 관심 증가",
+      "seasonal_issue_level": "high",
+      "seasonal_issue_summary": "페이퍼백 관련 핵심 키워드가 전주 대비 12.3% 상승했다.",
+      "competitor_detected": false,
+      "competitor_summary": "경쟁사 변화 없음.",
+      "briefing": "페이퍼백는 라이프스타일, 독서 감성, 카페 키워드가 Google Trends에서 점수 82, 전주 대비 12.3%로 확인됐다. 페이퍼백 관련 핵심 키워드가 전주 대비 12.3% 상승했다. 경쟁사 신호는 없음."
+    },
+    {
+      "sequence": 14,
+      "date": "2026-06-04",
+      "brand": "paperback",
+      "display_name": "페이퍼백",
+      "source": "news",
+      "source_label": "네이버 뉴스 API",
+      "keywords": [
+        "라이프스타일",
+        "독서 감성",
+        "카페"
+      ],
+      "trend_score": 86,
+      "trend_change_pct": 13.3,
+      "seasonal_issue_title": "라이프스타일 관심 증가",
+      "seasonal_issue_level": "high",
+      "seasonal_issue_summary": "페이퍼백 관련 핵심 키워드가 전주 대비 13.3% 상승했다.",
+      "competitor_detected": true,
+      "competitor_summary": "경쟁사 소재 변화는 mock 데이터 기준으로 관찰됨.",
+      "briefing": "페이퍼백는 라이프스타일, 독서 감성, 카페 키워드가 네이버 뉴스 API에서 점수 86, 전주 대비 13.3%로 확인됐다. 페이퍼백 관련 핵심 키워드가 전주 대비 13.3% 상승했다. 경쟁사 신호는 감지됨."
+    },
+    {
+      "sequence": 19,
+      "date": "2026-06-04",
+      "brand": "paperback",
+      "display_name": "페이퍼백",
+      "source": "competitor",
+      "source_label": "경쟁사 이슈 수집",
+      "keywords": [
+        "라이프스타일",
+        "독서 감성",
+        "카페"
+      ],
+      "trend_score": 90,
+      "trend_change_pct": 14.3,
+      "seasonal_issue_title": "라이프스타일 관심 증가",
+      "seasonal_issue_level": "high",
+      "seasonal_issue_summary": "페이퍼백 관련 핵심 키워드가 전주 대비 14.3% 상승했다.",
+      "competitor_detected": true,
+      "competitor_summary": "경쟁사 소재 변화는 mock 데이터 기준으로 관찰됨.",
+      "briefing": "페이퍼백는 라이프스타일, 독서 감성, 카페 키워드가 경쟁사 이슈 수집에서 점수 90, 전주 대비 14.3%로 확인됐다. 페이퍼백 관련 핵심 키워드가 전주 대비 14.3% 상승했다. 경쟁사 신호는 감지됨."
+    }
+  ],
   "manager": [
     {
       "brand": "paperback",

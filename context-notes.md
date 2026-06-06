@@ -339,3 +339,18 @@
 - Vercel production deployment `dpl_7qQ3vGbhYBhsB4PMbTWY7rxDtxfG`는 `328764c` 커밋으로 READY 상태다.
 - 배포 URL의 `/data/latest_status.json` 직접 조회는 Vercel Authentication 보호로 401을 반환했으며, 배포 상태 확인은 Vercel 커넥터 기준으로 완료했다.
 
+## 2026-06-06 Trend Briefing Dashboard 시작
+
+- 사용자 요청은 자동화 루틴 2번에서 어떤 트렌드를 수집했는지, 그리고 수집 데이터를 모아 브리핑할 목록을 대시보드에서 확인할 수 있게 만드는 것이다.
+- 이번 작업은 새 트렌드 수집 실행이 아니라 최신 `history/daily/*_trend_data.json`을 브리핑 목록으로 재가공하는 것이다.
+- 브리핑 목록은 브랜드, 수집 출처, 트렌드 키워드, 트렌드 점수, 변화율, 시즌 이슈, 경쟁사 신호, 팀장 브리핑용 한 줄 요약을 포함해야 한다.
+- 사용자가 현재 루트 `AIPR_Dashboard.html`을 보고 있으므로 루트 HTML과 Vercel용 `web/index.html` 둘 다 반영한다.
+
+## 2026-06-06 Trend Briefing Dashboard 구현
+
+- `scripts/build_dashboard_data.py`에 `build_trend_briefing_list`를 추가해 최신 트렌드 20개 레코드를 브리핑 목록으로 변환했다.
+- 브리핑 목록은 네이버 트렌드 API, Google Trends, 네이버 뉴스 API, 경쟁사 이슈 수집의 4개 출처와 5개 브랜드 조합을 모두 포함한다.
+- `web/index.html`에는 `수집 트렌드 브리핑 목록` 표를 추가해 브랜드, 출처, 키워드, 점수, 변화율, 시즌 이슈, 경쟁사 신호, 브리핑 문장을 표시한다.
+- 루트 `AIPR_Dashboard.html`과 `dashboard/AIPR_Dashboard.html`에는 같은 20개 항목을 카드형 정적 목록으로 추가했다.
+- 검증은 JSON 재생성, HTML 스크립트 파싱, 전체 unittest 41개, 로컬 HTTP, 인앱 브라우저 렌더링으로 진행했다.
+

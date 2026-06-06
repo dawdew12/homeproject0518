@@ -20,6 +20,13 @@ API_OUTPUT_DIR = PROJECT_ROOT / "web" / "api"
 LOG_DIR = PROJECT_ROOT / "logs"
 KST = timezone(timedelta(hours=9))
 BRAND_ORDER = ["someud", "kinda", "melliance", "paperback", "baren"]
+BRAND_DISPLAY_NAMES = {
+    "someud": "소머드",
+    "kinda": "킨다",
+    "melliance": "멜리언스",
+    "paperback": "페이퍼백",
+    "baren": "바렌",
+}
 
 
 def read_json(path: Path, default: Any) -> Any:
@@ -842,6 +849,55 @@ def build_monitoring_preview(trend_payload: dict[str, Any], limit: int = 8) -> d
     }
 
 
+def build_trend_briefing_list(trend_payload: dict[str, Any]) -> list[dict[str, Any]]:
+    """팀원 B가 수집한 트렌드 레코드를 브리핑 가능한 목록으로 변환한다."""
+    source_labels = {
+        source.get("source"): source.get("label") or source.get("source")
+        for source in trend_payload.get("sources", [])
+    }
+    briefings = []
+
+    for sequence, record in enumerate(trend_payload.get("records", []), start=1):
+        keywords = record.get("keywords", [])
+        issue = record.get("seasonal_issue", {})
+        competitor = record.get("competitor_signal", {})
+        source = record.get("source")
+        source_label = source_labels.get(source, source)
+        keyword_text = ", ".join(keywords[:3]) or "-"
+        score = record.get("trend_score", 0)
+        change = record.get("trend_change_pct", 0)
+        competitor_text = "감지됨" if competitor.get("detected") else "없음"
+        brand = record.get("brand")
+        display_name = BRAND_DISPLAY_NAMES.get(brand, brand)
+        issue_summary = (issue.get("summary") or "").replace(str(brand), str(display_name))
+
+        briefings.append(
+            {
+                "sequence": sequence,
+                "date": record.get("date") or trend_payload.get("date"),
+                "brand": brand,
+                "display_name": display_name,
+                "source": source,
+                "source_label": source_label,
+                "keywords": keywords,
+                "trend_score": score,
+                "trend_change_pct": change,
+                "seasonal_issue_title": issue.get("title"),
+                "seasonal_issue_level": issue.get("level"),
+                "seasonal_issue_summary": issue_summary,
+                "competitor_detected": bool(competitor.get("detected")),
+                "competitor_summary": competitor.get("summary"),
+                "briefing": (
+                    f"{display_name}는 {keyword_text} 키워드가 {source_label}에서 "
+                    f"점수 {score}, 전주 대비 {change}%로 확인됐다. "
+                    f"{issue_summary} 경쟁사 신호는 {competitor_text}."
+                ).strip(),
+            }
+        )
+
+    return briefings
+
+
 def build_phase_roadmap() -> list[dict[str, Any]]:
     """공식 PHASE 1-12 로드맵과 현재 상태를 반환한다."""
     return [
@@ -1115,6 +1171,7 @@ def build_brand_detail(payload: dict[str, Any], brand_name: str) -> dict[str, An
         "brand": brand_name,
         "snapshot": next((item for item in data.get("brand_snapshots", []) if item.get("brand") == brand_name), {}),
         "routine": next((item for item in data.get("brand_routine_matrix", []) if item.get("brand") == brand_name), {}),
+        "trend_briefings": [item for item in data.get("trend_briefing_list", []) if item.get("brand") == brand_name],
         "manager": [item for item in data.get("manager_preview", []) if item.get("brand") == brand_name],
         "prompts": [item for item in data.get("prompt_preview", []) if item.get("brand") == brand_name],
         "images": [item for item in data.get("image_preview", []) if item.get("brand") == brand_name],
@@ -1167,6 +1224,7 @@ def build_dashboard_api_payloads(payload: dict[str, Any]) -> dict[str, Any]:
             "brand_count": len(brands),
             "brands": brands,
             "brand_routine_matrix": data.get("brand_routine_matrix", []),
+            "trend_briefing_list": data.get("trend_briefing_list", []),
         },
         "brand_details": {
             brand.get("brand"): build_brand_detail(payload, brand.get("brand"))
@@ -1309,6 +1367,7 @@ def build_dashboard_payload() -> dict[str, Any]:
                 prompt_payload,
                 image_payload,
             ),
+            "trend_briefing_list": build_trend_briefing_list(trend_payload),
             "ad_preview": sample_records(ad_payload),
             "trend_preview": sample_records(trend_payload),
             "manager_preview": build_manager_preview(manager_payload),

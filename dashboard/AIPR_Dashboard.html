@@ -141,6 +141,14 @@ html, body {
 .routine-num { width: 18px; height: 18px; border-radius: 50%; background: var(--color-background-info); color: var(--color-text-info); display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 500; flex-shrink: 0; }
 .routine-title { font-size: 11px; font-weight: 500; color: var(--color-text-primary); }
 .routine-stat { font-size: 10px; color: var(--color-text-secondary); line-height: 1.45; }
+.trend-brief-list { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 8px; }
+.trend-brief-card { border: .5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); padding: 11px; background: var(--color-background-primary); }
+.trend-brief-top { display: flex; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+.trend-brief-title { font-size: 12px; font-weight: 500; color: var(--color-text-primary); }
+.trend-brief-meta { font-size: 10px; color: var(--color-text-secondary); line-height: 1.45; }
+.trend-brief-copy { font-size: 11px; color: var(--color-text-primary); line-height: 1.55; margin-top: 7px; }
+.trend-brief-signal { font-size: 10px; border-radius: 20px; padding: 2px 7px; background: var(--color-background-secondary); color: var(--color-text-secondary); white-space: nowrap; }
+.trend-brief-signal.on { background: var(--color-background-warning); color: var(--color-text-warning); }
 
 .bfolder { border: .5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); padding: 14px 10px; cursor: pointer; text-align: center; transition: border-color .15s; background: var(--color-background-primary); }
 .bfolder:hover { border-color: var(--color-border-secondary); }
@@ -432,6 +440,11 @@ html, body {
 <div class="routine-grid" id="routine-grid"></div>
 </div>
 
+<div class="sec">
+<div class="sec-label">2번 트렌드 수집 브리핑 목록</div>
+<div class="trend-brief-list" id="trend-brief-list"></div>
+</div>
+
 </div>
 
 <!-- PAGE 2: 브랜드 분석 -->
@@ -644,6 +657,29 @@ const routineData = [
   }
 ];
 
+const trendBriefingData = [
+  {no:1,brand:'someud',source:'네이버 트렌드 API',keywords:'황토침대, 어버이날 선물, 숙면',score:60,change:6.2,issue:'황토침대 관심 증가',level:'medium',competitor:false,summary:'소머드는 황토침대 키워드가 네이버 트렌드에서 전주 대비 6.2% 상승했다.'},
+  {no:2,brand:'kinda',source:'네이버 트렌드 API',keywords:'극손상 헤어팩, 비포애프터, 홈케어',score:66,change:7.9,issue:'극손상 헤어팩 관심 증가',level:'medium',competitor:false,summary:'킨다는 극손상 헤어팩 키워드가 네이버 트렌드에서 전주 대비 7.9% 상승했다.'},
+  {no:3,brand:'melliance',source:'네이버 트렌드 API',keywords:'뷰티 루틴, 봄 컬렉션, 피부결',score:72,change:9.6,issue:'뷰티 루틴 관심 증가',level:'medium',competitor:false,summary:'멜리언스는 뷰티 루틴 키워드가 네이버 트렌드에서 전주 대비 9.6% 상승했다.'},
+  {no:4,brand:'paperback',source:'네이버 트렌드 API',keywords:'라이프스타일, 독서 감성, 카페',score:78,change:11.3,issue:'라이프스타일 관심 증가',level:'high',competitor:false,summary:'페이퍼백은 라이프스타일 키워드가 네이버 트렌드에서 전주 대비 11.3% 상승했다.'},
+  {no:5,brand:'baren',source:'네이버 트렌드 API',keywords:'기능성 케어, 인포그래픽, 성분',score:84,change:13.0,issue:'기능성 케어 관심 증가',level:'high',competitor:false,summary:'바렌은 기능성 케어 키워드가 네이버 트렌드에서 전주 대비 13.0% 상승했다.'},
+  {no:6,brand:'someud',source:'Google Trends',keywords:'황토침대, 어버이날 선물, 숙면',score:64,change:7.2,issue:'황토침대 관심 증가',level:'medium',competitor:false,summary:'소머드는 Google Trends에서도 황토침대 관심이 전주 대비 7.2% 상승했다.'},
+  {no:7,brand:'kinda',source:'Google Trends',keywords:'극손상 헤어팩, 비포애프터, 홈케어',score:70,change:8.9,issue:'극손상 헤어팩 관심 증가',level:'medium',competitor:false,summary:'킨다는 Google Trends에서 극손상 헤어팩 관심이 전주 대비 8.9% 상승했다.'},
+  {no:8,brand:'melliance',source:'Google Trends',keywords:'뷰티 루틴, 봄 컬렉션, 피부결',score:76,change:10.6,issue:'뷰티 루틴 관심 증가',level:'medium',competitor:false,summary:'멜리언스는 Google Trends에서 뷰티 루틴 관심이 전주 대비 10.6% 상승했다.'},
+  {no:9,brand:'paperback',source:'Google Trends',keywords:'라이프스타일, 독서 감성, 카페',score:82,change:12.3,issue:'라이프스타일 관심 증가',level:'high',competitor:false,summary:'페이퍼백은 Google Trends에서 라이프스타일 관심이 전주 대비 12.3% 상승했다.'},
+  {no:10,brand:'baren',source:'Google Trends',keywords:'기능성 케어, 인포그래픽, 성분',score:88,change:14.0,issue:'기능성 케어 관심 증가',level:'high',competitor:false,summary:'바렌은 Google Trends에서 기능성 케어 관심이 전주 대비 14.0% 상승했다.'},
+  {no:11,brand:'someud',source:'네이버 뉴스 API',keywords:'황토침대, 어버이날 선물, 숙면',score:68,change:8.2,issue:'황토침대 관심 증가',level:'medium',competitor:true,summary:'소머드는 뉴스 기반 신호에서 황토침대 관심 상승과 경쟁사 소재 변화가 함께 관찰됐다.'},
+  {no:12,brand:'kinda',source:'네이버 뉴스 API',keywords:'극손상 헤어팩, 비포애프터, 홈케어',score:74,change:9.9,issue:'극손상 헤어팩 관심 증가',level:'medium',competitor:true,summary:'킨다는 뉴스 기반 신호에서 극손상 헤어팩 관심 상승과 경쟁사 소재 변화가 함께 관찰됐다.'},
+  {no:13,brand:'melliance',source:'네이버 뉴스 API',keywords:'뷰티 루틴, 봄 컬렉션, 피부결',score:80,change:11.6,issue:'뷰티 루틴 관심 증가',level:'high',competitor:true,summary:'멜리언스는 뉴스 기반 신호에서 뷰티 루틴 관심 상승과 경쟁사 소재 변화가 함께 관찰됐다.'},
+  {no:14,brand:'paperback',source:'네이버 뉴스 API',keywords:'라이프스타일, 독서 감성, 카페',score:86,change:13.3,issue:'라이프스타일 관심 증가',level:'high',competitor:true,summary:'페이퍼백은 뉴스 기반 신호에서 라이프스타일 관심 상승과 경쟁사 소재 변화가 함께 관찰됐다.'},
+  {no:15,brand:'baren',source:'네이버 뉴스 API',keywords:'기능성 케어, 인포그래픽, 성분',score:92,change:15.0,issue:'기능성 케어 관심 증가',level:'high',competitor:true,summary:'바렌은 뉴스 기반 신호에서 기능성 케어 관심 상승과 경쟁사 소재 변화가 함께 관찰됐다.'},
+  {no:16,brand:'someud',source:'경쟁사 이슈 수집',keywords:'황토침대, 어버이날 선물, 숙면',score:72,change:9.2,issue:'황토침대 관심 증가',level:'medium',competitor:true,summary:'소머드는 경쟁사 이슈 수집에서 황토침대 관련 소재 변화가 감지됐다.'},
+  {no:17,brand:'kinda',source:'경쟁사 이슈 수집',keywords:'극손상 헤어팩, 비포애프터, 홈케어',score:78,change:10.9,issue:'극손상 헤어팩 관심 증가',level:'high',competitor:true,summary:'킨다는 경쟁사 이슈 수집에서 극손상 헤어팩 관련 소재 변화가 감지됐다.'},
+  {no:18,brand:'melliance',source:'경쟁사 이슈 수집',keywords:'뷰티 루틴, 봄 컬렉션, 피부결',score:84,change:12.6,issue:'뷰티 루틴 관심 증가',level:'high',competitor:true,summary:'멜리언스는 경쟁사 이슈 수집에서 뷰티 루틴 관련 소재 변화가 감지됐다.'},
+  {no:19,brand:'paperback',source:'경쟁사 이슈 수집',keywords:'라이프스타일, 독서 감성, 카페',score:90,change:14.3,issue:'라이프스타일 관심 증가',level:'high',competitor:true,summary:'페이퍼백은 경쟁사 이슈 수집에서 라이프스타일 관련 소재 변화가 감지됐다.'},
+  {no:20,brand:'baren',source:'경쟁사 이슈 수집',keywords:'기능성 케어, 인포그래픽, 성분',score:96,change:16.0,issue:'기능성 케어 관심 증가',level:'high',competitor:true,summary:'바렌은 경쟁사 이슈 수집에서 기능성 케어 관련 소재 변화가 감지됐다.'}
+];
+
 function renderRoutine() {
   const target = document.getElementById('routine-grid');
   if (!target) return;
@@ -667,6 +703,26 @@ function renderRoutine() {
       `).join('')}
     </div>
   `).join('');
+}
+
+function renderTrendBriefings() {
+  const target = document.getElementById('trend-brief-list');
+  if (!target) return;
+  target.innerHTML = trendBriefingData.map(item => {
+    const brandLabel = brandData[item.brand]?.name || item.brand;
+    return `
+    <div class="trend-brief-card">
+      <div class="trend-brief-top">
+        <div>
+          <div class="trend-brief-title">${item.no}. ${brandLabel} · ${item.brand} · ${item.source}</div>
+          <div class="trend-brief-meta">${item.keywords}</div>
+        </div>
+        <div class="trend-brief-signal${item.competitor ? ' on' : ''}">${item.competitor ? '경쟁사 감지' : '경쟁사 없음'}</div>
+      </div>
+      <div class="trend-brief-meta">점수 ${item.score} · 변화율 ${item.change}% · ${item.issue} · ${item.level}</div>
+      <div class="trend-brief-copy">${item.summary}</div>
+    </div>
+  `}).join('');
 }
 
 function showPage(idx, el) {
@@ -730,6 +786,7 @@ function renderBrand(id, period) {
 
 document.getElementById('current-date').textContent = new Date().toLocaleDateString('ko-KR', {year:'numeric',month:'long',day:'numeric',weekday:'short'});
 renderRoutine();
+renderTrendBriefings();
 renderBrand('someud', '일간');
 </script>
 </body>

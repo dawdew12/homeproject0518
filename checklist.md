@@ -236,3 +236,14 @@
 - [x] 대시보드 JSON과 API JSON 재생성
 - [x] 검증 실행
 - [x] GitHub 저장 및 Vercel 반영 확인
+
+# Trend Briefing Dashboard Checklist
+
+- [x] `AGENTS.md`와 현재 작업트리 확인
+- [x] 최신 트렌드 수집 산출물 구조 확인
+- [x] 수집 트렌드 브리핑 payload 생성
+- [x] Vercel용 `web/index.html`에 트렌드 브리핑 목록 표시
+- [x] 루트 `AIPR_Dashboard.html`에 트렌드 브리핑 목록 표시
+- [x] 대시보드 JSON과 API JSON 재생성
+- [x] 검증 실행
+- [ ] GitHub 저장 및 Vercel 반영 확인

@@ -58,6 +58,11 @@ class BuildDashboardDataTest(unittest.TestCase):
         )
         self.assertEqual(someud_routine["parts"][0]["metrics"]["record_count"], 3)
         self.assertEqual(someud_routine["parts"][3]["metrics"]["image_request_count"], 4)
+        self.assertEqual(len(payload["data"]["trend_briefing_list"]), 20)
+        first_trend_briefing = payload["data"]["trend_briefing_list"][0]
+        self.assertEqual(first_trend_briefing["source_label"], "네이버 트렌드 API")
+        self.assertIn("황토침대", first_trend_briefing["briefing"])
+        self.assertIn("경쟁사 신호", first_trend_briefing["briefing"])
         self.assertEqual(len(payload["data"]["manager_preview"]), 5)
         self.assertGreaterEqual(len(payload["data"]["prompt_preview"]), 5)
         self.assertGreaterEqual(len(payload["data"]["image_preview"]), 5)

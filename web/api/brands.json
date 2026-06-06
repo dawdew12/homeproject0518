@@ -1,6 +1,6 @@
 {
   "status": "brands_api_ready",
-  "generated_at": "2026-06-06T17:00:31+09:00",
+  "generated_at": "2026-06-06T18:49:51+09:00",
   "brand_count": 5,
   "brands": [
     {
@@ -612,6 +612,428 @@
           ]
         }
       ]
+    }
+  ],
+  "trend_briefing_list": [
+    {
+      "sequence": 1,
+      "date": "2026-06-04",
+      "brand": "someud",
+      "display_name": "소머드",
+      "source": "naver_trends",
+      "source_label": "네이버 트렌드 API",
+      "keywords": [
+        "황토침대",
+        "어버이날 선물",
+        "숙면"
+      ],
+      "trend_score": 60,
+      "trend_change_pct": 6.2,
+      "seasonal_issue_title": "황토침대 관심 증가",
+      "seasonal_issue_level": "medium",
+      "seasonal_issue_summary": "소머드 관련 핵심 키워드가 전주 대비 6.2% 상승했다.",
+      "competitor_detected": false,
+      "competitor_summary": "경쟁사 변화 없음.",
+      "briefing": "소머드는 황토침대, 어버이날 선물, 숙면 키워드가 네이버 트렌드 API에서 점수 60, 전주 대비 6.2%로 확인됐다. 소머드 관련 핵심 키워드가 전주 대비 6.2% 상승했다. 경쟁사 신호는 없음."
+    },
+    {
+      "sequence": 2,
+      "date": "2026-06-04",
+      "brand": "kinda",
+      "display_name": "킨다",
+      "source": "naver_trends",
+      "source_label": "네이버 트렌드 API",
+      "keywords": [
+        "극손상 헤어팩",
+        "비포애프터",
+        "홈케어"
+      ],
+      "trend_score": 66,
+      "trend_change_pct": 7.9,
+      "seasonal_issue_title": "극손상 헤어팩 관심 증가",
+      "seasonal_issue_level": "medium",
+      "seasonal_issue_summary": "킨다 관련 핵심 키워드가 전주 대비 7.9% 상승했다.",
+      "competitor_detected": false,
+      "competitor_summary": "경쟁사 변화 없음.",
+      "briefing": "킨다는 극손상 헤어팩, 비포애프터, 홈케어 키워드가 네이버 트렌드 API에서 점수 66, 전주 대비 7.9%로 확인됐다. 킨다 관련 핵심 키워드가 전주 대비 7.9% 상승했다. 경쟁사 신호는 없음."
+    },
+    {
+      "sequence": 3,
+      "date": "2026-06-04",
+      "brand": "melliance",
+      "display_name": "멜리언스",
+      "source": "naver_trends",
+      "source_label": "네이버 트렌드 API",
+      "keywords": [
+        "뷰티 루틴",
+        "봄 컬렉션",
+        "피부결"
+      ],
+      "trend_score": 72,
+      "trend_change_pct": 9.6,
+      "seasonal_issue_title": "뷰티 루틴 관심 증가",
+      "seasonal_issue_level": "medium",
+      "seasonal_issue_summary": "멜리언스 관련 핵심 키워드가 전주 대비 9.6% 상승했다.",
+      "competitor_detected": false,
+      "competitor_summary": "경쟁사 변화 없음.",
+      "briefing": "멜리언스는 뷰티 루틴, 봄 컬렉션, 피부결 키워드가 네이버 트렌드 API에서 점수 72, 전주 대비 9.6%로 확인됐다. 멜리언스 관련 핵심 키워드가 전주 대비 9.6% 상승했다. 경쟁사 신호는 없음."
+    },
+    {
+      "sequence": 4,
+      "date": "2026-06-04",
+      "brand": "paperback",
+      "display_name": "페이퍼백",
+      "source": "naver_trends",
+      "source_label": "네이버 트렌드 API",
+      "keywords": [
+        "라이프스타일",
+        "독서 감성",
+        "카페"
+      ],
+      "trend_score": 78,
+      "trend_change_pct": 11.3,
+      "seasonal_issue_title": "라이프스타일 관심 증가",
+      "seasonal_issue_level": "high",
+      "seasonal_issue_summary": "페이퍼백 관련 핵심 키워드가 전주 대비 11.3% 상승했다.",
+      "competitor_detected": false,
+      "competitor_summary": "경쟁사 변화 없음.",
+      "briefing": "페이퍼백는 라이프스타일, 독서 감성, 카페 키워드가 네이버 트렌드 API에서 점수 78, 전주 대비 11.3%로 확인됐다. 페이퍼백 관련 핵심 키워드가 전주 대비 11.3% 상승했다. 경쟁사 신호는 없음."
+    },
+    {
+      "sequence": 5,
+      "date": "2026-06-04",
+      "brand": "baren",
+      "display_name": "바렌",
+      "source": "naver_trends",
+      "source_label": "네이버 트렌드 API",
+      "keywords": [
+        "기능성 케어",
+        "인포그래픽",
+        "성분"
+      ],
+      "trend_score": 84,
+      "trend_change_pct": 13.0,
+      "seasonal_issue_title": "기능성 케어 관심 증가",
+      "seasonal_issue_level": "high",
+      "seasonal_issue_summary": "바렌 관련 핵심 키워드가 전주 대비 13.0% 상승했다.",
+      "competitor_detected": false,
+      "competitor_summary": "경쟁사 변화 없음.",
+      "briefing": "바렌는 기능성 케어, 인포그래픽, 성분 키워드가 네이버 트렌드 API에서 점수 84, 전주 대비 13.0%로 확인됐다. 바렌 관련 핵심 키워드가 전주 대비 13.0% 상승했다. 경쟁사 신호는 없음."
+    },
+    {
+      "sequence": 6,
+      "date": "2026-06-04",
+      "brand": "someud",
+      "display_name": "소머드",
+      "source": "google_trends",
+      "source_label": "Google Trends",
+      "keywords": [
+        "황토침대",
+        "어버이날 선물",
+        "숙면"
+      ],
+      "trend_score": 64,
+      "trend_change_pct": 7.2,
+      "seasonal_issue_title": "황토침대 관심 증가",
+      "seasonal_issue_level": "medium",
+      "seasonal_issue_summary": "소머드 관련 핵심 키워드가 전주 대비 7.2% 상승했다.",
+      "competitor_detected": false,
+      "competitor_summary": "경쟁사 변화 없음.",
+      "briefing": "소머드는 황토침대, 어버이날 선물, 숙면 키워드가 Google Trends에서 점수 64, 전주 대비 7.2%로 확인됐다. 소머드 관련 핵심 키워드가 전주 대비 7.2% 상승했다. 경쟁사 신호는 없음."
+    },
+    {
+      "sequence": 7,
+      "date": "2026-06-04",
+      "brand": "kinda",
+      "display_name": "킨다",
+      "source": "google_trends",
+      "source_label": "Google Trends",
+      "keywords": [
+        "극손상 헤어팩",
+        "비포애프터",
+        "홈케어"
+      ],
+      "trend_score": 70,
+      "trend_change_pct": 8.9,
+      "seasonal_issue_title": "극손상 헤어팩 관심 증가",
+      "seasonal_issue_level": "medium",
+      "seasonal_issue_summary": "킨다 관련 핵심 키워드가 전주 대비 8.9% 상승했다.",
+      "competitor_detected": false,
+      "competitor_summary": "경쟁사 변화 없음.",
+      "briefing": "킨다는 극손상 헤어팩, 비포애프터, 홈케어 키워드가 Google Trends에서 점수 70, 전주 대비 8.9%로 확인됐다. 킨다 관련 핵심 키워드가 전주 대비 8.9% 상승했다. 경쟁사 신호는 없음."
+    },
+    {
+      "sequence": 8,
+      "date": "2026-06-04",
+      "brand": "melliance",
+      "display_name": "멜리언스",
+      "source": "google_trends",
+      "source_label": "Google Trends",
+      "keywords": [
+        "뷰티 루틴",
+        "봄 컬렉션",
+        "피부결"
+      ],
+      "trend_score": 76,
+      "trend_change_pct": 10.6,
+      "seasonal_issue_title": "뷰티 루틴 관심 증가",
+      "seasonal_issue_level": "medium",
+      "seasonal_issue_summary": "멜리언스 관련 핵심 키워드가 전주 대비 10.6% 상승했다.",
+      "competitor_detected": false,
+      "competitor_summary": "경쟁사 변화 없음.",
+      "briefing": "멜리언스는 뷰티 루틴, 봄 컬렉션, 피부결 키워드가 Google Trends에서 점수 76, 전주 대비 10.6%로 확인됐다. 멜리언스 관련 핵심 키워드가 전주 대비 10.6% 상승했다. 경쟁사 신호는 없음."
+    },
+    {
+      "sequence": 9,
+      "date": "2026-06-04",
+      "brand": "paperback",
+      "display_name": "페이퍼백",
+      "source": "google_trends",
+      "source_label": "Google Trends",
+      "keywords": [
+        "라이프스타일",
+        "독서 감성",
+        "카페"
+      ],
+      "trend_score": 82,
+      "trend_change_pct": 12.3,
+      "seasonal_issue_title": "라이프스타일 관심 증가",
+      "seasonal_issue_level": "high",
+      "seasonal_issue_summary": "페이퍼백 관련 핵심 키워드가 전주 대비 12.3% 상승했다.",
+      "competitor_detected": false,
+      "competitor_summary": "경쟁사 변화 없음.",
+      "briefing": "페이퍼백는 라이프스타일, 독서 감성, 카페 키워드가 Google Trends에서 점수 82, 전주 대비 12.3%로 확인됐다. 페이퍼백 관련 핵심 키워드가 전주 대비 12.3% 상승했다. 경쟁사 신호는 없음."
+    },
+    {
+      "sequence": 10,
+      "date": "2026-06-04",
+      "brand": "baren",
+      "display_name": "바렌",
+      "source": "google_trends",
+      "source_label": "Google Trends",
+      "keywords": [
+        "기능성 케어",
+        "인포그래픽",
+        "성분"
+      ],
+      "trend_score": 88,
+      "trend_change_pct": 14.0,
+      "seasonal_issue_title": "기능성 케어 관심 증가",
+      "seasonal_issue_level": "high",
+      "seasonal_issue_summary": "바렌 관련 핵심 키워드가 전주 대비 14.0% 상승했다.",
+      "competitor_detected": false,
+      "competitor_summary": "경쟁사 변화 없음.",
+      "briefing": "바렌는 기능성 케어, 인포그래픽, 성분 키워드가 Google Trends에서 점수 88, 전주 대비 14.0%로 확인됐다. 바렌 관련 핵심 키워드가 전주 대비 14.0% 상승했다. 경쟁사 신호는 없음."
+    },
+    {
+      "sequence": 11,
+      "date": "2026-06-04",
+      "brand": "someud",
+      "display_name": "소머드",
+      "source": "news",
+      "source_label": "네이버 뉴스 API",
+      "keywords": [
+        "황토침대",
+        "어버이날 선물",
+        "숙면"
+      ],
+      "trend_score": 68,
+      "trend_change_pct": 8.2,
+      "seasonal_issue_title": "황토침대 관심 증가",
+      "seasonal_issue_level": "medium",
+      "seasonal_issue_summary": "소머드 관련 핵심 키워드가 전주 대비 8.2% 상승했다.",
+      "competitor_detected": true,
+      "competitor_summary": "경쟁사 소재 변화는 mock 데이터 기준으로 관찰됨.",
+      "briefing": "소머드는 황토침대, 어버이날 선물, 숙면 키워드가 네이버 뉴스 API에서 점수 68, 전주 대비 8.2%로 확인됐다. 소머드 관련 핵심 키워드가 전주 대비 8.2% 상승했다. 경쟁사 신호는 감지됨."
+    },
+    {
+      "sequence": 12,
+      "date": "2026-06-04",
+      "brand": "kinda",
+      "display_name": "킨다",
+      "source": "news",
+      "source_label": "네이버 뉴스 API",
+      "keywords": [
+        "극손상 헤어팩",
+        "비포애프터",
+        "홈케어"
+      ],
+      "trend_score": 74,
+      "trend_change_pct": 9.9,
+      "seasonal_issue_title": "극손상 헤어팩 관심 증가",
+      "seasonal_issue_level": "medium",
+      "seasonal_issue_summary": "킨다 관련 핵심 키워드가 전주 대비 9.9% 상승했다.",
+      "competitor_detected": true,
+      "competitor_summary": "경쟁사 소재 변화는 mock 데이터 기준으로 관찰됨.",
+      "briefing": "킨다는 극손상 헤어팩, 비포애프터, 홈케어 키워드가 네이버 뉴스 API에서 점수 74, 전주 대비 9.9%로 확인됐다. 킨다 관련 핵심 키워드가 전주 대비 9.9% 상승했다. 경쟁사 신호는 감지됨."
+    },
+    {
+      "sequence": 13,
+      "date": "2026-06-04",
+      "brand": "melliance",
+      "display_name": "멜리언스",
+      "source": "news",
+      "source_label": "네이버 뉴스 API",
+      "keywords": [
+        "뷰티 루틴",
+        "봄 컬렉션",
+        "피부결"
+      ],
+      "trend_score": 80,
+      "trend_change_pct": 11.6,
+      "seasonal_issue_title": "뷰티 루틴 관심 증가",
+      "seasonal_issue_level": "high",
+      "seasonal_issue_summary": "멜리언스 관련 핵심 키워드가 전주 대비 11.6% 상승했다.",
+      "competitor_detected": true,
+      "competitor_summary": "경쟁사 소재 변화는 mock 데이터 기준으로 관찰됨.",
+      "briefing": "멜리언스는 뷰티 루틴, 봄 컬렉션, 피부결 키워드가 네이버 뉴스 API에서 점수 80, 전주 대비 11.6%로 확인됐다. 멜리언스 관련 핵심 키워드가 전주 대비 11.6% 상승했다. 경쟁사 신호는 감지됨."
+    },
+    {
+      "sequence": 14,
+      "date": "2026-06-04",
+      "brand": "paperback",
+      "display_name": "페이퍼백",
+      "source": "news",
+      "source_label": "네이버 뉴스 API",
+      "keywords": [
+        "라이프스타일",
+        "독서 감성",
+        "카페"
+      ],
+      "trend_score": 86,
+      "trend_change_pct": 13.3,
+      "seasonal_issue_title": "라이프스타일 관심 증가",
+      "seasonal_issue_level": "high",
+      "seasonal_issue_summary": "페이퍼백 관련 핵심 키워드가 전주 대비 13.3% 상승했다.",
+      "competitor_detected": true,
+      "competitor_summary": "경쟁사 소재 변화는 mock 데이터 기준으로 관찰됨.",
+      "briefing": "페이퍼백는 라이프스타일, 독서 감성, 카페 키워드가 네이버 뉴스 API에서 점수 86, 전주 대비 13.3%로 확인됐다. 페이퍼백 관련 핵심 키워드가 전주 대비 13.3% 상승했다. 경쟁사 신호는 감지됨."
+    },
+    {
+      "sequence": 15,
+      "date": "2026-06-04",
+      "brand": "baren",
+      "display_name": "바렌",
+      "source": "news",
+      "source_label": "네이버 뉴스 API",
+      "keywords": [
+        "기능성 케어",
+        "인포그래픽",
+        "성분"
+      ],
+      "trend_score": 92,
+      "trend_change_pct": 15.0,
+      "seasonal_issue_title": "기능성 케어 관심 증가",
+      "seasonal_issue_level": "high",
+      "seasonal_issue_summary": "바렌 관련 핵심 키워드가 전주 대비 15.0% 상승했다.",
+      "competitor_detected": true,
+      "competitor_summary": "경쟁사 소재 변화는 mock 데이터 기준으로 관찰됨.",
+      "briefing": "바렌는 기능성 케어, 인포그래픽, 성분 키워드가 네이버 뉴스 API에서 점수 92, 전주 대비 15.0%로 확인됐다. 바렌 관련 핵심 키워드가 전주 대비 15.0% 상승했다. 경쟁사 신호는 감지됨."
+    },
+    {
+      "sequence": 16,
+      "date": "2026-06-04",
+      "brand": "someud",
+      "display_name": "소머드",
+      "source": "competitor",
+      "source_label": "경쟁사 이슈 수집",
+      "keywords": [
+        "황토침대",
+        "어버이날 선물",
+        "숙면"
+      ],
+      "trend_score": 72,
+      "trend_change_pct": 9.2,
+      "seasonal_issue_title": "황토침대 관심 증가",
+      "seasonal_issue_level": "medium",
+      "seasonal_issue_summary": "소머드 관련 핵심 키워드가 전주 대비 9.2% 상승했다.",
+      "competitor_detected": true,
+      "competitor_summary": "경쟁사 소재 변화는 mock 데이터 기준으로 관찰됨.",
+      "briefing": "소머드는 황토침대, 어버이날 선물, 숙면 키워드가 경쟁사 이슈 수집에서 점수 72, 전주 대비 9.2%로 확인됐다. 소머드 관련 핵심 키워드가 전주 대비 9.2% 상승했다. 경쟁사 신호는 감지됨."
+    },
+    {
+      "sequence": 17,
+      "date": "2026-06-04",
+      "brand": "kinda",
+      "display_name": "킨다",
+      "source": "competitor",
+      "source_label": "경쟁사 이슈 수집",
+      "keywords": [
+        "극손상 헤어팩",
+        "비포애프터",
+        "홈케어"
+      ],
+      "trend_score": 78,
+      "trend_change_pct": 10.9,
+      "seasonal_issue_title": "극손상 헤어팩 관심 증가",
+      "seasonal_issue_level": "high",
+      "seasonal_issue_summary": "킨다 관련 핵심 키워드가 전주 대비 10.9% 상승했다.",
+      "competitor_detected": true,
+      "competitor_summary": "경쟁사 소재 변화는 mock 데이터 기준으로 관찰됨.",
+      "briefing": "킨다는 극손상 헤어팩, 비포애프터, 홈케어 키워드가 경쟁사 이슈 수집에서 점수 78, 전주 대비 10.9%로 확인됐다. 킨다 관련 핵심 키워드가 전주 대비 10.9% 상승했다. 경쟁사 신호는 감지됨."
+    },
+    {
+      "sequence": 18,
+      "date": "2026-06-04",
+      "brand": "melliance",
+      "display_name": "멜리언스",
+      "source": "competitor",
+      "source_label": "경쟁사 이슈 수집",
+      "keywords": [
+        "뷰티 루틴",
+        "봄 컬렉션",
+        "피부결"
+      ],
+      "trend_score": 84,
+      "trend_change_pct": 12.6,
+      "seasonal_issue_title": "뷰티 루틴 관심 증가",
+      "seasonal_issue_level": "high",
+      "seasonal_issue_summary": "멜리언스 관련 핵심 키워드가 전주 대비 12.6% 상승했다.",
+      "competitor_detected": true,
+      "competitor_summary": "경쟁사 소재 변화는 mock 데이터 기준으로 관찰됨.",
+      "briefing": "멜리언스는 뷰티 루틴, 봄 컬렉션, 피부결 키워드가 경쟁사 이슈 수집에서 점수 84, 전주 대비 12.6%로 확인됐다. 멜리언스 관련 핵심 키워드가 전주 대비 12.6% 상승했다. 경쟁사 신호는 감지됨."
+    },
+    {
+      "sequence": 19,
+      "date": "2026-06-04",
+      "brand": "paperback",
+      "display_name": "페이퍼백",
+      "source": "competitor",
+      "source_label": "경쟁사 이슈 수집",
+      "keywords": [
+        "라이프스타일",
+        "독서 감성",
+        "카페"
+      ],
+      "trend_score": 90,
+      "trend_change_pct": 14.3,
+      "seasonal_issue_title": "라이프스타일 관심 증가",
+      "seasonal_issue_level": "high",
+      "seasonal_issue_summary": "페이퍼백 관련 핵심 키워드가 전주 대비 14.3% 상승했다.",
+      "competitor_detected": true,
+      "competitor_summary": "경쟁사 소재 변화는 mock 데이터 기준으로 관찰됨.",
+      "briefing": "페이퍼백는 라이프스타일, 독서 감성, 카페 키워드가 경쟁사 이슈 수집에서 점수 90, 전주 대비 14.3%로 확인됐다. 페이퍼백 관련 핵심 키워드가 전주 대비 14.3% 상승했다. 경쟁사 신호는 감지됨."
+    },
+    {
+      "sequence": 20,
+      "date": "2026-06-04",
+      "brand": "baren",
+      "display_name": "바렌",
+      "source": "competitor",
+      "source_label": "경쟁사 이슈 수집",
+      "keywords": [
+        "기능성 케어",
+        "인포그래픽",
+        "성분"
+      ],
+      "trend_score": 96,
+      "trend_change_pct": 16.0,
+      "seasonal_issue_title": "기능성 케어 관심 증가",
+      "seasonal_issue_level": "high",
+      "seasonal_issue_summary": "바렌 관련 핵심 키워드가 전주 대비 16.0% 상승했다.",
+      "competitor_detected": true,
+      "competitor_summary": "경쟁사 소재 변화는 mock 데이터 기준으로 관찰됨.",
+      "briefing": "바렌는 기능성 케어, 인포그래픽, 성분 키워드가 경쟁사 이슈 수집에서 점수 96, 전주 대비 16.0%로 확인됐다. 바렌 관련 핵심 키워드가 전주 대비 16.0% 상승했다. 경쟁사 신호는 감지됨."
     }
   ]
 }

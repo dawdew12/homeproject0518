@@ -1,6 +1,6 @@
 {
   "status": "brand_detail_api_ready",
-  "generated_at": "2026-06-06T17:00:31+09:00",
+  "generated_at": "2026-06-06T18:49:51+09:00",
   "brand": "someud",
   "snapshot": {
     "brand": "someud",
@@ -124,6 +124,92 @@
       }
     ]
   },
+  "trend_briefings": [
+    {
+      "sequence": 1,
+      "date": "2026-06-04",
+      "brand": "someud",
+      "display_name": "소머드",
+      "source": "naver_trends",
+      "source_label": "네이버 트렌드 API",
+      "keywords": [
+        "황토침대",
+        "어버이날 선물",
+        "숙면"
+      ],
+      "trend_score": 60,
+      "trend_change_pct": 6.2,
+      "seasonal_issue_title": "황토침대 관심 증가",
+      "seasonal_issue_level": "medium",
+      "seasonal_issue_summary": "소머드 관련 핵심 키워드가 전주 대비 6.2% 상승했다.",
+      "competitor_detected": false,
+      "competitor_summary": "경쟁사 변화 없음.",
+      "briefing": "소머드는 황토침대, 어버이날 선물, 숙면 키워드가 네이버 트렌드 API에서 점수 60, 전주 대비 6.2%로 확인됐다. 소머드 관련 핵심 키워드가 전주 대비 6.2% 상승했다. 경쟁사 신호는 없음."
+    },
+    {
+      "sequence": 6,
+      "date": "2026-06-04",
+      "brand": "someud",
+      "display_name": "소머드",
+      "source": "google_trends",
+      "source_label": "Google Trends",
+      "keywords": [
+        "황토침대",
+        "어버이날 선물",
+        "숙면"
+      ],
+      "trend_score": 64,
+      "trend_change_pct": 7.2,
+      "seasonal_issue_title": "황토침대 관심 증가",
+      "seasonal_issue_level": "medium",
+      "seasonal_issue_summary": "소머드 관련 핵심 키워드가 전주 대비 7.2% 상승했다.",
+      "competitor_detected": false,
+      "competitor_summary": "경쟁사 변화 없음.",
+      "briefing": "소머드는 황토침대, 어버이날 선물, 숙면 키워드가 Google Trends에서 점수 64, 전주 대비 7.2%로 확인됐다. 소머드 관련 핵심 키워드가 전주 대비 7.2% 상승했다. 경쟁사 신호는 없음."
+    },
+    {
+      "sequence": 11,
+      "date": "2026-06-04",
+      "brand": "someud",
+      "display_name": "소머드",
+      "source": "news",
+      "source_label": "네이버 뉴스 API",
+      "keywords": [
+        "황토침대",
+        "어버이날 선물",
+        "숙면"
+      ],
+      "trend_score": 68,
+      "trend_change_pct": 8.2,
+      "seasonal_issue_title": "황토침대 관심 증가",
+      "seasonal_issue_level": "medium",
+      "seasonal_issue_summary": "소머드 관련 핵심 키워드가 전주 대비 8.2% 상승했다.",
+      "competitor_detected": true,
+      "competitor_summary": "경쟁사 소재 변화는 mock 데이터 기준으로 관찰됨.",
+      "briefing": "소머드는 황토침대, 어버이날 선물, 숙면 키워드가 네이버 뉴스 API에서 점수 68, 전주 대비 8.2%로 확인됐다. 소머드 관련 핵심 키워드가 전주 대비 8.2% 상승했다. 경쟁사 신호는 감지됨."
+    },
+    {
+      "sequence": 16,
+      "date": "2026-06-04",
+      "brand": "someud",
+      "display_name": "소머드",
+      "source": "competitor",
+      "source_label": "경쟁사 이슈 수집",
+      "keywords": [
+        "황토침대",
+        "어버이날 선물",
+        "숙면"
+      ],
+      "trend_score": 72,
+      "trend_change_pct": 9.2,
+      "seasonal_issue_title": "황토침대 관심 증가",
+      "seasonal_issue_level": "medium",
+      "seasonal_issue_summary": "소머드 관련 핵심 키워드가 전주 대비 9.2% 상승했다.",
+      "competitor_detected": true,
+      "competitor_summary": "경쟁사 소재 변화는 mock 데이터 기준으로 관찰됨.",
+      "briefing": "소머드는 황토침대, 어버이날 선물, 숙면 키워드가 경쟁사 이슈 수집에서 점수 72, 전주 대비 9.2%로 확인됐다. 소머드 관련 핵심 키워드가 전주 대비 9.2% 상승했다. 경쟁사 신호는 감지됨."
+    }
+  ],
   "manager": [
     {
       "brand": "someud",

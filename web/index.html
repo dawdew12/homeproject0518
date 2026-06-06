@@ -804,6 +804,26 @@ li { margin: 5px 0; }
     </table>
   </section>
 
+  <section>
+    <h2>수집 트렌드 브리핑 목록</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>브랜드</th>
+          <th>수집 출처</th>
+          <th>키워드</th>
+          <th>점수</th>
+          <th>변화율</th>
+          <th>시즌 이슈</th>
+          <th>경쟁사</th>
+          <th>브리핑</th>
+        </tr>
+      </thead>
+      <tbody id="trend-briefing-table"></tbody>
+    </table>
+  </section>
+
   <div class="wide-cols">
     <section>
       <h2>수집 데이터 미리보기</h2>
@@ -1284,6 +1304,20 @@ function render(data) {
       <td>${record.trend_score}</td>
       <td>${record.trend_change_pct}%</td>
       <td>${record.seasonal_issue?.title || "-"}</td>
+    </tr>
+  `).join("");
+
+  document.getElementById("trend-briefing-table").innerHTML = (data.data?.trend_briefing_list || []).map(item => `
+    <tr>
+      <td>${item.sequence}</td>
+      <td><strong>${item.display_name || item.brand}</strong><br><code>${item.brand}</code></td>
+      <td>${item.source_label}</td>
+      <td>${(item.keywords || []).join(", ")}</td>
+      <td>${item.trend_score}</td>
+      <td>${item.trend_change_pct}%</td>
+      <td>${item.seasonal_issue_title || "-"}<br><span class="tag ${tagClass(item.seasonal_issue_level)}">${item.seasonal_issue_level || "-"}</span></td>
+      <td>${item.competitor_detected ? "감지" : "없음"}</td>
+      <td>${item.briefing || "-"}</td>
     </tr>
   `).join("");
 
