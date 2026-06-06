@@ -414,3 +414,9 @@
 - HTML 스크립트 파싱은 `web/index.html`, `AIPR_Dashboard.html`, `dashboard/AIPR_Dashboard.html` 모두 통과했다.
 - 루트 대시보드 DOM 실행 검증에서 기사 링크 카드 15개, 상단 시사점, 브랜드별 포털/SNS 카드 5개가 생성되는 것을 확인했다.
 - 로컬 HTTP 검증에서 `AIPR_Dashboard.html`, `web/index.html`, `web/data/latest_status.json`, `web/api/brands.json`이 모두 200 응답을 반환했다.
+
+## 2026-06-07 Team B Article Link Brief 배포 확인
+
+- GitHub main에 `a10fa6d [DASHBOARD] 팀원B 기사 링크 시사점 추가` 커밋을 push했다.
+- Vercel production deployment `dpl_62QAyaeavCY5nRqmxMrtvokKTwg5`는 `a10fa6d31ffe41eb5b6fcb1ede2231a3c590baba` 커밋으로 READY 상태다.
+- 배포 URL은 `https://homeproject0518-pgx4lkcmv-raw22226-9071s-projects.vercel.app`이며, Vercel Authentication 보호가 켜져 있으면 직접 접속 시 로그인이 필요할 수 있다.
