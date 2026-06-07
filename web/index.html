@@ -508,12 +508,78 @@ li { margin: 5px 0; }
   border: 1px solid var(--line);
   background: var(--soft);
 }
+.content-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.content-brand-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0;
+}
+.content-brand-tabs button {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--muted);
+  padding: 7px 12px;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+.content-brand-tabs button.on {
+  border-color: #b8dfca;
+  background: #e7f4ee;
+  color: var(--green);
+  font-weight: 700;
+}
+.content-layout {
+  display: grid;
+  grid-template-columns: minmax(280px, .95fr) 1.05fr;
+  gap: 14px;
+  align-items: start;
+}
+.content-asset {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--soft);
+  padding: 12px;
+}
+.content-asset img {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: #fff;
+}
+.concept-grid,
+.content-process {
+  display: grid;
+  gap: 8px;
+}
+.concept-card,
+.process-card {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  padding: 10px;
+}
+.concept-card strong,
+.process-card strong {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 4px;
+}
 @media (max-width: 980px) {
   header,
   .grid,
   .cols,
   .wide-cols,
   .generated-image-wrap,
+  .content-summary-grid,
+  .content-layout,
   .tiles,
   .phase-list,
   .pipeline,
@@ -711,6 +777,20 @@ li { margin: 5px 0; }
           <tr><th>저장 위치</th><td id="generated-image-path">-</td></tr>
         </tbody>
       </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>콘텐츠 제작 테스트</h2>
+    <p class="sub">브랜드별 5개 이미지 소재 콘셉트와 ChatGPT 생성 시트를 확인합니다.</p>
+    <div class="content-summary-grid" id="content-summary-grid"></div>
+    <div class="content-brand-tabs" id="content-brand-tabs"></div>
+    <div class="content-layout">
+      <div class="content-asset" id="content-asset"></div>
+      <div>
+        <div class="concept-grid" id="content-concepts"></div>
+        <div class="content-process" id="content-process" style="margin-top:10px"></div>
+      </div>
     </div>
   </section>
 
@@ -940,6 +1020,7 @@ const API_ENDPOINTS = [
   { key: "logs", label: "GET /api/logs", path: "./api/logs", fallback: "./api/logs.json" }
 ];
 let cachedCommits = [];
+let contentGenerationCache = { summary: {}, brands: [], selectedBrand: null };
 
 function cacheBust(path) {
   return `${path}${path.includes("?") ? "&" : "?"}_=${Date.now()}`;
@@ -1117,6 +1198,77 @@ function renderPortalArticleBrief(summary, articleLinks) {
     : "<div class=\"empty\">수집된 기사 링크 없음.</div>";
 }
 
+function renderContentGeneration(summary, brands) {
+  const summaryGrid = document.getElementById("content-summary-grid");
+  const tabs = document.getElementById("content-brand-tabs");
+  const asset = document.getElementById("content-asset");
+  const concepts = document.getElementById("content-concepts");
+  const process = document.getElementById("content-process");
+
+  if (!brands.length) {
+    summaryGrid.innerHTML = "";
+    tabs.innerHTML = "";
+    asset.innerHTML = "<div class=\"empty\">콘텐츠 생성 데이터 없음.</div>";
+    concepts.innerHTML = "";
+    process.innerHTML = "";
+    return;
+  }
+
+  const previous = contentGenerationCache.selectedBrand;
+  const selectedBrand = brands.some(item => item.brand === previous) ? previous : brands[0].brand;
+  const active = brands.find(item => item.brand === selectedBrand) || brands[0];
+  contentGenerationCache = { summary, brands, selectedBrand };
+
+  summaryGrid.innerHTML = [
+    ["브랜드", summary.brand_count ?? brands.length],
+    ["생성 시트", summary.generated_sheet_count ?? brands.length],
+    ["소재 슬롯", summary.image_slot_count ?? brands.reduce((total, brand) => total + (brand.concepts || []).length, 0)],
+    ["검수", summary.visual_check_status || "-"]
+  ].map(item => `
+    <div class="metric">
+      <div class="label">${item[0]}</div>
+      <div class="value">${item[1]}</div>
+    </div>
+  `).join("");
+
+  tabs.innerHTML = brands.map(brand => `
+    <button class="${brand.brand === selectedBrand ? "on" : ""}" onclick="selectContentBrand('${brand.brand}')">
+      ${brand.display_name || brand.brand}
+    </button>
+  `).join("");
+
+  asset.innerHTML = `
+    <h3>${active.display_name || active.brand}</h3>
+    <p class="sub">${active.category || "-"} · ${summary.mode || "-"}</p>
+    <img src="${active.sheet_asset_path}" alt="${active.display_name || active.brand} 5컷 콘텐츠 시트">
+    <div class="label" style="margin-top:8px">${active.width || "-"}x${active.height || "-"} · ${active.file_size_bytes || 0} bytes</div>
+    <div class="label"><code>${active.local_output_path || active.sheet_asset_path}</code></div>
+  `;
+
+  concepts.innerHTML = (active.concepts || []).map(concept => `
+    <div class="concept-card">
+      <strong>${concept.slot}. ${concept.title}</strong>
+      <div class="label">${concept.format || "-"} · ${concept.status || "-"}</div>
+      <div>${concept.angle || "-"}</div>
+    </div>
+  `).join("");
+
+  process.innerHTML = (summary.process_steps || []).map(step => `
+    <div class="process-card">
+      <strong>STEP ${step.step}. ${step.label}</strong>
+      <div class="label">${step.status || "-"}</div>
+      <div>${step.note || "-"}</div>
+    </div>
+  `).join("");
+}
+
+function selectContentBrand(brand) {
+  contentGenerationCache.selectedBrand = brand;
+  renderContentGeneration(contentGenerationCache.summary, contentGenerationCache.brands);
+}
+
+window.selectContentBrand = selectContentBrand;
+
 function renderApiStatus(results) {
   const successful = results.filter(result => result.ok).length;
   const fetchedAt = new Date().toLocaleTimeString("ko-KR");
@@ -1161,10 +1313,13 @@ function render(data) {
   const portalSnsSummary = data.data?.portal_sns_clips || {};
   const portalArticleLinks = data.data?.portal_sns_article_links || [];
   const portalSnsBriefs = data.data?.portal_sns_daily_briefs || [];
+  const contentGeneration = data.data?.content_generation || {};
+  const contentGenerationBrands = data.data?.content_generation_brands || [];
 
   renderBrandRoutineBoard(brandRoutines);
   renderPortalArticleBrief(portalSnsSummary, portalArticleLinks);
   renderPortalSnsBoard(portalSnsBriefs);
+  renderContentGeneration(contentGeneration, contentGenerationBrands);
   text("deploy-status", `생성 시각 ${data.generated_at || "-"}`);
   text("current-phase", current.current_phase ?? "-");
   text("phase-status", current.status || "-");

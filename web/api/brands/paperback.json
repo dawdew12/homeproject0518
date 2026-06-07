@@ -1,6 +1,6 @@
 {
   "status": "brand_detail_api_ready",
-  "generated_at": "2026-06-07T01:25:14+09:00",
+  "generated_at": "2026-06-07T11:33:16+09:00",
   "brand": "paperback",
   "snapshot": {
     "brand": "paperback",
@@ -343,6 +343,62 @@
   ],
   "prompts": [],
   "images": [],
+  "content_generation": {
+    "brand": "paperback",
+    "display_name": "페이퍼백",
+    "category": "라이프스타일 독서",
+    "status": "generated_in_chat",
+    "sheet_asset_path": "assets/generated/content_test/paperback_20260607_chatgpt_5cut_sheet.png",
+    "local_output_path": "web/assets/generated/content_test/paperback_20260607_chatgpt_5cut_sheet.png",
+    "generated_source_path": "C:/Users/town5/.codex/generated_images/019e0bc6-bc9c-78f0-9acf-d0a86d644b6b/ig_03ba822a8e2bac58016a2452123e8c8191b13fb40f342d25da.png",
+    "width": 2172,
+    "height": 724,
+    "file_size_bytes": 1492197,
+    "sha256": "E1ABF08D7D0DE8847C4F9955FB07A5DC9F8EF2B1474F49CB16B7D0387CFF13D8",
+    "visual_check": {
+      "non_blank": true,
+      "panel_count": 5,
+      "no_obvious_text": true,
+      "notes": "카페 테이블, 독서 공간, 페이지 넘김, 서가, 출퇴근 토트백 컷이 구분된다."
+    },
+    "concepts": [
+      {
+        "slot": 1,
+        "title": "카페 독서 컷",
+        "angle": "커피와 책을 함께 보여주는 감성 테이블 장면.",
+        "format": "실사",
+        "status": "generated_in_chat"
+      },
+      {
+        "slot": 2,
+        "title": "조용한 독서 공간 컷",
+        "angle": "집 안 독서 루틴과 햇살을 보여주는 장면.",
+        "format": "실사",
+        "status": "generated_in_chat"
+      },
+      {
+        "slot": 3,
+        "title": "페이지 몰입 컷",
+        "angle": "손과 책, 필기구로 몰입감을 보여주는 장면.",
+        "format": "실사",
+        "status": "generated_in_chat"
+      },
+      {
+        "slot": 4,
+        "title": "큐레이션 서가 컷",
+        "angle": "책장과 공간 취향을 함께 보여주는 장면.",
+        "format": "실사",
+        "status": "generated_in_chat"
+      },
+      {
+        "slot": 5,
+        "title": "일상 휴대 컷",
+        "angle": "토트백 속 책으로 생활 속 브랜드 접점을 보여주는 장면.",
+        "format": "실사",
+        "status": "generated_in_chat"
+      }
+    ]
+  },
   "quality_reviews": [],
   "learning": [
     {

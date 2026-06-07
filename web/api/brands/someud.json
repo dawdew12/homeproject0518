@@ -1,6 +1,6 @@
 {
   "status": "brand_detail_api_ready",
-  "generated_at": "2026-06-07T01:25:14+09:00",
+  "generated_at": "2026-06-07T11:33:16+09:00",
   "brand": "someud",
   "snapshot": {
     "brand": "someud",
@@ -437,6 +437,62 @@
       "status": "dry_run_ready"
     }
   ],
+  "content_generation": {
+    "brand": "someud",
+    "display_name": "소머드",
+    "category": "황토 매트리스",
+    "status": "generated_in_chat",
+    "sheet_asset_path": "assets/generated/content_test/someud_20260607_chatgpt_5cut_sheet.png",
+    "local_output_path": "web/assets/generated/content_test/someud_20260607_chatgpt_5cut_sheet.png",
+    "generated_source_path": "C:/Users/town5/.codex/generated_images/019e0bc6-bc9c-78f0-9acf-d0a86d644b6b/ig_03ba822a8e2bac58016a24512dd77881918a217d8ad4c6ef56.png",
+    "width": 2140,
+    "height": 735,
+    "file_size_bytes": 1893207,
+    "sha256": "6DA05089DCBACD4375FCC9D7DA51B5CC0EA3C223A996545403AA03FAFD9B2988",
+    "visual_check": {
+      "non_blank": true,
+      "panel_count": 5,
+      "no_obvious_text": true,
+      "notes": "침실, 부모님 선물, 패브릭 질감, 아침 루틴, 프리미엄 침실 컷이 구분된다."
+    },
+    "concepts": [
+      {
+        "slot": 1,
+        "title": "숙면 체감 컷",
+        "angle": "따뜻한 침실에서 편안히 잠드는 장면.",
+        "format": "실사",
+        "status": "generated_in_chat"
+      },
+      {
+        "slot": 2,
+        "title": "부모님 선물 컷",
+        "angle": "선물 맥락으로 구매 명분을 보여주는 장면.",
+        "format": "실사",
+        "status": "generated_in_chat"
+      },
+      {
+        "slot": 3,
+        "title": "황토 온기 질감 컷",
+        "angle": "매트리스와 침구 질감으로 온기를 전달하는 장면.",
+        "format": "실사",
+        "status": "generated_in_chat"
+      },
+      {
+        "slot": 4,
+        "title": "아침 웰니스 컷",
+        "angle": "숙면 후 아침 루틴과 컨디션 회복을 보여주는 장면.",
+        "format": "실사",
+        "status": "generated_in_chat"
+      },
+      {
+        "slot": 5,
+        "title": "프리미엄 침실 컷",
+        "angle": "집 안 인테리어와 제품 존재감을 함께 보여주는 장면.",
+        "format": "실사",
+        "status": "generated_in_chat"
+      }
+    ]
+  },
   "quality_reviews": [
     {
       "prompt_id": "someud_20260604_prompt01",

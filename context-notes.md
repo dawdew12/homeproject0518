@@ -420,3 +420,28 @@
 - GitHub main에 `a10fa6d [DASHBOARD] 팀원B 기사 링크 시사점 추가` 커밋을 push했다.
 - Vercel production deployment `dpl_62QAyaeavCY5nRqmxMrtvokKTwg5`는 `a10fa6d31ffe41eb5b6fcb1ede2231a3c590baba` 커밋으로 READY 상태다.
 - 배포 URL은 `https://homeproject0518-pgx4lkcmv-raw22226-9071s-projects.vercel.app`이며, Vercel Authentication 보호가 켜져 있으면 직접 접속 시 로그인이 필요할 수 있다.
+
+## 2026-06-07 Content Tab Image Generation 시작
+
+- 사용자 요청은 대시보드에 `콘텐츠` 탭을 추가하고, 각 브랜드를 선택해 브랜드별 이미지 5개 제작 프로세스를 확인할 수 있게 만드는 것이다.
+- 실제 ChatGPT 이미지 생성 테스트는 비용과 시간을 줄이기 위해 브랜드별 1장의 5컷 콘셉트 시트 방식으로 진행한다.
+- 대시보드에서는 각 콘셉트 시트를 브랜드별 5개 소재 카드와 연결해 확인하게 하며, 추후 OpenAI API 배치 생성으로 전환해도 같은 데이터 구조를 유지한다.
+- 루트 `AIPR_Dashboard.html`은 사용자가 현재 열어둔 파일이므로 즉시 확인 가능한 정적 탭을 추가하고, Vercel용 `web/index.html`은 JSON 기반 콘텐츠 섹션을 추가한다.
+
+## 2026-06-07 Content Tab Image Generation 구현
+
+- 내장 ChatGPT 이미지 생성 도구로 5개 브랜드의 5컷 콘셉트 시트를 생성했다.
+- 생성 파일은 `web/assets/generated/content_test/` 아래에 브랜드별 PNG로 복사했고, 원본 Codex 생성 파일은 유지했다.
+- `history/daily/2026-06-07_content_generation_test.json`에 브랜드 5개, 생성 시트 5장, 소재 슬롯 25개, 프로세스 단계 4개를 기록했다.
+- `scripts/build_dashboard_data.py`는 최신 `*_content_generation_test.json`을 읽어 `content_generation` 요약과 `content_generation_brands` 목록을 대시보드 JSON/API에 포함한다.
+- `web/index.html`에는 JSON 기반 콘텐츠 제작 테스트 섹션을 추가했다.
+- 루트 `AIPR_Dashboard.html`에는 `콘텐츠` 탭을 추가했고, `dashboard/AIPR_Dashboard.html`에도 같은 내용을 복사했다.
+
+## 2026-06-07 Content Tab Image Generation 검증
+
+- `python -m unittest tests.test_build_dashboard_data`는 2개 테스트 통과로 확인했다.
+- 전체 관련 테스트 명령은 `python -m unittest tests.test_trend_collector tests.test_portal_sns_clipper tests.test_data_collector tests.test_manager tests.test_prompt_engineer tests.test_image_designer tests.test_storage_utils tests.test_dashboard_api tests.test_daily_pipeline tests.test_operation_guard tests.test_build_dashboard_data`이며 44개 테스트가 통과했다.
+- HTML 스크립트 파싱은 `web/index.html`, `AIPR_Dashboard.html`, `dashboard/AIPR_Dashboard.html` 모두 통과했다.
+- 로컬 HTTP 검증에서 `AIPR_Dashboard.html`, `web/index.html`, `web/data/latest_status.json`, `web/assets/generated/content_test/someud_20260607_chatgpt_5cut_sheet.png`가 모두 200 응답을 반환했다.
+- 인앱 브라우저 검증에서 루트 `콘텐츠` 탭은 브랜드 버튼 5개, 소재 카드 5개, 이미지 로딩 성공을 확인했고, `바렌`으로 전환했을 때 이미지와 첫 소재 카드가 정상 갱신됐다.
+- Vercel용 `web/index.html`에서도 콘텐츠 섹션의 브랜드 버튼 5개, 소재 카드 5개, 이미지 로딩 성공을 확인했다.

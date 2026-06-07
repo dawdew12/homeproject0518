@@ -1,6 +1,6 @@
 {
   "status": "brand_detail_api_ready",
-  "generated_at": "2026-06-07T01:25:14+09:00",
+  "generated_at": "2026-06-07T11:33:16+09:00",
   "brand": "baren",
   "snapshot": {
     "brand": "baren",
@@ -342,6 +342,62 @@
   ],
   "prompts": [],
   "images": [],
+  "content_generation": {
+    "brand": "baren",
+    "display_name": "바렌",
+    "category": "기능성 케어",
+    "status": "generated_in_chat",
+    "sheet_asset_path": "assets/generated/content_test/baren_20260607_chatgpt_5cut_sheet.png",
+    "local_output_path": "web/assets/generated/content_test/baren_20260607_chatgpt_5cut_sheet.png",
+    "generated_source_path": "C:/Users/town5/.codex/generated_images/019e0bc6-bc9c-78f0-9acf-d0a86d644b6b/ig_03ba822a8e2bac58016a245252ee208191a19eb4aef79715cc.png",
+    "width": 1774,
+    "height": 887,
+    "file_size_bytes": 1107559,
+    "sha256": "0A8C8ED0B313DAD7EE3D85B8ADD5FFDA80E0BFED6A81831F27F6823389AF895D",
+    "visual_check": {
+      "non_blank": true,
+      "panel_count": 5,
+      "no_obvious_text": true,
+      "notes": "성분 실험실, 보습 사용감, 제형 근접, 욕실 정물, 손발 케어 컷이 구분된다."
+    },
+    "concepts": [
+      {
+        "slot": 1,
+        "title": "성분 신뢰 컷",
+        "angle": "깨끗한 실험실 정물로 성분 근거를 암시하는 장면.",
+        "format": "실사",
+        "status": "generated_in_chat"
+      },
+      {
+        "slot": 2,
+        "title": "보습 사용감 컷",
+        "angle": "피부에 크림을 바르는 실사용 장면.",
+        "format": "실사",
+        "status": "generated_in_chat"
+      },
+      {
+        "slot": 3,
+        "title": "제형 매크로 컷",
+        "angle": "크림과 드롭 제형으로 기능성을 보여주는 근접 컷.",
+        "format": "실사",
+        "status": "generated_in_chat"
+      },
+      {
+        "slot": 4,
+        "title": "욕실 루틴 컷",
+        "angle": "생활 공간에서 쉽게 쓰는 루틴을 보여주는 장면.",
+        "format": "실사",
+        "status": "generated_in_chat"
+      },
+      {
+        "slot": 5,
+        "title": "손발 케어 컷",
+        "angle": "건조 부위 관리와 데일리 케어를 보여주는 장면.",
+        "format": "실사",
+        "status": "generated_in_chat"
+      }
+    ]
+  },
   "quality_reviews": [],
   "learning": [
     {

@@ -1,6 +1,6 @@
 {
   "status": "brand_detail_api_ready",
-  "generated_at": "2026-06-07T01:25:14+09:00",
+  "generated_at": "2026-06-07T11:33:16+09:00",
   "brand": "kinda",
   "snapshot": {
     "brand": "kinda",
@@ -437,6 +437,62 @@
       "status": "dry_run_ready"
     }
   ],
+  "content_generation": {
+    "brand": "kinda",
+    "display_name": "킨다",
+    "category": "극손상 헤어팩",
+    "status": "generated_in_chat",
+    "sheet_asset_path": "assets/generated/content_test/kinda_20260607_chatgpt_5cut_sheet.png",
+    "local_output_path": "web/assets/generated/content_test/kinda_20260607_chatgpt_5cut_sheet.png",
+    "generated_source_path": "C:/Users/town5/.codex/generated_images/019e0bc6-bc9c-78f0-9acf-d0a86d644b6b/ig_03ba822a8e2bac58016a24517023708191a897aa85b08ec044.png",
+    "width": 2095,
+    "height": 750,
+    "file_size_bytes": 1611509,
+    "sha256": "8DC60625A9C7F2BDB7C244A87B8B506F89DFB4477D453405F6127339D64F20CD",
+    "visual_check": {
+      "non_blank": true,
+      "panel_count": 5,
+      "no_obvious_text": true,
+      "notes": "샤워 후 헤어, 홈살롱, 비포애프터형 머릿결, 제형, 모델 컷이 구분된다."
+    },
+    "concepts": [
+      {
+        "slot": 1,
+        "title": "샤워 후 윤기 컷",
+        "angle": "젖은 모발과 홈케어 사용감을 보여주는 장면.",
+        "format": "실사",
+        "status": "generated_in_chat"
+      },
+      {
+        "slot": 2,
+        "title": "홈살롱 루틴 컷",
+        "angle": "욕실과 화장대에서 직접 관리하는 루틴.",
+        "format": "실사",
+        "status": "generated_in_chat"
+      },
+      {
+        "slot": 3,
+        "title": "비포애프터 질감 컷",
+        "angle": "손상 모발과 매끈한 모발의 대비를 텍스트 없이 보여주는 장면.",
+        "format": "실사",
+        "status": "generated_in_chat"
+      },
+      {
+        "slot": 4,
+        "title": "제형 근접 컷",
+        "angle": "크리미한 헤어팩 제형과 빗질 사용감을 보여주는 장면.",
+        "format": "실사",
+        "status": "generated_in_chat"
+      },
+      {
+        "slot": 5,
+        "title": "매끈한 완성 컷",
+        "angle": "부드러운 머릿결과 자신감을 보여주는 인물 컷.",
+        "format": "실사",
+        "status": "generated_in_chat"
+      }
+    ]
+  },
   "quality_reviews": [
     {
       "prompt_id": "kinda_20260604_prompt01",

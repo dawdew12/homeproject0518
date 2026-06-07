@@ -159,6 +159,16 @@ html, body {
 .article-link-list { display: grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap: 8px; margin-bottom: 8px; }
 .article-link-item { border: .5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); padding: 9px; background: var(--color-background-primary); font-size: 11px; line-height: 1.45; }
 .article-link-item a { color: var(--color-text-info); text-decoration: none; font-weight: 500; }
+.content-summary-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; margin-bottom: 12px; }
+.content-brand-tabs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.content-brand-tabs button { padding: 5px 11px; border-radius: var(--border-radius-md); border: .5px solid var(--color-border-secondary); background: transparent; color: var(--color-text-secondary); font-size: 12px; cursor: pointer; font-family: inherit; transition: all .15s; }
+.content-brand-tabs button.on { background: var(--color-background-info); color: var(--color-text-info); border-color: transparent; }
+.content-layout { display: grid; grid-template-columns: minmax(280px,.95fr) 1.05fr; gap: 12px; align-items: start; }
+.content-asset { border: .5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); padding: 11px; background: var(--color-background-primary); }
+.content-asset img { width: 100%; border-radius: var(--border-radius-md); border: .5px solid var(--color-border-tertiary); background: var(--color-background-secondary); }
+.concept-grid, .content-process { display: grid; gap: 8px; }
+.concept-card, .process-card { border: .5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); padding: 10px; background: var(--color-background-primary); font-size: 12px; line-height: 1.5; }
+.concept-card strong, .process-card strong { display: block; font-size: 12px; margin-bottom: 3px; color: var(--color-text-primary); }
 
 .bfolder { border: .5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); padding: 14px 10px; cursor: pointer; text-align: center; transition: border-color .15s; background: var(--color-background-primary); }
 .bfolder:hover { border-color: var(--color-border-secondary); }
@@ -206,6 +216,7 @@ html, body {
 .cost-box { border: .5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); padding: 12px 14px; background: var(--color-background-primary); }
 @media (max-width: 980px) {
   .routine-grid { grid-template-columns: 1fr; }
+  .content-summary-grid, .content-layout { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -224,6 +235,7 @@ html, body {
   <button class="tab-btn on" onclick="showPage(0,this)">팀 대시보드</button>
   <button class="tab-btn" onclick="showPage(1,this)">자동화 루틴</button>
   <button class="tab-btn" onclick="showPage(2,this)">브랜드 분석</button>
+  <button class="tab-btn" onclick="showPage(3,this)">콘텐츠</button>
 </div>
 
 <!-- PAGE 0: 팀 대시보드 -->
@@ -494,6 +506,24 @@ html, body {
 </div>
 
 <div id="brand-detail"></div>
+
+</div>
+
+<!-- PAGE 3: 콘텐츠 -->
+<div id="page3" style="display:none">
+
+<div class="sec">
+<div class="sec-label">ChatGPT 콘텐츠 생성 테스트</div>
+<div class="content-summary-grid" id="content-summary-grid"></div>
+<div class="content-brand-tabs" id="content-brand-tabs"></div>
+<div class="content-layout">
+  <div class="content-asset" id="content-asset"></div>
+  <div>
+    <div class="concept-grid" id="content-concepts"></div>
+    <div class="content-process" id="content-process" style="margin-top:8px"></div>
+  </div>
+</div>
+</div>
 
 </div>
 
@@ -791,6 +821,71 @@ const portalSnsData = [
   }
 ];
 
+const contentGenerationData = {
+  status:'generated_in_chat',
+  mode:'chatgpt_5cut_sheet_test',
+  summary:{brandCount:5,sheetCount:5,slotCount:25,visualCheck:'passed'},
+  steps:[
+    {no:1,label:'브랜드 선택',status:'ready',note:'콘텐츠 탭에서 5개 브랜드를 선택한다.'},
+    {no:2,label:'소재 방향 생성',status:'ready',note:'브랜드별 트렌드와 운영 방향을 5개 콘셉트로 나눈다.'},
+    {no:3,label:'ChatGPT 이미지 생성',status:'generated_in_chat',note:'브랜드별 5컷 콘셉트 시트를 실제 이미지로 생성했다.'},
+    {no:4,label:'대시보드 검토',status:'ready',note:'이미지 시트와 소재 카드를 함께 검토한다.'}
+  ],
+  brands:[
+    {
+      brand:'someud',display:'소머드',category:'황토 매트리스',sheet:'web/assets/generated/content_test/someud_20260607_chatgpt_5cut_sheet.png',size:'2140x735',bytes:'1,893,207',
+      concepts:[
+        ['숙면 체감 컷','따뜻한 침실에서 편안히 잠드는 장면.'],
+        ['부모님 선물 컷','선물 맥락으로 구매 명분을 보여주는 장면.'],
+        ['황토 온기 질감 컷','매트리스와 침구 질감으로 온기를 전달하는 장면.'],
+        ['아침 웰니스 컷','숙면 후 아침 루틴과 컨디션 회복을 보여주는 장면.'],
+        ['프리미엄 침실 컷','집 안 인테리어와 제품 존재감을 함께 보여주는 장면.']
+      ]
+    },
+    {
+      brand:'kinda',display:'킨다',category:'극손상 헤어팩',sheet:'web/assets/generated/content_test/kinda_20260607_chatgpt_5cut_sheet.png',size:'2095x750',bytes:'1,611,509',
+      concepts:[
+        ['샤워 후 윤기 컷','젖은 모발과 홈케어 사용감을 보여주는 장면.'],
+        ['홈살롱 루틴 컷','욕실과 화장대에서 직접 관리하는 루틴.'],
+        ['비포애프터 질감 컷','손상 모발과 매끈한 모발의 대비를 보여주는 장면.'],
+        ['제형 근접 컷','크리미한 헤어팩 제형과 빗질 사용감을 보여주는 장면.'],
+        ['매끈한 완성 컷','부드러운 머릿결과 자신감을 보여주는 인물 컷.']
+      ]
+    },
+    {
+      brand:'melliance',display:'멜리언스',category:'뷰티 루틴',sheet:'web/assets/generated/content_test/melliance_20260607_chatgpt_5cut_sheet.png',size:'2172x724',bytes:'1,670,992',
+      concepts:[
+        ['아침 루틴 컷','세안 후 스킨케어 루틴을 보여주는 장면.'],
+        ['피부결 근접 컷','촉촉한 피부결을 근접 화면으로 강조하는 장면.'],
+        ['제품 정물 컷','라벨 없는 제품과 깨끗한 소재감을 보여주는 장면.'],
+        ['거울 루틴 컷','손과 거울을 활용한 단계별 루틴 장면.'],
+        ['내추럴 포트레이트 컷','자연스러운 피부 표현과 신뢰감을 주는 인물 컷.']
+      ]
+    },
+    {
+      brand:'paperback',display:'페이퍼백',category:'라이프스타일 독서',sheet:'web/assets/generated/content_test/paperback_20260607_chatgpt_5cut_sheet.png',size:'2172x724',bytes:'1,492,197',
+      concepts:[
+        ['카페 독서 컷','커피와 책을 함께 보여주는 감성 테이블 장면.'],
+        ['조용한 독서 공간 컷','집 안 독서 루틴과 햇살을 보여주는 장면.'],
+        ['페이지 몰입 컷','손과 책, 필기구로 몰입감을 보여주는 장면.'],
+        ['큐레이션 서가 컷','책장과 공간 취향을 함께 보여주는 장면.'],
+        ['일상 휴대 컷','토트백 속 책으로 생활 속 브랜드 접점을 보여주는 장면.']
+      ]
+    },
+    {
+      brand:'baren',display:'바렌',category:'기능성 케어',sheet:'web/assets/generated/content_test/baren_20260607_chatgpt_5cut_sheet.png',size:'1774x887',bytes:'1,107,559',
+      concepts:[
+        ['성분 신뢰 컷','깨끗한 실험실 정물로 성분 근거를 암시하는 장면.'],
+        ['보습 사용감 컷','피부에 크림을 바르는 실사용 장면.'],
+        ['제형 매크로 컷','크림과 드롭 제형으로 기능성을 보여주는 근접 컷.'],
+        ['욕실 루틴 컷','생활 공간에서 쉽게 쓰는 루틴을 보여주는 장면.'],
+        ['손발 케어 컷','건조 부위 관리와 데일리 케어를 보여주는 장면.']
+      ]
+    }
+  ]
+};
+let selectedContentBrand = 'someud';
+
 function renderRoutine() {
   const target = document.getElementById('routine-grid');
   if (!target) return;
@@ -873,8 +968,56 @@ function renderArticleLinkBrief() {
   `).join('');
 }
 
+function contentAssetPath(path) {
+  return window.location.pathname.includes('/dashboard/') ? `../${path}` : path;
+}
+
+function renderContentGeneration() {
+  const summary = contentGenerationData.summary;
+  const brands = contentGenerationData.brands;
+  const active = brands.find(item => item.brand === selectedContentBrand) || brands[0];
+  document.getElementById('content-summary-grid').innerHTML = [
+    ['브랜드', summary.brandCount],
+    ['생성 시트', summary.sheetCount],
+    ['소재 슬롯', summary.slotCount],
+    ['검수', summary.visualCheck]
+  ].map(item => `
+    <div class="mc">
+      <div class="mc-lbl">${item[0]}</div>
+      <div class="mc-val">${item[1]}</div>
+    </div>
+  `).join('');
+  document.getElementById('content-brand-tabs').innerHTML = brands.map(item => `
+    <button class="${item.brand === active.brand ? 'on' : ''}" onclick="selectContentBrand('${item.brand}')">${item.display}</button>
+  `).join('');
+  document.getElementById('content-asset').innerHTML = `
+    <div class="trend-brief-title">${active.display} · ${active.category}</div>
+    <div class="trend-brief-meta">${contentGenerationData.mode} · ${active.size} · ${active.bytes} bytes</div>
+    <img src="${contentAssetPath(active.sheet)}" alt="${active.display} 5컷 콘텐츠 시트" style="margin-top:8px">
+    <div class="trend-brief-meta" style="margin-top:7px"><code>${active.sheet}</code></div>
+  `;
+  document.getElementById('content-concepts').innerHTML = active.concepts.map((concept, index) => `
+    <div class="concept-card">
+      <strong>${index + 1}. ${concept[0]}</strong>
+      <div>${concept[1]}</div>
+    </div>
+  `).join('');
+  document.getElementById('content-process').innerHTML = contentGenerationData.steps.map(step => `
+    <div class="process-card">
+      <strong>STEP ${step.no}. ${step.label}</strong>
+      <div class="trend-brief-meta">${step.status}</div>
+      <div>${step.note}</div>
+    </div>
+  `).join('');
+}
+
+function selectContentBrand(brand) {
+  selectedContentBrand = brand;
+  renderContentGeneration();
+}
+
 function showPage(idx, el) {
-  ['page0','page1','page2'].forEach((id,i) => {
+  ['page0','page1','page2','page3'].forEach((id,i) => {
     document.getElementById(id).style.display = i === idx ? '' : 'none';
   });
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('on'));
@@ -937,6 +1080,7 @@ renderRoutine();
 renderArticleLinkBrief();
 renderPortalSnsBriefs();
 renderTrendBriefings();
+renderContentGeneration();
 renderBrand('someud', '일간');
 </script>
 </body>

@@ -1,6 +1,6 @@
 {
   "status": "brands_api_ready",
-  "generated_at": "2026-06-07T01:25:14+09:00",
+  "generated_at": "2026-06-07T11:33:16+09:00",
   "brand_count": 5,
   "brands": [
     {
@@ -1596,6 +1596,330 @@
           "url": "https://www.tiktok.com/search?q=%EC%84%B1%EB%B6%84%20%EC%9D%B8%ED%8F%AC%EA%B7%B8%EB%9E%98%ED%94%BD%20%EC%8A%A4%ED%82%A8%EC%BC%80%EC%96%B4",
           "published_at": "",
           "snippet": "성분 요약형 카드, 사용법 숏폼, 기능성 전후 비교"
+        }
+      ]
+    }
+  ],
+  "content_generation": {
+    "exists": true,
+    "path": "history/daily/2026-06-07_content_generation_test.json",
+    "date": "2026-06-07",
+    "status": "generated_in_chat",
+    "mode": "chatgpt_5cut_sheet_test",
+    "test_scope": "브랜드별 5개 이미지 소재 프로세스 확인",
+    "brand_count": 5,
+    "generated_sheet_count": 5,
+    "image_slot_count": 25,
+    "dashboard_asset_count": 5,
+    "visual_check_status": "passed",
+    "charged_in_project_budget": false,
+    "project_openai_api_call_attempted": false,
+    "api_call_skip_reason": "내장 ChatGPT 이미지 생성 도구로 테스트했으며 프로젝트 .env 기반 OpenAI API 호출은 수행하지 않았다.",
+    "process_steps": [
+      {
+        "step": 1,
+        "label": "브랜드 선택",
+        "status": "ready",
+        "note": "콘텐츠 탭에서 5개 브랜드를 선택해 해당 브랜드 소재를 확인한다."
+      },
+      {
+        "step": 2,
+        "label": "소재 방향 생성",
+        "status": "ready",
+        "note": "브랜드별 트렌드와 운영 방향을 바탕으로 5개 소재 콘셉트를 만든다."
+      },
+      {
+        "step": 3,
+        "label": "ChatGPT 이미지 생성",
+        "status": "generated_in_chat",
+        "note": "브랜드별 5컷 콘셉트 시트를 실제 이미지로 생성했다."
+      },
+      {
+        "step": 4,
+        "label": "대시보드 검토",
+        "status": "ready",
+        "note": "생성 이미지를 브랜드별 소재 카드와 함께 검토한다."
+      }
+    ]
+  },
+  "content_generation_brands": [
+    {
+      "brand": "someud",
+      "display_name": "소머드",
+      "category": "황토 매트리스",
+      "status": "generated_in_chat",
+      "sheet_asset_path": "assets/generated/content_test/someud_20260607_chatgpt_5cut_sheet.png",
+      "local_output_path": "web/assets/generated/content_test/someud_20260607_chatgpt_5cut_sheet.png",
+      "generated_source_path": "C:/Users/town5/.codex/generated_images/019e0bc6-bc9c-78f0-9acf-d0a86d644b6b/ig_03ba822a8e2bac58016a24512dd77881918a217d8ad4c6ef56.png",
+      "width": 2140,
+      "height": 735,
+      "file_size_bytes": 1893207,
+      "sha256": "6DA05089DCBACD4375FCC9D7DA51B5CC0EA3C223A996545403AA03FAFD9B2988",
+      "visual_check": {
+        "non_blank": true,
+        "panel_count": 5,
+        "no_obvious_text": true,
+        "notes": "침실, 부모님 선물, 패브릭 질감, 아침 루틴, 프리미엄 침실 컷이 구분된다."
+      },
+      "concepts": [
+        {
+          "slot": 1,
+          "title": "숙면 체감 컷",
+          "angle": "따뜻한 침실에서 편안히 잠드는 장면.",
+          "format": "실사",
+          "status": "generated_in_chat"
+        },
+        {
+          "slot": 2,
+          "title": "부모님 선물 컷",
+          "angle": "선물 맥락으로 구매 명분을 보여주는 장면.",
+          "format": "실사",
+          "status": "generated_in_chat"
+        },
+        {
+          "slot": 3,
+          "title": "황토 온기 질감 컷",
+          "angle": "매트리스와 침구 질감으로 온기를 전달하는 장면.",
+          "format": "실사",
+          "status": "generated_in_chat"
+        },
+        {
+          "slot": 4,
+          "title": "아침 웰니스 컷",
+          "angle": "숙면 후 아침 루틴과 컨디션 회복을 보여주는 장면.",
+          "format": "실사",
+          "status": "generated_in_chat"
+        },
+        {
+          "slot": 5,
+          "title": "프리미엄 침실 컷",
+          "angle": "집 안 인테리어와 제품 존재감을 함께 보여주는 장면.",
+          "format": "실사",
+          "status": "generated_in_chat"
+        }
+      ]
+    },
+    {
+      "brand": "kinda",
+      "display_name": "킨다",
+      "category": "극손상 헤어팩",
+      "status": "generated_in_chat",
+      "sheet_asset_path": "assets/generated/content_test/kinda_20260607_chatgpt_5cut_sheet.png",
+      "local_output_path": "web/assets/generated/content_test/kinda_20260607_chatgpt_5cut_sheet.png",
+      "generated_source_path": "C:/Users/town5/.codex/generated_images/019e0bc6-bc9c-78f0-9acf-d0a86d644b6b/ig_03ba822a8e2bac58016a24517023708191a897aa85b08ec044.png",
+      "width": 2095,
+      "height": 750,
+      "file_size_bytes": 1611509,
+      "sha256": "8DC60625A9C7F2BDB7C244A87B8B506F89DFB4477D453405F6127339D64F20CD",
+      "visual_check": {
+        "non_blank": true,
+        "panel_count": 5,
+        "no_obvious_text": true,
+        "notes": "샤워 후 헤어, 홈살롱, 비포애프터형 머릿결, 제형, 모델 컷이 구분된다."
+      },
+      "concepts": [
+        {
+          "slot": 1,
+          "title": "샤워 후 윤기 컷",
+          "angle": "젖은 모발과 홈케어 사용감을 보여주는 장면.",
+          "format": "실사",
+          "status": "generated_in_chat"
+        },
+        {
+          "slot": 2,
+          "title": "홈살롱 루틴 컷",
+          "angle": "욕실과 화장대에서 직접 관리하는 루틴.",
+          "format": "실사",
+          "status": "generated_in_chat"
+        },
+        {
+          "slot": 3,
+          "title": "비포애프터 질감 컷",
+          "angle": "손상 모발과 매끈한 모발의 대비를 텍스트 없이 보여주는 장면.",
+          "format": "실사",
+          "status": "generated_in_chat"
+        },
+        {
+          "slot": 4,
+          "title": "제형 근접 컷",
+          "angle": "크리미한 헤어팩 제형과 빗질 사용감을 보여주는 장면.",
+          "format": "실사",
+          "status": "generated_in_chat"
+        },
+        {
+          "slot": 5,
+          "title": "매끈한 완성 컷",
+          "angle": "부드러운 머릿결과 자신감을 보여주는 인물 컷.",
+          "format": "실사",
+          "status": "generated_in_chat"
+        }
+      ]
+    },
+    {
+      "brand": "melliance",
+      "display_name": "멜리언스",
+      "category": "뷰티 루틴",
+      "status": "generated_in_chat",
+      "sheet_asset_path": "assets/generated/content_test/melliance_20260607_chatgpt_5cut_sheet.png",
+      "local_output_path": "web/assets/generated/content_test/melliance_20260607_chatgpt_5cut_sheet.png",
+      "generated_source_path": "C:/Users/town5/.codex/generated_images/019e0bc6-bc9c-78f0-9acf-d0a86d644b6b/ig_03ba822a8e2bac58016a2451b448f881918590f6adcf9ace53.png",
+      "width": 2172,
+      "height": 724,
+      "file_size_bytes": 1670992,
+      "sha256": "EBA89F4FC1D1594008542626FDB56D5DBFD86999C7B3506C080262B603DFA7E0",
+      "visual_check": {
+        "non_blank": true,
+        "panel_count": 5,
+        "no_obvious_text": true,
+        "notes": "아침 루틴, 피부결 근접, 제품 정물, 거울 루틴, 자연스러운 인물 컷이 구분된다."
+      },
+      "concepts": [
+        {
+          "slot": 1,
+          "title": "아침 루틴 컷",
+          "angle": "세안 후 스킨케어 루틴을 보여주는 장면.",
+          "format": "실사",
+          "status": "generated_in_chat"
+        },
+        {
+          "slot": 2,
+          "title": "피부결 근접 컷",
+          "angle": "촉촉한 피부결을 근접 화면으로 강조하는 장면.",
+          "format": "실사",
+          "status": "generated_in_chat"
+        },
+        {
+          "slot": 3,
+          "title": "제품 정물 컷",
+          "angle": "라벨 없는 제품과 깨끗한 소재감을 보여주는 장면.",
+          "format": "실사",
+          "status": "generated_in_chat"
+        },
+        {
+          "slot": 4,
+          "title": "거울 루틴 컷",
+          "angle": "손과 거울을 활용한 단계별 루틴 장면.",
+          "format": "실사",
+          "status": "generated_in_chat"
+        },
+        {
+          "slot": 5,
+          "title": "내추럴 포트레이트 컷",
+          "angle": "자연스러운 피부 표현과 신뢰감을 주는 인물 컷.",
+          "format": "실사",
+          "status": "generated_in_chat"
+        }
+      ]
+    },
+    {
+      "brand": "paperback",
+      "display_name": "페이퍼백",
+      "category": "라이프스타일 독서",
+      "status": "generated_in_chat",
+      "sheet_asset_path": "assets/generated/content_test/paperback_20260607_chatgpt_5cut_sheet.png",
+      "local_output_path": "web/assets/generated/content_test/paperback_20260607_chatgpt_5cut_sheet.png",
+      "generated_source_path": "C:/Users/town5/.codex/generated_images/019e0bc6-bc9c-78f0-9acf-d0a86d644b6b/ig_03ba822a8e2bac58016a2452123e8c8191b13fb40f342d25da.png",
+      "width": 2172,
+      "height": 724,
+      "file_size_bytes": 1492197,
+      "sha256": "E1ABF08D7D0DE8847C4F9955FB07A5DC9F8EF2B1474F49CB16B7D0387CFF13D8",
+      "visual_check": {
+        "non_blank": true,
+        "panel_count": 5,
+        "no_obvious_text": true,
+        "notes": "카페 테이블, 독서 공간, 페이지 넘김, 서가, 출퇴근 토트백 컷이 구분된다."
+      },
+      "concepts": [
+        {
+          "slot": 1,
+          "title": "카페 독서 컷",
+          "angle": "커피와 책을 함께 보여주는 감성 테이블 장면.",
+          "format": "실사",
+          "status": "generated_in_chat"
+        },
+        {
+          "slot": 2,
+          "title": "조용한 독서 공간 컷",
+          "angle": "집 안 독서 루틴과 햇살을 보여주는 장면.",
+          "format": "실사",
+          "status": "generated_in_chat"
+        },
+        {
+          "slot": 3,
+          "title": "페이지 몰입 컷",
+          "angle": "손과 책, 필기구로 몰입감을 보여주는 장면.",
+          "format": "실사",
+          "status": "generated_in_chat"
+        },
+        {
+          "slot": 4,
+          "title": "큐레이션 서가 컷",
+          "angle": "책장과 공간 취향을 함께 보여주는 장면.",
+          "format": "실사",
+          "status": "generated_in_chat"
+        },
+        {
+          "slot": 5,
+          "title": "일상 휴대 컷",
+          "angle": "토트백 속 책으로 생활 속 브랜드 접점을 보여주는 장면.",
+          "format": "실사",
+          "status": "generated_in_chat"
+        }
+      ]
+    },
+    {
+      "brand": "baren",
+      "display_name": "바렌",
+      "category": "기능성 케어",
+      "status": "generated_in_chat",
+      "sheet_asset_path": "assets/generated/content_test/baren_20260607_chatgpt_5cut_sheet.png",
+      "local_output_path": "web/assets/generated/content_test/baren_20260607_chatgpt_5cut_sheet.png",
+      "generated_source_path": "C:/Users/town5/.codex/generated_images/019e0bc6-bc9c-78f0-9acf-d0a86d644b6b/ig_03ba822a8e2bac58016a245252ee208191a19eb4aef79715cc.png",
+      "width": 1774,
+      "height": 887,
+      "file_size_bytes": 1107559,
+      "sha256": "0A8C8ED0B313DAD7EE3D85B8ADD5FFDA80E0BFED6A81831F27F6823389AF895D",
+      "visual_check": {
+        "non_blank": true,
+        "panel_count": 5,
+        "no_obvious_text": true,
+        "notes": "성분 실험실, 보습 사용감, 제형 근접, 욕실 정물, 손발 케어 컷이 구분된다."
+      },
+      "concepts": [
+        {
+          "slot": 1,
+          "title": "성분 신뢰 컷",
+          "angle": "깨끗한 실험실 정물로 성분 근거를 암시하는 장면.",
+          "format": "실사",
+          "status": "generated_in_chat"
+        },
+        {
+          "slot": 2,
+          "title": "보습 사용감 컷",
+          "angle": "피부에 크림을 바르는 실사용 장면.",
+          "format": "실사",
+          "status": "generated_in_chat"
+        },
+        {
+          "slot": 3,
+          "title": "제형 매크로 컷",
+          "angle": "크림과 드롭 제형으로 기능성을 보여주는 근접 컷.",
+          "format": "실사",
+          "status": "generated_in_chat"
+        },
+        {
+          "slot": 4,
+          "title": "욕실 루틴 컷",
+          "angle": "생활 공간에서 쉽게 쓰는 루틴을 보여주는 장면.",
+          "format": "실사",
+          "status": "generated_in_chat"
+        },
+        {
+          "slot": 5,
+          "title": "손발 케어 컷",
+          "angle": "건조 부위 관리와 데일리 케어를 보여주는 장면.",
+          "format": "실사",
+          "status": "generated_in_chat"
         }
       ]
     }

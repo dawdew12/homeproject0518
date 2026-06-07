@@ -268,3 +268,14 @@
 - [x] 오늘 날짜 live 수집과 대시보드 JSON 재생성
 - [x] 테스트와 로컬 렌더링 검증
 - [x] GitHub 저장 및 Vercel 배포 확인
+
+# Content Tab Image Generation Checklist
+
+- [x] 기존 이미지 생성 테스트와 대시보드 구조 확인.
+- [x] 브랜드별 5개 콘텐츠 소재 데이터 설계.
+- [x] ChatGPT 이미지 생성 테스트 산출물 저장.
+- [x] 루트 `AIPR_Dashboard.html`에 콘텐츠 탭 추가.
+- [x] Vercel용 `web/index.html`과 JSON/API에 콘텐츠 데이터 노출.
+- [x] 대시보드 데이터 재생성.
+- [x] 테스트와 로컬 렌더링 검증.
+- [ ] GitHub 저장과 Vercel 배포 확인.

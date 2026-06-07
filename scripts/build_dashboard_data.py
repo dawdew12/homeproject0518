@@ -213,6 +213,38 @@ def summarize_chatgpt_image_test(path: Path | None) -> dict[str, Any]:
     }
 
 
+def summarize_content_generation_test(path: Path | None) -> dict[str, Any]:
+    """브랜드별 콘텐츠 이미지 생성 테스트 결과를 대시보드용으로 요약한다."""
+    if path is None:
+        return {
+            "exists": False,
+            "status": "not_run",
+            "brand_count": 0,
+            "generated_sheet_count": 0,
+            "image_slot_count": 0,
+        }
+
+    payload = read_json(path, {})
+    summary = payload.get("summary", {})
+    return {
+        "exists": True,
+        "path": normalize_path(path),
+        "date": payload.get("date"),
+        "status": payload.get("status"),
+        "mode": payload.get("mode"),
+        "test_scope": payload.get("test_scope"),
+        "brand_count": summary.get("brand_count", 0),
+        "generated_sheet_count": summary.get("generated_sheet_count", 0),
+        "image_slot_count": summary.get("image_slot_count", 0),
+        "dashboard_asset_count": summary.get("dashboard_asset_count", 0),
+        "visual_check_status": summary.get("visual_check_status"),
+        "charged_in_project_budget": summary.get("charged_in_project_budget", False),
+        "project_openai_api_call_attempted": summary.get("project_openai_api_call_attempted", False),
+        "api_call_skip_reason": summary.get("api_call_skip_reason"),
+        "process_steps": payload.get("process_steps", []),
+    }
+
+
 def summarize_quality_review(path: Path | None) -> dict[str, Any]:
     """팀장 품질 검수 결과를 대시보드용 요약으로 변환한다."""
     if path is None:
@@ -679,6 +711,12 @@ def build_image_request_preview(image_payload: dict[str, Any], limit: int = 8) -
     ]
 
 
+def build_content_generation_brands(content_payload: dict[str, Any]) -> list[dict[str, Any]]:
+    """콘텐츠 탭에서 쓸 브랜드별 이미지 생성 결과를 정렬한다."""
+    by_brand = {item.get("brand"): item for item in content_payload.get("brands", [])}
+    return [by_brand[brand] for brand in BRAND_ORDER if brand in by_brand]
+
+
 def build_quality_preview(quality_payload: dict[str, Any], limit: int = 8) -> list[dict[str, Any]]:
     """품질 검수 결과 일부를 화면 미리보기용으로 줄인다."""
     return [
@@ -833,6 +871,11 @@ def build_feature_status() -> list[dict[str, Any]]:
             "name": "ChatGPT 실제 이미지 생성 테스트",
             "status": "generated_in_chat",
             "details": ["someud 샘플 1장", "실제 PNG 생성", "대시보드 asset 복사", "프로젝트 API 키는 미설정"],
+        },
+        {
+            "name": "브랜드별 콘텐츠 이미지 생성",
+            "status": "generated_in_chat",
+            "details": ["5개 브랜드", "브랜드별 5컷 콘셉트 시트", "소재 슬롯 25개", "콘텐츠 탭 검토"],
         },
         {
             "name": "품질 검수와 재생성 판단",
@@ -1210,6 +1253,10 @@ def build_brand_detail(payload: dict[str, Any], brand_name: str) -> dict[str, An
         "manager": [item for item in data.get("manager_preview", []) if item.get("brand") == brand_name],
         "prompts": [item for item in data.get("prompt_preview", []) if item.get("brand") == brand_name],
         "images": [item for item in data.get("image_preview", []) if item.get("brand") == brand_name],
+        "content_generation": next(
+            (item for item in data.get("content_generation_brands", []) if item.get("brand") == brand_name),
+            {},
+        ),
         "quality_reviews": [item for item in data.get("quality_preview", []) if item.get("brand") == brand_name],
         "learning": [item for item in data.get("learning_preview", []) if item.get("brand") == brand_name],
         "storage": [item for item in data.get("storage", {}).get("gdrive_preview", []) if item.get("brand") == brand_name],
@@ -1262,6 +1309,8 @@ def build_dashboard_api_payloads(payload: dict[str, Any]) -> dict[str, Any]:
             "trend_briefing_list": data.get("trend_briefing_list", []),
             "portal_sns_article_links": data.get("portal_sns_article_links", []),
             "portal_sns_daily_briefs": data.get("portal_sns_daily_briefs", []),
+            "content_generation": data.get("content_generation", {}),
+            "content_generation_brands": data.get("content_generation_brands", []),
         },
         "brand_details": {
             brand.get("brand"): build_brand_detail(payload, brand.get("brand"))
@@ -1303,6 +1352,7 @@ def build_dashboard_payload() -> dict[str, Any]:
     latest_prompt_file = find_latest_file("*_prompts.json")
     latest_image_file = find_latest_file("*_image_dry_run.json")
     latest_chatgpt_image_test_file = find_latest_file("*_chatgpt_image_test.json")
+    latest_content_generation_test_file = find_latest_file("*_content_generation_test.json")
     latest_quality_file = find_latest_file("*_quality_review.json")
     latest_learning_file = find_latest_file("*_winner_loser.json")
     latest_gdrive_file = find_latest_file("*_gdrive_manifest.json")
@@ -1315,6 +1365,7 @@ def build_dashboard_payload() -> dict[str, Any]:
     manager_payload = load_latest_daily_payload("*_manager_brief.json")
     prompt_payload = load_latest_daily_payload("*_prompts.json")
     image_payload = load_latest_daily_payload("*_image_dry_run.json")
+    content_generation_payload = load_latest_daily_payload("*_content_generation_test.json")
     quality_payload = load_latest_daily_payload("*_quality_review.json")
     learning_payload = load_latest_daily_payload("*_winner_loser.json")
     gdrive_payload = load_latest_daily_payload("*_gdrive_manifest.json")
@@ -1325,6 +1376,7 @@ def build_dashboard_payload() -> dict[str, Any]:
     prompt_summary = summarize_prompt_pack(latest_prompt_file)
     image_summary = summarize_image_dry_run(latest_image_file)
     chatgpt_image_test_summary = summarize_chatgpt_image_test(latest_chatgpt_image_test_file)
+    content_generation_summary = summarize_content_generation_test(latest_content_generation_test_file)
     quality_summary = summarize_quality_review(latest_quality_file)
     learning_summary = summarize_winner_loser(latest_learning_file)
     pattern_summary = summarize_winner_loser_patterns(PROJECT_ROOT / "history" / "winner_loser_patterns.json")
@@ -1391,6 +1443,7 @@ def build_dashboard_payload() -> dict[str, Any]:
             "prompts": prompt_summary,
             "images": image_summary,
             "chatgpt_image_test": chatgpt_image_test_summary,
+            "content_generation": content_generation_summary,
             "quality_review": quality_summary,
             "winner_loser": learning_summary,
             "winner_loser_patterns": pattern_summary,
@@ -1411,6 +1464,7 @@ def build_dashboard_payload() -> dict[str, Any]:
             "trend_briefing_list": build_trend_briefing_list(trend_payload),
             "portal_sns_article_links": portal_sns_clip_payload.get("article_links", []),
             "portal_sns_daily_briefs": portal_sns_clip_payload.get("brands", []),
+            "content_generation_brands": build_content_generation_brands(content_generation_payload),
             "ad_preview": sample_records(ad_payload),
             "trend_preview": sample_records(trend_payload),
             "manager_preview": build_manager_preview(manager_payload),

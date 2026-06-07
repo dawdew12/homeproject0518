@@ -1,6 +1,6 @@
 {
   "status": "brand_detail_api_ready",
-  "generated_at": "2026-06-07T01:25:14+09:00",
+  "generated_at": "2026-06-07T11:33:16+09:00",
   "brand": "melliance",
   "snapshot": {
     "brand": "melliance",
@@ -342,6 +342,62 @@
   ],
   "prompts": [],
   "images": [],
+  "content_generation": {
+    "brand": "melliance",
+    "display_name": "멜리언스",
+    "category": "뷰티 루틴",
+    "status": "generated_in_chat",
+    "sheet_asset_path": "assets/generated/content_test/melliance_20260607_chatgpt_5cut_sheet.png",
+    "local_output_path": "web/assets/generated/content_test/melliance_20260607_chatgpt_5cut_sheet.png",
+    "generated_source_path": "C:/Users/town5/.codex/generated_images/019e0bc6-bc9c-78f0-9acf-d0a86d644b6b/ig_03ba822a8e2bac58016a2451b448f881918590f6adcf9ace53.png",
+    "width": 2172,
+    "height": 724,
+    "file_size_bytes": 1670992,
+    "sha256": "EBA89F4FC1D1594008542626FDB56D5DBFD86999C7B3506C080262B603DFA7E0",
+    "visual_check": {
+      "non_blank": true,
+      "panel_count": 5,
+      "no_obvious_text": true,
+      "notes": "아침 루틴, 피부결 근접, 제품 정물, 거울 루틴, 자연스러운 인물 컷이 구분된다."
+    },
+    "concepts": [
+      {
+        "slot": 1,
+        "title": "아침 루틴 컷",
+        "angle": "세안 후 스킨케어 루틴을 보여주는 장면.",
+        "format": "실사",
+        "status": "generated_in_chat"
+      },
+      {
+        "slot": 2,
+        "title": "피부결 근접 컷",
+        "angle": "촉촉한 피부결을 근접 화면으로 강조하는 장면.",
+        "format": "실사",
+        "status": "generated_in_chat"
+      },
+      {
+        "slot": 3,
+        "title": "제품 정물 컷",
+        "angle": "라벨 없는 제품과 깨끗한 소재감을 보여주는 장면.",
+        "format": "실사",
+        "status": "generated_in_chat"
+      },
+      {
+        "slot": 4,
+        "title": "거울 루틴 컷",
+        "angle": "손과 거울을 활용한 단계별 루틴 장면.",
+        "format": "실사",
+        "status": "generated_in_chat"
+      },
+      {
+        "slot": 5,
+        "title": "내추럴 포트레이트 컷",
+        "angle": "자연스러운 피부 표현과 신뢰감을 주는 인물 컷.",
+        "format": "실사",
+        "status": "generated_in_chat"
+      }
+    ]
+  },
   "quality_reviews": [],
   "learning": [
     {
