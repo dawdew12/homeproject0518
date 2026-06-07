@@ -445,3 +445,9 @@
 - 로컬 HTTP 검증에서 `AIPR_Dashboard.html`, `web/index.html`, `web/data/latest_status.json`, `web/assets/generated/content_test/someud_20260607_chatgpt_5cut_sheet.png`가 모두 200 응답을 반환했다.
 - 인앱 브라우저 검증에서 루트 `콘텐츠` 탭은 브랜드 버튼 5개, 소재 카드 5개, 이미지 로딩 성공을 확인했고, `바렌`으로 전환했을 때 이미지와 첫 소재 카드가 정상 갱신됐다.
 - Vercel용 `web/index.html`에서도 콘텐츠 섹션의 브랜드 버튼 5개, 소재 카드 5개, 이미지 로딩 성공을 확인했다.
+
+## 2026-06-07 Content Tab Image Generation 배포 확인
+
+- GitHub main에 `bd729f3 [DASHBOARD] 콘텐츠 탭 이미지 생성 테스트 추가` 커밋을 push했다.
+- Vercel production deployment `dpl_DXnxTLQkUHzjSepAWHqAzfkF6LSn`는 `bd729f3c429bc1a7f5ee44e093fca5f4c73f6178` 커밋으로 READY 상태다.
+- 배포 URL은 `https://homeproject0518-1sci87eav-raw22226-9071s-projects.vercel.app`이며, Vercel Authentication 보호가 켜져 있으면 직접 접속 시 로그인이 필요할 수 있다.

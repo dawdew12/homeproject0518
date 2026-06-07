@@ -278,4 +278,4 @@
 - [x] Vercel용 `web/index.html`과 JSON/API에 콘텐츠 데이터 노출.
 - [x] 대시보드 데이터 재생성.
 - [x] 테스트와 로컬 렌더링 검증.
-- [ ] GitHub 저장과 Vercel 배포 확인.
+- [x] GitHub 저장과 Vercel 배포 확인.
