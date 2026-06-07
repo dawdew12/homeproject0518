@@ -511,3 +511,10 @@
 - 로컬 HTTP 검증에서 `index.html`, `team-dashboard.html`, `automation.html`, `content.html`, `research.html`, 공통 CSS/JS, `latest_status.json`이 모두 200 응답을 반환했다.
 - 인앱 브라우저 검증에서 네 개 페이지가 각각 별도 URL로 열리고, 페이지별 활성 네비게이션과 주요 데이터가 렌더링되는 것을 확인했다.
 - `web/index.html` 진입 시 `web/team-dashboard.html`로 이동하고 팀 대시보드 데이터가 보이는 것을 확인했다.
+
+## 2026-06-07 Multi Page Dashboard Split 배포 확인
+
+- GitHub main에 `83c0de5 [DASHBOARD] Vercel 대시보드 페이지 분리` 커밋을 push했다.
+- Vercel production deployment `dpl_7qMGFa2U6wBPjpogaY8BEUSUGFdC`는 `83c0de59b3a27bbf401e43c5ef74bb7b0aee2385` 커밋으로 READY 상태다.
+- 배포 URL은 `https://homeproject0518-4wc5cad8h-raw22226-9071s-projects.vercel.app`이다.
+- Vercel 보호 fetch로 `/`, `/team-dashboard`, `/automation`, `/content`, `/research` 경로가 HTML을 반환하는 것을 확인했다.
