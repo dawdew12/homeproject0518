@@ -1,0 +1,61 @@
+<!-- AIPR 자동화 루틴 개별 페이지를 제공한다. -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIPR 자동화 루틴</title>
+<link rel="stylesheet" href="assets/dashboard.css">
+</head>
+<body data-page="automation">
+<main>
+  <header>
+    <div>
+      <h1>자동화 루틴</h1>
+      <p class="sub">에이전트별 실행 단계, 브랜드별 실행 확인판, 저장소 연동 상태를 확인합니다.</p>
+    </div>
+    <div class="status-pill" id="deploy-status">데이터 불러오는 중</div>
+  </header>
+
+  <nav class="page-nav" aria-label="대시보드 페이지">
+    <a data-page="team" href="team-dashboard.html">팀 대시보드</a>
+    <a data-page="automation" href="automation.html">자동화 루틴</a>
+    <a data-page="content" href="content.html">콘텐츠</a>
+    <a data-page="research" href="research.html">리서치</a>
+  </nav>
+
+  <section>
+    <h2>자동화 파이프라인</h2>
+    <div class="pipeline" id="pipeline"></div>
+  </section>
+
+  <section>
+    <h2>에이전트 운영판</h2>
+    <div class="agent-list" id="agent-list"></div>
+  </section>
+
+  <section>
+    <h2>브랜드별 자동화 실행 확인판</h2>
+    <div class="routine-board" id="brand-routine-board"></div>
+  </section>
+
+  <section>
+    <h2>저장소 연동</h2>
+    <div id="storage-table"></div>
+  </section>
+
+  <section>
+    <h2>실행 로그</h2>
+    <div id="log-table"></div>
+  </section>
+
+  <section>
+    <h2>실시간 API 상태</h2>
+    <div id="api-table"></div>
+  </section>
+
+  <div id="page-error"></div>
+</main>
+<script src="assets/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!-- AIPR 리서치 개별 페이지를 제공한다. -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIPR 리서치</title>
+<link rel="stylesheet" href="assets/dashboard.css">
+</head>
+<body data-page="research">
+<main>
+  <header>
+    <div>
+      <h1>리서치</h1>
+      <p class="sub">포털/SNS 일간 요약, 기사 링크, 트렌드 브리핑과 데이터 미리보기를 확인합니다.</p>
+    </div>
+    <div class="status-pill" id="deploy-status">데이터 불러오는 중</div>
+  </header>
+
+  <nav class="page-nav" aria-label="대시보드 페이지">
+    <a data-page="team" href="team-dashboard.html">팀 대시보드</a>
+    <a data-page="automation" href="automation.html">자동화 루틴</a>
+    <a data-page="content" href="content.html">콘텐츠</a>
+    <a data-page="research" href="research.html">리서치</a>
+  </nav>
+
+  <section>
+    <h2>리서치 실제 연결 데이터</h2>
+    <div class="research-snapshot-grid" id="research-snapshot-grid"></div>
+  </section>
+
+  <section>
+    <h2>포털/SNS 일간 3줄 요약</h2>
+    <p class="sub">공개 포털 뉴스와 SNS 검색 링크를 브랜드별로 묶은 당일 클리핑 요약입니다.</p>
+    <div class="article-brief" id="portal-article-brief"></div>
+    <div class="article-link-list" id="portal-article-links"></div>
+    <div class="portal-sns-board" id="portal-sns-board"></div>
+  </section>
+
+  <section>
+    <h2>수집 트렌드 브리핑 목록</h2>
+    <div id="trend-briefing-table"></div>
+  </section>
+
+  <section>
+    <h2>시장조사 출처</h2>
+    <div class="content-summary-grid" id="source-counts"></div>
+    <div class="chips" id="monitoring-sources" style="margin-top:12px"></div>
+  </section>
+
+  <section>
+    <h2>브랜드별 지표</h2>
+    <div id="brand-table"></div>
+  </section>
+
+  <section>
+    <h2>수집 데이터 미리보기</h2>
+    <div id="data-preview-table"></div>
+  </section>
+
+  <div id="page-error"></div>
+</main>
+<script src="assets/dashboard.js"></script>
+</body>
+</html>

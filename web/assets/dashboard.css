@@ -1,0 +1,541 @@
+/* AIPR 분리형 대시보드 공통 스타일을 정의한다. */
+:root {
+  --bg: #f4f6f3;
+  --panel: #ffffff;
+  --soft: #f8faf7;
+  --ink: #1c211f;
+  --muted: #68706a;
+  --line: #dce2db;
+  --green: #1d7b55;
+  --blue: #245fa8;
+  --amber: #9a6508;
+  --red: #a53434;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Pretendard", "Segoe UI", Arial, sans-serif;
+  line-height: 1.58;
+}
+
+main {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 28px 20px 52px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+h1 {
+  margin: 0 0 6px;
+  font-size: 27px;
+  line-height: 1.2;
+}
+
+h2 {
+  margin: 0 0 12px;
+  font-size: 18px;
+}
+
+h3 {
+  margin: 0 0 6px;
+  font-size: 14px;
+}
+
+.sub {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.status-pill {
+  background: #e7f4ee;
+  color: var(--green);
+  border: 1px solid #c9e7d8;
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.page-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 16px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 10px;
+}
+
+.page-nav a {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--muted);
+  padding: 7px 13px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.page-nav a.active,
+.page-nav a:hover {
+  border-color: #b8dfca;
+  background: #e7f4ee;
+  color: var(--green);
+}
+
+.grid,
+.tiles,
+.phase-list,
+.pipeline,
+.agent-list,
+.routine-board,
+.portal-sns-board,
+.article-link-list,
+.live-data-grid,
+.research-snapshot-grid,
+.content-summary-grid,
+.concept-grid,
+.content-process,
+.architecture-map,
+.flow-list,
+.wide-cols,
+.cols {
+  display: grid;
+  gap: 12px;
+}
+
+.grid {
+  grid-template-columns: repeat(6, 1fr);
+  margin-bottom: 14px;
+}
+
+.live-data-grid,
+.content-summary-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.research-snapshot-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.tiles,
+.phase-list,
+.agent-list,
+.architecture-map {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.pipeline,
+.flow-list {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.routine-board,
+.portal-sns-board,
+.article-link-list,
+.cols {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.wide-cols {
+  grid-template-columns: 1.15fr .85fr;
+}
+
+section,
+.metric,
+.tile,
+.phase,
+.agent,
+.step,
+.routine-brand,
+.routine-part,
+.portal-sns-card,
+.article-link-item,
+.content-asset,
+.concept-card,
+.process-card,
+.arch-layer,
+.flow-item,
+.progress-panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+section {
+  padding: 16px;
+  margin-top: 14px;
+}
+
+.metric,
+.tile,
+.phase,
+.agent,
+.step,
+.routine-brand,
+.portal-sns-card,
+.content-asset,
+.concept-card,
+.process-card,
+.arch-layer,
+.flow-item,
+.progress-panel {
+  padding: 12px;
+}
+
+.metric {
+  padding: 15px 16px;
+}
+
+.label {
+  color: var(--muted);
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
+.value {
+  font-size: 24px;
+  font-weight: 750;
+}
+
+.ok {
+  color: var(--green);
+}
+
+.info {
+  color: var(--blue);
+}
+
+.warn {
+  color: var(--amber);
+}
+
+.bad {
+  color: var(--red);
+}
+
+.tag {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 2px 8px;
+  margin-top: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  background: #edf1ed;
+  color: var(--muted);
+}
+
+.tag.completed,
+.tag.mock_ready,
+.tag.static_ready,
+.tag.dry_run_ready,
+.tag.quality_review_ready,
+.tag.learning_ready,
+.tag.storage_ready,
+.tag.realtime_ready,
+.tag.automation_ready,
+.tag.stabilized,
+.tag.generated_in_chat,
+.tag.preflight_passed,
+.tag.cost_within_limits,
+.tag.brand_registry_ready,
+.tag.mock_safe,
+.tag.ready,
+.tag.configured,
+.tag.passed,
+.tag.approved,
+.tag.winner {
+  background: #e4f3ec;
+  color: var(--green);
+}
+
+.tag.next,
+.tag.dry_run_planned {
+  background: #e7eef9;
+  color: var(--blue);
+}
+
+.tag.analysis_ready {
+  background: #e4f0f2;
+  color: #28606d;
+}
+
+.tag.prompt_ready {
+  background: #eef0e4;
+  color: #5e6724;
+}
+
+.tag.planned,
+.tag.skeleton_ready,
+.tag.regeneration_required,
+.tag.pending {
+  background: #faefd8;
+  color: var(--amber);
+}
+
+.tag.loser {
+  background: #f8e5e5;
+  color: var(--red);
+}
+
+.progress-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 14px;
+}
+
+.progress-value {
+  font-size: 38px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--green);
+}
+
+.progress-bar {
+  height: 12px;
+  background: #e5eae4;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-top: 12px;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, #1d7b55, #245fa8);
+}
+
+.routine-head,
+.routine-part-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.routine-parts {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.routine-part {
+  padding: 10px;
+  background: #fff;
+  min-height: 132px;
+}
+
+.routine-no,
+.step-num {
+  color: var(--blue);
+  font-weight: 800;
+  font-size: 12px;
+}
+
+.routine-lines {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.routine-lines div {
+  margin-top: 4px;
+}
+
+.summary-lines {
+  margin: 10px 0 0;
+  padding-left: 18px;
+  color: var(--ink);
+  font-size: 13px;
+}
+
+.clip-links,
+.chips,
+.content-brand-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.clip-link,
+.chip,
+.content-brand-tabs button {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 4px 8px;
+  background: #fff;
+  color: var(--blue);
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.content-brand-tabs {
+  margin: 12px 0;
+}
+
+.content-brand-tabs button {
+  color: var(--muted);
+  padding: 7px 12px;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.content-brand-tabs button.on {
+  border-color: #b8dfca;
+  background: #e7f4ee;
+  color: var(--green);
+  font-weight: 700;
+}
+
+.article-brief {
+  border: 1px solid #c9e7d8;
+  border-radius: 8px;
+  background: #f0f8f4;
+  padding: 12px;
+  margin: 10px 0;
+}
+
+.article-brief strong {
+  color: var(--green);
+}
+
+.content-layout,
+.generated-image-wrap {
+  display: grid;
+  grid-template-columns: minmax(280px, .95fr) 1.05fr;
+  gap: 14px;
+  align-items: start;
+}
+
+.generated-image-wrap {
+  grid-template-columns: minmax(180px, 320px) 1fr;
+}
+
+.content-asset img,
+.generated-image-wrap img {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: #fff;
+}
+
+.concept-card strong,
+.process-card strong {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+.arch-node {
+  border-top: 1px solid var(--line);
+  padding: 8px 0;
+}
+
+.arch-node:first-of-type {
+  border-top: 0;
+}
+
+.node-title {
+  display: block;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.node-metric {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.flow-arrow {
+  color: var(--blue);
+  font-weight: 800;
+  margin: 0 4px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+td,
+th {
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  padding: 9px 6px;
+  vertical-align: top;
+}
+
+th {
+  color: var(--muted);
+  font-weight: 700;
+}
+
+code {
+  background: #edf1ed;
+  border-radius: 5px;
+  padding: 2px 5px;
+}
+
+ul {
+  margin: 8px 0 0;
+  padding-left: 20px;
+}
+
+li {
+  margin: 5px 0;
+}
+
+.empty {
+  color: var(--muted);
+  padding: 14px;
+}
+
+.page-note {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+@media (max-width: 980px) {
+  header,
+  .grid,
+  .live-data-grid,
+  .research-snapshot-grid,
+  .cols,
+  .wide-cols,
+  .generated-image-wrap,
+  .content-summary-grid,
+  .content-layout,
+  .tiles,
+  .phase-list,
+  .pipeline,
+  .agent-list,
+  .progress-layout,
+  .architecture-map,
+  .flow-list,
+  .routine-board,
+  .portal-sns-board,
+  .article-link-list,
+  .routine-parts {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}

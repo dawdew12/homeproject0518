@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-07T13:18:24+09:00",
+  "generated_at": "2026-06-07T20:04:18+09:00",
   "project": {
     "name": "AIPR",
     "github_repo": "https://github.com/dawdew12/homeproject0518",
@@ -4167,6 +4167,14 @@
     "branch": "main",
     "recent_commits": [
       {
+        "hash": "9f3aa5b",
+        "subject": "[DOCS] 리서치 탭 배포 확인 기록"
+      },
+      {
+        "hash": "25eca90",
+        "subject": "[DASHBOARD] 실제 테스트 데이터와 리서치 탭 반영"
+      },
+      {
         "hash": "c84c183",
         "subject": "[DOCS] 콘텐츠 탭 이미지 생성 배포 확인 기록"
       },
@@ -4177,14 +4185,6 @@
       {
         "hash": "231eef5",
         "subject": "[DOCS] 팀원B 기사 링크 배포 확인 기록"
-      },
-      {
-        "hash": "a10fa6d",
-        "subject": "[DASHBOARD] 팀원B 기사 링크 시사점 추가"
-      },
-      {
-        "hash": "ec450d2",
-        "subject": "[DOCS] 포털 SNS 클리핑 배포 확인 기록"
       }
     ]
   },

@@ -1,0 +1,92 @@
+<!-- AIPR 팀 대시보드 개별 페이지를 제공한다. -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIPR 팀 대시보드</title>
+<link rel="stylesheet" href="assets/dashboard.css">
+</head>
+<body data-page="team">
+<main>
+  <header>
+    <div>
+      <h1>팀 대시보드</h1>
+      <p class="sub">진행도, 실제 테스트 연결 수치, 시스템 상태를 확인합니다.</p>
+    </div>
+    <div class="status-pill" id="deploy-status">데이터 불러오는 중</div>
+  </header>
+
+  <nav class="page-nav" aria-label="대시보드 페이지">
+    <a data-page="team" href="team-dashboard.html">팀 대시보드</a>
+    <a data-page="automation" href="automation.html">자동화 루틴</a>
+    <a data-page="content" href="content.html">콘텐츠</a>
+    <a data-page="research" href="research.html">리서치</a>
+  </nav>
+
+  <section>
+    <h2>운영 요약</h2>
+    <div class="grid" id="overview-metrics"></div>
+  </section>
+
+  <section>
+    <h2>실제 연결 테스트</h2>
+    <p class="sub">이번 테스트 산출물을 JSON에서 읽어 팀 운영판에 표시합니다.</p>
+    <div class="live-data-grid" id="live-test-grid" style="margin-top:12px"></div>
+  </section>
+
+  <section>
+    <h2>전체 진행도</h2>
+    <div class="progress-layout">
+      <div class="progress-panel">
+        <div class="label">공식 로드맵 기준</div>
+        <div class="progress-value" id="overall-percent">-</div>
+        <div class="progress-bar"><div class="progress-fill" id="overall-progress-fill"></div></div>
+        <p class="sub" id="overall-summary" style="margin-top:10px">-</p>
+      </div>
+      <div class="phase-list" id="phase-roadmap"></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>소프트웨어 아키텍처</h2>
+    <div class="architecture-map" id="architecture-map"></div>
+  </section>
+
+  <section>
+    <h2>데이터 흐름</h2>
+    <div class="flow-list" id="architecture-flow"></div>
+  </section>
+
+  <section>
+    <h2>Phase별 테스트 결과</h2>
+    <div id="phase-tests"></div>
+  </section>
+
+  <section>
+    <h2>구현 기능 현황</h2>
+    <div class="tiles" id="feature-status"></div>
+  </section>
+
+  <div class="cols">
+    <section>
+      <h2>데이터 수집 상태</h2>
+      <div id="data-status-table"></div>
+    </section>
+    <section>
+      <h2>다음 작업</h2>
+      <div id="next-step"></div>
+      <ul id="risks"></ul>
+    </section>
+  </div>
+
+  <section>
+    <h2>실시간 API 상태</h2>
+    <div id="api-table"></div>
+  </section>
+
+  <div id="page-error"></div>
+</main>
+<script src="assets/dashboard.js"></script>
+</body>
+</html>

@@ -9,6 +9,22 @@
       "destination": "/index.html"
     },
     {
+      "source": "/team-dashboard",
+      "destination": "/team-dashboard.html"
+    },
+    {
+      "source": "/automation",
+      "destination": "/automation.html"
+    },
+    {
+      "source": "/content",
+      "destination": "/content.html"
+    },
+    {
+      "source": "/research",
+      "destination": "/research.html"
+    },
+    {
       "source": "/api/status",
       "destination": "/api/status.json"
     },

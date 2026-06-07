@@ -484,3 +484,30 @@
 - Vercel production deployment `dpl_GstuaQCx1Ex1BNSqbxqRHEWyY71F`는 `25eca90f1e22e9d0c985b8a028ab32bca4907bc1` 커밋으로 READY 상태다.
 - 배포 URL은 `https://homeproject0518-hrpdr0oqw-raw22226-9071s-projects.vercel.app`이다.
 - 일반 HTTP 접근은 Vercel Authentication으로 막혔지만, Vercel 인증 커넥터의 protected fetch로 200 응답과 새 HTML 마크업을 확인했다.
+
+## 2026-06-07 Multi Page Dashboard Split 시작
+
+- 사용자 요청은 `web/index.html` 안에서 앵커로 이동하는 방식이 아니라 팀 대시보드, 자동화 루틴, 콘텐츠, 리서치를 실제 개별 페이지로 분류하는 것이다.
+- 기존 단일 페이지의 주요 데이터 렌더링은 `web/data/latest_status.json` 한 파일을 기준으로 유지한다.
+- 새 구조는 `team-dashboard.html`, `automation.html`, `content.html`, `research.html` 네 페이지와 공통 `assets/dashboard.css`, `assets/dashboard.js`로 분리한다.
+- `index.html`은 팀 대시보드 진입점으로 정리해 Vercel 루트 접속 시에도 같은 운영 화면으로 들어가게 한다.
+- 페이지별 HTML은 작게 유지하고, 공통 JS가 현재 `body[data-page]` 값에 따라 필요한 섹션만 렌더링한다.
+
+## 2026-06-07 Multi Page Dashboard Split 구현
+
+- `web/assets/dashboard.css`를 추가해 네 페이지 공통 레이아웃, 카드, 테이블, 네비게이션 스타일을 분리했다.
+- `web/assets/dashboard.js`를 추가해 `latest_status.json`과 정적 API JSON을 읽고 현재 페이지에 필요한 영역만 렌더링하게 했다.
+- `web/team-dashboard.html`은 운영 요약, 실제 연결 테스트, 전체 진행도, 아키텍처, 데이터 상태, API 상태를 담당한다.
+- `web/automation.html`은 자동화 파이프라인, 에이전트 운영판, 브랜드별 자동화 실행 확인판, 저장소 연동, 실행 로그를 담당한다.
+- `web/content.html`은 콘텐츠 제작 테스트, 실제 이미지 생성 테스트, 품질 요약, 프롬프트, 이미지 요청, 품질 검수, Winner/Loser 학습을 담당한다.
+- `web/research.html`은 포털/SNS 일간 3줄 요약, 기사 링크, 트렌드 브리핑 목록, 시장조사 출처, 브랜드별 지표를 담당한다.
+- `web/index.html`은 팀 대시보드로 이동하는 진입점으로 줄였고, `vercel.json`에 `/team-dashboard`, `/automation`, `/content`, `/research` rewrite를 추가했다.
+
+## 2026-06-07 Multi Page Dashboard Split 검증
+
+- `node --check web\assets\dashboard.js`로 공통 렌더링 스크립트 문법을 확인했다.
+- `python scripts\build_dashboard_data.py`로 대시보드 데이터와 API JSON을 재생성했다.
+- `python -m unittest tests.test_trend_collector tests.test_portal_sns_clipper tests.test_data_collector tests.test_manager tests.test_prompt_engineer tests.test_image_designer tests.test_storage_utils tests.test_dashboard_api tests.test_daily_pipeline tests.test_operation_guard tests.test_build_dashboard_data`는 44개 테스트 통과로 확인했다.
+- 로컬 HTTP 검증에서 `index.html`, `team-dashboard.html`, `automation.html`, `content.html`, `research.html`, 공통 CSS/JS, `latest_status.json`이 모두 200 응답을 반환했다.
+- 인앱 브라우저 검증에서 네 개 페이지가 각각 별도 URL로 열리고, 페이지별 활성 네비게이션과 주요 데이터가 렌더링되는 것을 확인했다.
+- `web/index.html` 진입 시 `web/team-dashboard.html`로 이동하고 팀 대시보드 데이터가 보이는 것을 확인했다.

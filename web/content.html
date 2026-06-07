@@ -1,0 +1,78 @@
+<!-- AIPR 콘텐츠 제작 개별 페이지를 제공한다. -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIPR 콘텐츠</title>
+<link rel="stylesheet" href="assets/dashboard.css">
+</head>
+<body data-page="content">
+<main>
+  <header>
+    <div>
+      <h1>콘텐츠</h1>
+      <p class="sub">브랜드별 이미지 소재 생성, 프롬프트, 품질 검수와 학습 결과를 확인합니다.</p>
+    </div>
+    <div class="status-pill" id="deploy-status">데이터 불러오는 중</div>
+  </header>
+
+  <nav class="page-nav" aria-label="대시보드 페이지">
+    <a data-page="team" href="team-dashboard.html">팀 대시보드</a>
+    <a data-page="automation" href="automation.html">자동화 루틴</a>
+    <a data-page="content" href="content.html">콘텐츠</a>
+    <a data-page="research" href="research.html">리서치</a>
+  </nav>
+
+  <section>
+    <h2>콘텐츠 제작 테스트</h2>
+    <p class="sub">브랜드별 5개 이미지 소재 콘셉트와 ChatGPT 생성 시트를 확인합니다.</p>
+    <div class="content-summary-grid" id="content-summary-grid" style="margin-top:12px"></div>
+    <div class="content-brand-tabs" id="content-brand-tabs"></div>
+    <div class="content-layout">
+      <div class="content-asset" id="content-asset"></div>
+      <div>
+        <div class="concept-grid" id="content-concepts"></div>
+        <div class="content-process" id="content-process" style="margin-top:10px"></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>실제 이미지 생성 테스트</h2>
+    <div class="generated-image-wrap">
+      <img id="generated-image-preview" alt="ChatGPT 생성 테스트 이미지" src="" hidden>
+      <div id="generated-image-table"></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>품질 요약</h2>
+    <div class="content-summary-grid" id="content-quality-metrics"></div>
+  </section>
+
+  <section>
+    <h2>프롬프트 Pack 미리보기</h2>
+    <div id="prompt-table"></div>
+  </section>
+
+  <section>
+    <h2>이미지 Dry-run 요청</h2>
+    <div id="image-table"></div>
+  </section>
+
+  <section>
+    <h2>품질 검수 결과</h2>
+    <div id="quality-table"></div>
+  </section>
+
+  <section>
+    <h2>Winner/Loser 학습</h2>
+    <div id="learning-table"></div>
+  </section>
+
+  <div id="page-error"></div>
+</main>
+<script src="assets/dashboard.js"></script>
+</body>
+</html>
