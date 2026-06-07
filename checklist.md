@@ -289,4 +289,4 @@
 - [x] Vercel용 `web/index.html`에도 같은 분류와 실제 수치 반영.
 - [x] 대시보드 데이터 재생성 및 테스트 실행.
 - [x] 로컬 브라우저 렌더링 검증.
-- [ ] GitHub 저장과 Vercel 배포 확인.
+- [x] GitHub 저장과 Vercel 배포 확인.

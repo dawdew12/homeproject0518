@@ -477,3 +477,10 @@
 - 로컬 HTTP 검증에서 `AIPR_Dashboard.html`, `dashboard/AIPR_Dashboard.html`, `web/index.html`, `web/data/latest_status.json`이 모두 200 응답을 반환했다.
 - 인앱 브라우저 DOM 검증에서 루트 대시보드는 실제 수치, 리서치 탭 존재, 기사 링크 15개, 포털/SNS 카드 5개, 트렌드 카드 20개를 확인했다.
 - 인앱 브라우저 DOM 검증에서 Vercel용 `web/index.html`은 실제 연결 테스트 수치 44 통과, 5브랜드 25슬롯, 30클립, 리서치 30/15/20건, 포털/SNS 카드 5개, 기사 링크 15개, 트렌드 행 20개를 확인했다.
+
+## 2026-06-07 Team Dashboard Live Test Data And Research Tab 배포 확인
+
+- GitHub main에 `25eca90 [DASHBOARD] 실제 테스트 데이터와 리서치 탭 반영` 커밋을 push했다.
+- Vercel production deployment `dpl_GstuaQCx1Ex1BNSqbxqRHEWyY71F`는 `25eca90f1e22e9d0c985b8a028ab32bca4907bc1` 커밋으로 READY 상태다.
+- 배포 URL은 `https://homeproject0518-hrpdr0oqw-raw22226-9071s-projects.vercel.app`이다.
+- 일반 HTTP 접근은 Vercel Authentication으로 막혔지만, Vercel 인증 커넥터의 protected fetch로 200 응답과 새 HTML 마크업을 확인했다.
