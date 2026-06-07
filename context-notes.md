@@ -451,3 +451,29 @@
 - GitHub main에 `bd729f3 [DASHBOARD] 콘텐츠 탭 이미지 생성 테스트 추가` 커밋을 push했다.
 - Vercel production deployment `dpl_DXnxTLQkUHzjSepAWHqAzfkF6LSn`는 `bd729f3c429bc1a7f5ee44e093fca5f4c73f6178` 커밋으로 READY 상태다.
 - 배포 URL은 `https://homeproject0518-1sci87eav-raw22226-9071s-projects.vercel.app`이며, Vercel Authentication 보호가 켜져 있으면 직접 접속 시 로그인이 필요할 수 있다.
+
+## 2026-06-07 Team Dashboard Live Test Data And Research Tab 시작
+
+- 사용자 요청은 팀 대시보드 테스트 화면에 실제 연결된 산출물 값을 입력하고, 포털/SNS 일간 3줄 요약과 2번 트렌드 수집 브리핑 목록을 자동화 루틴 탭 밖의 별도 탭으로 분리하는 것이다.
+- 실제 데이터 기준은 `web/data/latest_status.json`의 최신 산출물로 잡는다.
+- 이번 테스트 핵심 값은 검증 44개 통과, 콘텐츠 생성 5브랜드, 생성 시트 5장, 소재 슬롯 25개, 프로젝트 OpenAI API 과금 없음이다.
+- 리서치 데이터 핵심 값은 2026-06-07 포털/SNS live 클립 30건, 기사 링크 15건, 브랜드별 3줄 요약 15줄, 2026-06-04 트렌드 mock 20건이다.
+- 루트 `AIPR_Dashboard.html`은 사용자가 현재 열어둔 화면이므로 실제 탭을 추가하고, `dashboard/AIPR_Dashboard.html`은 같은 파일로 동기화한다.
+- Vercel용 `web/index.html`에는 팀 대시보드 실제 테스트 수치와 리서치 전용 영역을 추가해 배포 화면에서도 자동화 루틴과 리서치 정보를 분리해 보이게 한다.
+
+## 2026-06-07 Team Dashboard Live Test Data And Research Tab 구현
+
+- 루트 `AIPR_Dashboard.html`에 `리서치` 탭을 추가했고, 기존 자동화 루틴 탭 안에 있던 포털/SNS 일간 3줄 요약과 2번 트렌드 수집 브리핑 목록을 `page4`로 이동했다.
+- 팀 대시보드 상단에는 검증 44개 통과, 콘텐츠 생성 5브랜드, 포털/SNS 30클립, 프로젝트 API 과금 $0 카드를 추가했다.
+- 루트 대시보드는 `web/data/latest_status.json` fetch가 가능할 때 최신 실제 수치로 덮어쓰고, 파일 직접 열기처럼 fetch가 막히는 경우에는 최신 기본값을 유지한다.
+- Vercel용 `web/index.html`에는 탭형 네비게이션, 팀 대시보드 실제 연결 테스트 카드, 리서치 탭 섹션을 추가했다.
+- `dashboard/AIPR_Dashboard.html`은 루트 대시보드와 동일하게 동기화했다.
+
+## 2026-06-07 Team Dashboard Live Test Data And Research Tab 검증
+
+- `python scripts\build_dashboard_data.py`로 `web/data/latest_status.json`과 API JSON 12개를 재생성했다.
+- `python -m unittest tests.test_trend_collector tests.test_portal_sns_clipper tests.test_data_collector tests.test_manager tests.test_prompt_engineer tests.test_image_designer tests.test_storage_utils tests.test_dashboard_api tests.test_daily_pipeline tests.test_operation_guard tests.test_build_dashboard_data`는 44개 테스트 통과로 확인했다.
+- `node --check`로 `AIPR_Dashboard.html`, `dashboard/AIPR_Dashboard.html`, `web/index.html`의 스크립트 문법을 각각 확인했다.
+- 로컬 HTTP 검증에서 `AIPR_Dashboard.html`, `dashboard/AIPR_Dashboard.html`, `web/index.html`, `web/data/latest_status.json`이 모두 200 응답을 반환했다.
+- 인앱 브라우저 DOM 검증에서 루트 대시보드는 실제 수치, 리서치 탭 존재, 기사 링크 15개, 포털/SNS 카드 5개, 트렌드 카드 20개를 확인했다.
+- 인앱 브라우저 DOM 검증에서 Vercel용 `web/index.html`은 실제 연결 테스트 수치 44 통과, 5브랜드 25슬롯, 30클립, 리서치 30/15/20건, 포털/SNS 카드 5개, 기사 링크 15개, 트렌드 행 20개를 확인했다.

@@ -66,11 +66,46 @@ h3 {
   font-weight: 700;
   white-space: nowrap;
 }
+.dashboard-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 16px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 10px;
+}
+.dashboard-tabs a {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--muted);
+  padding: 7px 13px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+}
+.dashboard-tabs a:hover {
+  border-color: #b8dfca;
+  color: var(--green);
+}
 .grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   gap: 12px;
   margin-bottom: 14px;
+}
+.live-data-grid,
+.research-snapshot-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+.research-snapshot-grid {
+  grid-template-columns: repeat(3, 1fr);
+  margin-bottom: 14px;
+}
+.research-block {
+  margin-top: 16px;
 }
 section,
 .metric,
@@ -575,6 +610,8 @@ li { margin: 5px 0; }
 @media (max-width: 980px) {
   header,
   .grid,
+  .live-data-grid,
+  .research-snapshot-grid,
   .cols,
   .wide-cols,
   .generated-image-wrap,
@@ -607,6 +644,13 @@ li { margin: 5px 0; }
     </div>
     <div class="status-pill" id="deploy-status">데이터 불러오는 중</div>
   </header>
+
+  <nav class="dashboard-tabs" aria-label="대시보드 탭">
+    <a href="#team-dashboard">팀 대시보드</a>
+    <a href="#automation-tab">자동화 루틴</a>
+    <a href="#content-tab">콘텐츠</a>
+    <a href="#research-tab">리서치</a>
+  </nav>
 
   <div class="grid">
     <div class="metric">
@@ -654,6 +698,29 @@ li { margin: 5px 0; }
       <div class="value ok" id="api-refresh-state">-</div>
     </div>
   </div>
+
+  <section id="team-dashboard">
+    <h2>팀 대시보드 실제 연결 테스트</h2>
+    <p class="sub">이번 테스트 산출물을 JSON에서 읽어 팀 운영판에 바로 표시합니다.</p>
+    <div class="live-data-grid" style="margin-top:12px">
+      <div class="metric">
+        <div class="label">검증 결과</div>
+        <div class="value ok" id="live-test-result">-</div>
+      </div>
+      <div class="metric">
+        <div class="label">콘텐츠 생성</div>
+        <div class="value info" id="live-content-result">-</div>
+      </div>
+      <div class="metric">
+        <div class="label">포털/SNS 수집</div>
+        <div class="value info" id="live-portal-result">-</div>
+      </div>
+      <div class="metric">
+        <div class="label">프로젝트 API 과금</div>
+        <div class="value ok" id="live-api-cost">-</div>
+      </div>
+    </div>
+  </section>
 
   <section>
     <h2>전체 진행도</h2>
@@ -710,7 +777,7 @@ li { margin: 5px 0; }
     <div class="agent-list" id="agent-list"></div>
   </section>
 
-  <section>
+  <section id="automation-tab">
     <h2>자동화 파이프라인</h2>
     <div class="pipeline" id="pipeline"></div>
   </section>
@@ -780,7 +847,7 @@ li { margin: 5px 0; }
     </div>
   </section>
 
-  <section>
+  <section id="content-tab">
     <h2>콘텐츠 제작 테스트</h2>
     <p class="sub">브랜드별 5개 이미지 소재 콘셉트와 ChatGPT 생성 시트를 확인합니다.</p>
     <div class="content-summary-grid" id="content-summary-grid"></div>
@@ -946,17 +1013,35 @@ li { margin: 5px 0; }
     </table>
   </section>
 
-  <section>
-    <h2>포털/SNS 일간 3줄 요약</h2>
-    <p class="sub">공개 포털 뉴스와 SNS 검색 링크를 브랜드별로 묶은 당일 클리핑 요약입니다.</p>
-    <div class="article-brief" id="portal-article-brief"></div>
-    <div class="article-link-list" id="portal-article-links"></div>
-    <div class="portal-sns-board" id="portal-sns-board"></div>
-  </section>
+  <section id="research-tab">
+    <h2>리서치 탭</h2>
+    <p class="sub">포털/SNS 일간 브랜드별 3줄 요약과 2번 트렌드 수집 브리핑 목록을 자동화 루틴 밖에서 따로 확인합니다.</p>
+    <div class="research-snapshot-grid">
+      <div class="metric">
+        <div class="label">포털/SNS 클립</div>
+        <div class="value info" id="research-clip-count">-</div>
+      </div>
+      <div class="metric">
+        <div class="label">기사 링크</div>
+        <div class="value info" id="research-article-count">-</div>
+      </div>
+      <div class="metric">
+        <div class="label">트렌드 브리핑</div>
+        <div class="value ok" id="research-trend-count">-</div>
+      </div>
+    </div>
 
-  <section>
-    <h2>수집 트렌드 브리핑 목록</h2>
-    <table>
+    <div class="research-block">
+      <h3>포털/SNS 일간 3줄 요약</h3>
+      <p class="sub">공개 포털 뉴스와 SNS 검색 링크를 브랜드별로 묶은 당일 클리핑 요약입니다.</p>
+      <div class="article-brief" id="portal-article-brief"></div>
+      <div class="article-link-list" id="portal-article-links"></div>
+      <div class="portal-sns-board" id="portal-sns-board"></div>
+    </div>
+
+    <div class="research-block">
+      <h3>수집 트렌드 브리핑 목록</h3>
+      <table>
       <thead>
         <tr>
           <th>No</th>
@@ -971,7 +1056,8 @@ li { margin: 5px 0; }
         </tr>
       </thead>
       <tbody id="trend-briefing-table"></tbody>
-    </table>
+      </table>
+    </div>
   </section>
 
   <div class="wide-cols">
@@ -1331,6 +1417,13 @@ function render(data) {
   text("quality-approved", qualityReview.approved_count ?? 0);
   text("winner-count", learning.winner_count ?? 0);
   text("storage-planned", gdrive.planned_upload_count ?? 0);
+  text("live-test-result", `${data.verification?.test_count ?? 0} 통과`);
+  text("live-content-result", `${contentGeneration.brand_count ?? 0}브랜드 · ${contentGeneration.image_slot_count ?? 0}슬롯`);
+  text("live-portal-result", `${portalSnsSummary.clip_count ?? 0}클립`);
+  text("live-api-cost", contentGeneration.charged_in_project_budget ? "과금 있음" : "$0");
+  text("research-clip-count", `${portalSnsSummary.clip_count ?? 0}건`);
+  text("research-article-count", `${portalSnsSummary.article_link_count ?? 0}건`);
+  text("research-trend-count", `${trend.record_count ?? 0}건`);
   text("ad-status", `${ad.status || "-"} · ${ad.record_count ?? 0} records · ${ad.source_count ?? 0} sources`);
   text("trend-status", `${trend.status || "-"} · ${trend.record_count ?? 0} records · ${trend.source_count ?? 0} sources`);
   text("manager-status", `${manager.status || "-"} · ${manager.brand_count ?? 0} brands · ${manager.handoff_count ?? 0} handoff`);

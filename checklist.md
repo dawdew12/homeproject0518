@@ -279,3 +279,14 @@
 - [x] 대시보드 데이터 재생성.
 - [x] 테스트와 로컬 렌더링 검증.
 - [x] GitHub 저장과 Vercel 배포 확인.
+
+# Team Dashboard Live Test Data And Research Tab Checklist
+
+- [x] 현재 대시보드 탭 구조와 실제 테스트 데이터 위치 확인.
+- [x] `checklist.md`와 `context-notes.md`에 작업 의사결정 기록.
+- [x] 팀 대시보드에 실제 테스트 수치 연결.
+- [x] 포털/SNS 일간 3줄 요약과 트렌드 수집 브리핑 목록을 별도 리서치 탭으로 분리.
+- [x] Vercel용 `web/index.html`에도 같은 분류와 실제 수치 반영.
+- [x] 대시보드 데이터 재생성 및 테스트 실행.
+- [x] 로컬 브라우저 렌더링 검증.
+- [ ] GitHub 저장과 Vercel 배포 확인.

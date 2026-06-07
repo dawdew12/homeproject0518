@@ -82,7 +82,7 @@ html, body {
 .header-sub { font-size: 12px; color: var(--color-text-secondary); margin-top: 2px; }
 .header-date { font-size: 12px; color: var(--color-text-secondary); }
 
-.tabs { display: flex; gap: 8px; margin-bottom: 20px; padding-bottom: 12px; border-bottom: .5px solid var(--color-border-tertiary); }
+.tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; padding-bottom: 12px; border-bottom: .5px solid var(--color-border-tertiary); }
 .tab-btn { padding: 6px 16px; border-radius: var(--border-radius-md); border: .5px solid var(--color-border-secondary); background: transparent; color: var(--color-text-secondary); font-size: 13px; cursor: pointer; font-family: inherit; transition: all .15s; }
 .tab-btn:hover { border-color: var(--color-border-primary); color: var(--color-text-primary); }
 .tab-btn.on { background: var(--color-background-info); color: var(--color-text-info); border-color: transparent; }
@@ -216,7 +216,7 @@ html, body {
 .cost-box { border: .5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); padding: 12px 14px; background: var(--color-background-primary); }
 @media (max-width: 980px) {
   .routine-grid { grid-template-columns: 1fr; }
-  .content-summary-grid, .content-layout { grid-template-columns: 1fr; }
+  .g4, .content-summary-grid, .content-layout { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -236,10 +236,21 @@ html, body {
   <button class="tab-btn" onclick="showPage(1,this)">자동화 루틴</button>
   <button class="tab-btn" onclick="showPage(2,this)">브랜드 분석</button>
   <button class="tab-btn" onclick="showPage(3,this)">콘텐츠</button>
+  <button class="tab-btn" onclick="showPage(4,this)">리서치</button>
 </div>
 
 <!-- PAGE 0: 팀 대시보드 -->
 <div id="page0">
+
+<div class="sec">
+<div class="sec-label">이번 테스트 실제 연결 데이터 (2026-06-07)</div>
+<div class="g4">
+  <div class="mc"><div class="mc-lbl">검증 결과</div><div class="mc-val" id="root-test-result">44 통과</div><div class="mc-sub">unittest 전체 관련 테스트</div></div>
+  <div class="mc"><div class="mc-lbl">콘텐츠 생성</div><div class="mc-val" id="root-content-result">5브랜드</div><div class="mc-sub" id="root-content-sub">생성 시트 5장 · 소재 슬롯 25개</div></div>
+  <div class="mc"><div class="mc-lbl">포털/SNS 수집</div><div class="mc-val" id="root-portal-result">30클립</div><div class="mc-sub" id="root-portal-sub">기사 링크 15건 · 3줄 요약 15줄</div></div>
+  <div class="mc"><div class="mc-lbl">프로젝트 API 과금</div><div class="mc-val" id="root-api-cost">$0</div><div class="mc-sub">ChatGPT 내장 이미지 도구 테스트</div></div>
+</div>
+</div>
 
 <div class="sec">
 <div class="sec-label">이번 달 토큰 현황 (2026년 5월)</div>
@@ -460,6 +471,20 @@ html, body {
 <div class="sec">
 <div class="sec-label">브랜드별 자동화 실행 확인판</div>
 <div class="routine-grid" id="routine-grid"></div>
+</div>
+
+</div>
+
+<!-- PAGE 4: 리서치 -->
+<div id="page4" style="display:none">
+
+<div class="sec">
+<div class="sec-label">리서치 실제 연결 데이터</div>
+<div class="g3">
+  <div class="mc"><div class="mc-lbl">포털/SNS 클립</div><div class="mc-val" id="root-research-clip-count">30건</div><div class="mc-sub">2026-06-07 live 수집</div></div>
+  <div class="mc"><div class="mc-lbl">기사 링크</div><div class="mc-val" id="root-research-article-count">15건</div><div class="mc-sub">전체 시사점 1줄 포함</div></div>
+  <div class="mc"><div class="mc-lbl">트렌드 브리핑</div><div class="mc-val" id="root-research-trend-count">20건</div><div class="mc-sub">4출처 × 5브랜드</div></div>
+</div>
 </div>
 
 <div class="sec">
@@ -1017,7 +1042,7 @@ function selectContentBrand(brand) {
 }
 
 function showPage(idx, el) {
-  ['page0','page1','page2','page3'].forEach((id,i) => {
+  ['page0','page1','page2','page3','page4'].forEach((id,i) => {
     document.getElementById(id).style.display = i === idx ? '' : 'none';
   });
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('on'));
@@ -1075,6 +1100,35 @@ function renderBrand(id, period) {
     </div>`;
 }
 
+function setDashboardText(id, value) {
+  const node = document.getElementById(id);
+  if (node) node.textContent = value;
+}
+
+async function hydrateActualDashboardData() {
+  try {
+    const response = await fetch(contentAssetPath('web/data/latest_status.json'));
+    if (!response.ok) return;
+    const payload = await response.json();
+    const data = payload.data || {};
+    const verification = payload.verification || {};
+    const content = data.content_generation || {};
+    const portal = data.portal_sns_clips || {};
+    const trend = data.trend || {};
+    setDashboardText('root-test-result', `${verification.test_count || 0} 통과`);
+    setDashboardText('root-content-result', `${content.brand_count || 0}브랜드`);
+    setDashboardText('root-content-sub', `생성 시트 ${content.generated_sheet_count || 0}장 · 소재 슬롯 ${content.image_slot_count || 0}개`);
+    setDashboardText('root-portal-result', `${portal.clip_count || 0}클립`);
+    setDashboardText('root-portal-sub', `기사 링크 ${portal.article_link_count || 0}건 · 3줄 요약 ${portal.summary_line_count || 0}줄`);
+    setDashboardText('root-api-cost', content.charged_in_project_budget ? '과금 있음' : '$0');
+    setDashboardText('root-research-clip-count', `${portal.clip_count || 0}건`);
+    setDashboardText('root-research-article-count', `${portal.article_link_count || 0}건`);
+    setDashboardText('root-research-trend-count', `${trend.record_count || 0}건`);
+  } catch (error) {
+    console.info('latest_status.json fetch skipped', error);
+  }
+}
+
 document.getElementById('current-date').textContent = new Date().toLocaleDateString('ko-KR', {year:'numeric',month:'long',day:'numeric',weekday:'short'});
 renderRoutine();
 renderArticleLinkBrief();
@@ -1082,6 +1136,7 @@ renderPortalSnsBriefs();
 renderTrendBriefings();
 renderContentGeneration();
 renderBrand('someud', '일간');
+hydrateActualDashboardData();
 </script>
 </body>
 </html>
