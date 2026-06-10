@@ -1,0 +1,1296 @@
+{
+  "date": "2026-06-11",
+  "status": "mock_collected",
+  "sources": [
+    {
+      "source": "naver_trends",
+      "label": "네이버 트렌드 API",
+      "status": "mock_collected",
+      "date": "2026-06-11",
+      "records": [
+        {
+          "date": "2026-06-11",
+          "source": "naver_trends",
+          "brand": "someud",
+          "keywords": [
+            "황토침대",
+            "어버이날 선물",
+            "숙면"
+          ],
+          "trend_score": 60,
+          "trend_change_pct": 6.2,
+          "seasonal_issue": {
+            "title": "황토침대 관심 증가",
+            "level": "medium",
+            "summary": "someud 관련 핵심 키워드가 전주 대비 6.2% 상승했다."
+          },
+          "competitor_signal": {
+            "detected": false,
+            "summary": "경쟁사 변화 없음."
+          }
+        },
+        {
+          "date": "2026-06-11",
+          "source": "naver_trends",
+          "brand": "kinda",
+          "keywords": [
+            "극손상 헤어팩",
+            "비포애프터",
+            "홈케어"
+          ],
+          "trend_score": 66,
+          "trend_change_pct": 7.9,
+          "seasonal_issue": {
+            "title": "극손상 헤어팩 관심 증가",
+            "level": "medium",
+            "summary": "kinda 관련 핵심 키워드가 전주 대비 7.9% 상승했다."
+          },
+          "competitor_signal": {
+            "detected": false,
+            "summary": "경쟁사 변화 없음."
+          }
+        },
+        {
+          "date": "2026-06-11",
+          "source": "naver_trends",
+          "brand": "melliance",
+          "keywords": [
+            "뷰티 루틴",
+            "봄 컬렉션",
+            "피부결"
+          ],
+          "trend_score": 72,
+          "trend_change_pct": 9.6,
+          "seasonal_issue": {
+            "title": "뷰티 루틴 관심 증가",
+            "level": "medium",
+            "summary": "melliance 관련 핵심 키워드가 전주 대비 9.6% 상승했다."
+          },
+          "competitor_signal": {
+            "detected": false,
+            "summary": "경쟁사 변화 없음."
+          }
+        },
+        {
+          "date": "2026-06-11",
+          "source": "naver_trends",
+          "brand": "paperback",
+          "keywords": [
+            "라이프스타일",
+            "독서 감성",
+            "카페"
+          ],
+          "trend_score": 78,
+          "trend_change_pct": 11.3,
+          "seasonal_issue": {
+            "title": "라이프스타일 관심 증가",
+            "level": "high",
+            "summary": "paperback 관련 핵심 키워드가 전주 대비 11.3% 상승했다."
+          },
+          "competitor_signal": {
+            "detected": false,
+            "summary": "경쟁사 변화 없음."
+          }
+        },
+        {
+          "date": "2026-06-11",
+          "source": "naver_trends",
+          "brand": "baren",
+          "keywords": [
+            "기능성 케어",
+            "인포그래픽",
+            "성분"
+          ],
+          "trend_score": 84,
+          "trend_change_pct": 13.0,
+          "seasonal_issue": {
+            "title": "기능성 케어 관심 증가",
+            "level": "high",
+            "summary": "baren 관련 핵심 키워드가 전주 대비 13.0% 상승했다."
+          },
+          "competitor_signal": {
+            "detected": false,
+            "summary": "경쟁사 변화 없음."
+          }
+        }
+      ]
+    },
+    {
+      "source": "google_trends",
+      "label": "Google Trends",
+      "status": "mock_collected",
+      "date": "2026-06-11",
+      "records": [
+        {
+          "date": "2026-06-11",
+          "source": "google_trends",
+          "brand": "someud",
+          "keywords": [
+            "황토침대",
+            "어버이날 선물",
+            "숙면"
+          ],
+          "trend_score": 64,
+          "trend_change_pct": 7.2,
+          "seasonal_issue": {
+            "title": "황토침대 관심 증가",
+            "level": "medium",
+            "summary": "someud 관련 핵심 키워드가 전주 대비 7.2% 상승했다."
+          },
+          "competitor_signal": {
+            "detected": false,
+            "summary": "경쟁사 변화 없음."
+          }
+        },
+        {
+          "date": "2026-06-11",
+          "source": "google_trends",
+          "brand": "kinda",
+          "keywords": [
+            "극손상 헤어팩",
+            "비포애프터",
+            "홈케어"
+          ],
+          "trend_score": 70,
+          "trend_change_pct": 8.9,
+          "seasonal_issue": {
+            "title": "극손상 헤어팩 관심 증가",
+            "level": "medium",
+            "summary": "kinda 관련 핵심 키워드가 전주 대비 8.9% 상승했다."
+          },
+          "competitor_signal": {
+            "detected": false,
+            "summary": "경쟁사 변화 없음."
+          }
+        },
+        {
+          "date": "2026-06-11",
+          "source": "google_trends",
+          "brand": "melliance",
+          "keywords": [
+            "뷰티 루틴",
+            "봄 컬렉션",
+            "피부결"
+          ],
+          "trend_score": 76,
+          "trend_change_pct": 10.6,
+          "seasonal_issue": {
+            "title": "뷰티 루틴 관심 증가",
+            "level": "medium",
+            "summary": "melliance 관련 핵심 키워드가 전주 대비 10.6% 상승했다."
+          },
+          "competitor_signal": {
+            "detected": false,
+            "summary": "경쟁사 변화 없음."
+          }
+        },
+        {
+          "date": "2026-06-11",
+          "source": "google_trends",
+          "brand": "paperback",
+          "keywords": [
+            "라이프스타일",
+            "독서 감성",
+            "카페"
+          ],
+          "trend_score": 82,
+          "trend_change_pct": 12.3,
+          "seasonal_issue": {
+            "title": "라이프스타일 관심 증가",
+            "level": "high",
+            "summary": "paperback 관련 핵심 키워드가 전주 대비 12.3% 상승했다."
+          },
+          "competitor_signal": {
+            "detected": false,
+            "summary": "경쟁사 변화 없음."
+          }
+        },
+        {
+          "date": "2026-06-11",
+          "source": "google_trends",
+          "brand": "baren",
+          "keywords": [
+            "기능성 케어",
+            "인포그래픽",
+            "성분"
+          ],
+          "trend_score": 88,
+          "trend_change_pct": 14.0,
+          "seasonal_issue": {
+            "title": "기능성 케어 관심 증가",
+            "level": "high",
+            "summary": "baren 관련 핵심 키워드가 전주 대비 14.0% 상승했다."
+          },
+          "competitor_signal": {
+            "detected": false,
+            "summary": "경쟁사 변화 없음."
+          }
+        }
+      ]
+    },
+    {
+      "source": "news",
+      "label": "네이버 뉴스 API",
+      "status": "mock_collected",
+      "date": "2026-06-11",
+      "records": [
+        {
+          "date": "2026-06-11",
+          "source": "news",
+          "brand": "someud",
+          "keywords": [
+            "황토침대",
+            "어버이날 선물",
+            "숙면"
+          ],
+          "trend_score": 68,
+          "trend_change_pct": 8.2,
+          "seasonal_issue": {
+            "title": "황토침대 관심 증가",
+            "level": "medium",
+            "summary": "someud 관련 핵심 키워드가 전주 대비 8.2% 상승했다."
+          },
+          "competitor_signal": {
+            "detected": true,
+            "summary": "경쟁사 소재 변화는 mock 데이터 기준으로 관찰됨."
+          }
+        },
+        {
+          "date": "2026-06-11",
+          "source": "news",
+          "brand": "kinda",
+          "keywords": [
+            "극손상 헤어팩",
+            "비포애프터",
+            "홈케어"
+          ],
+          "trend_score": 74,
+          "trend_change_pct": 9.9,
+          "seasonal_issue": {
+            "title": "극손상 헤어팩 관심 증가",
+            "level": "medium",
+            "summary": "kinda 관련 핵심 키워드가 전주 대비 9.9% 상승했다."
+          },
+          "competitor_signal": {
+            "detected": true,
+            "summary": "경쟁사 소재 변화는 mock 데이터 기준으로 관찰됨."
+          }
+        },
+        {
+          "date": "2026-06-11",
+          "source": "news",
+          "brand": "melliance",
+          "keywords": [
+            "뷰티 루틴",
+            "봄 컬렉션",
+            "피부결"
+          ],
+          "trend_score": 80,
+          "trend_change_pct": 11.6,
+          "seasonal_issue": {
+            "title": "뷰티 루틴 관심 증가",
+            "level": "high",
+            "summary": "melliance 관련 핵심 키워드가 전주 대비 11.6% 상승했다."
+          },
+          "competitor_signal": {
+            "detected": true,
+            "summary": "경쟁사 소재 변화는 mock 데이터 기준으로 관찰됨."
+          }
+        },
+        {
+          "date": "2026-06-11",
+          "source": "news",
+          "brand": "paperback",
+          "keywords": [
+            "라이프스타일",
+            "독서 감성",
+            "카페"
+          ],
+          "trend_score": 86,
+          "trend_change_pct": 13.3,
+          "seasonal_issue": {
+            "title": "라이프스타일 관심 증가",
+            "level": "high",
+            "summary": "paperback 관련 핵심 키워드가 전주 대비 13.3% 상승했다."
+          },
+          "competitor_signal": {
+            "detected": true,
+            "summary": "경쟁사 소재 변화는 mock 데이터 기준으로 관찰됨."
+          }
+        },
+        {
+          "date": "2026-06-11",
+          "source": "news",
+          "brand": "baren",
+          "keywords": [
+            "기능성 케어",
+            "인포그래픽",
+            "성분"
+          ],
+          "trend_score": 92,
+          "trend_change_pct": 15.0,
+          "seasonal_issue": {
+            "title": "기능성 케어 관심 증가",
+            "level": "high",
+            "summary": "baren 관련 핵심 키워드가 전주 대비 15.0% 상승했다."
+          },
+          "competitor_signal": {
+            "detected": true,
+            "summary": "경쟁사 소재 변화는 mock 데이터 기준으로 관찰됨."
+          }
+        }
+      ]
+    },
+    {
+      "source": "competitor",
+      "label": "경쟁사 이슈 수집",
+      "status": "mock_collected",
+      "date": "2026-06-11",
+      "records": [
+        {
+          "date": "2026-06-11",
+          "source": "competitor",
+          "brand": "someud",
+          "keywords": [
+            "황토침대",
+            "어버이날 선물",
+            "숙면"
+          ],
+          "trend_score": 72,
+          "trend_change_pct": 9.2,
+          "seasonal_issue": {
+            "title": "황토침대 관심 증가",
+            "level": "medium",
+            "summary": "someud 관련 핵심 키워드가 전주 대비 9.2% 상승했다."
+          },
+          "competitor_signal": {
+            "detected": true,
+            "summary": "경쟁사 소재 변화는 mock 데이터 기준으로 관찰됨."
+          }
+        },
+        {
+          "date": "2026-06-11",
+          "source": "competitor",
+          "brand": "kinda",
+          "keywords": [
+            "극손상 헤어팩",
+            "비포애프터",
+            "홈케어"
+          ],
+          "trend_score": 78,
+          "trend_change_pct": 10.9,
+          "seasonal_issue": {
+            "title": "극손상 헤어팩 관심 증가",
+            "level": "high",
+            "summary": "kinda 관련 핵심 키워드가 전주 대비 10.9% 상승했다."
+          },
+          "competitor_signal": {
+            "detected": true,
+            "summary": "경쟁사 소재 변화는 mock 데이터 기준으로 관찰됨."
+          }
+        },
+        {
+          "date": "2026-06-11",
+          "source": "competitor",
+          "brand": "melliance",
+          "keywords": [
+            "뷰티 루틴",
+            "봄 컬렉션",
+            "피부결"
+          ],
+          "trend_score": 84,
+          "trend_change_pct": 12.6,
+          "seasonal_issue": {
+            "title": "뷰티 루틴 관심 증가",
+            "level": "high",
+            "summary": "melliance 관련 핵심 키워드가 전주 대비 12.6% 상승했다."
+          },
+          "competitor_signal": {
+            "detected": true,
+            "summary": "경쟁사 소재 변화는 mock 데이터 기준으로 관찰됨."
+          }
+        },
+        {
+          "date": "2026-06-11",
+          "source": "competitor",
+          "brand": "paperback",
+          "keywords": [
+            "라이프스타일",
+            "독서 감성",
+            "카페"
+          ],
+          "trend_score": 90,
+          "trend_change_pct": 14.3,
+          "seasonal_issue": {
+            "title": "라이프스타일 관심 증가",
+            "level": "high",
+            "summary": "paperback 관련 핵심 키워드가 전주 대비 14.3% 상승했다."
+          },
+          "competitor_signal": {
+            "detected": true,
+            "summary": "경쟁사 소재 변화는 mock 데이터 기준으로 관찰됨."
+          }
+        },
+        {
+          "date": "2026-06-11",
+          "source": "competitor",
+          "brand": "baren",
+          "keywords": [
+            "기능성 케어",
+            "인포그래픽",
+            "성분"
+          ],
+          "trend_score": 96,
+          "trend_change_pct": 16.0,
+          "seasonal_issue": {
+            "title": "기능성 케어 관심 증가",
+            "level": "high",
+            "summary": "baren 관련 핵심 키워드가 전주 대비 16.0% 상승했다."
+          },
+          "competitor_signal": {
+            "detected": true,
+            "summary": "경쟁사 소재 변화는 mock 데이터 기준으로 관찰됨."
+          }
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "source_count": 4,
+    "brand_count": 5,
+    "record_count": 20,
+    "top_keywords": [
+      "극손상 헤어팩",
+      "기능성 케어",
+      "독서 감성",
+      "라이프스타일",
+      "봄 컬렉션",
+      "뷰티 루틴",
+      "비포애프터",
+      "성분",
+      "숙면",
+      "어버이날 선물"
+    ],
+    "monitoring_source_count": 38,
+    "daily_monitoring_source_count": 13,
+    "daily_monitoring_categories": [
+      "community",
+      "consumer_trend",
+      "creative_reference",
+      "global_news",
+      "korean_industry_news",
+      "platform_update"
+    ]
+  },
+  "monitoring_sources": {
+    "catalog_path": "docs/MARKETING_AD_TREND_SOURCES.md",
+    "daily": [
+      {
+        "category": "creative_reference",
+        "category_label": "소재 확인용",
+        "priority": "A",
+        "cadence": "daily",
+        "source_name": "Meta Ad Library",
+        "url": "https://www.facebook.com/ads/library",
+        "use_case": "Facebook/Instagram 경쟁사 광고 소재, 카피, 랜딩 흐름 확인",
+        "codex_task": "Search by brand, industry keywords, and product category. Save active ad copy, visual angle, CTA, landing page pattern."
+      },
+      {
+        "category": "creative_reference",
+        "category_label": "소재 확인용",
+        "priority": "A",
+        "cadence": "daily",
+        "source_name": "TikTok Creative Center",
+        "url": "https://ads.tiktok.com/business/creativecenter/",
+        "use_case": "숏폼 광고, 인기 해시태그, 후킹 문구, 우수 광고 구조 확인",
+        "codex_task": "Collect top ads by country, industry, objective, hashtag. Extract first 3 seconds hook, caption, format, CTA."
+      },
+      {
+        "category": "korean_industry_news",
+        "category_label": "국내 마케팅·광고 트렌드",
+        "priority": "A",
+        "cadence": "daily",
+        "source_name": "오픈애즈",
+        "url": "https://openads.co.kr/",
+        "use_case": "국내 마케팅 트렌드, 광고 사례, 실무 노하우 확인",
+        "codex_task": "Collect articles about Naver, Kakao, Google Ads, Meta, AI marketing, ecommerce. Summarize actionable points for agency AE."
+      },
+      {
+        "category": "korean_industry_news",
+        "category_label": "국내 마케팅·광고 트렌드",
+        "priority": "A",
+        "cadence": "daily",
+        "source_name": "아이보스",
+        "url": "https://www.i-boss.co.kr/",
+        "use_case": "국내 광고 실무자 커뮤니티, 네이버·메타·대행사 이슈 확인",
+        "codex_task": "Monitor hot posts and Q&A about ad operations. Extract issues, platform bugs, policy concerns, practical tips."
+      },
+      {
+        "category": "korean_industry_news",
+        "category_label": "국내 마케팅·광고 트렌드",
+        "priority": "B",
+        "cadence": "daily",
+        "source_name": "매드타임스",
+        "url": "https://www.madtimes.co.kr/",
+        "use_case": "광고·마케팅·AI·브랜드·미디어 기사 확인",
+        "codex_task": "Collect major marketing/advertising articles. Summarize trend, affected industries, implications for performance marketing."
+      },
+      {
+        "category": "consumer_trend",
+        "category_label": "소비자·키워드 트렌드",
+        "priority": "A",
+        "cadence": "daily",
+        "source_name": "Google Trends",
+        "url": "https://trends.google.com/trends/",
+        "use_case": "키워드 검색 관심도, 지역별 관심도, 급상승 검색어 확인",
+        "codex_task": "Track target keywords by country and time range. Save rising queries, breakout keywords, seasonality."
+      },
+      {
+        "category": "platform_update",
+        "category_label": "매체 공식 업데이트",
+        "priority": "A",
+        "cadence": "daily",
+        "source_name": "네이버 광고주센터 공지사항",
+        "url": "https://ads.naver.com/notice",
+        "use_case": "네이버 검색광고, 쇼핑광고, 브랜드검색, 플레이스광고, GFA 변경사항 확인",
+        "codex_task": "Check new notices daily. Extract product changes, policy updates, new metrics, schedule, advertiser impact."
+      },
+      {
+        "category": "global_news",
+        "category_label": "글로벌 광고·마케팅 뉴스",
+        "priority": "B",
+        "cadence": "daily",
+        "source_name": "Adweek",
+        "url": "https://www.adweek.com/",
+        "use_case": "글로벌 광고, 브랜드, 미디어, 테크 뉴스 확인",
+        "codex_task": "Collect top marketing/ad news. Extract brand case, campaign angle, platform implication."
+      },
+      {
+        "category": "global_news",
+        "category_label": "글로벌 광고·마케팅 뉴스",
+        "priority": "B",
+        "cadence": "daily",
+        "source_name": "Marketing Brew",
+        "url": "https://www.marketingbrew.com/",
+        "use_case": "브랜드 전략, 소셜미디어, 애드테크 뉴스 확인",
+        "codex_task": "Collect daily marketing news. Summarize platform changes, brand moves, social trends."
+      },
+      {
+        "category": "global_news",
+        "category_label": "글로벌 광고·마케팅 뉴스",
+        "priority": "A",
+        "cadence": "daily",
+        "source_name": "Search Engine Land",
+        "url": "https://searchengineland.com/",
+        "use_case": "SEO, PPC, Google Ads, AI 검색 변화 확인",
+        "codex_task": "Collect PPC and search news. Extract Google Ads changes, SEO/SEM implications, AI search updates."
+      },
+      {
+        "category": "global_news",
+        "category_label": "글로벌 광고·마케팅 뉴스",
+        "priority": "B",
+        "cadence": "daily",
+        "source_name": "Search Engine Journal",
+        "url": "https://www.searchenginejournal.com/",
+        "use_case": "검색, PPC, 소셜미디어, SEO 업데이트 확인",
+        "codex_task": "Monitor search and paid media articles. Extract tactical implications and recommended actions."
+      },
+      {
+        "category": "community",
+        "category_label": "커뮤니티·실무 반응",
+        "priority": "A",
+        "cadence": "daily",
+        "source_name": "Reddit r/PPC",
+        "url": "https://www.reddit.com/r/PPC/",
+        "use_case": "Google Ads, Meta Ads, Microsoft Ads, Amazon Ads, TikTok Ads 실무자 토론 확인",
+        "codex_task": "Monitor hot posts. Extract recurring platform problems, tactic discussions, policy issues, practitioner sentiment."
+      },
+      {
+        "category": "community",
+        "category_label": "커뮤니티·실무 반응",
+        "priority": "B",
+        "cadence": "daily",
+        "source_name": "LinkedIn Industry Feed",
+        "url": "https://www.linkedin.com/",
+        "use_case": "글로벌 마케터, 애드테크 기업, 플랫폼 담당자 업데이트 확인",
+        "codex_task": "Follow selected industry leaders and adtech companies if access exists. Extract early interpretations and practitioner reactions."
+      }
+    ],
+    "weekly": [
+      {
+        "category": "creative_reference",
+        "category_label": "소재 확인용",
+        "priority": "A",
+        "cadence": "weekly",
+        "source_name": "Google Ads Transparency Center",
+        "url": "https://adstransparency.google.com/",
+        "use_case": "Google/YouTube/Display 광고주 집행 소재 확인",
+        "codex_task": "Search advertiser domains and brand names. Record ad format, last shown date, message angle, visual pattern."
+      },
+      {
+        "category": "creative_reference",
+        "category_label": "소재 확인용",
+        "priority": "B",
+        "cadence": "weekly",
+        "source_name": "Ads of the World",
+        "url": "https://www.adsoftheworld.com/",
+        "use_case": "글로벌 광고 캠페인 이미지·영상 레퍼런스 확인",
+        "codex_task": "Collect global campaign examples by industry. Summarize creative concept, key message, visual metaphor."
+      },
+      {
+        "category": "creative_reference",
+        "category_label": "소재 확인용",
+        "priority": "B",
+        "cadence": "weekly",
+        "source_name": "Little Black Book",
+        "url": "https://lbbonline.com/",
+        "use_case": "글로벌 캠페인, 제작사, 에이전시 작업물 확인",
+        "codex_task": "Monitor new campaign articles. Extract brand, agency, creative direction, media format, campaign insight."
+      },
+      {
+        "category": "creative_reference",
+        "category_label": "소재 확인용",
+        "priority": "B",
+        "cadence": "weekly",
+        "source_name": "Foreplay",
+        "url": "https://www.foreplay.co/",
+        "use_case": "광고 소재 저장, 스와이프 파일, 팀 단위 소재 관리",
+        "codex_task": "Use as swipe-file destination if account access exists. Group saved ads by industry, funnel stage, and hook type."
+      },
+      {
+        "category": "creative_reference",
+        "category_label": "소재 확인용",
+        "priority": "B",
+        "cadence": "weekly",
+        "source_name": "MagicBrief Inspire",
+        "url": "https://magicbrief.com/inspire",
+        "use_case": "경쟁사 광고 소재, 장기 집행 광고, 신규 소재 탐색",
+        "codex_task": "Find long-running ads and identify likely winning angles. Classify hooks, offers, thumbnails, CTA."
+      },
+      {
+        "category": "creative_reference",
+        "category_label": "소재 확인용",
+        "priority": "B",
+        "cadence": "weekly",
+        "source_name": "BigSpy",
+        "url": "https://bigspy.com/en",
+        "use_case": "Facebook, TikTok, 이커머스 광고 스파이툴",
+        "codex_task": "Search ads by keyword, country, platform, industry. Export ad examples and classify by performance signal if available."
+      },
+      {
+        "category": "creative_reference",
+        "category_label": "소재 확인용",
+        "priority": "B",
+        "cadence": "weekly",
+        "source_name": "PiPiAds",
+        "url": "https://www.pipiads.com/",
+        "use_case": "TikTok, Facebook, TikTok Shop 광고 소재 확인",
+        "codex_task": "Monitor TikTok-style commerce ads. Extract product angle, hook, video structure, offer, CTA."
+      },
+      {
+        "category": "korean_industry_news",
+        "category_label": "국내 마케팅·광고 트렌드",
+        "priority": "A",
+        "cadence": "weekly",
+        "source_name": "DMC리포트",
+        "url": "https://www.dmcreport.co.kr/",
+        "use_case": "디지털 광고 시장, 소비자, 미디어 리포트 확인",
+        "codex_task": "Collect new reports. Extract market data, consumer insight, media trend, useful statistics for proposals."
+      },
+      {
+        "category": "korean_industry_news",
+        "category_label": "국내 마케팅·광고 트렌드",
+        "priority": "A",
+        "cadence": "weekly",
+        "source_name": "나스미디어 나스리포트",
+        "url": "https://www.nasmedia.co.kr/나스리포트/정기보고서/",
+        "use_case": "디지털 광고 시장, 미디어 트렌드, 광고상품 업데이트 확인",
+        "codex_task": "Monitor new reports. Extract key trend keywords, media changes, ad product opportunities, proposal-ready numbers."
+      },
+      {
+        "category": "korean_industry_news",
+        "category_label": "국내 마케팅·광고 트렌드",
+        "priority": "B",
+        "cadence": "weekly",
+        "source_name": "더피알",
+        "url": "https://www.the-pr.co.kr/",
+        "use_case": "PR, 커뮤니케이션, 브랜드 리스크, 광고 이슈 확인",
+        "codex_task": "Monitor PR and communication cases. Extract brand risk, crisis pattern, messaging insight."
+      },
+      {
+        "category": "consumer_trend",
+        "category_label": "소비자·키워드 트렌드",
+        "priority": "A",
+        "cadence": "weekly",
+        "source_name": "네이버 데이터랩 쇼핑인사이트",
+        "url": "https://datalab.naver.com/shoppingInsight/sCategory.naver",
+        "use_case": "국내 쇼핑 카테고리별 클릭량, 성별·연령·기기별 경향 확인",
+        "codex_task": "Analyze shopping category trends by age, gender, device. Extract category opportunity and seasonal demand."
+      },
+      {
+        "category": "consumer_trend",
+        "category_label": "소비자·키워드 트렌드",
+        "priority": "B",
+        "cadence": "weekly",
+        "source_name": "썸트렌드",
+        "url": "https://some.co.kr/",
+        "use_case": "소셜 언급량, 연관어, 감성 분석 확인",
+        "codex_task": "Track brand/category keywords. Extract mention volume, related words, sentiment, copywriting clues."
+      },
+      {
+        "category": "consumer_trend",
+        "category_label": "소비자·키워드 트렌드",
+        "priority": "B",
+        "cadence": "weekly",
+        "source_name": "캐릿",
+        "url": "https://www.careet.net/",
+        "use_case": "Z세대, 1020·2030 소비자 감성, 밈, 비주얼 트렌드 확인",
+        "codex_task": "Collect Gen Z trend articles. Extract slang, meme, lifestyle insight, content angle."
+      },
+      {
+        "category": "consumer_trend",
+        "category_label": "소비자·키워드 트렌드",
+        "priority": "B",
+        "cadence": "weekly",
+        "source_name": "대학내일20대연구소",
+        "url": "https://www.20slab.org/",
+        "use_case": "20대·Z세대 소비자 조사, 라이프스타일 인사이트 확인",
+        "codex_task": "Collect research articles and reports. Extract target insight and proposal-friendly summary."
+      },
+      {
+        "category": "platform_update",
+        "category_label": "매체 공식 업데이트",
+        "priority": "A",
+        "cadence": "weekly",
+        "source_name": "카카오비즈니스 인사이트",
+        "url": "https://business.kakao.com/info/insight/",
+        "use_case": "카카오모먼트, 키워드광고, 광고상품 사례 및 가이드 확인",
+        "codex_task": "Collect new insights and guides. Summarize Kakao ad product usage, targeting, creative examples."
+      },
+      {
+        "category": "platform_update",
+        "category_label": "매체 공식 업데이트",
+        "priority": "A",
+        "cadence": "weekly",
+        "source_name": "Google Ads & Commerce Blog",
+        "url": "https://blog.google/products/ads-commerce/",
+        "use_case": "Google Ads, AI 광고, 커머스 광고 업데이트 확인",
+        "codex_task": "Monitor Google Ads announcements. Extract new features, AI tools, campaign types, measurement changes."
+      },
+      {
+        "category": "platform_update",
+        "category_label": "매체 공식 업데이트",
+        "priority": "B",
+        "cadence": "weekly",
+        "source_name": "Think with Google",
+        "url": "https://www.thinkwithgoogle.com/",
+        "use_case": "소비자 인사이트, 검색·유튜브·커머스 트렌드 확인",
+        "codex_task": "Collect consumer and marketing insight articles. Extract statistics, strategy suggestions, funnel implications."
+      },
+      {
+        "category": "platform_update",
+        "category_label": "매체 공식 업데이트",
+        "priority": "A",
+        "cadence": "weekly",
+        "source_name": "Meta for Business News",
+        "url": "https://www.facebook.com/business/news",
+        "use_case": "Facebook, Instagram, Messenger 광고 업데이트 확인",
+        "codex_task": "Monitor Meta ad product updates. Extract new tools, case studies, creative recommendations, policy changes."
+      },
+      {
+        "category": "platform_update",
+        "category_label": "매체 공식 업데이트",
+        "priority": "B",
+        "cadence": "weekly",
+        "source_name": "TikTok for Business Blog",
+        "url": "https://ads.tiktok.com/business/en/blog",
+        "use_case": "TikTok 광고 사례, 숏폼 광고 가이드, 크리에이티브 트렌드 확인",
+        "codex_task": "Collect TikTok business blog updates. Extract creative guidance, ad product changes, successful campaign structures."
+      },
+      {
+        "category": "global_news",
+        "category_label": "글로벌 광고·마케팅 뉴스",
+        "priority": "B",
+        "cadence": "weekly",
+        "source_name": "Ad Age",
+        "url": "https://adage.com/",
+        "use_case": "글로벌 광고업계, 에이전시, 브랜드 캠페인 흐름 확인",
+        "codex_task": "Monitor agency and brand campaign news. Summarize relevant ideas for Korean performance marketers."
+      },
+      {
+        "category": "global_news",
+        "category_label": "글로벌 광고·마케팅 뉴스",
+        "priority": "B",
+        "cadence": "weekly",
+        "source_name": "Marketing Week",
+        "url": "https://www.marketingweek.com/",
+        "use_case": "브랜드 전략, 마케팅 조직, 소비자 변화, 커뮤니티 마케팅 확인",
+        "codex_task": "Collect strategic marketing articles. Extract brand strategy, measurement, consumer behavior insights."
+      },
+      {
+        "category": "global_news",
+        "category_label": "글로벌 광고·마케팅 뉴스",
+        "priority": "B",
+        "cadence": "weekly",
+        "source_name": "WARC",
+        "url": "https://www.warc.com/",
+        "use_case": "마케팅 효과, 캠페인 성과, 케이스 스터디, 벤치마크 자료 확인",
+        "codex_task": "Collect available case studies and effectiveness insights. Extract evidence for proposals and strategy documents."
+      },
+      {
+        "category": "community",
+        "category_label": "커뮤니티·실무 반응",
+        "priority": "B",
+        "cadence": "weekly",
+        "source_name": "Reddit r/marketing",
+        "url": "https://www.reddit.com/r/marketing/",
+        "use_case": "글로벌 마케팅 실무자 고민, 트렌드, 전략 토론 확인",
+        "codex_task": "Monitor top weekly discussions. Extract market sentiment, strategy debates, common pain points."
+      },
+      {
+        "category": "community",
+        "category_label": "커뮤니티·실무 반응",
+        "priority": "B",
+        "cadence": "weekly",
+        "source_name": "GrowthHackers",
+        "url": "https://growthhackers.com/",
+        "use_case": "그로스 마케팅, AI, 실험 기반 성장 전략 확인",
+        "codex_task": "Collect growth marketing posts. Extract experiment ideas, funnel strategies, AI automation examples."
+      }
+    ],
+    "monthly": [
+      {
+        "category": "platform_update",
+        "category_label": "매체 공식 업데이트",
+        "priority": "C",
+        "cadence": "monthly",
+        "source_name": "Microsoft Advertising Blog",
+        "url": "https://about.ads.microsoft.com/en/blog",
+        "use_case": "Bing 검색광고, AI 검색광고, CTV·쇼핑 광고 흐름 확인",
+        "codex_task": "Monitor major Microsoft Advertising updates. Extract features relevant to search, shopping, AI, audience ads."
+      }
+    ]
+  },
+  "records": [
+    {
+      "date": "2026-06-11",
+      "source": "naver_trends",
+      "brand": "someud",
+      "keywords": [
+        "황토침대",
+        "어버이날 선물",
+        "숙면"
+      ],
+      "trend_score": 60,
+      "trend_change_pct": 6.2,
+      "seasonal_issue": {
+        "title": "황토침대 관심 증가",
+        "level": "medium",
+        "summary": "someud 관련 핵심 키워드가 전주 대비 6.2% 상승했다."
+      },
+      "competitor_signal": {
+        "detected": false,
+        "summary": "경쟁사 변화 없음."
+      }
+    },
+    {
+      "date": "2026-06-11",
+      "source": "naver_trends",
+      "brand": "kinda",
+      "keywords": [
+        "극손상 헤어팩",
+        "비포애프터",
+        "홈케어"
+      ],
+      "trend_score": 66,
+      "trend_change_pct": 7.9,
+      "seasonal_issue": {
+        "title": "극손상 헤어팩 관심 증가",
+        "level": "medium",
+        "summary": "kinda 관련 핵심 키워드가 전주 대비 7.9% 상승했다."
+      },
+      "competitor_signal": {
+        "detected": false,
+        "summary": "경쟁사 변화 없음."
+      }
+    },
+    {
+      "date": "2026-06-11",
+      "source": "naver_trends",
+      "brand": "melliance",
+      "keywords": [
+        "뷰티 루틴",
+        "봄 컬렉션",
+        "피부결"
+      ],
+      "trend_score": 72,
+      "trend_change_pct": 9.6,
+      "seasonal_issue": {
+        "title": "뷰티 루틴 관심 증가",
+        "level": "medium",
+        "summary": "melliance 관련 핵심 키워드가 전주 대비 9.6% 상승했다."
+      },
+      "competitor_signal": {
+        "detected": false,
+        "summary": "경쟁사 변화 없음."
+      }
+    },
+    {
+      "date": "2026-06-11",
+      "source": "naver_trends",
+      "brand": "paperback",
+      "keywords": [
+        "라이프스타일",
+        "독서 감성",
+        "카페"
+      ],
+      "trend_score": 78,
+      "trend_change_pct": 11.3,
+      "seasonal_issue": {
+        "title": "라이프스타일 관심 증가",
+        "level": "high",
+        "summary": "paperback 관련 핵심 키워드가 전주 대비 11.3% 상승했다."
+      },
+      "competitor_signal": {
+        "detected": false,
+        "summary": "경쟁사 변화 없음."
+      }
+    },
+    {
+      "date": "2026-06-11",
+      "source": "naver_trends",
+      "brand": "baren",
+      "keywords": [
+        "기능성 케어",
+        "인포그래픽",
+        "성분"
+      ],
+      "trend_score": 84,
+      "trend_change_pct": 13.0,
+      "seasonal_issue": {
+        "title": "기능성 케어 관심 증가",
+        "level": "high",
+        "summary": "baren 관련 핵심 키워드가 전주 대비 13.0% 상승했다."
+      },
+      "competitor_signal": {
+        "detected": false,
+        "summary": "경쟁사 변화 없음."
+      }
+    },
+    {
+      "date": "2026-06-11",
+      "source": "google_trends",
+      "brand": "someud",
+      "keywords": [
+        "황토침대",
+        "어버이날 선물",
+        "숙면"
+      ],
+      "trend_score": 64,
+      "trend_change_pct": 7.2,
+      "seasonal_issue": {
+        "title": "황토침대 관심 증가",
+        "level": "medium",
+        "summary": "someud 관련 핵심 키워드가 전주 대비 7.2% 상승했다."
+      },
+      "competitor_signal": {
+        "detected": false,
+        "summary": "경쟁사 변화 없음."
+      }
+    },
+    {
+      "date": "2026-06-11",
+      "source": "google_trends",
+      "brand": "kinda",
+      "keywords": [
+        "극손상 헤어팩",
+        "비포애프터",
+        "홈케어"
+      ],
+      "trend_score": 70,
+      "trend_change_pct": 8.9,
+      "seasonal_issue": {
+        "title": "극손상 헤어팩 관심 증가",
+        "level": "medium",
+        "summary": "kinda 관련 핵심 키워드가 전주 대비 8.9% 상승했다."
+      },
+      "competitor_signal": {
+        "detected": false,
+        "summary": "경쟁사 변화 없음."
+      }
+    },
+    {
+      "date": "2026-06-11",
+      "source": "google_trends",
+      "brand": "melliance",
+      "keywords": [
+        "뷰티 루틴",
+        "봄 컬렉션",
+        "피부결"
+      ],
+      "trend_score": 76,
+      "trend_change_pct": 10.6,
+      "seasonal_issue": {
+        "title": "뷰티 루틴 관심 증가",
+        "level": "medium",
+        "summary": "melliance 관련 핵심 키워드가 전주 대비 10.6% 상승했다."
+      },
+      "competitor_signal": {
+        "detected": false,
+        "summary": "경쟁사 변화 없음."
+      }
+    },
+    {
+      "date": "2026-06-11",
+      "source": "google_trends",
+      "brand": "paperback",
+      "keywords": [
+        "라이프스타일",
+        "독서 감성",
+        "카페"
+      ],
+      "trend_score": 82,
+      "trend_change_pct": 12.3,
+      "seasonal_issue": {
+        "title": "라이프스타일 관심 증가",
+        "level": "high",
+        "summary": "paperback 관련 핵심 키워드가 전주 대비 12.3% 상승했다."
+      },
+      "competitor_signal": {
+        "detected": false,
+        "summary": "경쟁사 변화 없음."
+      }
+    },
+    {
+      "date": "2026-06-11",
+      "source": "google_trends",
+      "brand": "baren",
+      "keywords": [
+        "기능성 케어",
+        "인포그래픽",
+        "성분"
+      ],
+      "trend_score": 88,
+      "trend_change_pct": 14.0,
+      "seasonal_issue": {
+        "title": "기능성 케어 관심 증가",
+        "level": "high",
+        "summary": "baren 관련 핵심 키워드가 전주 대비 14.0% 상승했다."
+      },
+      "competitor_signal": {
+        "detected": false,
+        "summary": "경쟁사 변화 없음."
+      }
+    },
+    {
+      "date": "2026-06-11",
+      "source": "news",
+      "brand": "someud",
+      "keywords": [
+        "황토침대",
+        "어버이날 선물",
+        "숙면"
+      ],
+      "trend_score": 68,
+      "trend_change_pct": 8.2,
+      "seasonal_issue": {
+        "title": "황토침대 관심 증가",
+        "level": "medium",
+        "summary": "someud 관련 핵심 키워드가 전주 대비 8.2% 상승했다."
+      },
+      "competitor_signal": {
+        "detected": true,
+        "summary": "경쟁사 소재 변화는 mock 데이터 기준으로 관찰됨."
+      }
+    },
+    {
+      "date": "2026-06-11",
+      "source": "news",
+      "brand": "kinda",
+      "keywords": [
+        "극손상 헤어팩",
+        "비포애프터",
+        "홈케어"
+      ],
+      "trend_score": 74,
+      "trend_change_pct": 9.9,
+      "seasonal_issue": {
+        "title": "극손상 헤어팩 관심 증가",
+        "level": "medium",
+        "summary": "kinda 관련 핵심 키워드가 전주 대비 9.9% 상승했다."
+      },
+      "competitor_signal": {
+        "detected": true,
+        "summary": "경쟁사 소재 변화는 mock 데이터 기준으로 관찰됨."
+      }
+    },
+    {
+      "date": "2026-06-11",
+      "source": "news",
+      "brand": "melliance",
+      "keywords": [
+        "뷰티 루틴",
+        "봄 컬렉션",
+        "피부결"
+      ],
+      "trend_score": 80,
+      "trend_change_pct": 11.6,
+      "seasonal_issue": {
+        "title": "뷰티 루틴 관심 증가",
+        "level": "high",
+        "summary": "melliance 관련 핵심 키워드가 전주 대비 11.6% 상승했다."
+      },
+      "competitor_signal": {
+        "detected": true,
+        "summary": "경쟁사 소재 변화는 mock 데이터 기준으로 관찰됨."
+      }
+    },
+    {
+      "date": "2026-06-11",
+      "source": "news",
+      "brand": "paperback",
+      "keywords": [
+        "라이프스타일",
+        "독서 감성",
+        "카페"
+      ],
+      "trend_score": 86,
+      "trend_change_pct": 13.3,
+      "seasonal_issue": {
+        "title": "라이프스타일 관심 증가",
+        "level": "high",
+        "summary": "paperback 관련 핵심 키워드가 전주 대비 13.3% 상승했다."
+      },
+      "competitor_signal": {
+        "detected": true,
+        "summary": "경쟁사 소재 변화는 mock 데이터 기준으로 관찰됨."
+      }
+    },
+    {
+      "date": "2026-06-11",
+      "source": "news",
+      "brand": "baren",
+      "keywords": [
+        "기능성 케어",
+        "인포그래픽",
+        "성분"
+      ],
+      "trend_score": 92,
+      "trend_change_pct": 15.0,
+      "seasonal_issue": {
+        "title": "기능성 케어 관심 증가",
+        "level": "high",
+        "summary": "baren 관련 핵심 키워드가 전주 대비 15.0% 상승했다."
+      },
+      "competitor_signal": {
+        "detected": true,
+        "summary": "경쟁사 소재 변화는 mock 데이터 기준으로 관찰됨."
+      }
+    },
+    {
+      "date": "2026-06-11",
+      "source": "competitor",
+      "brand": "someud",
+      "keywords": [
+        "황토침대",
+        "어버이날 선물",
+        "숙면"
+      ],
+      "trend_score": 72,
+      "trend_change_pct": 9.2,
+      "seasonal_issue": {
+        "title": "황토침대 관심 증가",
+        "level": "medium",
+        "summary": "someud 관련 핵심 키워드가 전주 대비 9.2% 상승했다."
+      },
+      "competitor_signal": {
+        "detected": true,
+        "summary": "경쟁사 소재 변화는 mock 데이터 기준으로 관찰됨."
+      }
+    },
+    {
+      "date": "2026-06-11",
+      "source": "competitor",
+      "brand": "kinda",
+      "keywords": [
+        "극손상 헤어팩",
+        "비포애프터",
+        "홈케어"
+      ],
+      "trend_score": 78,
+      "trend_change_pct": 10.9,
+      "seasonal_issue": {
+        "title": "극손상 헤어팩 관심 증가",
+        "level": "high",
+        "summary": "kinda 관련 핵심 키워드가 전주 대비 10.9% 상승했다."
+      },
+      "competitor_signal": {
+        "detected": true,
+        "summary": "경쟁사 소재 변화는 mock 데이터 기준으로 관찰됨."
+      }
+    },
+    {
+      "date": "2026-06-11",
+      "source": "competitor",
+      "brand": "melliance",
+      "keywords": [
+        "뷰티 루틴",
+        "봄 컬렉션",
+        "피부결"
+      ],
+      "trend_score": 84,
+      "trend_change_pct": 12.6,
+      "seasonal_issue": {
+        "title": "뷰티 루틴 관심 증가",
+        "level": "high",
+        "summary": "melliance 관련 핵심 키워드가 전주 대비 12.6% 상승했다."
+      },
+      "competitor_signal": {
+        "detected": true,
+        "summary": "경쟁사 소재 변화는 mock 데이터 기준으로 관찰됨."
+      }
+    },
+    {
+      "date": "2026-06-11",
+      "source": "competitor",
+      "brand": "paperback",
+      "keywords": [
+        "라이프스타일",
+        "독서 감성",
+        "카페"
+      ],
+      "trend_score": 90,
+      "trend_change_pct": 14.3,
+      "seasonal_issue": {
+        "title": "라이프스타일 관심 증가",
+        "level": "high",
+        "summary": "paperback 관련 핵심 키워드가 전주 대비 14.3% 상승했다."
+      },
+      "competitor_signal": {
+        "detected": true,
+        "summary": "경쟁사 소재 변화는 mock 데이터 기준으로 관찰됨."
+      }
+    },
+    {
+      "date": "2026-06-11",
+      "source": "competitor",
+      "brand": "baren",
+      "keywords": [
+        "기능성 케어",
+        "인포그래픽",
+        "성분"
+      ],
+      "trend_score": 96,
+      "trend_change_pct": 16.0,
+      "seasonal_issue": {
+        "title": "기능성 케어 관심 증가",
+        "level": "high",
+        "summary": "baren 관련 핵심 키워드가 전주 대비 16.0% 상승했다."
+      },
+      "competitor_signal": {
+        "detected": true,
+        "summary": "경쟁사 소재 변화는 mock 데이터 기준으로 관찰됨."
+      }
+    }
+  ]
+}
