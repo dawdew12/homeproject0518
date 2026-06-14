@@ -1,0 +1,41 @@
+{
+  "week": "2026-W25",
+  "status": "weekly_history_summary_ready",
+  "summary": {
+    "run_count": 1,
+    "dates": [
+      "2026-06-15"
+    ],
+    "total_ad_records": 15,
+    "total_prompts": 20,
+    "total_image_requests": 20,
+    "total_approved": 20,
+    "total_winners": 12,
+    "total_losers": 0,
+    "total_pending": 3,
+    "total_planned_uploads": 20,
+    "estimated_cost_usd": 2.64
+  },
+  "daily_summaries": [
+    {
+      "date": "2026-06-15",
+      "artifact_count": 9,
+      "metrics": {
+        "ad_record_count": 15,
+        "trend_record_count": 20,
+        "manager_brand_count": 5,
+        "storyboard_count": 20,
+        "prompt_count": 20,
+        "image_request_count": 20,
+        "estimated_cost_usd": 2.64,
+        "approved_count": 20,
+        "regeneration_required_count": 0,
+        "winner_count": 12,
+        "loser_count": 0,
+        "pending_count": 3,
+        "gdrive_planned_upload_count": 20,
+        "gdrive_missing_file_count": 20
+      }
+    }
+  ]
+}
