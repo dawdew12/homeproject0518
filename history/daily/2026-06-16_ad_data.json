@@ -1,0 +1,587 @@
+{
+  "date": "2026-06-16",
+  "status": "mock_collected",
+  "sources": [
+    {
+      "source": "meta",
+      "label": "Meta Marketing API",
+      "status": "mock_collected",
+      "date": "2026-06-16",
+      "metrics": [
+        "ctr",
+        "cvr",
+        "cpa",
+        "roas",
+        "impressions",
+        "clicks",
+        "cost",
+        "conversions"
+      ],
+      "records": [
+        {
+          "date": "2026-06-16",
+          "source": "meta",
+          "brand": "someud",
+          "campaign_id": "meta_someud_20260616",
+          "creative_id": "someud_meta_mock_001",
+          "metrics": {
+            "ctr": 2.3913,
+            "cvr": 12.1212,
+            "cpa": 5.6875,
+            "roas": 247.0,
+            "impressions": 1380,
+            "clicks": 33,
+            "cost": 22.75,
+            "conversions": 4
+          }
+        },
+        {
+          "date": "2026-06-16",
+          "source": "meta",
+          "brand": "kinda",
+          "campaign_id": "meta_kinda_20260616",
+          "creative_id": "kinda_meta_mock_001",
+          "metrics": {
+            "ctr": 2.4359,
+            "cvr": 13.1579,
+            "cpa": 5.4,
+            "roas": 259.0,
+            "impressions": 1560,
+            "clicks": 38,
+            "cost": 27.0,
+            "conversions": 5
+          }
+        },
+        {
+          "date": "2026-06-16",
+          "source": "meta",
+          "brand": "melliance",
+          "campaign_id": "meta_melliance_20260616",
+          "creative_id": "melliance_meta_mock_001",
+          "metrics": {
+            "ctr": 2.4713,
+            "cvr": 6.9767,
+            "cpa": 10.4167,
+            "roas": 271.0,
+            "impressions": 1740,
+            "clicks": 43,
+            "cost": 31.25,
+            "conversions": 3
+          }
+        },
+        {
+          "date": "2026-06-16",
+          "source": "meta",
+          "brand": "paperback",
+          "campaign_id": "meta_paperback_20260616",
+          "creative_id": "paperback_meta_mock_001",
+          "metrics": {
+            "ctr": 2.5,
+            "cvr": 8.3333,
+            "cpa": 8.875,
+            "roas": 283.0,
+            "impressions": 1920,
+            "clicks": 48,
+            "cost": 35.5,
+            "conversions": 4
+          }
+        },
+        {
+          "date": "2026-06-16",
+          "source": "meta",
+          "brand": "baren",
+          "campaign_id": "meta_baren_20260616",
+          "creative_id": "baren_meta_mock_001",
+          "metrics": {
+            "ctr": 2.5238,
+            "cvr": 9.434,
+            "cpa": 7.95,
+            "roas": 295.0,
+            "impressions": 2100,
+            "clicks": 53,
+            "cost": 39.75,
+            "conversions": 5
+          }
+        }
+      ]
+    },
+    {
+      "source": "naver_sa",
+      "label": "네이버 검색광고 API",
+      "status": "mock_collected",
+      "date": "2026-06-16",
+      "metrics": [
+        "ctr",
+        "cvr",
+        "cpa",
+        "roas",
+        "impressions",
+        "clicks",
+        "cost",
+        "conversions"
+      ],
+      "records": [
+        {
+          "date": "2026-06-16",
+          "source": "naver_sa",
+          "brand": "someud",
+          "campaign_id": "naver_sa_someud_20260616",
+          "creative_id": "someud_naver_sa_mock_001",
+          "metrics": {
+            "ctr": 2.3129,
+            "cvr": 14.7059,
+            "cpa": 4.97,
+            "roas": 247.0,
+            "impressions": 1470,
+            "clicks": 34,
+            "cost": 24.85,
+            "conversions": 5
+          }
+        },
+        {
+          "date": "2026-06-16",
+          "source": "naver_sa",
+          "brand": "kinda",
+          "campaign_id": "naver_sa_kinda_20260616",
+          "creative_id": "kinda_naver_sa_mock_001",
+          "metrics": {
+            "ctr": 2.3636,
+            "cvr": 15.3846,
+            "cpa": 4.85,
+            "roas": 259.0,
+            "impressions": 1650,
+            "clicks": 39,
+            "cost": 29.1,
+            "conversions": 6
+          }
+        },
+        {
+          "date": "2026-06-16",
+          "source": "naver_sa",
+          "brand": "melliance",
+          "campaign_id": "naver_sa_melliance_20260616",
+          "creative_id": "melliance_naver_sa_mock_001",
+          "metrics": {
+            "ctr": 2.4044,
+            "cvr": 9.0909,
+            "cpa": 8.3375,
+            "roas": 271.0,
+            "impressions": 1830,
+            "clicks": 44,
+            "cost": 33.35,
+            "conversions": 4
+          }
+        },
+        {
+          "date": "2026-06-16",
+          "source": "naver_sa",
+          "brand": "paperback",
+          "campaign_id": "naver_sa_paperback_20260616",
+          "creative_id": "paperback_naver_sa_mock_001",
+          "metrics": {
+            "ctr": 2.4378,
+            "cvr": 10.2041,
+            "cpa": 7.52,
+            "roas": 283.0,
+            "impressions": 2010,
+            "clicks": 49,
+            "cost": 37.6,
+            "conversions": 5
+          }
+        },
+        {
+          "date": "2026-06-16",
+          "source": "naver_sa",
+          "brand": "baren",
+          "campaign_id": "naver_sa_baren_20260616",
+          "creative_id": "baren_naver_sa_mock_001",
+          "metrics": {
+            "ctr": 2.4658,
+            "cvr": 11.1111,
+            "cpa": 6.975,
+            "roas": 295.0,
+            "impressions": 2190,
+            "clicks": 54,
+            "cost": 41.85,
+            "conversions": 6
+          }
+        }
+      ]
+    },
+    {
+      "source": "kakao_moment",
+      "label": "카카오모먼트 API",
+      "status": "mock_collected",
+      "date": "2026-06-16",
+      "metrics": [
+        "ctr",
+        "cvr",
+        "cpa",
+        "roas",
+        "impressions",
+        "clicks",
+        "cost",
+        "conversions"
+      ],
+      "records": [
+        {
+          "date": "2026-06-16",
+          "source": "kakao_moment",
+          "brand": "someud",
+          "campaign_id": "kakao_moment_someud_20260616",
+          "creative_id": "someud_kakao_moment_mock_001",
+          "metrics": {
+            "ctr": 2.2436,
+            "cvr": 17.1429,
+            "cpa": 4.4917,
+            "roas": 247.0,
+            "impressions": 1560,
+            "clicks": 35,
+            "cost": 26.95,
+            "conversions": 6
+          }
+        },
+        {
+          "date": "2026-06-16",
+          "source": "kakao_moment",
+          "brand": "kinda",
+          "campaign_id": "kakao_moment_kinda_20260616",
+          "creative_id": "kinda_kakao_moment_mock_001",
+          "metrics": {
+            "ctr": 2.2989,
+            "cvr": 17.5,
+            "cpa": 4.4571,
+            "roas": 259.0,
+            "impressions": 1740,
+            "clicks": 40,
+            "cost": 31.2,
+            "conversions": 7
+          }
+        },
+        {
+          "date": "2026-06-16",
+          "source": "kakao_moment",
+          "brand": "melliance",
+          "campaign_id": "kakao_moment_melliance_20260616",
+          "creative_id": "melliance_kakao_moment_mock_001",
+          "metrics": {
+            "ctr": 2.3438,
+            "cvr": 11.1111,
+            "cpa": 7.09,
+            "roas": 271.0,
+            "impressions": 1920,
+            "clicks": 45,
+            "cost": 35.45,
+            "conversions": 5
+          }
+        },
+        {
+          "date": "2026-06-16",
+          "source": "kakao_moment",
+          "brand": "paperback",
+          "campaign_id": "kakao_moment_paperback_20260616",
+          "creative_id": "paperback_kakao_moment_mock_001",
+          "metrics": {
+            "ctr": 2.381,
+            "cvr": 12.0,
+            "cpa": 6.6167,
+            "roas": 283.0,
+            "impressions": 2100,
+            "clicks": 50,
+            "cost": 39.7,
+            "conversions": 6
+          }
+        },
+        {
+          "date": "2026-06-16",
+          "source": "kakao_moment",
+          "brand": "baren",
+          "campaign_id": "kakao_moment_baren_20260616",
+          "creative_id": "baren_kakao_moment_mock_001",
+          "metrics": {
+            "ctr": 2.4123,
+            "cvr": 12.7273,
+            "cpa": 6.2786,
+            "roas": 295.0,
+            "impressions": 2280,
+            "clicks": 55,
+            "cost": 43.95,
+            "conversions": 7
+          }
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "source_count": 3,
+    "brand_count": 5,
+    "record_count": 15,
+    "metrics": [
+      "ctr",
+      "cvr",
+      "cpa",
+      "roas",
+      "impressions",
+      "clicks",
+      "cost",
+      "conversions"
+    ]
+  },
+  "records": [
+    {
+      "date": "2026-06-16",
+      "source": "meta",
+      "brand": "someud",
+      "campaign_id": "meta_someud_20260616",
+      "creative_id": "someud_meta_mock_001",
+      "metrics": {
+        "ctr": 2.3913,
+        "cvr": 12.1212,
+        "cpa": 5.6875,
+        "roas": 247.0,
+        "impressions": 1380,
+        "clicks": 33,
+        "cost": 22.75,
+        "conversions": 4
+      }
+    },
+    {
+      "date": "2026-06-16",
+      "source": "meta",
+      "brand": "kinda",
+      "campaign_id": "meta_kinda_20260616",
+      "creative_id": "kinda_meta_mock_001",
+      "metrics": {
+        "ctr": 2.4359,
+        "cvr": 13.1579,
+        "cpa": 5.4,
+        "roas": 259.0,
+        "impressions": 1560,
+        "clicks": 38,
+        "cost": 27.0,
+        "conversions": 5
+      }
+    },
+    {
+      "date": "2026-06-16",
+      "source": "meta",
+      "brand": "melliance",
+      "campaign_id": "meta_melliance_20260616",
+      "creative_id": "melliance_meta_mock_001",
+      "metrics": {
+        "ctr": 2.4713,
+        "cvr": 6.9767,
+        "cpa": 10.4167,
+        "roas": 271.0,
+        "impressions": 1740,
+        "clicks": 43,
+        "cost": 31.25,
+        "conversions": 3
+      }
+    },
+    {
+      "date": "2026-06-16",
+      "source": "meta",
+      "brand": "paperback",
+      "campaign_id": "meta_paperback_20260616",
+      "creative_id": "paperback_meta_mock_001",
+      "metrics": {
+        "ctr": 2.5,
+        "cvr": 8.3333,
+        "cpa": 8.875,
+        "roas": 283.0,
+        "impressions": 1920,
+        "clicks": 48,
+        "cost": 35.5,
+        "conversions": 4
+      }
+    },
+    {
+      "date": "2026-06-16",
+      "source": "meta",
+      "brand": "baren",
+      "campaign_id": "meta_baren_20260616",
+      "creative_id": "baren_meta_mock_001",
+      "metrics": {
+        "ctr": 2.5238,
+        "cvr": 9.434,
+        "cpa": 7.95,
+        "roas": 295.0,
+        "impressions": 2100,
+        "clicks": 53,
+        "cost": 39.75,
+        "conversions": 5
+      }
+    },
+    {
+      "date": "2026-06-16",
+      "source": "naver_sa",
+      "brand": "someud",
+      "campaign_id": "naver_sa_someud_20260616",
+      "creative_id": "someud_naver_sa_mock_001",
+      "metrics": {
+        "ctr": 2.3129,
+        "cvr": 14.7059,
+        "cpa": 4.97,
+        "roas": 247.0,
+        "impressions": 1470,
+        "clicks": 34,
+        "cost": 24.85,
+        "conversions": 5
+      }
+    },
+    {
+      "date": "2026-06-16",
+      "source": "naver_sa",
+      "brand": "kinda",
+      "campaign_id": "naver_sa_kinda_20260616",
+      "creative_id": "kinda_naver_sa_mock_001",
+      "metrics": {
+        "ctr": 2.3636,
+        "cvr": 15.3846,
+        "cpa": 4.85,
+        "roas": 259.0,
+        "impressions": 1650,
+        "clicks": 39,
+        "cost": 29.1,
+        "conversions": 6
+      }
+    },
+    {
+      "date": "2026-06-16",
+      "source": "naver_sa",
+      "brand": "melliance",
+      "campaign_id": "naver_sa_melliance_20260616",
+      "creative_id": "melliance_naver_sa_mock_001",
+      "metrics": {
+        "ctr": 2.4044,
+        "cvr": 9.0909,
+        "cpa": 8.3375,
+        "roas": 271.0,
+        "impressions": 1830,
+        "clicks": 44,
+        "cost": 33.35,
+        "conversions": 4
+      }
+    },
+    {
+      "date": "2026-06-16",
+      "source": "naver_sa",
+      "brand": "paperback",
+      "campaign_id": "naver_sa_paperback_20260616",
+      "creative_id": "paperback_naver_sa_mock_001",
+      "metrics": {
+        "ctr": 2.4378,
+        "cvr": 10.2041,
+        "cpa": 7.52,
+        "roas": 283.0,
+        "impressions": 2010,
+        "clicks": 49,
+        "cost": 37.6,
+        "conversions": 5
+      }
+    },
+    {
+      "date": "2026-06-16",
+      "source": "naver_sa",
+      "brand": "baren",
+      "campaign_id": "naver_sa_baren_20260616",
+      "creative_id": "baren_naver_sa_mock_001",
+      "metrics": {
+        "ctr": 2.4658,
+        "cvr": 11.1111,
+        "cpa": 6.975,
+        "roas": 295.0,
+        "impressions": 2190,
+        "clicks": 54,
+        "cost": 41.85,
+        "conversions": 6
+      }
+    },
+    {
+      "date": "2026-06-16",
+      "source": "kakao_moment",
+      "brand": "someud",
+      "campaign_id": "kakao_moment_someud_20260616",
+      "creative_id": "someud_kakao_moment_mock_001",
+      "metrics": {
+        "ctr": 2.2436,
+        "cvr": 17.1429,
+        "cpa": 4.4917,
+        "roas": 247.0,
+        "impressions": 1560,
+        "clicks": 35,
+        "cost": 26.95,
+        "conversions": 6
+      }
+    },
+    {
+      "date": "2026-06-16",
+      "source": "kakao_moment",
+      "brand": "kinda",
+      "campaign_id": "kakao_moment_kinda_20260616",
+      "creative_id": "kinda_kakao_moment_mock_001",
+      "metrics": {
+        "ctr": 2.2989,
+        "cvr": 17.5,
+        "cpa": 4.4571,
+        "roas": 259.0,
+        "impressions": 1740,
+        "clicks": 40,
+        "cost": 31.2,
+        "conversions": 7
+      }
+    },
+    {
+      "date": "2026-06-16",
+      "source": "kakao_moment",
+      "brand": "melliance",
+      "campaign_id": "kakao_moment_melliance_20260616",
+      "creative_id": "melliance_kakao_moment_mock_001",
+      "metrics": {
+        "ctr": 2.3438,
+        "cvr": 11.1111,
+        "cpa": 7.09,
+        "roas": 271.0,
+        "impressions": 1920,
+        "clicks": 45,
+        "cost": 35.45,
+        "conversions": 5
+      }
+    },
+    {
+      "date": "2026-06-16",
+      "source": "kakao_moment",
+      "brand": "paperback",
+      "campaign_id": "kakao_moment_paperback_20260616",
+      "creative_id": "paperback_kakao_moment_mock_001",
+      "metrics": {
+        "ctr": 2.381,
+        "cvr": 12.0,
+        "cpa": 6.6167,
+        "roas": 283.0,
+        "impressions": 2100,
+        "clicks": 50,
+        "cost": 39.7,
+        "conversions": 6
+      }
+    },
+    {
+      "date": "2026-06-16",
+      "source": "kakao_moment",
+      "brand": "baren",
+      "campaign_id": "kakao_moment_baren_20260616",
+      "creative_id": "baren_kakao_moment_mock_001",
+      "metrics": {
+        "ctr": 2.4123,
+        "cvr": 12.7273,
+        "cpa": 6.2786,
+        "roas": 295.0,
+        "impressions": 2280,
+        "clicks": 55,
+        "cost": 43.95,
+        "conversions": 7
+      }
+    }
+  ]
+}
