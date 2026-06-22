@@ -1,0 +1,118 @@
+{
+  "date": "2026-06-23",
+  "generated_at": "2026-06-23T05:10:54+09:00",
+  "status": "preflight_passed",
+  "checks": [
+    {
+      "name": "brand_registry",
+      "status": "brand_registry_ready"
+    },
+    {
+      "name": "credential_readiness",
+      "status": "mock_safe"
+    },
+    {
+      "name": "cost_report",
+      "status": "cost_within_limits"
+    }
+  ],
+  "brand_registry": {
+    "status": "brand_registry_ready",
+    "brand_count": 5,
+    "active_brand_count": 5,
+    "ready_brand_count": 5,
+    "brands": [
+      {
+        "brand_key": "baren",
+        "display_name": "바렌",
+        "active": true,
+        "config_path": "brands/baren/config.toml",
+        "context_path": "brands/baren/brand_context.md",
+        "real_photo_count": 2,
+        "illustration_count": 2,
+        "status": "ready",
+        "issues": []
+      },
+      {
+        "brand_key": "kinda",
+        "display_name": "킨다",
+        "active": true,
+        "config_path": "brands/kinda/config.toml",
+        "context_path": "brands/kinda/brand_context.md",
+        "real_photo_count": 2,
+        "illustration_count": 2,
+        "status": "ready",
+        "issues": []
+      },
+      {
+        "brand_key": "melliance",
+        "display_name": "멜리언스",
+        "active": true,
+        "config_path": "brands/melliance/config.toml",
+        "context_path": "brands/melliance/brand_context.md",
+        "real_photo_count": 2,
+        "illustration_count": 2,
+        "status": "ready",
+        "issues": []
+      },
+      {
+        "brand_key": "paperback",
+        "display_name": "페이퍼백",
+        "active": true,
+        "config_path": "brands/paperback/config.toml",
+        "context_path": "brands/paperback/brand_context.md",
+        "real_photo_count": 2,
+        "illustration_count": 2,
+        "status": "ready",
+        "issues": []
+      },
+      {
+        "brand_key": "someud",
+        "display_name": "소머드",
+        "active": true,
+        "config_path": "brands/someud/config.toml",
+        "context_path": "brands/someud/brand_context.md",
+        "real_photo_count": 2,
+        "illustration_count": 2,
+        "status": "ready",
+        "issues": []
+      }
+    ],
+    "new_brand_checklist": [
+      "brands/{brand}/config.toml 생성",
+      "brands/{brand}/brand_context.md 생성",
+      "brand.name_en을 폴더명과 동일하게 설정",
+      "performance_targets에 CTR, CVR, CPA, ROAS 목표 입력",
+      "image_config에 실사와 일러스트 생산 수량 입력"
+    ]
+  },
+  "credential_readiness": {
+    "status": "mock_safe",
+    "mode": "mock",
+    "required_key_count": 6,
+    "missing_slots": [],
+    "ready_for_mock": true,
+    "ready_for_live": false,
+    "live_note": "실제 API 호출은 GitHub Secrets와 운영 승인 후에만 켠다."
+  },
+  "cost_report": {
+    "status": "cost_within_limits",
+    "estimated_next_run_usd": 2.64,
+    "daily_cost_usd": 0.0,
+    "monthly_cost_usd": 0.0,
+    "projected_daily_cost_usd": 2.64,
+    "projected_monthly_cost_usd": 2.64,
+    "daily_limit_usd": 5.0,
+    "monthly_limit_usd": 79.0,
+    "daily_remaining_usd": 2.36,
+    "monthly_remaining_usd": 76.36,
+    "agent_monthly_budgets_usd": {
+      "manager": 7.0,
+      "data_collector": 2.0,
+      "trend_collector": 1.0,
+      "prompt_engineer": 5.0,
+      "image_designer": 61.0,
+      "history_analysis": 3.0
+    }
+  }
+}
