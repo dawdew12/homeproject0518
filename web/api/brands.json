@@ -1,6 +1,6 @@
 {
   "status": "brands_api_ready",
-  "generated_at": "2026-06-23T05:10:54+09:00",
+  "generated_at": "2026-06-24T04:11:10+09:00",
   "brand_count": 5,
   "brands": [
     {
@@ -93,7 +93,7 @@
     {
       "brand": "someud",
       "display_name": "소머드",
-      "date": "2026-06-23",
+      "date": "2026-06-24",
       "ready_part_count": 4,
       "total_part_count": 4,
       "completion_percent": 100,
@@ -186,11 +186,11 @@
             "real_photo_count": 2,
             "illustration_count": 2,
             "estimated_cost_usd": 0.528,
-            "output_dir": "outputs/someud/2026-06-23/"
+            "output_dir": "outputs/someud/2026-06-24/"
           },
           "evidence": [
-            "outputs/someud/2026-06-23/someud_20260623_실사_황토침대-어버이날-선물-숙면_v01_high.png",
-            "outputs/someud/2026-06-23/someud_20260623_실사_황토침대-어버이날-선물-숙면_v02_high.png"
+            "outputs/someud/2026-06-24/someud_20260624_실사_황토침대-어버이날-선물-숙면_v01_high.png",
+            "outputs/someud/2026-06-24/someud_20260624_실사_황토침대-어버이날-선물-숙면_v02_high.png"
           ]
         }
       ]
@@ -198,7 +198,7 @@
     {
       "brand": "kinda",
       "display_name": "킨다",
-      "date": "2026-06-23",
+      "date": "2026-06-24",
       "ready_part_count": 4,
       "total_part_count": 4,
       "completion_percent": 100,
@@ -291,11 +291,11 @@
             "real_photo_count": 2,
             "illustration_count": 2,
             "estimated_cost_usd": 0.528,
-            "output_dir": "outputs/kinda/2026-06-23/"
+            "output_dir": "outputs/kinda/2026-06-24/"
           },
           "evidence": [
-            "outputs/kinda/2026-06-23/kinda_20260623_실사_극손상-헤어팩-비포애프터-홈케어_v01_high.png",
-            "outputs/kinda/2026-06-23/kinda_20260623_실사_극손상-헤어팩-비포애프터-홈케어_v02_high.png"
+            "outputs/kinda/2026-06-24/kinda_20260624_실사_극손상-헤어팩-비포애프터-홈케어_v01_high.png",
+            "outputs/kinda/2026-06-24/kinda_20260624_실사_극손상-헤어팩-비포애프터-홈케어_v02_high.png"
           ]
         }
       ]
@@ -303,7 +303,7 @@
     {
       "brand": "melliance",
       "display_name": "멜리언스",
-      "date": "2026-06-23",
+      "date": "2026-06-24",
       "ready_part_count": 4,
       "total_part_count": 4,
       "completion_percent": 100,
@@ -395,11 +395,11 @@
             "real_photo_count": 2,
             "illustration_count": 2,
             "estimated_cost_usd": 0.528,
-            "output_dir": "outputs/melliance/2026-06-23/"
+            "output_dir": "outputs/melliance/2026-06-24/"
           },
           "evidence": [
-            "outputs/melliance/2026-06-23/melliance_20260623_실사_뷰티-루틴-봄-컬렉션-피부결_v01_high.png",
-            "outputs/melliance/2026-06-23/melliance_20260623_실사_뷰티-루틴-봄-컬렉션-피부결_v02_high.png"
+            "outputs/melliance/2026-06-24/melliance_20260624_실사_뷰티-루틴-봄-컬렉션-피부결_v01_high.png",
+            "outputs/melliance/2026-06-24/melliance_20260624_실사_뷰티-루틴-봄-컬렉션-피부결_v02_high.png"
           ]
         }
       ]
@@ -407,7 +407,7 @@
     {
       "brand": "paperback",
       "display_name": "페이퍼백",
-      "date": "2026-06-23",
+      "date": "2026-06-24",
       "ready_part_count": 4,
       "total_part_count": 4,
       "completion_percent": 100,
@@ -500,11 +500,11 @@
             "real_photo_count": 2,
             "illustration_count": 2,
             "estimated_cost_usd": 0.528,
-            "output_dir": "outputs/paperback/2026-06-23/"
+            "output_dir": "outputs/paperback/2026-06-24/"
           },
           "evidence": [
-            "outputs/paperback/2026-06-23/paperback_20260623_실사_라이프스타일-독서-감성-카페_v01_high.png",
-            "outputs/paperback/2026-06-23/paperback_20260623_실사_라이프스타일-독서-감성-카페_v02_high.png"
+            "outputs/paperback/2026-06-24/paperback_20260624_실사_라이프스타일-독서-감성-카페_v01_high.png",
+            "outputs/paperback/2026-06-24/paperback_20260624_실사_라이프스타일-독서-감성-카페_v02_high.png"
           ]
         }
       ]
@@ -512,7 +512,7 @@
     {
       "brand": "baren",
       "display_name": "바렌",
-      "date": "2026-06-23",
+      "date": "2026-06-24",
       "ready_part_count": 4,
       "total_part_count": 4,
       "completion_percent": 100,
@@ -604,11 +604,11 @@
             "real_photo_count": 2,
             "illustration_count": 2,
             "estimated_cost_usd": 0.528,
-            "output_dir": "outputs/baren/2026-06-23/"
+            "output_dir": "outputs/baren/2026-06-24/"
           },
           "evidence": [
-            "outputs/baren/2026-06-23/baren_20260623_실사_기능성-케어-인포그래픽-성분_v01_high.png",
-            "outputs/baren/2026-06-23/baren_20260623_실사_기능성-케어-인포그래픽-성분_v02_high.png"
+            "outputs/baren/2026-06-24/baren_20260624_실사_기능성-케어-인포그래픽-성분_v01_high.png",
+            "outputs/baren/2026-06-24/baren_20260624_실사_기능성-케어-인포그래픽-성분_v02_high.png"
           ]
         }
       ]
@@ -617,7 +617,7 @@
   "trend_briefing_list": [
     {
       "sequence": 1,
-      "date": "2026-06-23",
+      "date": "2026-06-24",
       "brand": "someud",
       "display_name": "소머드",
       "source": "naver_trends",
@@ -638,7 +638,7 @@
     },
     {
       "sequence": 2,
-      "date": "2026-06-23",
+      "date": "2026-06-24",
       "brand": "kinda",
       "display_name": "킨다",
       "source": "naver_trends",
@@ -659,7 +659,7 @@
     },
     {
       "sequence": 3,
-      "date": "2026-06-23",
+      "date": "2026-06-24",
       "brand": "melliance",
       "display_name": "멜리언스",
       "source": "naver_trends",
@@ -680,7 +680,7 @@
     },
     {
       "sequence": 4,
-      "date": "2026-06-23",
+      "date": "2026-06-24",
       "brand": "paperback",
       "display_name": "페이퍼백",
       "source": "naver_trends",
@@ -701,7 +701,7 @@
     },
     {
       "sequence": 5,
-      "date": "2026-06-23",
+      "date": "2026-06-24",
       "brand": "baren",
       "display_name": "바렌",
       "source": "naver_trends",
@@ -722,7 +722,7 @@
     },
     {
       "sequence": 6,
-      "date": "2026-06-23",
+      "date": "2026-06-24",
       "brand": "someud",
       "display_name": "소머드",
       "source": "google_trends",
@@ -743,7 +743,7 @@
     },
     {
       "sequence": 7,
-      "date": "2026-06-23",
+      "date": "2026-06-24",
       "brand": "kinda",
       "display_name": "킨다",
       "source": "google_trends",
@@ -764,7 +764,7 @@
     },
     {
       "sequence": 8,
-      "date": "2026-06-23",
+      "date": "2026-06-24",
       "brand": "melliance",
       "display_name": "멜리언스",
       "source": "google_trends",
@@ -785,7 +785,7 @@
     },
     {
       "sequence": 9,
-      "date": "2026-06-23",
+      "date": "2026-06-24",
       "brand": "paperback",
       "display_name": "페이퍼백",
       "source": "google_trends",
@@ -806,7 +806,7 @@
     },
     {
       "sequence": 10,
-      "date": "2026-06-23",
+      "date": "2026-06-24",
       "brand": "baren",
       "display_name": "바렌",
       "source": "google_trends",
@@ -827,7 +827,7 @@
     },
     {
       "sequence": 11,
-      "date": "2026-06-23",
+      "date": "2026-06-24",
       "brand": "someud",
       "display_name": "소머드",
       "source": "news",
@@ -848,7 +848,7 @@
     },
     {
       "sequence": 12,
-      "date": "2026-06-23",
+      "date": "2026-06-24",
       "brand": "kinda",
       "display_name": "킨다",
       "source": "news",
@@ -869,7 +869,7 @@
     },
     {
       "sequence": 13,
-      "date": "2026-06-23",
+      "date": "2026-06-24",
       "brand": "melliance",
       "display_name": "멜리언스",
       "source": "news",
@@ -890,7 +890,7 @@
     },
     {
       "sequence": 14,
-      "date": "2026-06-23",
+      "date": "2026-06-24",
       "brand": "paperback",
       "display_name": "페이퍼백",
       "source": "news",
@@ -911,7 +911,7 @@
     },
     {
       "sequence": 15,
-      "date": "2026-06-23",
+      "date": "2026-06-24",
       "brand": "baren",
       "display_name": "바렌",
       "source": "news",
@@ -932,7 +932,7 @@
     },
     {
       "sequence": 16,
-      "date": "2026-06-23",
+      "date": "2026-06-24",
       "brand": "someud",
       "display_name": "소머드",
       "source": "competitor",
@@ -953,7 +953,7 @@
     },
     {
       "sequence": 17,
-      "date": "2026-06-23",
+      "date": "2026-06-24",
       "brand": "kinda",
       "display_name": "킨다",
       "source": "competitor",
@@ -974,7 +974,7 @@
     },
     {
       "sequence": 18,
-      "date": "2026-06-23",
+      "date": "2026-06-24",
       "brand": "melliance",
       "display_name": "멜리언스",
       "source": "competitor",
@@ -995,7 +995,7 @@
     },
     {
       "sequence": 19,
-      "date": "2026-06-23",
+      "date": "2026-06-24",
       "brand": "paperback",
       "display_name": "페이퍼백",
       "source": "competitor",
@@ -1016,7 +1016,7 @@
     },
     {
       "sequence": 20,
-      "date": "2026-06-23",
+      "date": "2026-06-24",
       "brand": "baren",
       "display_name": "바렌",
       "source": "competitor",
