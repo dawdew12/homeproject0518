@@ -1,12 +1,12 @@
 {
-  "updated_at": "2026-07-06",
+  "updated_at": "2026-07-07",
   "brands": {
     "someud": {
       "winners": [],
       "losers": [],
       "pending": [
         {
-          "date": "2026-07-06",
+          "date": "2026-07-07",
           "source": "meta",
           "creative_id": "someud_meta_mock_001",
           "label": "pending",
@@ -21,7 +21,7 @@
           ]
         },
         {
-          "date": "2026-07-06",
+          "date": "2026-07-07",
           "source": "naver_sa",
           "creative_id": "someud_naver_sa_mock_001",
           "label": "pending",
@@ -36,7 +36,7 @@
           ]
         },
         {
-          "date": "2026-07-06",
+          "date": "2026-07-07",
           "source": "kakao_moment",
           "creative_id": "someud_kakao_moment_mock_001",
           "label": "pending",
@@ -55,7 +55,7 @@
     "kinda": {
       "winners": [
         {
-          "date": "2026-07-06",
+          "date": "2026-07-07",
           "source": "meta",
           "creative_id": "kinda_meta_mock_001",
           "label": "winner",
@@ -70,7 +70,7 @@
           ]
         },
         {
-          "date": "2026-07-06",
+          "date": "2026-07-07",
           "source": "naver_sa",
           "creative_id": "kinda_naver_sa_mock_001",
           "label": "winner",
@@ -85,7 +85,7 @@
           ]
         },
         {
-          "date": "2026-07-06",
+          "date": "2026-07-07",
           "source": "kakao_moment",
           "creative_id": "kinda_kakao_moment_mock_001",
           "label": "winner",
@@ -106,7 +106,7 @@
     "melliance": {
       "winners": [
         {
-          "date": "2026-07-06",
+          "date": "2026-07-07",
           "source": "meta",
           "creative_id": "melliance_meta_mock_001",
           "label": "winner",
@@ -121,7 +121,7 @@
           ]
         },
         {
-          "date": "2026-07-06",
+          "date": "2026-07-07",
           "source": "naver_sa",
           "creative_id": "melliance_naver_sa_mock_001",
           "label": "winner",
@@ -136,7 +136,7 @@
           ]
         },
         {
-          "date": "2026-07-06",
+          "date": "2026-07-07",
           "source": "kakao_moment",
           "creative_id": "melliance_kakao_moment_mock_001",
           "label": "winner",
@@ -157,7 +157,7 @@
     "paperback": {
       "winners": [
         {
-          "date": "2026-07-06",
+          "date": "2026-07-07",
           "source": "meta",
           "creative_id": "paperback_meta_mock_001",
           "label": "winner",
@@ -172,7 +172,7 @@
           ]
         },
         {
-          "date": "2026-07-06",
+          "date": "2026-07-07",
           "source": "naver_sa",
           "creative_id": "paperback_naver_sa_mock_001",
           "label": "winner",
@@ -187,7 +187,7 @@
           ]
         },
         {
-          "date": "2026-07-06",
+          "date": "2026-07-07",
           "source": "kakao_moment",
           "creative_id": "paperback_kakao_moment_mock_001",
           "label": "winner",
@@ -208,7 +208,7 @@
     "baren": {
       "winners": [
         {
-          "date": "2026-07-06",
+          "date": "2026-07-07",
           "source": "meta",
           "creative_id": "baren_meta_mock_001",
           "label": "winner",
@@ -223,7 +223,7 @@
           ]
         },
         {
-          "date": "2026-07-06",
+          "date": "2026-07-07",
           "source": "naver_sa",
           "creative_id": "baren_naver_sa_mock_001",
           "label": "winner",
@@ -238,7 +238,7 @@
           ]
         },
         {
-          "date": "2026-07-06",
+          "date": "2026-07-07",
           "source": "kakao_moment",
           "creative_id": "baren_kakao_moment_mock_001",
           "label": "winner",
