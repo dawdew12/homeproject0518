@@ -1,20 +1,28 @@
 {
-  "status": "history_daily_api_ready",
-  "generated_at": "2026-07-09T03:23:02+09:00",
+  "date": "2026-07-09",
+  "status": "github_history_summary_ready",
+  "weekly_key": "2026-W28",
   "summary": {
-    "exists": true,
-    "path": "history/daily/2026-07-09_github_history_summary.json",
-    "date": "2026-07-09",
-    "status": "github_history_summary_ready",
-    "weekly_key": "2026-W28",
     "daily_file_count": 9,
     "artifact_count": 9,
+    "weekly_key": "2026-W28",
     "commit_message": "[HISTORY] 2026-07-09 daily run summary",
-    "prompt_count": 20,
-    "image_request_count": 20,
-    "approved_count": 20,
-    "winner_count": 12,
-    "planned_upload_count": 20
+    "metrics": {
+      "ad_record_count": 15,
+      "trend_record_count": 20,
+      "manager_brand_count": 5,
+      "storyboard_count": 20,
+      "prompt_count": 20,
+      "image_request_count": 20,
+      "estimated_cost_usd": 2.64,
+      "approved_count": 20,
+      "regeneration_required_count": 0,
+      "winner_count": 12,
+      "loser_count": 0,
+      "pending_count": 3,
+      "gdrive_planned_upload_count": 20,
+      "gdrive_missing_file_count": 20
+    }
   },
   "artifacts": [
     {
