@@ -1,0 +1,424 @@
+{
+  "date": "2026-07-10",
+  "status": "manager_brief_ready",
+  "input_files": {
+    "ad": "history/daily/2026-07-10_ad_data.json",
+    "trend": "history/daily/2026-07-10_trend_data.json"
+  },
+  "summary": {
+    "brand_count": 5,
+    "high_priority_count": 3,
+    "avg_ctr": 2.3991,
+    "avg_roas": 271.0,
+    "avg_trend_score": 78.0,
+    "top_opportunities": [
+      {
+        "brand": "baren",
+        "priority": "scale",
+        "creative_direction": "기능성 케어 중심의 기능성, 명확하고 깨끗한 정보 전달 소재"
+      },
+      {
+        "brand": "melliance",
+        "priority": "scale",
+        "creative_direction": "뷰티 루틴 중심의 정돈된 뷰티, 세련되고 균형 잡힌 무드 소재"
+      },
+      {
+        "brand": "paperback",
+        "priority": "high",
+        "creative_direction": "라이프스타일 중심의 일상 감성, 차분하고 취향이 드러나는 라이프스타일 소재"
+      }
+    ]
+  },
+  "brands": [
+    {
+      "brand": "someud",
+      "display_name": "소머드",
+      "priority": "test",
+      "score": 161.559,
+      "creative_direction": "황토침대 중심의 프리미엄 오가닉, 따뜻하고 신뢰감 소재",
+      "visual_concept": "따뜻한 침실에서 숙면과 가족 신뢰를 보여주는 실사",
+      "rationale": [
+        "평균 CTR 2.3159%, 평균 ROAS 247.0% 기준으로 판단했다.",
+        "평균 트렌드 점수 66.0와 변화율 7.7%를 반영했다."
+      ],
+      "ad_metrics": {
+        "record_count": 3,
+        "source_count": 3,
+        "avg_ctr": 2.3159,
+        "avg_cvr": 14.6567,
+        "avg_cpa": 5.0497,
+        "avg_roas": 247.0,
+        "ctr_target": 2.5,
+        "roas_target": 300.0,
+        "ctr_gap": -0.1841,
+        "roas_gap": -53.0,
+        "total_impressions": 4410,
+        "total_clicks": 102,
+        "total_conversions": 15,
+        "total_cost": 74.55
+      },
+      "trend_metrics": {
+        "record_count": 4,
+        "source_count": 4,
+        "avg_trend_score": 66.0,
+        "avg_trend_change_pct": 7.7,
+        "top_keywords": [
+          "황토침대",
+          "어버이날 선물",
+          "숙면"
+        ],
+        "issue_titles": [
+          "황토침대 관심 증가"
+        ],
+        "competitor_signal_count": 2
+      },
+      "recommended_actions": [
+        "첫 화면 후킹 이미지를 더 명확하게 만들고 핵심 베네핏을 1개로 좁힌다.",
+        "신뢰 증거와 사용 맥락을 보강해 전환 설득력을 높인다.",
+        "경쟁사 소재 변화가 감지된 채널은 카피보다 비주얼 차별점을 우선 검토한다."
+      ],
+      "prompt_keywords": [
+        "황토침대",
+        "어버이날 선물",
+        "숙면"
+      ],
+      "handoff": {
+        "owner": "팀원 C",
+        "storyboard_count": 4,
+        "prompt_brief": "소머드 브랜드는 '황토침대'를 메인 각도로 삼아 '따뜻한 침실에서 숙면과 가족 신뢰를 보여주는 실사' 콘셉트를 만든다.",
+        "constraints": [
+          "텍스트 삽입 금지",
+          "하단 카피 영역 확보",
+          "경쟁사명 노출 금지"
+        ]
+      }
+    },
+    {
+      "brand": "kinda",
+      "display_name": "킨다",
+      "priority": "test",
+      "score": 170.461,
+      "creative_direction": "극손상 헤어팩 중심의 손상 모발 회복, 부드럽고 신뢰감 있는 뷰티 톤 소재",
+      "visual_concept": "손상 모발 전후 차이가 선명한 욕실·파우더룸 실사",
+      "rationale": [
+        "평균 CTR 2.3661%, 평균 ROAS 259.0% 기준으로 판단했다.",
+        "평균 트렌드 점수 72.0와 변화율 9.4%를 반영했다."
+      ],
+      "ad_metrics": {
+        "record_count": 3,
+        "source_count": 3,
+        "avg_ctr": 2.3661,
+        "avg_cvr": 15.3475,
+        "avg_cpa": 4.9024,
+        "avg_roas": 259.0,
+        "ctr_target": 2.5,
+        "roas_target": 300.0,
+        "ctr_gap": -0.1339,
+        "roas_gap": -41.0,
+        "total_impressions": 4950,
+        "total_clicks": 117,
+        "total_conversions": 18,
+        "total_cost": 87.3
+      },
+      "trend_metrics": {
+        "record_count": 4,
+        "source_count": 4,
+        "avg_trend_score": 72.0,
+        "avg_trend_change_pct": 9.4,
+        "top_keywords": [
+          "극손상 헤어팩",
+          "비포애프터",
+          "홈케어"
+        ],
+        "issue_titles": [
+          "극손상 헤어팩 관심 증가"
+        ],
+        "competitor_signal_count": 2
+      },
+      "recommended_actions": [
+        "첫 화면 후킹 이미지를 더 명확하게 만들고 핵심 베네핏을 1개로 좁힌다.",
+        "신뢰 증거와 사용 맥락을 보강해 전환 설득력을 높인다.",
+        "경쟁사 소재 변화가 감지된 채널은 카피보다 비주얼 차별점을 우선 검토한다."
+      ],
+      "prompt_keywords": [
+        "극손상 헤어팩",
+        "비포애프터",
+        "홈케어"
+      ],
+      "handoff": {
+        "owner": "팀원 C",
+        "storyboard_count": 4,
+        "prompt_brief": "킨다 브랜드는 '극손상 헤어팩'를 메인 각도로 삼아 '손상 모발 전후 차이가 선명한 욕실·파우더룸 실사' 콘셉트를 만든다.",
+        "constraints": [
+          "텍스트 삽입 금지",
+          "하단 카피 영역 확보",
+          "경쟁사명 노출 금지"
+        ]
+      }
+    },
+    {
+      "brand": "melliance",
+      "display_name": "멜리언스",
+      "priority": "scale",
+      "score": 179.265,
+      "creative_direction": "뷰티 루틴 중심의 정돈된 뷰티, 세련되고 균형 잡힌 무드 소재",
+      "visual_concept": "피부결과 루틴을 정돈된 뷰티 무드로 보여주는 클로즈업",
+      "rationale": [
+        "평균 CTR 2.4065%, 평균 ROAS 271.0% 기준으로 판단했다.",
+        "평균 트렌드 점수 78.0와 변화율 11.1%를 반영했다."
+      ],
+      "ad_metrics": {
+        "record_count": 3,
+        "source_count": 3,
+        "avg_ctr": 2.4065,
+        "avg_cvr": 9.0596,
+        "avg_cpa": 8.6147,
+        "avg_roas": 271.0,
+        "ctr_target": 2.0,
+        "roas_target": 250.0,
+        "ctr_gap": 0.4065,
+        "roas_gap": 21.0,
+        "total_impressions": 5490,
+        "total_clicks": 132,
+        "total_conversions": 12,
+        "total_cost": 100.05
+      },
+      "trend_metrics": {
+        "record_count": 4,
+        "source_count": 4,
+        "avg_trend_score": 78.0,
+        "avg_trend_change_pct": 11.1,
+        "top_keywords": [
+          "뷰티 루틴",
+          "봄 컬렉션",
+          "피부결"
+        ],
+        "issue_titles": [
+          "뷰티 루틴 관심 증가"
+        ],
+        "competitor_signal_count": 2
+      },
+      "recommended_actions": [
+        "성과가 받쳐주는 키워드를 첫 소재 묶음의 메인 각도로 배치한다.",
+        "경쟁사 소재 변화가 감지된 채널은 카피보다 비주얼 차별점을 우선 검토한다."
+      ],
+      "prompt_keywords": [
+        "뷰티 루틴",
+        "봄 컬렉션",
+        "피부결"
+      ],
+      "handoff": {
+        "owner": "팀원 C",
+        "storyboard_count": 4,
+        "prompt_brief": "멜리언스 브랜드는 '뷰티 루틴'를 메인 각도로 삼아 '피부결과 루틴을 정돈된 뷰티 무드로 보여주는 클로즈업' 콘셉트를 만든다.",
+        "constraints": [
+          "텍스트 삽입 금지",
+          "하단 카피 영역 확보",
+          "경쟁사명 노출 금지"
+        ]
+      }
+    },
+    {
+      "brand": "paperback",
+      "display_name": "페이퍼백",
+      "priority": "high",
+      "score": 187.996,
+      "creative_direction": "라이프스타일 중심의 일상 감성, 차분하고 취향이 드러나는 라이프스타일 소재",
+      "visual_concept": "취향 있는 카페와 독서 장면을 연결한 라이프스타일 컷",
+      "rationale": [
+        "평균 CTR 2.4396%, 평균 ROAS 283.0% 기준으로 판단했다.",
+        "평균 트렌드 점수 84.0와 변화율 12.8%를 반영했다."
+      ],
+      "ad_metrics": {
+        "record_count": 3,
+        "source_count": 3,
+        "avg_ctr": 2.4396,
+        "avg_cvr": 10.1791,
+        "avg_cpa": 7.6706,
+        "avg_roas": 283.0,
+        "ctr_target": 2.5,
+        "roas_target": 300.0,
+        "ctr_gap": -0.0604,
+        "roas_gap": -17.0,
+        "total_impressions": 6030,
+        "total_clicks": 147,
+        "total_conversions": 15,
+        "total_cost": 112.8
+      },
+      "trend_metrics": {
+        "record_count": 4,
+        "source_count": 4,
+        "avg_trend_score": 84.0,
+        "avg_trend_change_pct": 12.8,
+        "top_keywords": [
+          "라이프스타일",
+          "독서 감성",
+          "카페"
+        ],
+        "issue_titles": [
+          "라이프스타일 관심 증가"
+        ],
+        "competitor_signal_count": 2
+      },
+      "recommended_actions": [
+        "성과가 받쳐주는 키워드를 첫 소재 묶음의 메인 각도로 배치한다.",
+        "첫 화면 후킹 이미지를 더 명확하게 만들고 핵심 베네핏을 1개로 좁힌다.",
+        "신뢰 증거와 사용 맥락을 보강해 전환 설득력을 높인다.",
+        "경쟁사 소재 변화가 감지된 채널은 카피보다 비주얼 차별점을 우선 검토한다."
+      ],
+      "prompt_keywords": [
+        "라이프스타일",
+        "독서 감성",
+        "카페"
+      ],
+      "handoff": {
+        "owner": "팀원 C",
+        "storyboard_count": 4,
+        "prompt_brief": "페이퍼백 브랜드는 '라이프스타일'를 메인 각도로 삼아 '취향 있는 카페와 독서 장면을 연결한 라이프스타일 컷' 콘셉트를 만든다.",
+        "constraints": [
+          "텍스트 삽입 금지",
+          "하단 카피 영역 확보",
+          "경쟁사명 노출 금지"
+        ]
+      }
+    },
+    {
+      "brand": "baren",
+      "display_name": "바렌",
+      "priority": "scale",
+      "score": 196.673,
+      "creative_direction": "기능성 케어 중심의 기능성, 명확하고 깨끗한 정보 전달 소재",
+      "visual_concept": "성분과 기능을 깨끗하게 이해시키는 정보형 비주얼",
+      "rationale": [
+        "평균 CTR 2.4673%, 평균 ROAS 295.0% 기준으로 판단했다.",
+        "평균 트렌드 점수 90.0와 변화율 14.5%를 반영했다."
+      ],
+      "ad_metrics": {
+        "record_count": 3,
+        "source_count": 3,
+        "avg_ctr": 2.4673,
+        "avg_cvr": 11.0908,
+        "avg_cpa": 7.0679,
+        "avg_roas": 295.0,
+        "ctr_target": 2.0,
+        "roas_target": 250.0,
+        "ctr_gap": 0.4673,
+        "roas_gap": 45.0,
+        "total_impressions": 6570,
+        "total_clicks": 162,
+        "total_conversions": 18,
+        "total_cost": 125.55
+      },
+      "trend_metrics": {
+        "record_count": 4,
+        "source_count": 4,
+        "avg_trend_score": 90.0,
+        "avg_trend_change_pct": 14.5,
+        "top_keywords": [
+          "기능성 케어",
+          "인포그래픽",
+          "성분"
+        ],
+        "issue_titles": [
+          "기능성 케어 관심 증가"
+        ],
+        "competitor_signal_count": 2
+      },
+      "recommended_actions": [
+        "성과가 받쳐주는 키워드를 첫 소재 묶음의 메인 각도로 배치한다.",
+        "경쟁사 소재 변화가 감지된 채널은 카피보다 비주얼 차별점을 우선 검토한다."
+      ],
+      "prompt_keywords": [
+        "기능성 케어",
+        "인포그래픽",
+        "성분"
+      ],
+      "handoff": {
+        "owner": "팀원 C",
+        "storyboard_count": 4,
+        "prompt_brief": "바렌 브랜드는 '기능성 케어'를 메인 각도로 삼아 '성분과 기능을 깨끗하게 이해시키는 정보형 비주얼' 콘셉트를 만든다.",
+        "constraints": [
+          "텍스트 삽입 금지",
+          "하단 카피 영역 확보",
+          "경쟁사명 노출 금지"
+        ]
+      }
+    }
+  ],
+  "handoff_to_prompt_engineer": [
+    {
+      "brand": "someud",
+      "priority": "test",
+      "prompt_brief": "소머드 브랜드는 '황토침대'를 메인 각도로 삼아 '따뜻한 침실에서 숙면과 가족 신뢰를 보여주는 실사' 콘셉트를 만든다.",
+      "keywords": [
+        "황토침대",
+        "어버이날 선물",
+        "숙면"
+      ],
+      "actions": [
+        "첫 화면 후킹 이미지를 더 명확하게 만들고 핵심 베네핏을 1개로 좁힌다.",
+        "신뢰 증거와 사용 맥락을 보강해 전환 설득력을 높인다.",
+        "경쟁사 소재 변화가 감지된 채널은 카피보다 비주얼 차별점을 우선 검토한다."
+      ]
+    },
+    {
+      "brand": "kinda",
+      "priority": "test",
+      "prompt_brief": "킨다 브랜드는 '극손상 헤어팩'를 메인 각도로 삼아 '손상 모발 전후 차이가 선명한 욕실·파우더룸 실사' 콘셉트를 만든다.",
+      "keywords": [
+        "극손상 헤어팩",
+        "비포애프터",
+        "홈케어"
+      ],
+      "actions": [
+        "첫 화면 후킹 이미지를 더 명확하게 만들고 핵심 베네핏을 1개로 좁힌다.",
+        "신뢰 증거와 사용 맥락을 보강해 전환 설득력을 높인다.",
+        "경쟁사 소재 변화가 감지된 채널은 카피보다 비주얼 차별점을 우선 검토한다."
+      ]
+    },
+    {
+      "brand": "melliance",
+      "priority": "scale",
+      "prompt_brief": "멜리언스 브랜드는 '뷰티 루틴'를 메인 각도로 삼아 '피부결과 루틴을 정돈된 뷰티 무드로 보여주는 클로즈업' 콘셉트를 만든다.",
+      "keywords": [
+        "뷰티 루틴",
+        "봄 컬렉션",
+        "피부결"
+      ],
+      "actions": [
+        "성과가 받쳐주는 키워드를 첫 소재 묶음의 메인 각도로 배치한다.",
+        "경쟁사 소재 변화가 감지된 채널은 카피보다 비주얼 차별점을 우선 검토한다."
+      ]
+    },
+    {
+      "brand": "paperback",
+      "priority": "high",
+      "prompt_brief": "페이퍼백 브랜드는 '라이프스타일'를 메인 각도로 삼아 '취향 있는 카페와 독서 장면을 연결한 라이프스타일 컷' 콘셉트를 만든다.",
+      "keywords": [
+        "라이프스타일",
+        "독서 감성",
+        "카페"
+      ],
+      "actions": [
+        "성과가 받쳐주는 키워드를 첫 소재 묶음의 메인 각도로 배치한다.",
+        "첫 화면 후킹 이미지를 더 명확하게 만들고 핵심 베네핏을 1개로 좁힌다.",
+        "신뢰 증거와 사용 맥락을 보강해 전환 설득력을 높인다.",
+        "경쟁사 소재 변화가 감지된 채널은 카피보다 비주얼 차별점을 우선 검토한다."
+      ]
+    },
+    {
+      "brand": "baren",
+      "priority": "scale",
+      "prompt_brief": "바렌 브랜드는 '기능성 케어'를 메인 각도로 삼아 '성분과 기능을 깨끗하게 이해시키는 정보형 비주얼' 콘셉트를 만든다.",
+      "keywords": [
+        "기능성 케어",
+        "인포그래픽",
+        "성분"
+      ],
+      "actions": [
+        "성과가 받쳐주는 키워드를 첫 소재 묶음의 메인 각도로 배치한다.",
+        "경쟁사 소재 변화가 감지된 채널은 카피보다 비주얼 차별점을 우선 검토한다."
+      ]
+    }
+  ]
+}

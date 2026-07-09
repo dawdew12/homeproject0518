@@ -1,0 +1,565 @@
+{
+  "date": "2026-07-10",
+  "status": "winner_loser_learning_ready",
+  "input_files": {
+    "ad": "history/daily/2026-07-10_ad_data.json"
+  },
+  "summary": {
+    "record_count": 15,
+    "brand_count": 5,
+    "winner_count": 12,
+    "loser_count": 0,
+    "pending_count": 3,
+    "mature_count": 15,
+    "winner_rate": 0.8
+  },
+  "brand_summary": [
+    {
+      "brand": "someud",
+      "winner_count": 0,
+      "loser_count": 0,
+      "pending_count": 3,
+      "top_label": "pending"
+    },
+    {
+      "brand": "kinda",
+      "winner_count": 3,
+      "loser_count": 0,
+      "pending_count": 0,
+      "top_label": "winner"
+    },
+    {
+      "brand": "melliance",
+      "winner_count": 3,
+      "loser_count": 0,
+      "pending_count": 0,
+      "top_label": "winner"
+    },
+    {
+      "brand": "paperback",
+      "winner_count": 3,
+      "loser_count": 0,
+      "pending_count": 0,
+      "top_label": "winner"
+    },
+    {
+      "brand": "baren",
+      "winner_count": 3,
+      "loser_count": 0,
+      "pending_count": 0,
+      "top_label": "winner"
+    }
+  ],
+  "records": [
+    {
+      "date": "2026-07-10",
+      "brand": "someud",
+      "source": "meta",
+      "campaign_id": "meta_someud_20260710",
+      "creative_id": "someud_meta_mock_001",
+      "label": "pending",
+      "reason": "mixed_signal",
+      "metrics": {
+        "ctr": 2.3913,
+        "roas": 247.0,
+        "cpa": 5.6875,
+        "impressions": 1380,
+        "conversions": 4
+      },
+      "targets": {
+        "ctr_winner_min": 2.0,
+        "roas_winner_min": 250,
+        "ctr_target": 2.5,
+        "roas_target": 300.0,
+        "cpa_target_usd": 11.5385,
+        "cpa_winner_max": 13.8462,
+        "cpa_loser_min": 23.077
+      },
+      "maturity": {
+        "campaign_age_days": 3,
+        "impressions": 1380,
+        "mature": true
+      },
+      "learning_actions": [
+        "집행 신호가 더 쌓일 때까지 관찰한다.",
+        "성과가 갈리는 지표를 다음 수집일에 재확인한다."
+      ]
+    },
+    {
+      "date": "2026-07-10",
+      "brand": "kinda",
+      "source": "meta",
+      "campaign_id": "meta_kinda_20260710",
+      "creative_id": "kinda_meta_mock_001",
+      "label": "winner",
+      "reason": "ctr_roas_cpa_passed",
+      "metrics": {
+        "ctr": 2.4359,
+        "roas": 259.0,
+        "cpa": 5.4,
+        "impressions": 1560,
+        "conversions": 5
+      },
+      "targets": {
+        "ctr_winner_min": 2.0,
+        "roas_winner_min": 250,
+        "ctr_target": 2.5,
+        "roas_target": 300.0,
+        "cpa_target_usd": 11.5385,
+        "cpa_winner_max": 13.8462,
+        "cpa_loser_min": 23.077
+      },
+      "maturity": {
+        "campaign_age_days": 3,
+        "impressions": 1560,
+        "mature": true
+      },
+      "learning_actions": [
+        "해당 소재 각도를 다음 프롬프트의 우선 콘셉트로 승격한다.",
+        "동일 브랜드에서 유사 메시지를 2개 이상 변형 테스트한다."
+      ]
+    },
+    {
+      "date": "2026-07-10",
+      "brand": "melliance",
+      "source": "meta",
+      "campaign_id": "meta_melliance_20260710",
+      "creative_id": "melliance_meta_mock_001",
+      "label": "winner",
+      "reason": "ctr_roas_cpa_passed",
+      "metrics": {
+        "ctr": 2.4713,
+        "roas": 271.0,
+        "cpa": 10.4167,
+        "impressions": 1740,
+        "conversions": 3
+      },
+      "targets": {
+        "ctr_winner_min": 2.0,
+        "roas_winner_min": 250,
+        "ctr_target": 2.0,
+        "roas_target": 250.0,
+        "cpa_target_usd": 15.3846,
+        "cpa_winner_max": 18.4615,
+        "cpa_loser_min": 30.7692
+      },
+      "maturity": {
+        "campaign_age_days": 3,
+        "impressions": 1740,
+        "mature": true
+      },
+      "learning_actions": [
+        "해당 소재 각도를 다음 프롬프트의 우선 콘셉트로 승격한다.",
+        "동일 브랜드에서 유사 메시지를 2개 이상 변형 테스트한다."
+      ]
+    },
+    {
+      "date": "2026-07-10",
+      "brand": "paperback",
+      "source": "meta",
+      "campaign_id": "meta_paperback_20260710",
+      "creative_id": "paperback_meta_mock_001",
+      "label": "winner",
+      "reason": "ctr_roas_cpa_passed",
+      "metrics": {
+        "ctr": 2.5,
+        "roas": 283.0,
+        "cpa": 8.875,
+        "impressions": 1920,
+        "conversions": 4
+      },
+      "targets": {
+        "ctr_winner_min": 2.0,
+        "roas_winner_min": 250,
+        "ctr_target": 2.5,
+        "roas_target": 300.0,
+        "cpa_target_usd": 11.5385,
+        "cpa_winner_max": 13.8462,
+        "cpa_loser_min": 23.077
+      },
+      "maturity": {
+        "campaign_age_days": 3,
+        "impressions": 1920,
+        "mature": true
+      },
+      "learning_actions": [
+        "해당 소재 각도를 다음 프롬프트의 우선 콘셉트로 승격한다.",
+        "동일 브랜드에서 유사 메시지를 2개 이상 변형 테스트한다."
+      ]
+    },
+    {
+      "date": "2026-07-10",
+      "brand": "baren",
+      "source": "meta",
+      "campaign_id": "meta_baren_20260710",
+      "creative_id": "baren_meta_mock_001",
+      "label": "winner",
+      "reason": "ctr_roas_cpa_passed",
+      "metrics": {
+        "ctr": 2.5238,
+        "roas": 295.0,
+        "cpa": 7.95,
+        "impressions": 2100,
+        "conversions": 5
+      },
+      "targets": {
+        "ctr_winner_min": 2.0,
+        "roas_winner_min": 250,
+        "ctr_target": 2.0,
+        "roas_target": 250.0,
+        "cpa_target_usd": 15.3846,
+        "cpa_winner_max": 18.4615,
+        "cpa_loser_min": 30.7692
+      },
+      "maturity": {
+        "campaign_age_days": 3,
+        "impressions": 2100,
+        "mature": true
+      },
+      "learning_actions": [
+        "해당 소재 각도를 다음 프롬프트의 우선 콘셉트로 승격한다.",
+        "동일 브랜드에서 유사 메시지를 2개 이상 변형 테스트한다."
+      ]
+    },
+    {
+      "date": "2026-07-10",
+      "brand": "someud",
+      "source": "naver_sa",
+      "campaign_id": "naver_sa_someud_20260710",
+      "creative_id": "someud_naver_sa_mock_001",
+      "label": "pending",
+      "reason": "mixed_signal",
+      "metrics": {
+        "ctr": 2.3129,
+        "roas": 247.0,
+        "cpa": 4.97,
+        "impressions": 1470,
+        "conversions": 5
+      },
+      "targets": {
+        "ctr_winner_min": 2.0,
+        "roas_winner_min": 250,
+        "ctr_target": 2.5,
+        "roas_target": 300.0,
+        "cpa_target_usd": 11.5385,
+        "cpa_winner_max": 13.8462,
+        "cpa_loser_min": 23.077
+      },
+      "maturity": {
+        "campaign_age_days": 3,
+        "impressions": 1470,
+        "mature": true
+      },
+      "learning_actions": [
+        "집행 신호가 더 쌓일 때까지 관찰한다.",
+        "성과가 갈리는 지표를 다음 수집일에 재확인한다."
+      ]
+    },
+    {
+      "date": "2026-07-10",
+      "brand": "kinda",
+      "source": "naver_sa",
+      "campaign_id": "naver_sa_kinda_20260710",
+      "creative_id": "kinda_naver_sa_mock_001",
+      "label": "winner",
+      "reason": "ctr_roas_cpa_passed",
+      "metrics": {
+        "ctr": 2.3636,
+        "roas": 259.0,
+        "cpa": 4.85,
+        "impressions": 1650,
+        "conversions": 6
+      },
+      "targets": {
+        "ctr_winner_min": 2.0,
+        "roas_winner_min": 250,
+        "ctr_target": 2.5,
+        "roas_target": 300.0,
+        "cpa_target_usd": 11.5385,
+        "cpa_winner_max": 13.8462,
+        "cpa_loser_min": 23.077
+      },
+      "maturity": {
+        "campaign_age_days": 3,
+        "impressions": 1650,
+        "mature": true
+      },
+      "learning_actions": [
+        "해당 소재 각도를 다음 프롬프트의 우선 콘셉트로 승격한다.",
+        "동일 브랜드에서 유사 메시지를 2개 이상 변형 테스트한다."
+      ]
+    },
+    {
+      "date": "2026-07-10",
+      "brand": "melliance",
+      "source": "naver_sa",
+      "campaign_id": "naver_sa_melliance_20260710",
+      "creative_id": "melliance_naver_sa_mock_001",
+      "label": "winner",
+      "reason": "ctr_roas_cpa_passed",
+      "metrics": {
+        "ctr": 2.4044,
+        "roas": 271.0,
+        "cpa": 8.3375,
+        "impressions": 1830,
+        "conversions": 4
+      },
+      "targets": {
+        "ctr_winner_min": 2.0,
+        "roas_winner_min": 250,
+        "ctr_target": 2.0,
+        "roas_target": 250.0,
+        "cpa_target_usd": 15.3846,
+        "cpa_winner_max": 18.4615,
+        "cpa_loser_min": 30.7692
+      },
+      "maturity": {
+        "campaign_age_days": 3,
+        "impressions": 1830,
+        "mature": true
+      },
+      "learning_actions": [
+        "해당 소재 각도를 다음 프롬프트의 우선 콘셉트로 승격한다.",
+        "동일 브랜드에서 유사 메시지를 2개 이상 변형 테스트한다."
+      ]
+    },
+    {
+      "date": "2026-07-10",
+      "brand": "paperback",
+      "source": "naver_sa",
+      "campaign_id": "naver_sa_paperback_20260710",
+      "creative_id": "paperback_naver_sa_mock_001",
+      "label": "winner",
+      "reason": "ctr_roas_cpa_passed",
+      "metrics": {
+        "ctr": 2.4378,
+        "roas": 283.0,
+        "cpa": 7.52,
+        "impressions": 2010,
+        "conversions": 5
+      },
+      "targets": {
+        "ctr_winner_min": 2.0,
+        "roas_winner_min": 250,
+        "ctr_target": 2.5,
+        "roas_target": 300.0,
+        "cpa_target_usd": 11.5385,
+        "cpa_winner_max": 13.8462,
+        "cpa_loser_min": 23.077
+      },
+      "maturity": {
+        "campaign_age_days": 3,
+        "impressions": 2010,
+        "mature": true
+      },
+      "learning_actions": [
+        "해당 소재 각도를 다음 프롬프트의 우선 콘셉트로 승격한다.",
+        "동일 브랜드에서 유사 메시지를 2개 이상 변형 테스트한다."
+      ]
+    },
+    {
+      "date": "2026-07-10",
+      "brand": "baren",
+      "source": "naver_sa",
+      "campaign_id": "naver_sa_baren_20260710",
+      "creative_id": "baren_naver_sa_mock_001",
+      "label": "winner",
+      "reason": "ctr_roas_cpa_passed",
+      "metrics": {
+        "ctr": 2.4658,
+        "roas": 295.0,
+        "cpa": 6.975,
+        "impressions": 2190,
+        "conversions": 6
+      },
+      "targets": {
+        "ctr_winner_min": 2.0,
+        "roas_winner_min": 250,
+        "ctr_target": 2.0,
+        "roas_target": 250.0,
+        "cpa_target_usd": 15.3846,
+        "cpa_winner_max": 18.4615,
+        "cpa_loser_min": 30.7692
+      },
+      "maturity": {
+        "campaign_age_days": 3,
+        "impressions": 2190,
+        "mature": true
+      },
+      "learning_actions": [
+        "해당 소재 각도를 다음 프롬프트의 우선 콘셉트로 승격한다.",
+        "동일 브랜드에서 유사 메시지를 2개 이상 변형 테스트한다."
+      ]
+    },
+    {
+      "date": "2026-07-10",
+      "brand": "someud",
+      "source": "kakao_moment",
+      "campaign_id": "kakao_moment_someud_20260710",
+      "creative_id": "someud_kakao_moment_mock_001",
+      "label": "pending",
+      "reason": "mixed_signal",
+      "metrics": {
+        "ctr": 2.2436,
+        "roas": 247.0,
+        "cpa": 4.4917,
+        "impressions": 1560,
+        "conversions": 6
+      },
+      "targets": {
+        "ctr_winner_min": 2.0,
+        "roas_winner_min": 250,
+        "ctr_target": 2.5,
+        "roas_target": 300.0,
+        "cpa_target_usd": 11.5385,
+        "cpa_winner_max": 13.8462,
+        "cpa_loser_min": 23.077
+      },
+      "maturity": {
+        "campaign_age_days": 3,
+        "impressions": 1560,
+        "mature": true
+      },
+      "learning_actions": [
+        "집행 신호가 더 쌓일 때까지 관찰한다.",
+        "성과가 갈리는 지표를 다음 수집일에 재확인한다."
+      ]
+    },
+    {
+      "date": "2026-07-10",
+      "brand": "kinda",
+      "source": "kakao_moment",
+      "campaign_id": "kakao_moment_kinda_20260710",
+      "creative_id": "kinda_kakao_moment_mock_001",
+      "label": "winner",
+      "reason": "ctr_roas_cpa_passed",
+      "metrics": {
+        "ctr": 2.2989,
+        "roas": 259.0,
+        "cpa": 4.4571,
+        "impressions": 1740,
+        "conversions": 7
+      },
+      "targets": {
+        "ctr_winner_min": 2.0,
+        "roas_winner_min": 250,
+        "ctr_target": 2.5,
+        "roas_target": 300.0,
+        "cpa_target_usd": 11.5385,
+        "cpa_winner_max": 13.8462,
+        "cpa_loser_min": 23.077
+      },
+      "maturity": {
+        "campaign_age_days": 3,
+        "impressions": 1740,
+        "mature": true
+      },
+      "learning_actions": [
+        "해당 소재 각도를 다음 프롬프트의 우선 콘셉트로 승격한다.",
+        "동일 브랜드에서 유사 메시지를 2개 이상 변형 테스트한다."
+      ]
+    },
+    {
+      "date": "2026-07-10",
+      "brand": "melliance",
+      "source": "kakao_moment",
+      "campaign_id": "kakao_moment_melliance_20260710",
+      "creative_id": "melliance_kakao_moment_mock_001",
+      "label": "winner",
+      "reason": "ctr_roas_cpa_passed",
+      "metrics": {
+        "ctr": 2.3438,
+        "roas": 271.0,
+        "cpa": 7.09,
+        "impressions": 1920,
+        "conversions": 5
+      },
+      "targets": {
+        "ctr_winner_min": 2.0,
+        "roas_winner_min": 250,
+        "ctr_target": 2.0,
+        "roas_target": 250.0,
+        "cpa_target_usd": 15.3846,
+        "cpa_winner_max": 18.4615,
+        "cpa_loser_min": 30.7692
+      },
+      "maturity": {
+        "campaign_age_days": 3,
+        "impressions": 1920,
+        "mature": true
+      },
+      "learning_actions": [
+        "해당 소재 각도를 다음 프롬프트의 우선 콘셉트로 승격한다.",
+        "동일 브랜드에서 유사 메시지를 2개 이상 변형 테스트한다."
+      ]
+    },
+    {
+      "date": "2026-07-10",
+      "brand": "paperback",
+      "source": "kakao_moment",
+      "campaign_id": "kakao_moment_paperback_20260710",
+      "creative_id": "paperback_kakao_moment_mock_001",
+      "label": "winner",
+      "reason": "ctr_roas_cpa_passed",
+      "metrics": {
+        "ctr": 2.381,
+        "roas": 283.0,
+        "cpa": 6.6167,
+        "impressions": 2100,
+        "conversions": 6
+      },
+      "targets": {
+        "ctr_winner_min": 2.0,
+        "roas_winner_min": 250,
+        "ctr_target": 2.5,
+        "roas_target": 300.0,
+        "cpa_target_usd": 11.5385,
+        "cpa_winner_max": 13.8462,
+        "cpa_loser_min": 23.077
+      },
+      "maturity": {
+        "campaign_age_days": 3,
+        "impressions": 2100,
+        "mature": true
+      },
+      "learning_actions": [
+        "해당 소재 각도를 다음 프롬프트의 우선 콘셉트로 승격한다.",
+        "동일 브랜드에서 유사 메시지를 2개 이상 변형 테스트한다."
+      ]
+    },
+    {
+      "date": "2026-07-10",
+      "brand": "baren",
+      "source": "kakao_moment",
+      "campaign_id": "kakao_moment_baren_20260710",
+      "creative_id": "baren_kakao_moment_mock_001",
+      "label": "winner",
+      "reason": "ctr_roas_cpa_passed",
+      "metrics": {
+        "ctr": 2.4123,
+        "roas": 295.0,
+        "cpa": 6.2786,
+        "impressions": 2280,
+        "conversions": 7
+      },
+      "targets": {
+        "ctr_winner_min": 2.0,
+        "roas_winner_min": 250,
+        "ctr_target": 2.0,
+        "roas_target": 250.0,
+        "cpa_target_usd": 15.3846,
+        "cpa_winner_max": 18.4615,
+        "cpa_loser_min": 30.7692
+      },
+      "maturity": {
+        "campaign_age_days": 3,
+        "impressions": 2280,
+        "mature": true
+      },
+      "learning_actions": [
+        "해당 소재 각도를 다음 프롬프트의 우선 콘셉트로 승격한다.",
+        "동일 브랜드에서 유사 메시지를 2개 이상 변형 테스트한다."
+      ]
+    }
+  ]
+}
