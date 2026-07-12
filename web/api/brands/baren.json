@@ -1,6 +1,6 @@
 {
   "status": "brand_detail_api_ready",
-  "generated_at": "2026-07-10T03:53:14+09:00",
+  "generated_at": "2026-07-13T03:02:59+09:00",
   "brand": "baren",
   "snapshot": {
     "brand": "baren",
@@ -22,7 +22,7 @@
   "routine": {
     "brand": "baren",
     "display_name": "바렌",
-    "date": "2026-07-10",
+    "date": "2026-07-13",
     "ready_part_count": 4,
     "total_part_count": 4,
     "completion_percent": 100,
@@ -114,11 +114,11 @@
           "real_photo_count": 2,
           "illustration_count": 2,
           "estimated_cost_usd": 0.528,
-          "output_dir": "outputs/baren/2026-07-10/"
+          "output_dir": "outputs/baren/2026-07-13/"
         },
         "evidence": [
-          "outputs/baren/2026-07-10/baren_20260710_실사_기능성-케어-인포그래픽-성분_v01_high.png",
-          "outputs/baren/2026-07-10/baren_20260710_실사_기능성-케어-인포그래픽-성분_v02_high.png"
+          "outputs/baren/2026-07-13/baren_20260713_실사_기능성-케어-인포그래픽-성분_v01_high.png",
+          "outputs/baren/2026-07-13/baren_20260713_실사_기능성-케어-인포그래픽-성분_v02_high.png"
         ]
       }
     ]
@@ -126,7 +126,7 @@
   "trend_briefings": [
     {
       "sequence": 5,
-      "date": "2026-07-10",
+      "date": "2026-07-13",
       "brand": "baren",
       "display_name": "바렌",
       "source": "naver_trends",
@@ -147,7 +147,7 @@
     },
     {
       "sequence": 10,
-      "date": "2026-07-10",
+      "date": "2026-07-13",
       "brand": "baren",
       "display_name": "바렌",
       "source": "google_trends",
@@ -168,7 +168,7 @@
     },
     {
       "sequence": 15,
-      "date": "2026-07-10",
+      "date": "2026-07-13",
       "brand": "baren",
       "display_name": "바렌",
       "source": "news",
@@ -189,7 +189,7 @@
     },
     {
       "sequence": 20,
-      "date": "2026-07-10",
+      "date": "2026-07-13",
       "brand": "baren",
       "display_name": "바렌",
       "source": "competitor",
