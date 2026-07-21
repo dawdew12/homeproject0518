@@ -1,0 +1,2236 @@
+{
+  "date": "2026-07-22",
+  "status": "prompts_ready",
+  "input_files": {
+    "manager": "history/daily/2026-07-22_manager_brief.json"
+  },
+  "summary": {
+    "brand_count": 5,
+    "storyboard_count": 20,
+    "prompt_count": 20,
+    "real_photo_count": 10,
+    "illustration_count": 10,
+    "no_text_rule_applied": true
+  },
+  "brands": [
+    {
+      "brand": "someud",
+      "display_name": "소머드",
+      "priority": "test",
+      "status": "prompts_ready",
+      "storyboards": [
+        {
+          "storyboard_id": "someud_20260722_sb01",
+          "brand": "someud",
+          "display_name": "소머드",
+          "sequence": 1,
+          "status": "storyboard_ready",
+          "priority": "test",
+          "frame": "hero_context",
+          "image_type": "real_photo",
+          "image_type_label": "실사",
+          "quality": "high",
+          "title": "황토침대 첫 화면에서 타겟 고객이 상황을 바로 이해하는 메인 컷",
+          "objective": "황토침대 중심의 프리미엄 오가닉, 따뜻하고 신뢰감 소재",
+          "visual_scene": "따뜻한 침실에서 숙면과 가족 신뢰를 보여주는 실사",
+          "opening_hook": "황토침대를 1초 안에 인지할 수 있는 명확한 화면.",
+          "composition": "중앙에는 주요 피사체를 두고 하단 25%는 깨끗한 카피 여백으로 비운다.",
+          "tone": "프리미엄 오가닉, 따뜻하고 신뢰감",
+          "required_elements": [
+            "황토침대",
+            "어버이날 선물",
+            "숙면"
+          ],
+          "actions": [
+            "첫 화면 후킹 이미지를 더 명확하게 만들고 핵심 베네핏을 1개로 좁힌다.",
+            "신뢰 증거와 사용 맥락을 보강해 전환 설득력을 높인다.",
+            "경쟁사 소재 변화가 감지된 채널은 카피보다 비주얼 차별점을 우선 검토한다."
+          ],
+          "constraints": [
+            "텍스트 삽입 금지",
+            "하단 카피 영역 확보",
+            "경쟁사명 노출 금지"
+          ],
+          "brand_context_excerpt": "# someud brand context\n\nPHASE 1 placeholder입니다. 실제 브랜드 가이드, 금지 표현, 고객 페르소나, 위너/루저 학습 결과는 후속 Phase에서 보강합니다."
+        },
+        {
+          "storyboard_id": "someud_20260722_sb02",
+          "brand": "someud",
+          "display_name": "소머드",
+          "sequence": 2,
+          "status": "storyboard_ready",
+          "priority": "test",
+          "frame": "use_moment",
+          "image_type": "real_photo",
+          "image_type_label": "실사",
+          "quality": "high",
+          "title": "황토침대 제품이 쓰이는 실제 순간과 생활 맥락을 보여주는 컷",
+          "objective": "황토침대 중심의 프리미엄 오가닉, 따뜻하고 신뢰감 소재",
+          "visual_scene": "따뜻한 침실에서 숙면과 가족 신뢰를 보여주는 실사",
+          "opening_hook": "황토침대를 1초 안에 인지할 수 있는 명확한 화면.",
+          "composition": "중앙에는 주요 피사체를 두고 하단 25%는 깨끗한 카피 여백으로 비운다.",
+          "tone": "프리미엄 오가닉, 따뜻하고 신뢰감",
+          "required_elements": [
+            "황토침대",
+            "어버이날 선물",
+            "숙면"
+          ],
+          "actions": [
+            "첫 화면 후킹 이미지를 더 명확하게 만들고 핵심 베네핏을 1개로 좁힌다.",
+            "신뢰 증거와 사용 맥락을 보강해 전환 설득력을 높인다.",
+            "경쟁사 소재 변화가 감지된 채널은 카피보다 비주얼 차별점을 우선 검토한다."
+          ],
+          "constraints": [
+            "텍스트 삽입 금지",
+            "하단 카피 영역 확보",
+            "경쟁사명 노출 금지"
+          ],
+          "brand_context_excerpt": "# someud brand context\n\nPHASE 1 placeholder입니다. 실제 브랜드 가이드, 금지 표현, 고객 페르소나, 위너/루저 학습 결과는 후속 Phase에서 보강합니다."
+        },
+        {
+          "storyboard_id": "someud_20260722_sb03",
+          "brand": "someud",
+          "display_name": "소머드",
+          "sequence": 3,
+          "status": "storyboard_ready",
+          "priority": "test",
+          "frame": "benefit_diagram",
+          "image_type": "illustration",
+          "image_type_label": "일러스트",
+          "quality": "medium",
+          "title": "황토침대 핵심 베네핏을 과장 없이 정리하는 정보형 컷",
+          "objective": "황토침대 중심의 프리미엄 오가닉, 따뜻하고 신뢰감 소재",
+          "visual_scene": "따뜻한 침실에서 숙면과 가족 신뢰를 보여주는 실사",
+          "opening_hook": "황토침대를 1초 안에 인지할 수 있는 명확한 화면.",
+          "composition": "중앙에는 주요 피사체를 두고 하단 25%는 깨끗한 카피 여백으로 비운다.",
+          "tone": "프리미엄 오가닉, 따뜻하고 신뢰감",
+          "required_elements": [
+            "황토침대",
+            "어버이날 선물",
+            "숙면"
+          ],
+          "actions": [
+            "첫 화면 후킹 이미지를 더 명확하게 만들고 핵심 베네핏을 1개로 좁힌다.",
+            "신뢰 증거와 사용 맥락을 보강해 전환 설득력을 높인다.",
+            "경쟁사 소재 변화가 감지된 채널은 카피보다 비주얼 차별점을 우선 검토한다."
+          ],
+          "constraints": [
+            "텍스트 삽입 금지",
+            "하단 카피 영역 확보",
+            "경쟁사명 노출 금지"
+          ],
+          "brand_context_excerpt": "# someud brand context\n\nPHASE 1 placeholder입니다. 실제 브랜드 가이드, 금지 표현, 고객 페르소나, 위너/루저 학습 결과는 후속 Phase에서 보강합니다."
+        },
+        {
+          "storyboard_id": "someud_20260722_sb04",
+          "brand": "someud",
+          "display_name": "소머드",
+          "sequence": 4,
+          "status": "storyboard_ready",
+          "priority": "test",
+          "frame": "variation_test",
+          "image_type": "illustration",
+          "image_type_label": "일러스트",
+          "quality": "medium",
+          "title": "황토침대 다른 후킹 각도를 테스트하는 확장 컷",
+          "objective": "황토침대 중심의 프리미엄 오가닉, 따뜻하고 신뢰감 소재",
+          "visual_scene": "따뜻한 침실에서 숙면과 가족 신뢰를 보여주는 실사",
+          "opening_hook": "황토침대를 1초 안에 인지할 수 있는 명확한 화면.",
+          "composition": "중앙에는 주요 피사체를 두고 하단 25%는 깨끗한 카피 여백으로 비운다.",
+          "tone": "프리미엄 오가닉, 따뜻하고 신뢰감",
+          "required_elements": [
+            "황토침대",
+            "어버이날 선물",
+            "숙면"
+          ],
+          "actions": [
+            "첫 화면 후킹 이미지를 더 명확하게 만들고 핵심 베네핏을 1개로 좁힌다.",
+            "신뢰 증거와 사용 맥락을 보강해 전환 설득력을 높인다.",
+            "경쟁사 소재 변화가 감지된 채널은 카피보다 비주얼 차별점을 우선 검토한다."
+          ],
+          "constraints": [
+            "텍스트 삽입 금지",
+            "하단 카피 영역 확보",
+            "경쟁사명 노출 금지"
+          ],
+          "brand_context_excerpt": "# someud brand context\n\nPHASE 1 placeholder입니다. 실제 브랜드 가이드, 금지 표현, 고객 페르소나, 위너/루저 학습 결과는 후속 Phase에서 보강합니다."
+        }
+      ],
+      "prompts": [
+        {
+          "prompt_id": "someud_20260722_prompt01",
+          "brand": "someud",
+          "storyboard_id": "someud_20260722_sb01",
+          "status": "image_prompt_ready",
+          "model": "gpt-image-2",
+          "image_type": "real_photo",
+          "image_type_label": "실사",
+          "size": "2K",
+          "quality": "high",
+          "sections": [
+            "브랜드 정체성",
+            "오늘의 방향",
+            "이미지 스펙",
+            "카피 영역",
+            "금지사항"
+          ],
+          "rules": [
+            "NO text",
+            "NO watermark",
+            "NO logo",
+            "Leave 25% bottom space for copywriting"
+          ],
+          "prompt": "Create a 실사 2K advertising visual for 소머드. Scene: 따뜻한 침실에서 숙면과 가족 신뢰를 보여주는 실사. Objective: 황토침대 중심의 프리미엄 오가닉, 따뜻하고 신뢰감 소재. Hook: 황토침대를 1초 안에 인지할 수 있는 명확한 화면. Composition: 중앙에는 주요 피사체를 두고 하단 25%는 깨끗한 카피 여백으로 비운다. Tone: 프리미엄 오가닉, 따뜻하고 신뢰감. Include visual cues related to 황토침대, 어버이날 선물, 숙면. Do not include any text, letters, numbers, logo, watermark, UI, price tag, or brand competitor name. Keep the bottom 25 percent clean and uncluttered for copywriting.",
+          "negative_prompt": [
+            "text",
+            "watermark",
+            "logo",
+            "competitor name",
+            "crowded bottom area",
+            "low quality composite"
+          ],
+          "file_name_preview": "someud_20260722_실사_황토침대-어버이날-선물-숙면_v01_high.png",
+          "copy_space": "bottom_25_percent",
+          "batch_ready": true
+        },
+        {
+          "prompt_id": "someud_20260722_prompt02",
+          "brand": "someud",
+          "storyboard_id": "someud_20260722_sb02",
+          "status": "image_prompt_ready",
+          "model": "gpt-image-2",
+          "image_type": "real_photo",
+          "image_type_label": "실사",
+          "size": "2K",
+          "quality": "high",
+          "sections": [
+            "브랜드 정체성",
+            "오늘의 방향",
+            "이미지 스펙",
+            "카피 영역",
+            "금지사항"
+          ],
+          "rules": [
+            "NO text",
+            "NO watermark",
+            "NO logo",
+            "Leave 25% bottom space for copywriting"
+          ],
+          "prompt": "Create a 실사 2K advertising visual for 소머드. Scene: 따뜻한 침실에서 숙면과 가족 신뢰를 보여주는 실사. Objective: 황토침대 중심의 프리미엄 오가닉, 따뜻하고 신뢰감 소재. Hook: 황토침대를 1초 안에 인지할 수 있는 명확한 화면. Composition: 중앙에는 주요 피사체를 두고 하단 25%는 깨끗한 카피 여백으로 비운다. Tone: 프리미엄 오가닉, 따뜻하고 신뢰감. Include visual cues related to 황토침대, 어버이날 선물, 숙면. Do not include any text, letters, numbers, logo, watermark, UI, price tag, or brand competitor name. Keep the bottom 25 percent clean and uncluttered for copywriting.",
+          "negative_prompt": [
+            "text",
+            "watermark",
+            "logo",
+            "competitor name",
+            "crowded bottom area",
+            "low quality composite"
+          ],
+          "file_name_preview": "someud_20260722_실사_황토침대-어버이날-선물-숙면_v02_high.png",
+          "copy_space": "bottom_25_percent",
+          "batch_ready": true
+        },
+        {
+          "prompt_id": "someud_20260722_prompt03",
+          "brand": "someud",
+          "storyboard_id": "someud_20260722_sb03",
+          "status": "image_prompt_ready",
+          "model": "gpt-image-2",
+          "image_type": "illustration",
+          "image_type_label": "일러스트",
+          "size": "2K",
+          "quality": "medium",
+          "sections": [
+            "브랜드 정체성",
+            "오늘의 방향",
+            "이미지 스펙",
+            "카피 영역",
+            "금지사항"
+          ],
+          "rules": [
+            "NO text",
+            "NO watermark",
+            "NO logo",
+            "Leave 25% bottom space for copywriting"
+          ],
+          "prompt": "Create a 일러스트 2K advertising visual for 소머드. Scene: 따뜻한 침실에서 숙면과 가족 신뢰를 보여주는 실사. Objective: 황토침대 중심의 프리미엄 오가닉, 따뜻하고 신뢰감 소재. Hook: 황토침대를 1초 안에 인지할 수 있는 명확한 화면. Composition: 중앙에는 주요 피사체를 두고 하단 25%는 깨끗한 카피 여백으로 비운다. Tone: 프리미엄 오가닉, 따뜻하고 신뢰감. Include visual cues related to 황토침대, 어버이날 선물, 숙면. Do not include any text, letters, numbers, logo, watermark, UI, price tag, or brand competitor name. Keep the bottom 25 percent clean and uncluttered for copywriting.",
+          "negative_prompt": [
+            "text",
+            "watermark",
+            "logo",
+            "competitor name",
+            "crowded bottom area",
+            "low quality composite"
+          ],
+          "file_name_preview": "someud_20260722_일러스트_황토침대-어버이날-선물-숙면_v03_medium.png",
+          "copy_space": "bottom_25_percent",
+          "batch_ready": true
+        },
+        {
+          "prompt_id": "someud_20260722_prompt04",
+          "brand": "someud",
+          "storyboard_id": "someud_20260722_sb04",
+          "status": "image_prompt_ready",
+          "model": "gpt-image-2",
+          "image_type": "illustration",
+          "image_type_label": "일러스트",
+          "size": "2K",
+          "quality": "medium",
+          "sections": [
+            "브랜드 정체성",
+            "오늘의 방향",
+            "이미지 스펙",
+            "카피 영역",
+            "금지사항"
+          ],
+          "rules": [
+            "NO text",
+            "NO watermark",
+            "NO logo",
+            "Leave 25% bottom space for copywriting"
+          ],
+          "prompt": "Create a 일러스트 2K advertising visual for 소머드. Scene: 따뜻한 침실에서 숙면과 가족 신뢰를 보여주는 실사. Objective: 황토침대 중심의 프리미엄 오가닉, 따뜻하고 신뢰감 소재. Hook: 황토침대를 1초 안에 인지할 수 있는 명확한 화면. Composition: 중앙에는 주요 피사체를 두고 하단 25%는 깨끗한 카피 여백으로 비운다. Tone: 프리미엄 오가닉, 따뜻하고 신뢰감. Include visual cues related to 황토침대, 어버이날 선물, 숙면. Do not include any text, letters, numbers, logo, watermark, UI, price tag, or brand competitor name. Keep the bottom 25 percent clean and uncluttered for copywriting.",
+          "negative_prompt": [
+            "text",
+            "watermark",
+            "logo",
+            "competitor name",
+            "crowded bottom area",
+            "low quality composite"
+          ],
+          "file_name_preview": "someud_20260722_일러스트_황토침대-어버이날-선물-숙면_v04_medium.png",
+          "copy_space": "bottom_25_percent",
+          "batch_ready": true
+        }
+      ],
+      "handoff_to_image_designer": {
+        "owner": "팀원 D",
+        "batch_size": 4,
+        "output_dir": "outputs/someud/2026-07-22/",
+        "prompt_ids": [
+          "someud_20260722_prompt01",
+          "someud_20260722_prompt02",
+          "someud_20260722_prompt03",
+          "someud_20260722_prompt04"
+        ]
+      }
+    },
+    {
+      "brand": "kinda",
+      "display_name": "킨다",
+      "priority": "test",
+      "status": "prompts_ready",
+      "storyboards": [
+        {
+          "storyboard_id": "kinda_20260722_sb01",
+          "brand": "kinda",
+          "display_name": "킨다",
+          "sequence": 1,
+          "status": "storyboard_ready",
+          "priority": "test",
+          "frame": "hero_context",
+          "image_type": "real_photo",
+          "image_type_label": "실사",
+          "quality": "high",
+          "title": "극손상 헤어팩 첫 화면에서 타겟 고객이 상황을 바로 이해하는 메인 컷",
+          "objective": "극손상 헤어팩 중심의 손상 모발 회복, 부드럽고 신뢰감 있는 뷰티 톤 소재",
+          "visual_scene": "손상 모발 전후 차이가 선명한 욕실·파우더룸 실사",
+          "opening_hook": "극손상 헤어팩를 1초 안에 인지할 수 있는 명확한 화면.",
+          "composition": "중앙에는 주요 피사체를 두고 하단 25%는 깨끗한 카피 여백으로 비운다.",
+          "tone": "손상 모발 회복, 부드럽고 신뢰감 있는 뷰티 톤",
+          "required_elements": [
+            "극손상 헤어팩",
+            "비포애프터",
+            "홈케어"
+          ],
+          "actions": [
+            "첫 화면 후킹 이미지를 더 명확하게 만들고 핵심 베네핏을 1개로 좁힌다.",
+            "신뢰 증거와 사용 맥락을 보강해 전환 설득력을 높인다.",
+            "경쟁사 소재 변화가 감지된 채널은 카피보다 비주얼 차별점을 우선 검토한다."
+          ],
+          "constraints": [
+            "텍스트 삽입 금지",
+            "하단 카피 영역 확보",
+            "경쟁사명 노출 금지"
+          ],
+          "brand_context_excerpt": "# kinda brand context\n\nPHASE 1 placeholder입니다. 실제 브랜드 가이드, 금지 표현, 고객 페르소나, 위너/루저 학습 결과는 후속 Phase에서 보강합니다."
+        },
+        {
+          "storyboard_id": "kinda_20260722_sb02",
+          "brand": "kinda",
+          "display_name": "킨다",
+          "sequence": 2,
+          "status": "storyboard_ready",
+          "priority": "test",
+          "frame": "use_moment",
+          "image_type": "real_photo",
+          "image_type_label": "실사",
+          "quality": "high",
+          "title": "극손상 헤어팩 제품이 쓰이는 실제 순간과 생활 맥락을 보여주는 컷",
+          "objective": "극손상 헤어팩 중심의 손상 모발 회복, 부드럽고 신뢰감 있는 뷰티 톤 소재",
+          "visual_scene": "손상 모발 전후 차이가 선명한 욕실·파우더룸 실사",
+          "opening_hook": "극손상 헤어팩를 1초 안에 인지할 수 있는 명확한 화면.",
+          "composition": "중앙에는 주요 피사체를 두고 하단 25%는 깨끗한 카피 여백으로 비운다.",
+          "tone": "손상 모발 회복, 부드럽고 신뢰감 있는 뷰티 톤",
+          "required_elements": [
+            "극손상 헤어팩",
+            "비포애프터",
+            "홈케어"
+          ],
+          "actions": [
+            "첫 화면 후킹 이미지를 더 명확하게 만들고 핵심 베네핏을 1개로 좁힌다.",
+            "신뢰 증거와 사용 맥락을 보강해 전환 설득력을 높인다.",
+            "경쟁사 소재 변화가 감지된 채널은 카피보다 비주얼 차별점을 우선 검토한다."
+          ],
+          "constraints": [
+            "텍스트 삽입 금지",
+            "하단 카피 영역 확보",
+            "경쟁사명 노출 금지"
+          ],
+          "brand_context_excerpt": "# kinda brand context\n\nPHASE 1 placeholder입니다. 실제 브랜드 가이드, 금지 표현, 고객 페르소나, 위너/루저 학습 결과는 후속 Phase에서 보강합니다."
+        },
+        {
+          "storyboard_id": "kinda_20260722_sb03",
+          "brand": "kinda",
+          "display_name": "킨다",
+          "sequence": 3,
+          "status": "storyboard_ready",
+          "priority": "test",
+          "frame": "benefit_diagram",
+          "image_type": "illustration",
+          "image_type_label": "일러스트",
+          "quality": "medium",
+          "title": "극손상 헤어팩 핵심 베네핏을 과장 없이 정리하는 정보형 컷",
+          "objective": "극손상 헤어팩 중심의 손상 모발 회복, 부드럽고 신뢰감 있는 뷰티 톤 소재",
+          "visual_scene": "손상 모발 전후 차이가 선명한 욕실·파우더룸 실사",
+          "opening_hook": "극손상 헤어팩를 1초 안에 인지할 수 있는 명확한 화면.",
+          "composition": "중앙에는 주요 피사체를 두고 하단 25%는 깨끗한 카피 여백으로 비운다.",
+          "tone": "손상 모발 회복, 부드럽고 신뢰감 있는 뷰티 톤",
+          "required_elements": [
+            "극손상 헤어팩",
+            "비포애프터",
+            "홈케어"
+          ],
+          "actions": [
+            "첫 화면 후킹 이미지를 더 명확하게 만들고 핵심 베네핏을 1개로 좁힌다.",
+            "신뢰 증거와 사용 맥락을 보강해 전환 설득력을 높인다.",
+            "경쟁사 소재 변화가 감지된 채널은 카피보다 비주얼 차별점을 우선 검토한다."
+          ],
+          "constraints": [
+            "텍스트 삽입 금지",
+            "하단 카피 영역 확보",
+            "경쟁사명 노출 금지"
+          ],
+          "brand_context_excerpt": "# kinda brand context\n\nPHASE 1 placeholder입니다. 실제 브랜드 가이드, 금지 표현, 고객 페르소나, 위너/루저 학습 결과는 후속 Phase에서 보강합니다."
+        },
+        {
+          "storyboard_id": "kinda_20260722_sb04",
+          "brand": "kinda",
+          "display_name": "킨다",
+          "sequence": 4,
+          "status": "storyboard_ready",
+          "priority": "test",
+          "frame": "variation_test",
+          "image_type": "illustration",
+          "image_type_label": "일러스트",
+          "quality": "medium",
+          "title": "극손상 헤어팩 다른 후킹 각도를 테스트하는 확장 컷",
+          "objective": "극손상 헤어팩 중심의 손상 모발 회복, 부드럽고 신뢰감 있는 뷰티 톤 소재",
+          "visual_scene": "손상 모발 전후 차이가 선명한 욕실·파우더룸 실사",
+          "opening_hook": "극손상 헤어팩를 1초 안에 인지할 수 있는 명확한 화면.",
+          "composition": "중앙에는 주요 피사체를 두고 하단 25%는 깨끗한 카피 여백으로 비운다.",
+          "tone": "손상 모발 회복, 부드럽고 신뢰감 있는 뷰티 톤",
+          "required_elements": [
+            "극손상 헤어팩",
+            "비포애프터",
+            "홈케어"
+          ],
+          "actions": [
+            "첫 화면 후킹 이미지를 더 명확하게 만들고 핵심 베네핏을 1개로 좁힌다.",
+            "신뢰 증거와 사용 맥락을 보강해 전환 설득력을 높인다.",
+            "경쟁사 소재 변화가 감지된 채널은 카피보다 비주얼 차별점을 우선 검토한다."
+          ],
+          "constraints": [
+            "텍스트 삽입 금지",
+            "하단 카피 영역 확보",
+            "경쟁사명 노출 금지"
+          ],
+          "brand_context_excerpt": "# kinda brand context\n\nPHASE 1 placeholder입니다. 실제 브랜드 가이드, 금지 표현, 고객 페르소나, 위너/루저 학습 결과는 후속 Phase에서 보강합니다."
+        }
+      ],
+      "prompts": [
+        {
+          "prompt_id": "kinda_20260722_prompt01",
+          "brand": "kinda",
+          "storyboard_id": "kinda_20260722_sb01",
+          "status": "image_prompt_ready",
+          "model": "gpt-image-2",
+          "image_type": "real_photo",
+          "image_type_label": "실사",
+          "size": "2K",
+          "quality": "high",
+          "sections": [
+            "브랜드 정체성",
+            "오늘의 방향",
+            "이미지 스펙",
+            "카피 영역",
+            "금지사항"
+          ],
+          "rules": [
+            "NO text",
+            "NO watermark",
+            "NO logo",
+            "Leave 25% bottom space for copywriting"
+          ],
+          "prompt": "Create a 실사 2K advertising visual for 킨다. Scene: 손상 모발 전후 차이가 선명한 욕실·파우더룸 실사. Objective: 극손상 헤어팩 중심의 손상 모발 회복, 부드럽고 신뢰감 있는 뷰티 톤 소재. Hook: 극손상 헤어팩를 1초 안에 인지할 수 있는 명확한 화면. Composition: 중앙에는 주요 피사체를 두고 하단 25%는 깨끗한 카피 여백으로 비운다. Tone: 손상 모발 회복, 부드럽고 신뢰감 있는 뷰티 톤. Include visual cues related to 극손상 헤어팩, 비포애프터, 홈케어. Do not include any text, letters, numbers, logo, watermark, UI, price tag, or brand competitor name. Keep the bottom 25 percent clean and uncluttered for copywriting.",
+          "negative_prompt": [
+            "text",
+            "watermark",
+            "logo",
+            "competitor name",
+            "crowded bottom area",
+            "low quality composite"
+          ],
+          "file_name_preview": "kinda_20260722_실사_극손상-헤어팩-비포애프터-홈케어_v01_high.png",
+          "copy_space": "bottom_25_percent",
+          "batch_ready": true
+        },
+        {
+          "prompt_id": "kinda_20260722_prompt02",
+          "brand": "kinda",
+          "storyboard_id": "kinda_20260722_sb02",
+          "status": "image_prompt_ready",
+          "model": "gpt-image-2",
+          "image_type": "real_photo",
+          "image_type_label": "실사",
+          "size": "2K",
+          "quality": "high",
+          "sections": [
+            "브랜드 정체성",
+            "오늘의 방향",
+            "이미지 스펙",
+            "카피 영역",
+            "금지사항"
+          ],
+          "rules": [
+            "NO text",
+            "NO watermark",
+            "NO logo",
+            "Leave 25% bottom space for copywriting"
+          ],
+          "prompt": "Create a 실사 2K advertising visual for 킨다. Scene: 손상 모발 전후 차이가 선명한 욕실·파우더룸 실사. Objective: 극손상 헤어팩 중심의 손상 모발 회복, 부드럽고 신뢰감 있는 뷰티 톤 소재. Hook: 극손상 헤어팩를 1초 안에 인지할 수 있는 명확한 화면. Composition: 중앙에는 주요 피사체를 두고 하단 25%는 깨끗한 카피 여백으로 비운다. Tone: 손상 모발 회복, 부드럽고 신뢰감 있는 뷰티 톤. Include visual cues related to 극손상 헤어팩, 비포애프터, 홈케어. Do not include any text, letters, numbers, logo, watermark, UI, price tag, or brand competitor name. Keep the bottom 25 percent clean and uncluttered for copywriting.",
+          "negative_prompt": [
+            "text",
+            "watermark",
+            "logo",
+            "competitor name",
+            "crowded bottom area",
+            "low quality composite"
+          ],
+          "file_name_preview": "kinda_20260722_실사_극손상-헤어팩-비포애프터-홈케어_v02_high.png",
+          "copy_space": "bottom_25_percent",
+          "batch_ready": true
+        },
+        {
+          "prompt_id": "kinda_20260722_prompt03",
+          "brand": "kinda",
+          "storyboard_id": "kinda_20260722_sb03",
+          "status": "image_prompt_ready",
+          "model": "gpt-image-2",
+          "image_type": "illustration",
+          "image_type_label": "일러스트",
+          "size": "2K",
+          "quality": "medium",
+          "sections": [
+            "브랜드 정체성",
+            "오늘의 방향",
+            "이미지 스펙",
+            "카피 영역",
+            "금지사항"
+          ],
+          "rules": [
+            "NO text",
+            "NO watermark",
+            "NO logo",
+            "Leave 25% bottom space for copywriting"
+          ],
+          "prompt": "Create a 일러스트 2K advertising visual for 킨다. Scene: 손상 모발 전후 차이가 선명한 욕실·파우더룸 실사. Objective: 극손상 헤어팩 중심의 손상 모발 회복, 부드럽고 신뢰감 있는 뷰티 톤 소재. Hook: 극손상 헤어팩를 1초 안에 인지할 수 있는 명확한 화면. Composition: 중앙에는 주요 피사체를 두고 하단 25%는 깨끗한 카피 여백으로 비운다. Tone: 손상 모발 회복, 부드럽고 신뢰감 있는 뷰티 톤. Include visual cues related to 극손상 헤어팩, 비포애프터, 홈케어. Do not include any text, letters, numbers, logo, watermark, UI, price tag, or brand competitor name. Keep the bottom 25 percent clean and uncluttered for copywriting.",
+          "negative_prompt": [
+            "text",
+            "watermark",
+            "logo",
+            "competitor name",
+            "crowded bottom area",
+            "low quality composite"
+          ],
+          "file_name_preview": "kinda_20260722_일러스트_극손상-헤어팩-비포애프터-홈케어_v03_medium.png",
+          "copy_space": "bottom_25_percent",
+          "batch_ready": true
+        },
+        {
+          "prompt_id": "kinda_20260722_prompt04",
+          "brand": "kinda",
+          "storyboard_id": "kinda_20260722_sb04",
+          "status": "image_prompt_ready",
+          "model": "gpt-image-2",
+          "image_type": "illustration",
+          "image_type_label": "일러스트",
+          "size": "2K",
+          "quality": "medium",
+          "sections": [
+            "브랜드 정체성",
+            "오늘의 방향",
+            "이미지 스펙",
+            "카피 영역",
+            "금지사항"
+          ],
+          "rules": [
+            "NO text",
+            "NO watermark",
+            "NO logo",
+            "Leave 25% bottom space for copywriting"
+          ],
+          "prompt": "Create a 일러스트 2K advertising visual for 킨다. Scene: 손상 모발 전후 차이가 선명한 욕실·파우더룸 실사. Objective: 극손상 헤어팩 중심의 손상 모발 회복, 부드럽고 신뢰감 있는 뷰티 톤 소재. Hook: 극손상 헤어팩를 1초 안에 인지할 수 있는 명확한 화면. Composition: 중앙에는 주요 피사체를 두고 하단 25%는 깨끗한 카피 여백으로 비운다. Tone: 손상 모발 회복, 부드럽고 신뢰감 있는 뷰티 톤. Include visual cues related to 극손상 헤어팩, 비포애프터, 홈케어. Do not include any text, letters, numbers, logo, watermark, UI, price tag, or brand competitor name. Keep the bottom 25 percent clean and uncluttered for copywriting.",
+          "negative_prompt": [
+            "text",
+            "watermark",
+            "logo",
+            "competitor name",
+            "crowded bottom area",
+            "low quality composite"
+          ],
+          "file_name_preview": "kinda_20260722_일러스트_극손상-헤어팩-비포애프터-홈케어_v04_medium.png",
+          "copy_space": "bottom_25_percent",
+          "batch_ready": true
+        }
+      ],
+      "handoff_to_image_designer": {
+        "owner": "팀원 D",
+        "batch_size": 4,
+        "output_dir": "outputs/kinda/2026-07-22/",
+        "prompt_ids": [
+          "kinda_20260722_prompt01",
+          "kinda_20260722_prompt02",
+          "kinda_20260722_prompt03",
+          "kinda_20260722_prompt04"
+        ]
+      }
+    },
+    {
+      "brand": "melliance",
+      "display_name": "멜리언스",
+      "priority": "scale",
+      "status": "prompts_ready",
+      "storyboards": [
+        {
+          "storyboard_id": "melliance_20260722_sb01",
+          "brand": "melliance",
+          "display_name": "멜리언스",
+          "sequence": 1,
+          "status": "storyboard_ready",
+          "priority": "scale",
+          "frame": "hero_context",
+          "image_type": "real_photo",
+          "image_type_label": "실사",
+          "quality": "high",
+          "title": "뷰티 루틴 첫 화면에서 타겟 고객이 상황을 바로 이해하는 메인 컷",
+          "objective": "뷰티 루틴 중심의 정돈된 뷰티, 세련되고 균형 잡힌 무드 소재",
+          "visual_scene": "피부결과 루틴을 정돈된 뷰티 무드로 보여주는 클로즈업",
+          "opening_hook": "뷰티 루틴를 1초 안에 인지할 수 있는 명확한 화면.",
+          "composition": "중앙에는 주요 피사체를 두고 하단 25%는 깨끗한 카피 여백으로 비운다.",
+          "tone": "정돈된 뷰티, 세련되고 균형 잡힌 무드",
+          "required_elements": [
+            "뷰티 루틴",
+            "봄 컬렉션",
+            "피부결"
+          ],
+          "actions": [
+            "성과가 받쳐주는 키워드를 첫 소재 묶음의 메인 각도로 배치한다.",
+            "경쟁사 소재 변화가 감지된 채널은 카피보다 비주얼 차별점을 우선 검토한다."
+          ],
+          "constraints": [
+            "텍스트 삽입 금지",
+            "하단 카피 영역 확보",
+            "경쟁사명 노출 금지"
+          ],
+          "brand_context_excerpt": "# melliance brand context\n\nPHASE 1 placeholder입니다. 실제 브랜드 가이드, 금지 표현, 고객 페르소나, 위너/루저 학습 결과는 후속 Phase에서 보강합니다."
+        },
+        {
+          "storyboard_id": "melliance_20260722_sb02",
+          "brand": "melliance",
+          "display_name": "멜리언스",
+          "sequence": 2,
+          "status": "storyboard_ready",
+          "priority": "scale",
+          "frame": "use_moment",
+          "image_type": "real_photo",
+          "image_type_label": "실사",
+          "quality": "high",
+          "title": "뷰티 루틴 제품이 쓰이는 실제 순간과 생활 맥락을 보여주는 컷",
+          "objective": "뷰티 루틴 중심의 정돈된 뷰티, 세련되고 균형 잡힌 무드 소재",
+          "visual_scene": "피부결과 루틴을 정돈된 뷰티 무드로 보여주는 클로즈업",
+          "opening_hook": "뷰티 루틴를 1초 안에 인지할 수 있는 명확한 화면.",
+          "composition": "중앙에는 주요 피사체를 두고 하단 25%는 깨끗한 카피 여백으로 비운다.",
+          "tone": "정돈된 뷰티, 세련되고 균형 잡힌 무드",
+          "required_elements": [
+            "뷰티 루틴",
+            "봄 컬렉션",
+            "피부결"
+          ],
+          "actions": [
+            "성과가 받쳐주는 키워드를 첫 소재 묶음의 메인 각도로 배치한다.",
+            "경쟁사 소재 변화가 감지된 채널은 카피보다 비주얼 차별점을 우선 검토한다."
+          ],
+          "constraints": [
+            "텍스트 삽입 금지",
+            "하단 카피 영역 확보",
+            "경쟁사명 노출 금지"
+          ],
+          "brand_context_excerpt": "# melliance brand context\n\nPHASE 1 placeholder입니다. 실제 브랜드 가이드, 금지 표현, 고객 페르소나, 위너/루저 학습 결과는 후속 Phase에서 보강합니다."
+        },
+        {
+          "storyboard_id": "melliance_20260722_sb03",
+          "brand": "melliance",
+          "display_name": "멜리언스",
+          "sequence": 3,
+          "status": "storyboard_ready",
+          "priority": "scale",
+          "frame": "benefit_diagram",
+          "image_type": "illustration",
+          "image_type_label": "일러스트",
+          "quality": "medium",
+          "title": "뷰티 루틴 핵심 베네핏을 과장 없이 정리하는 정보형 컷",
+          "objective": "뷰티 루틴 중심의 정돈된 뷰티, 세련되고 균형 잡힌 무드 소재",
+          "visual_scene": "피부결과 루틴을 정돈된 뷰티 무드로 보여주는 클로즈업",
+          "opening_hook": "뷰티 루틴를 1초 안에 인지할 수 있는 명확한 화면.",
+          "composition": "중앙에는 주요 피사체를 두고 하단 25%는 깨끗한 카피 여백으로 비운다.",
+          "tone": "정돈된 뷰티, 세련되고 균형 잡힌 무드",
+          "required_elements": [
+            "뷰티 루틴",
+            "봄 컬렉션",
+            "피부결"
+          ],
+          "actions": [
+            "성과가 받쳐주는 키워드를 첫 소재 묶음의 메인 각도로 배치한다.",
+            "경쟁사 소재 변화가 감지된 채널은 카피보다 비주얼 차별점을 우선 검토한다."
+          ],
+          "constraints": [
+            "텍스트 삽입 금지",
+            "하단 카피 영역 확보",
+            "경쟁사명 노출 금지"
+          ],
+          "brand_context_excerpt": "# melliance brand context\n\nPHASE 1 placeholder입니다. 실제 브랜드 가이드, 금지 표현, 고객 페르소나, 위너/루저 학습 결과는 후속 Phase에서 보강합니다."
+        },
+        {
+          "storyboard_id": "melliance_20260722_sb04",
+          "brand": "melliance",
+          "display_name": "멜리언스",
+          "sequence": 4,
+          "status": "storyboard_ready",
+          "priority": "scale",
+          "frame": "variation_test",
+          "image_type": "illustration",
+          "image_type_label": "일러스트",
+          "quality": "medium",
+          "title": "뷰티 루틴 다른 후킹 각도를 테스트하는 확장 컷",
+          "objective": "뷰티 루틴 중심의 정돈된 뷰티, 세련되고 균형 잡힌 무드 소재",
+          "visual_scene": "피부결과 루틴을 정돈된 뷰티 무드로 보여주는 클로즈업",
+          "opening_hook": "뷰티 루틴를 1초 안에 인지할 수 있는 명확한 화면.",
+          "composition": "중앙에는 주요 피사체를 두고 하단 25%는 깨끗한 카피 여백으로 비운다.",
+          "tone": "정돈된 뷰티, 세련되고 균형 잡힌 무드",
+          "required_elements": [
+            "뷰티 루틴",
+            "봄 컬렉션",
+            "피부결"
+          ],
+          "actions": [
+            "성과가 받쳐주는 키워드를 첫 소재 묶음의 메인 각도로 배치한다.",
+            "경쟁사 소재 변화가 감지된 채널은 카피보다 비주얼 차별점을 우선 검토한다."
+          ],
+          "constraints": [
+            "텍스트 삽입 금지",
+            "하단 카피 영역 확보",
+            "경쟁사명 노출 금지"
+          ],
+          "brand_context_excerpt": "# melliance brand context\n\nPHASE 1 placeholder입니다. 실제 브랜드 가이드, 금지 표현, 고객 페르소나, 위너/루저 학습 결과는 후속 Phase에서 보강합니다."
+        }
+      ],
+      "prompts": [
+        {
+          "prompt_id": "melliance_20260722_prompt01",
+          "brand": "melliance",
+          "storyboard_id": "melliance_20260722_sb01",
+          "status": "image_prompt_ready",
+          "model": "gpt-image-2",
+          "image_type": "real_photo",
+          "image_type_label": "실사",
+          "size": "2K",
+          "quality": "high",
+          "sections": [
+            "브랜드 정체성",
+            "오늘의 방향",
+            "이미지 스펙",
+            "카피 영역",
+            "금지사항"
+          ],
+          "rules": [
+            "NO text",
+            "NO watermark",
+            "NO logo",
+            "Leave 25% bottom space for copywriting"
+          ],
+          "prompt": "Create a 실사 2K advertising visual for 멜리언스. Scene: 피부결과 루틴을 정돈된 뷰티 무드로 보여주는 클로즈업. Objective: 뷰티 루틴 중심의 정돈된 뷰티, 세련되고 균형 잡힌 무드 소재. Hook: 뷰티 루틴를 1초 안에 인지할 수 있는 명확한 화면. Composition: 중앙에는 주요 피사체를 두고 하단 25%는 깨끗한 카피 여백으로 비운다. Tone: 정돈된 뷰티, 세련되고 균형 잡힌 무드. Include visual cues related to 뷰티 루틴, 봄 컬렉션, 피부결. Do not include any text, letters, numbers, logo, watermark, UI, price tag, or brand competitor name. Keep the bottom 25 percent clean and uncluttered for copywriting.",
+          "negative_prompt": [
+            "text",
+            "watermark",
+            "logo",
+            "competitor name",
+            "crowded bottom area",
+            "low quality composite"
+          ],
+          "file_name_preview": "melliance_20260722_실사_뷰티-루틴-봄-컬렉션-피부결_v01_high.png",
+          "copy_space": "bottom_25_percent",
+          "batch_ready": true
+        },
+        {
+          "prompt_id": "melliance_20260722_prompt02",
+          "brand": "melliance",
+          "storyboard_id": "melliance_20260722_sb02",
+          "status": "image_prompt_ready",
+          "model": "gpt-image-2",
+          "image_type": "real_photo",
+          "image_type_label": "실사",
+          "size": "2K",
+          "quality": "high",
+          "sections": [
+            "브랜드 정체성",
+            "오늘의 방향",
+            "이미지 스펙",
+            "카피 영역",
+            "금지사항"
+          ],
+          "rules": [
+            "NO text",
+            "NO watermark",
+            "NO logo",
+            "Leave 25% bottom space for copywriting"
+          ],
+          "prompt": "Create a 실사 2K advertising visual for 멜리언스. Scene: 피부결과 루틴을 정돈된 뷰티 무드로 보여주는 클로즈업. Objective: 뷰티 루틴 중심의 정돈된 뷰티, 세련되고 균형 잡힌 무드 소재. Hook: 뷰티 루틴를 1초 안에 인지할 수 있는 명확한 화면. Composition: 중앙에는 주요 피사체를 두고 하단 25%는 깨끗한 카피 여백으로 비운다. Tone: 정돈된 뷰티, 세련되고 균형 잡힌 무드. Include visual cues related to 뷰티 루틴, 봄 컬렉션, 피부결. Do not include any text, letters, numbers, logo, watermark, UI, price tag, or brand competitor name. Keep the bottom 25 percent clean and uncluttered for copywriting.",
+          "negative_prompt": [
+            "text",
+            "watermark",
+            "logo",
+            "competitor name",
+            "crowded bottom area",
+            "low quality composite"
+          ],
+          "file_name_preview": "melliance_20260722_실사_뷰티-루틴-봄-컬렉션-피부결_v02_high.png",
+          "copy_space": "bottom_25_percent",
+          "batch_ready": true
+        },
+        {
+          "prompt_id": "melliance_20260722_prompt03",
+          "brand": "melliance",
+          "storyboard_id": "melliance_20260722_sb03",
+          "status": "image_prompt_ready",
+          "model": "gpt-image-2",
+          "image_type": "illustration",
+          "image_type_label": "일러스트",
+          "size": "2K",
+          "quality": "medium",
+          "sections": [
+            "브랜드 정체성",
+            "오늘의 방향",
+            "이미지 스펙",
+            "카피 영역",
+            "금지사항"
+          ],
+          "rules": [
+            "NO text",
+            "NO watermark",
+            "NO logo",
+            "Leave 25% bottom space for copywriting"
+          ],
+          "prompt": "Create a 일러스트 2K advertising visual for 멜리언스. Scene: 피부결과 루틴을 정돈된 뷰티 무드로 보여주는 클로즈업. Objective: 뷰티 루틴 중심의 정돈된 뷰티, 세련되고 균형 잡힌 무드 소재. Hook: 뷰티 루틴를 1초 안에 인지할 수 있는 명확한 화면. Composition: 중앙에는 주요 피사체를 두고 하단 25%는 깨끗한 카피 여백으로 비운다. Tone: 정돈된 뷰티, 세련되고 균형 잡힌 무드. Include visual cues related to 뷰티 루틴, 봄 컬렉션, 피부결. Do not include any text, letters, numbers, logo, watermark, UI, price tag, or brand competitor name. Keep the bottom 25 percent clean and uncluttered for copywriting.",
+          "negative_prompt": [
+            "text",
+            "watermark",
+            "logo",
+            "competitor name",
+            "crowded bottom area",
+            "low quality composite"
+          ],
+          "file_name_preview": "melliance_20260722_일러스트_뷰티-루틴-봄-컬렉션-피부결_v03_medium.png",
+          "copy_space": "bottom_25_percent",
+          "batch_ready": true
+        },
+        {
+          "prompt_id": "melliance_20260722_prompt04",
+          "brand": "melliance",
+          "storyboard_id": "melliance_20260722_sb04",
+          "status": "image_prompt_ready",
+          "model": "gpt-image-2",
+          "image_type": "illustration",
+          "image_type_label": "일러스트",
+          "size": "2K",
+          "quality": "medium",
+          "sections": [
+            "브랜드 정체성",
+            "오늘의 방향",
+            "이미지 스펙",
+            "카피 영역",
+            "금지사항"
+          ],
+          "rules": [
+            "NO text",
+            "NO watermark",
+            "NO logo",
+            "Leave 25% bottom space for copywriting"
+          ],
+          "prompt": "Create a 일러스트 2K advertising visual for 멜리언스. Scene: 피부결과 루틴을 정돈된 뷰티 무드로 보여주는 클로즈업. Objective: 뷰티 루틴 중심의 정돈된 뷰티, 세련되고 균형 잡힌 무드 소재. Hook: 뷰티 루틴를 1초 안에 인지할 수 있는 명확한 화면. Composition: 중앙에는 주요 피사체를 두고 하단 25%는 깨끗한 카피 여백으로 비운다. Tone: 정돈된 뷰티, 세련되고 균형 잡힌 무드. Include visual cues related to 뷰티 루틴, 봄 컬렉션, 피부결. Do not include any text, letters, numbers, logo, watermark, UI, price tag, or brand competitor name. Keep the bottom 25 percent clean and uncluttered for copywriting.",
+          "negative_prompt": [
+            "text",
+            "watermark",
+            "logo",
+            "competitor name",
+            "crowded bottom area",
+            "low quality composite"
+          ],
+          "file_name_preview": "melliance_20260722_일러스트_뷰티-루틴-봄-컬렉션-피부결_v04_medium.png",
+          "copy_space": "bottom_25_percent",
+          "batch_ready": true
+        }
+      ],
+      "handoff_to_image_designer": {
+        "owner": "팀원 D",
+        "batch_size": 4,
+        "output_dir": "outputs/melliance/2026-07-22/",
+        "prompt_ids": [
+          "melliance_20260722_prompt01",
+          "melliance_20260722_prompt02",
+          "melliance_20260722_prompt03",
+          "melliance_20260722_prompt04"
+        ]
+      }
+    },
+    {
+      "brand": "paperback",
+      "display_name": "페이퍼백",
+      "priority": "high",
+      "status": "prompts_ready",
+      "storyboards": [
+        {
+          "storyboard_id": "paperback_20260722_sb01",
+          "brand": "paperback",
+          "display_name": "페이퍼백",
+          "sequence": 1,
+          "status": "storyboard_ready",
+          "priority": "high",
+          "frame": "hero_context",
+          "image_type": "real_photo",
+          "image_type_label": "실사",
+          "quality": "high",
+          "title": "라이프스타일 첫 화면에서 타겟 고객이 상황을 바로 이해하는 메인 컷",
+          "objective": "라이프스타일 중심의 일상 감성, 차분하고 취향이 드러나는 라이프스타일 소재",
+          "visual_scene": "취향 있는 카페와 독서 장면을 연결한 라이프스타일 컷",
+          "opening_hook": "라이프스타일를 1초 안에 인지할 수 있는 명확한 화면.",
+          "composition": "중앙에는 주요 피사체를 두고 하단 25%는 깨끗한 카피 여백으로 비운다.",
+          "tone": "일상 감성, 차분하고 취향이 드러나는 라이프스타일",
+          "required_elements": [
+            "라이프스타일",
+            "독서 감성",
+            "카페"
+          ],
+          "actions": [
+            "성과가 받쳐주는 키워드를 첫 소재 묶음의 메인 각도로 배치한다.",
+            "첫 화면 후킹 이미지를 더 명확하게 만들고 핵심 베네핏을 1개로 좁힌다.",
+            "신뢰 증거와 사용 맥락을 보강해 전환 설득력을 높인다."
+          ],
+          "constraints": [
+            "텍스트 삽입 금지",
+            "하단 카피 영역 확보",
+            "경쟁사명 노출 금지"
+          ],
+          "brand_context_excerpt": "# paperback brand context\n\nPHASE 1 placeholder입니다. 실제 브랜드 가이드, 금지 표현, 고객 페르소나, 위너/루저 학습 결과는 후속 Phase에서 보강합니다."
+        },
+        {
+          "storyboard_id": "paperback_20260722_sb02",
+          "brand": "paperback",
+          "display_name": "페이퍼백",
+          "sequence": 2,
+          "status": "storyboard_ready",
+          "priority": "high",
+          "frame": "use_moment",
+          "image_type": "real_photo",
+          "image_type_label": "실사",
+          "quality": "high",
+          "title": "라이프스타일 제품이 쓰이는 실제 순간과 생활 맥락을 보여주는 컷",
+          "objective": "라이프스타일 중심의 일상 감성, 차분하고 취향이 드러나는 라이프스타일 소재",
+          "visual_scene": "취향 있는 카페와 독서 장면을 연결한 라이프스타일 컷",
+          "opening_hook": "라이프스타일를 1초 안에 인지할 수 있는 명확한 화면.",
+          "composition": "중앙에는 주요 피사체를 두고 하단 25%는 깨끗한 카피 여백으로 비운다.",
+          "tone": "일상 감성, 차분하고 취향이 드러나는 라이프스타일",
+          "required_elements": [
+            "라이프스타일",
+            "독서 감성",
+            "카페"
+          ],
+          "actions": [
+            "성과가 받쳐주는 키워드를 첫 소재 묶음의 메인 각도로 배치한다.",
+            "첫 화면 후킹 이미지를 더 명확하게 만들고 핵심 베네핏을 1개로 좁힌다.",
+            "신뢰 증거와 사용 맥락을 보강해 전환 설득력을 높인다."
+          ],
+          "constraints": [
+            "텍스트 삽입 금지",
+            "하단 카피 영역 확보",
+            "경쟁사명 노출 금지"
+          ],
+          "brand_context_excerpt": "# paperback brand context\n\nPHASE 1 placeholder입니다. 실제 브랜드 가이드, 금지 표현, 고객 페르소나, 위너/루저 학습 결과는 후속 Phase에서 보강합니다."
+        },
+        {
+          "storyboard_id": "paperback_20260722_sb03",
+          "brand": "paperback",
+          "display_name": "페이퍼백",
+          "sequence": 3,
+          "status": "storyboard_ready",
+          "priority": "high",
+          "frame": "benefit_diagram",
+          "image_type": "illustration",
+          "image_type_label": "일러스트",
+          "quality": "medium",
+          "title": "라이프스타일 핵심 베네핏을 과장 없이 정리하는 정보형 컷",
+          "objective": "라이프스타일 중심의 일상 감성, 차분하고 취향이 드러나는 라이프스타일 소재",
+          "visual_scene": "취향 있는 카페와 독서 장면을 연결한 라이프스타일 컷",
+          "opening_hook": "라이프스타일를 1초 안에 인지할 수 있는 명확한 화면.",
+          "composition": "중앙에는 주요 피사체를 두고 하단 25%는 깨끗한 카피 여백으로 비운다.",
+          "tone": "일상 감성, 차분하고 취향이 드러나는 라이프스타일",
+          "required_elements": [
+            "라이프스타일",
+            "독서 감성",
+            "카페"
+          ],
+          "actions": [
+            "성과가 받쳐주는 키워드를 첫 소재 묶음의 메인 각도로 배치한다.",
+            "첫 화면 후킹 이미지를 더 명확하게 만들고 핵심 베네핏을 1개로 좁힌다.",
+            "신뢰 증거와 사용 맥락을 보강해 전환 설득력을 높인다."
+          ],
+          "constraints": [
+            "텍스트 삽입 금지",
+            "하단 카피 영역 확보",
+            "경쟁사명 노출 금지"
+          ],
+          "brand_context_excerpt": "# paperback brand context\n\nPHASE 1 placeholder입니다. 실제 브랜드 가이드, 금지 표현, 고객 페르소나, 위너/루저 학습 결과는 후속 Phase에서 보강합니다."
+        },
+        {
+          "storyboard_id": "paperback_20260722_sb04",
+          "brand": "paperback",
+          "display_name": "페이퍼백",
+          "sequence": 4,
+          "status": "storyboard_ready",
+          "priority": "high",
+          "frame": "variation_test",
+          "image_type": "illustration",
+          "image_type_label": "일러스트",
+          "quality": "medium",
+          "title": "라이프스타일 다른 후킹 각도를 테스트하는 확장 컷",
+          "objective": "라이프스타일 중심의 일상 감성, 차분하고 취향이 드러나는 라이프스타일 소재",
+          "visual_scene": "취향 있는 카페와 독서 장면을 연결한 라이프스타일 컷",
+          "opening_hook": "라이프스타일를 1초 안에 인지할 수 있는 명확한 화면.",
+          "composition": "중앙에는 주요 피사체를 두고 하단 25%는 깨끗한 카피 여백으로 비운다.",
+          "tone": "일상 감성, 차분하고 취향이 드러나는 라이프스타일",
+          "required_elements": [
+            "라이프스타일",
+            "독서 감성",
+            "카페"
+          ],
+          "actions": [
+            "성과가 받쳐주는 키워드를 첫 소재 묶음의 메인 각도로 배치한다.",
+            "첫 화면 후킹 이미지를 더 명확하게 만들고 핵심 베네핏을 1개로 좁힌다.",
+            "신뢰 증거와 사용 맥락을 보강해 전환 설득력을 높인다."
+          ],
+          "constraints": [
+            "텍스트 삽입 금지",
+            "하단 카피 영역 확보",
+            "경쟁사명 노출 금지"
+          ],
+          "brand_context_excerpt": "# paperback brand context\n\nPHASE 1 placeholder입니다. 실제 브랜드 가이드, 금지 표현, 고객 페르소나, 위너/루저 학습 결과는 후속 Phase에서 보강합니다."
+        }
+      ],
+      "prompts": [
+        {
+          "prompt_id": "paperback_20260722_prompt01",
+          "brand": "paperback",
+          "storyboard_id": "paperback_20260722_sb01",
+          "status": "image_prompt_ready",
+          "model": "gpt-image-2",
+          "image_type": "real_photo",
+          "image_type_label": "실사",
+          "size": "2K",
+          "quality": "high",
+          "sections": [
+            "브랜드 정체성",
+            "오늘의 방향",
+            "이미지 스펙",
+            "카피 영역",
+            "금지사항"
+          ],
+          "rules": [
+            "NO text",
+            "NO watermark",
+            "NO logo",
+            "Leave 25% bottom space for copywriting"
+          ],
+          "prompt": "Create a 실사 2K advertising visual for 페이퍼백. Scene: 취향 있는 카페와 독서 장면을 연결한 라이프스타일 컷. Objective: 라이프스타일 중심의 일상 감성, 차분하고 취향이 드러나는 라이프스타일 소재. Hook: 라이프스타일를 1초 안에 인지할 수 있는 명확한 화면. Composition: 중앙에는 주요 피사체를 두고 하단 25%는 깨끗한 카피 여백으로 비운다. Tone: 일상 감성, 차분하고 취향이 드러나는 라이프스타일. Include visual cues related to 라이프스타일, 독서 감성, 카페. Do not include any text, letters, numbers, logo, watermark, UI, price tag, or brand competitor name. Keep the bottom 25 percent clean and uncluttered for copywriting.",
+          "negative_prompt": [
+            "text",
+            "watermark",
+            "logo",
+            "competitor name",
+            "crowded bottom area",
+            "low quality composite"
+          ],
+          "file_name_preview": "paperback_20260722_실사_라이프스타일-독서-감성-카페_v01_high.png",
+          "copy_space": "bottom_25_percent",
+          "batch_ready": true
+        },
+        {
+          "prompt_id": "paperback_20260722_prompt02",
+          "brand": "paperback",
+          "storyboard_id": "paperback_20260722_sb02",
+          "status": "image_prompt_ready",
+          "model": "gpt-image-2",
+          "image_type": "real_photo",
+          "image_type_label": "실사",
+          "size": "2K",
+          "quality": "high",
+          "sections": [
+            "브랜드 정체성",
+            "오늘의 방향",
+            "이미지 스펙",
+            "카피 영역",
+            "금지사항"
+          ],
+          "rules": [
+            "NO text",
+            "NO watermark",
+            "NO logo",
+            "Leave 25% bottom space for copywriting"
+          ],
+          "prompt": "Create a 실사 2K advertising visual for 페이퍼백. Scene: 취향 있는 카페와 독서 장면을 연결한 라이프스타일 컷. Objective: 라이프스타일 중심의 일상 감성, 차분하고 취향이 드러나는 라이프스타일 소재. Hook: 라이프스타일를 1초 안에 인지할 수 있는 명확한 화면. Composition: 중앙에는 주요 피사체를 두고 하단 25%는 깨끗한 카피 여백으로 비운다. Tone: 일상 감성, 차분하고 취향이 드러나는 라이프스타일. Include visual cues related to 라이프스타일, 독서 감성, 카페. Do not include any text, letters, numbers, logo, watermark, UI, price tag, or brand competitor name. Keep the bottom 25 percent clean and uncluttered for copywriting.",
+          "negative_prompt": [
+            "text",
+            "watermark",
+            "logo",
+            "competitor name",
+            "crowded bottom area",
+            "low quality composite"
+          ],
+          "file_name_preview": "paperback_20260722_실사_라이프스타일-독서-감성-카페_v02_high.png",
+          "copy_space": "bottom_25_percent",
+          "batch_ready": true
+        },
+        {
+          "prompt_id": "paperback_20260722_prompt03",
+          "brand": "paperback",
+          "storyboard_id": "paperback_20260722_sb03",
+          "status": "image_prompt_ready",
+          "model": "gpt-image-2",
+          "image_type": "illustration",
+          "image_type_label": "일러스트",
+          "size": "2K",
+          "quality": "medium",
+          "sections": [
+            "브랜드 정체성",
+            "오늘의 방향",
+            "이미지 스펙",
+            "카피 영역",
+            "금지사항"
+          ],
+          "rules": [
+            "NO text",
+            "NO watermark",
+            "NO logo",
+            "Leave 25% bottom space for copywriting"
+          ],
+          "prompt": "Create a 일러스트 2K advertising visual for 페이퍼백. Scene: 취향 있는 카페와 독서 장면을 연결한 라이프스타일 컷. Objective: 라이프스타일 중심의 일상 감성, 차분하고 취향이 드러나는 라이프스타일 소재. Hook: 라이프스타일를 1초 안에 인지할 수 있는 명확한 화면. Composition: 중앙에는 주요 피사체를 두고 하단 25%는 깨끗한 카피 여백으로 비운다. Tone: 일상 감성, 차분하고 취향이 드러나는 라이프스타일. Include visual cues related to 라이프스타일, 독서 감성, 카페. Do not include any text, letters, numbers, logo, watermark, UI, price tag, or brand competitor name. Keep the bottom 25 percent clean and uncluttered for copywriting.",
+          "negative_prompt": [
+            "text",
+            "watermark",
+            "logo",
+            "competitor name",
+            "crowded bottom area",
+            "low quality composite"
+          ],
+          "file_name_preview": "paperback_20260722_일러스트_라이프스타일-독서-감성-카페_v03_medium.png",
+          "copy_space": "bottom_25_percent",
+          "batch_ready": true
+        },
+        {
+          "prompt_id": "paperback_20260722_prompt04",
+          "brand": "paperback",
+          "storyboard_id": "paperback_20260722_sb04",
+          "status": "image_prompt_ready",
+          "model": "gpt-image-2",
+          "image_type": "illustration",
+          "image_type_label": "일러스트",
+          "size": "2K",
+          "quality": "medium",
+          "sections": [
+            "브랜드 정체성",
+            "오늘의 방향",
+            "이미지 스펙",
+            "카피 영역",
+            "금지사항"
+          ],
+          "rules": [
+            "NO text",
+            "NO watermark",
+            "NO logo",
+            "Leave 25% bottom space for copywriting"
+          ],
+          "prompt": "Create a 일러스트 2K advertising visual for 페이퍼백. Scene: 취향 있는 카페와 독서 장면을 연결한 라이프스타일 컷. Objective: 라이프스타일 중심의 일상 감성, 차분하고 취향이 드러나는 라이프스타일 소재. Hook: 라이프스타일를 1초 안에 인지할 수 있는 명확한 화면. Composition: 중앙에는 주요 피사체를 두고 하단 25%는 깨끗한 카피 여백으로 비운다. Tone: 일상 감성, 차분하고 취향이 드러나는 라이프스타일. Include visual cues related to 라이프스타일, 독서 감성, 카페. Do not include any text, letters, numbers, logo, watermark, UI, price tag, or brand competitor name. Keep the bottom 25 percent clean and uncluttered for copywriting.",
+          "negative_prompt": [
+            "text",
+            "watermark",
+            "logo",
+            "competitor name",
+            "crowded bottom area",
+            "low quality composite"
+          ],
+          "file_name_preview": "paperback_20260722_일러스트_라이프스타일-독서-감성-카페_v04_medium.png",
+          "copy_space": "bottom_25_percent",
+          "batch_ready": true
+        }
+      ],
+      "handoff_to_image_designer": {
+        "owner": "팀원 D",
+        "batch_size": 4,
+        "output_dir": "outputs/paperback/2026-07-22/",
+        "prompt_ids": [
+          "paperback_20260722_prompt01",
+          "paperback_20260722_prompt02",
+          "paperback_20260722_prompt03",
+          "paperback_20260722_prompt04"
+        ]
+      }
+    },
+    {
+      "brand": "baren",
+      "display_name": "바렌",
+      "priority": "scale",
+      "status": "prompts_ready",
+      "storyboards": [
+        {
+          "storyboard_id": "baren_20260722_sb01",
+          "brand": "baren",
+          "display_name": "바렌",
+          "sequence": 1,
+          "status": "storyboard_ready",
+          "priority": "scale",
+          "frame": "hero_context",
+          "image_type": "real_photo",
+          "image_type_label": "실사",
+          "quality": "high",
+          "title": "기능성 케어 첫 화면에서 타겟 고객이 상황을 바로 이해하는 메인 컷",
+          "objective": "기능성 케어 중심의 기능성, 명확하고 깨끗한 정보 전달 소재",
+          "visual_scene": "성분과 기능을 깨끗하게 이해시키는 정보형 비주얼",
+          "opening_hook": "기능성 케어를 1초 안에 인지할 수 있는 명확한 화면.",
+          "composition": "중앙에는 주요 피사체를 두고 하단 25%는 깨끗한 카피 여백으로 비운다.",
+          "tone": "기능성, 명확하고 깨끗한 정보 전달",
+          "required_elements": [
+            "기능성 케어",
+            "인포그래픽",
+            "성분"
+          ],
+          "actions": [
+            "성과가 받쳐주는 키워드를 첫 소재 묶음의 메인 각도로 배치한다.",
+            "경쟁사 소재 변화가 감지된 채널은 카피보다 비주얼 차별점을 우선 검토한다."
+          ],
+          "constraints": [
+            "텍스트 삽입 금지",
+            "하단 카피 영역 확보",
+            "경쟁사명 노출 금지"
+          ],
+          "brand_context_excerpt": "# baren brand context\n\nPHASE 1 placeholder입니다. 실제 브랜드 가이드, 금지 표현, 고객 페르소나, 위너/루저 학습 결과는 후속 Phase에서 보강합니다."
+        },
+        {
+          "storyboard_id": "baren_20260722_sb02",
+          "brand": "baren",
+          "display_name": "바렌",
+          "sequence": 2,
+          "status": "storyboard_ready",
+          "priority": "scale",
+          "frame": "use_moment",
+          "image_type": "real_photo",
+          "image_type_label": "실사",
+          "quality": "high",
+          "title": "기능성 케어 제품이 쓰이는 실제 순간과 생활 맥락을 보여주는 컷",
+          "objective": "기능성 케어 중심의 기능성, 명확하고 깨끗한 정보 전달 소재",
+          "visual_scene": "성분과 기능을 깨끗하게 이해시키는 정보형 비주얼",
+          "opening_hook": "기능성 케어를 1초 안에 인지할 수 있는 명확한 화면.",
+          "composition": "중앙에는 주요 피사체를 두고 하단 25%는 깨끗한 카피 여백으로 비운다.",
+          "tone": "기능성, 명확하고 깨끗한 정보 전달",
+          "required_elements": [
+            "기능성 케어",
+            "인포그래픽",
+            "성분"
+          ],
+          "actions": [
+            "성과가 받쳐주는 키워드를 첫 소재 묶음의 메인 각도로 배치한다.",
+            "경쟁사 소재 변화가 감지된 채널은 카피보다 비주얼 차별점을 우선 검토한다."
+          ],
+          "constraints": [
+            "텍스트 삽입 금지",
+            "하단 카피 영역 확보",
+            "경쟁사명 노출 금지"
+          ],
+          "brand_context_excerpt": "# baren brand context\n\nPHASE 1 placeholder입니다. 실제 브랜드 가이드, 금지 표현, 고객 페르소나, 위너/루저 학습 결과는 후속 Phase에서 보강합니다."
+        },
+        {
+          "storyboard_id": "baren_20260722_sb03",
+          "brand": "baren",
+          "display_name": "바렌",
+          "sequence": 3,
+          "status": "storyboard_ready",
+          "priority": "scale",
+          "frame": "benefit_diagram",
+          "image_type": "illustration",
+          "image_type_label": "일러스트",
+          "quality": "medium",
+          "title": "기능성 케어 핵심 베네핏을 과장 없이 정리하는 정보형 컷",
+          "objective": "기능성 케어 중심의 기능성, 명확하고 깨끗한 정보 전달 소재",
+          "visual_scene": "성분과 기능을 깨끗하게 이해시키는 정보형 비주얼",
+          "opening_hook": "기능성 케어를 1초 안에 인지할 수 있는 명확한 화면.",
+          "composition": "중앙에는 주요 피사체를 두고 하단 25%는 깨끗한 카피 여백으로 비운다.",
+          "tone": "기능성, 명확하고 깨끗한 정보 전달",
+          "required_elements": [
+            "기능성 케어",
+            "인포그래픽",
+            "성분"
+          ],
+          "actions": [
+            "성과가 받쳐주는 키워드를 첫 소재 묶음의 메인 각도로 배치한다.",
+            "경쟁사 소재 변화가 감지된 채널은 카피보다 비주얼 차별점을 우선 검토한다."
+          ],
+          "constraints": [
+            "텍스트 삽입 금지",
+            "하단 카피 영역 확보",
+            "경쟁사명 노출 금지"
+          ],
+          "brand_context_excerpt": "# baren brand context\n\nPHASE 1 placeholder입니다. 실제 브랜드 가이드, 금지 표현, 고객 페르소나, 위너/루저 학습 결과는 후속 Phase에서 보강합니다."
+        },
+        {
+          "storyboard_id": "baren_20260722_sb04",
+          "brand": "baren",
+          "display_name": "바렌",
+          "sequence": 4,
+          "status": "storyboard_ready",
+          "priority": "scale",
+          "frame": "variation_test",
+          "image_type": "illustration",
+          "image_type_label": "일러스트",
+          "quality": "medium",
+          "title": "기능성 케어 다른 후킹 각도를 테스트하는 확장 컷",
+          "objective": "기능성 케어 중심의 기능성, 명확하고 깨끗한 정보 전달 소재",
+          "visual_scene": "성분과 기능을 깨끗하게 이해시키는 정보형 비주얼",
+          "opening_hook": "기능성 케어를 1초 안에 인지할 수 있는 명확한 화면.",
+          "composition": "중앙에는 주요 피사체를 두고 하단 25%는 깨끗한 카피 여백으로 비운다.",
+          "tone": "기능성, 명확하고 깨끗한 정보 전달",
+          "required_elements": [
+            "기능성 케어",
+            "인포그래픽",
+            "성분"
+          ],
+          "actions": [
+            "성과가 받쳐주는 키워드를 첫 소재 묶음의 메인 각도로 배치한다.",
+            "경쟁사 소재 변화가 감지된 채널은 카피보다 비주얼 차별점을 우선 검토한다."
+          ],
+          "constraints": [
+            "텍스트 삽입 금지",
+            "하단 카피 영역 확보",
+            "경쟁사명 노출 금지"
+          ],
+          "brand_context_excerpt": "# baren brand context\n\nPHASE 1 placeholder입니다. 실제 브랜드 가이드, 금지 표현, 고객 페르소나, 위너/루저 학습 결과는 후속 Phase에서 보강합니다."
+        }
+      ],
+      "prompts": [
+        {
+          "prompt_id": "baren_20260722_prompt01",
+          "brand": "baren",
+          "storyboard_id": "baren_20260722_sb01",
+          "status": "image_prompt_ready",
+          "model": "gpt-image-2",
+          "image_type": "real_photo",
+          "image_type_label": "실사",
+          "size": "2K",
+          "quality": "high",
+          "sections": [
+            "브랜드 정체성",
+            "오늘의 방향",
+            "이미지 스펙",
+            "카피 영역",
+            "금지사항"
+          ],
+          "rules": [
+            "NO text",
+            "NO watermark",
+            "NO logo",
+            "Leave 25% bottom space for copywriting"
+          ],
+          "prompt": "Create a 실사 2K advertising visual for 바렌. Scene: 성분과 기능을 깨끗하게 이해시키는 정보형 비주얼. Objective: 기능성 케어 중심의 기능성, 명확하고 깨끗한 정보 전달 소재. Hook: 기능성 케어를 1초 안에 인지할 수 있는 명확한 화면. Composition: 중앙에는 주요 피사체를 두고 하단 25%는 깨끗한 카피 여백으로 비운다. Tone: 기능성, 명확하고 깨끗한 정보 전달. Include visual cues related to 기능성 케어, 인포그래픽, 성분. Do not include any text, letters, numbers, logo, watermark, UI, price tag, or brand competitor name. Keep the bottom 25 percent clean and uncluttered for copywriting.",
+          "negative_prompt": [
+            "text",
+            "watermark",
+            "logo",
+            "competitor name",
+            "crowded bottom area",
+            "low quality composite"
+          ],
+          "file_name_preview": "baren_20260722_실사_기능성-케어-인포그래픽-성분_v01_high.png",
+          "copy_space": "bottom_25_percent",
+          "batch_ready": true
+        },
+        {
+          "prompt_id": "baren_20260722_prompt02",
+          "brand": "baren",
+          "storyboard_id": "baren_20260722_sb02",
+          "status": "image_prompt_ready",
+          "model": "gpt-image-2",
+          "image_type": "real_photo",
+          "image_type_label": "실사",
+          "size": "2K",
+          "quality": "high",
+          "sections": [
+            "브랜드 정체성",
+            "오늘의 방향",
+            "이미지 스펙",
+            "카피 영역",
+            "금지사항"
+          ],
+          "rules": [
+            "NO text",
+            "NO watermark",
+            "NO logo",
+            "Leave 25% bottom space for copywriting"
+          ],
+          "prompt": "Create a 실사 2K advertising visual for 바렌. Scene: 성분과 기능을 깨끗하게 이해시키는 정보형 비주얼. Objective: 기능성 케어 중심의 기능성, 명확하고 깨끗한 정보 전달 소재. Hook: 기능성 케어를 1초 안에 인지할 수 있는 명확한 화면. Composition: 중앙에는 주요 피사체를 두고 하단 25%는 깨끗한 카피 여백으로 비운다. Tone: 기능성, 명확하고 깨끗한 정보 전달. Include visual cues related to 기능성 케어, 인포그래픽, 성분. Do not include any text, letters, numbers, logo, watermark, UI, price tag, or brand competitor name. Keep the bottom 25 percent clean and uncluttered for copywriting.",
+          "negative_prompt": [
+            "text",
+            "watermark",
+            "logo",
+            "competitor name",
+            "crowded bottom area",
+            "low quality composite"
+          ],
+          "file_name_preview": "baren_20260722_실사_기능성-케어-인포그래픽-성분_v02_high.png",
+          "copy_space": "bottom_25_percent",
+          "batch_ready": true
+        },
+        {
+          "prompt_id": "baren_20260722_prompt03",
+          "brand": "baren",
+          "storyboard_id": "baren_20260722_sb03",
+          "status": "image_prompt_ready",
+          "model": "gpt-image-2",
+          "image_type": "illustration",
+          "image_type_label": "일러스트",
+          "size": "2K",
+          "quality": "medium",
+          "sections": [
+            "브랜드 정체성",
+            "오늘의 방향",
+            "이미지 스펙",
+            "카피 영역",
+            "금지사항"
+          ],
+          "rules": [
+            "NO text",
+            "NO watermark",
+            "NO logo",
+            "Leave 25% bottom space for copywriting"
+          ],
+          "prompt": "Create a 일러스트 2K advertising visual for 바렌. Scene: 성분과 기능을 깨끗하게 이해시키는 정보형 비주얼. Objective: 기능성 케어 중심의 기능성, 명확하고 깨끗한 정보 전달 소재. Hook: 기능성 케어를 1초 안에 인지할 수 있는 명확한 화면. Composition: 중앙에는 주요 피사체를 두고 하단 25%는 깨끗한 카피 여백으로 비운다. Tone: 기능성, 명확하고 깨끗한 정보 전달. Include visual cues related to 기능성 케어, 인포그래픽, 성분. Do not include any text, letters, numbers, logo, watermark, UI, price tag, or brand competitor name. Keep the bottom 25 percent clean and uncluttered for copywriting.",
+          "negative_prompt": [
+            "text",
+            "watermark",
+            "logo",
+            "competitor name",
+            "crowded bottom area",
+            "low quality composite"
+          ],
+          "file_name_preview": "baren_20260722_일러스트_기능성-케어-인포그래픽-성분_v03_medium.png",
+          "copy_space": "bottom_25_percent",
+          "batch_ready": true
+        },
+        {
+          "prompt_id": "baren_20260722_prompt04",
+          "brand": "baren",
+          "storyboard_id": "baren_20260722_sb04",
+          "status": "image_prompt_ready",
+          "model": "gpt-image-2",
+          "image_type": "illustration",
+          "image_type_label": "일러스트",
+          "size": "2K",
+          "quality": "medium",
+          "sections": [
+            "브랜드 정체성",
+            "오늘의 방향",
+            "이미지 스펙",
+            "카피 영역",
+            "금지사항"
+          ],
+          "rules": [
+            "NO text",
+            "NO watermark",
+            "NO logo",
+            "Leave 25% bottom space for copywriting"
+          ],
+          "prompt": "Create a 일러스트 2K advertising visual for 바렌. Scene: 성분과 기능을 깨끗하게 이해시키는 정보형 비주얼. Objective: 기능성 케어 중심의 기능성, 명확하고 깨끗한 정보 전달 소재. Hook: 기능성 케어를 1초 안에 인지할 수 있는 명확한 화면. Composition: 중앙에는 주요 피사체를 두고 하단 25%는 깨끗한 카피 여백으로 비운다. Tone: 기능성, 명확하고 깨끗한 정보 전달. Include visual cues related to 기능성 케어, 인포그래픽, 성분. Do not include any text, letters, numbers, logo, watermark, UI, price tag, or brand competitor name. Keep the bottom 25 percent clean and uncluttered for copywriting.",
+          "negative_prompt": [
+            "text",
+            "watermark",
+            "logo",
+            "competitor name",
+            "crowded bottom area",
+            "low quality composite"
+          ],
+          "file_name_preview": "baren_20260722_일러스트_기능성-케어-인포그래픽-성분_v04_medium.png",
+          "copy_space": "bottom_25_percent",
+          "batch_ready": true
+        }
+      ],
+      "handoff_to_image_designer": {
+        "owner": "팀원 D",
+        "batch_size": 4,
+        "output_dir": "outputs/baren/2026-07-22/",
+        "prompt_ids": [
+          "baren_20260722_prompt01",
+          "baren_20260722_prompt02",
+          "baren_20260722_prompt03",
+          "baren_20260722_prompt04"
+        ]
+      }
+    }
+  ],
+  "prompts": [
+    {
+      "prompt_id": "someud_20260722_prompt01",
+      "brand": "someud",
+      "storyboard_id": "someud_20260722_sb01",
+      "status": "image_prompt_ready",
+      "model": "gpt-image-2",
+      "image_type": "real_photo",
+      "image_type_label": "실사",
+      "size": "2K",
+      "quality": "high",
+      "sections": [
+        "브랜드 정체성",
+        "오늘의 방향",
+        "이미지 스펙",
+        "카피 영역",
+        "금지사항"
+      ],
+      "rules": [
+        "NO text",
+        "NO watermark",
+        "NO logo",
+        "Leave 25% bottom space for copywriting"
+      ],
+      "prompt": "Create a 실사 2K advertising visual for 소머드. Scene: 따뜻한 침실에서 숙면과 가족 신뢰를 보여주는 실사. Objective: 황토침대 중심의 프리미엄 오가닉, 따뜻하고 신뢰감 소재. Hook: 황토침대를 1초 안에 인지할 수 있는 명확한 화면. Composition: 중앙에는 주요 피사체를 두고 하단 25%는 깨끗한 카피 여백으로 비운다. Tone: 프리미엄 오가닉, 따뜻하고 신뢰감. Include visual cues related to 황토침대, 어버이날 선물, 숙면. Do not include any text, letters, numbers, logo, watermark, UI, price tag, or brand competitor name. Keep the bottom 25 percent clean and uncluttered for copywriting.",
+      "negative_prompt": [
+        "text",
+        "watermark",
+        "logo",
+        "competitor name",
+        "crowded bottom area",
+        "low quality composite"
+      ],
+      "file_name_preview": "someud_20260722_실사_황토침대-어버이날-선물-숙면_v01_high.png",
+      "copy_space": "bottom_25_percent",
+      "batch_ready": true
+    },
+    {
+      "prompt_id": "someud_20260722_prompt02",
+      "brand": "someud",
+      "storyboard_id": "someud_20260722_sb02",
+      "status": "image_prompt_ready",
+      "model": "gpt-image-2",
+      "image_type": "real_photo",
+      "image_type_label": "실사",
+      "size": "2K",
+      "quality": "high",
+      "sections": [
+        "브랜드 정체성",
+        "오늘의 방향",
+        "이미지 스펙",
+        "카피 영역",
+        "금지사항"
+      ],
+      "rules": [
+        "NO text",
+        "NO watermark",
+        "NO logo",
+        "Leave 25% bottom space for copywriting"
+      ],
+      "prompt": "Create a 실사 2K advertising visual for 소머드. Scene: 따뜻한 침실에서 숙면과 가족 신뢰를 보여주는 실사. Objective: 황토침대 중심의 프리미엄 오가닉, 따뜻하고 신뢰감 소재. Hook: 황토침대를 1초 안에 인지할 수 있는 명확한 화면. Composition: 중앙에는 주요 피사체를 두고 하단 25%는 깨끗한 카피 여백으로 비운다. Tone: 프리미엄 오가닉, 따뜻하고 신뢰감. Include visual cues related to 황토침대, 어버이날 선물, 숙면. Do not include any text, letters, numbers, logo, watermark, UI, price tag, or brand competitor name. Keep the bottom 25 percent clean and uncluttered for copywriting.",
+      "negative_prompt": [
+        "text",
+        "watermark",
+        "logo",
+        "competitor name",
+        "crowded bottom area",
+        "low quality composite"
+      ],
+      "file_name_preview": "someud_20260722_실사_황토침대-어버이날-선물-숙면_v02_high.png",
+      "copy_space": "bottom_25_percent",
+      "batch_ready": true
+    },
+    {
+      "prompt_id": "someud_20260722_prompt03",
+      "brand": "someud",
+      "storyboard_id": "someud_20260722_sb03",
+      "status": "image_prompt_ready",
+      "model": "gpt-image-2",
+      "image_type": "illustration",
+      "image_type_label": "일러스트",
+      "size": "2K",
+      "quality": "medium",
+      "sections": [
+        "브랜드 정체성",
+        "오늘의 방향",
+        "이미지 스펙",
+        "카피 영역",
+        "금지사항"
+      ],
+      "rules": [
+        "NO text",
+        "NO watermark",
+        "NO logo",
+        "Leave 25% bottom space for copywriting"
+      ],
+      "prompt": "Create a 일러스트 2K advertising visual for 소머드. Scene: 따뜻한 침실에서 숙면과 가족 신뢰를 보여주는 실사. Objective: 황토침대 중심의 프리미엄 오가닉, 따뜻하고 신뢰감 소재. Hook: 황토침대를 1초 안에 인지할 수 있는 명확한 화면. Composition: 중앙에는 주요 피사체를 두고 하단 25%는 깨끗한 카피 여백으로 비운다. Tone: 프리미엄 오가닉, 따뜻하고 신뢰감. Include visual cues related to 황토침대, 어버이날 선물, 숙면. Do not include any text, letters, numbers, logo, watermark, UI, price tag, or brand competitor name. Keep the bottom 25 percent clean and uncluttered for copywriting.",
+      "negative_prompt": [
+        "text",
+        "watermark",
+        "logo",
+        "competitor name",
+        "crowded bottom area",
+        "low quality composite"
+      ],
+      "file_name_preview": "someud_20260722_일러스트_황토침대-어버이날-선물-숙면_v03_medium.png",
+      "copy_space": "bottom_25_percent",
+      "batch_ready": true
+    },
+    {
+      "prompt_id": "someud_20260722_prompt04",
+      "brand": "someud",
+      "storyboard_id": "someud_20260722_sb04",
+      "status": "image_prompt_ready",
+      "model": "gpt-image-2",
+      "image_type": "illustration",
+      "image_type_label": "일러스트",
+      "size": "2K",
+      "quality": "medium",
+      "sections": [
+        "브랜드 정체성",
+        "오늘의 방향",
+        "이미지 스펙",
+        "카피 영역",
+        "금지사항"
+      ],
+      "rules": [
+        "NO text",
+        "NO watermark",
+        "NO logo",
+        "Leave 25% bottom space for copywriting"
+      ],
+      "prompt": "Create a 일러스트 2K advertising visual for 소머드. Scene: 따뜻한 침실에서 숙면과 가족 신뢰를 보여주는 실사. Objective: 황토침대 중심의 프리미엄 오가닉, 따뜻하고 신뢰감 소재. Hook: 황토침대를 1초 안에 인지할 수 있는 명확한 화면. Composition: 중앙에는 주요 피사체를 두고 하단 25%는 깨끗한 카피 여백으로 비운다. Tone: 프리미엄 오가닉, 따뜻하고 신뢰감. Include visual cues related to 황토침대, 어버이날 선물, 숙면. Do not include any text, letters, numbers, logo, watermark, UI, price tag, or brand competitor name. Keep the bottom 25 percent clean and uncluttered for copywriting.",
+      "negative_prompt": [
+        "text",
+        "watermark",
+        "logo",
+        "competitor name",
+        "crowded bottom area",
+        "low quality composite"
+      ],
+      "file_name_preview": "someud_20260722_일러스트_황토침대-어버이날-선물-숙면_v04_medium.png",
+      "copy_space": "bottom_25_percent",
+      "batch_ready": true
+    },
+    {
+      "prompt_id": "kinda_20260722_prompt01",
+      "brand": "kinda",
+      "storyboard_id": "kinda_20260722_sb01",
+      "status": "image_prompt_ready",
+      "model": "gpt-image-2",
+      "image_type": "real_photo",
+      "image_type_label": "실사",
+      "size": "2K",
+      "quality": "high",
+      "sections": [
+        "브랜드 정체성",
+        "오늘의 방향",
+        "이미지 스펙",
+        "카피 영역",
+        "금지사항"
+      ],
+      "rules": [
+        "NO text",
+        "NO watermark",
+        "NO logo",
+        "Leave 25% bottom space for copywriting"
+      ],
+      "prompt": "Create a 실사 2K advertising visual for 킨다. Scene: 손상 모발 전후 차이가 선명한 욕실·파우더룸 실사. Objective: 극손상 헤어팩 중심의 손상 모발 회복, 부드럽고 신뢰감 있는 뷰티 톤 소재. Hook: 극손상 헤어팩를 1초 안에 인지할 수 있는 명확한 화면. Composition: 중앙에는 주요 피사체를 두고 하단 25%는 깨끗한 카피 여백으로 비운다. Tone: 손상 모발 회복, 부드럽고 신뢰감 있는 뷰티 톤. Include visual cues related to 극손상 헤어팩, 비포애프터, 홈케어. Do not include any text, letters, numbers, logo, watermark, UI, price tag, or brand competitor name. Keep the bottom 25 percent clean and uncluttered for copywriting.",
+      "negative_prompt": [
+        "text",
+        "watermark",
+        "logo",
+        "competitor name",
+        "crowded bottom area",
+        "low quality composite"
+      ],
+      "file_name_preview": "kinda_20260722_실사_극손상-헤어팩-비포애프터-홈케어_v01_high.png",
+      "copy_space": "bottom_25_percent",
+      "batch_ready": true
+    },
+    {
+      "prompt_id": "kinda_20260722_prompt02",
+      "brand": "kinda",
+      "storyboard_id": "kinda_20260722_sb02",
+      "status": "image_prompt_ready",
+      "model": "gpt-image-2",
+      "image_type": "real_photo",
+      "image_type_label": "실사",
+      "size": "2K",
+      "quality": "high",
+      "sections": [
+        "브랜드 정체성",
+        "오늘의 방향",
+        "이미지 스펙",
+        "카피 영역",
+        "금지사항"
+      ],
+      "rules": [
+        "NO text",
+        "NO watermark",
+        "NO logo",
+        "Leave 25% bottom space for copywriting"
+      ],
+      "prompt": "Create a 실사 2K advertising visual for 킨다. Scene: 손상 모발 전후 차이가 선명한 욕실·파우더룸 실사. Objective: 극손상 헤어팩 중심의 손상 모발 회복, 부드럽고 신뢰감 있는 뷰티 톤 소재. Hook: 극손상 헤어팩를 1초 안에 인지할 수 있는 명확한 화면. Composition: 중앙에는 주요 피사체를 두고 하단 25%는 깨끗한 카피 여백으로 비운다. Tone: 손상 모발 회복, 부드럽고 신뢰감 있는 뷰티 톤. Include visual cues related to 극손상 헤어팩, 비포애프터, 홈케어. Do not include any text, letters, numbers, logo, watermark, UI, price tag, or brand competitor name. Keep the bottom 25 percent clean and uncluttered for copywriting.",
+      "negative_prompt": [
+        "text",
+        "watermark",
+        "logo",
+        "competitor name",
+        "crowded bottom area",
+        "low quality composite"
+      ],
+      "file_name_preview": "kinda_20260722_실사_극손상-헤어팩-비포애프터-홈케어_v02_high.png",
+      "copy_space": "bottom_25_percent",
+      "batch_ready": true
+    },
+    {
+      "prompt_id": "kinda_20260722_prompt03",
+      "brand": "kinda",
+      "storyboard_id": "kinda_20260722_sb03",
+      "status": "image_prompt_ready",
+      "model": "gpt-image-2",
+      "image_type": "illustration",
+      "image_type_label": "일러스트",
+      "size": "2K",
+      "quality": "medium",
+      "sections": [
+        "브랜드 정체성",
+        "오늘의 방향",
+        "이미지 스펙",
+        "카피 영역",
+        "금지사항"
+      ],
+      "rules": [
+        "NO text",
+        "NO watermark",
+        "NO logo",
+        "Leave 25% bottom space for copywriting"
+      ],
+      "prompt": "Create a 일러스트 2K advertising visual for 킨다. Scene: 손상 모발 전후 차이가 선명한 욕실·파우더룸 실사. Objective: 극손상 헤어팩 중심의 손상 모발 회복, 부드럽고 신뢰감 있는 뷰티 톤 소재. Hook: 극손상 헤어팩를 1초 안에 인지할 수 있는 명확한 화면. Composition: 중앙에는 주요 피사체를 두고 하단 25%는 깨끗한 카피 여백으로 비운다. Tone: 손상 모발 회복, 부드럽고 신뢰감 있는 뷰티 톤. Include visual cues related to 극손상 헤어팩, 비포애프터, 홈케어. Do not include any text, letters, numbers, logo, watermark, UI, price tag, or brand competitor name. Keep the bottom 25 percent clean and uncluttered for copywriting.",
+      "negative_prompt": [
+        "text",
+        "watermark",
+        "logo",
+        "competitor name",
+        "crowded bottom area",
+        "low quality composite"
+      ],
+      "file_name_preview": "kinda_20260722_일러스트_극손상-헤어팩-비포애프터-홈케어_v03_medium.png",
+      "copy_space": "bottom_25_percent",
+      "batch_ready": true
+    },
+    {
+      "prompt_id": "kinda_20260722_prompt04",
+      "brand": "kinda",
+      "storyboard_id": "kinda_20260722_sb04",
+      "status": "image_prompt_ready",
+      "model": "gpt-image-2",
+      "image_type": "illustration",
+      "image_type_label": "일러스트",
+      "size": "2K",
+      "quality": "medium",
+      "sections": [
+        "브랜드 정체성",
+        "오늘의 방향",
+        "이미지 스펙",
+        "카피 영역",
+        "금지사항"
+      ],
+      "rules": [
+        "NO text",
+        "NO watermark",
+        "NO logo",
+        "Leave 25% bottom space for copywriting"
+      ],
+      "prompt": "Create a 일러스트 2K advertising visual for 킨다. Scene: 손상 모발 전후 차이가 선명한 욕실·파우더룸 실사. Objective: 극손상 헤어팩 중심의 손상 모발 회복, 부드럽고 신뢰감 있는 뷰티 톤 소재. Hook: 극손상 헤어팩를 1초 안에 인지할 수 있는 명확한 화면. Composition: 중앙에는 주요 피사체를 두고 하단 25%는 깨끗한 카피 여백으로 비운다. Tone: 손상 모발 회복, 부드럽고 신뢰감 있는 뷰티 톤. Include visual cues related to 극손상 헤어팩, 비포애프터, 홈케어. Do not include any text, letters, numbers, logo, watermark, UI, price tag, or brand competitor name. Keep the bottom 25 percent clean and uncluttered for copywriting.",
+      "negative_prompt": [
+        "text",
+        "watermark",
+        "logo",
+        "competitor name",
+        "crowded bottom area",
+        "low quality composite"
+      ],
+      "file_name_preview": "kinda_20260722_일러스트_극손상-헤어팩-비포애프터-홈케어_v04_medium.png",
+      "copy_space": "bottom_25_percent",
+      "batch_ready": true
+    },
+    {
+      "prompt_id": "melliance_20260722_prompt01",
+      "brand": "melliance",
+      "storyboard_id": "melliance_20260722_sb01",
+      "status": "image_prompt_ready",
+      "model": "gpt-image-2",
+      "image_type": "real_photo",
+      "image_type_label": "실사",
+      "size": "2K",
+      "quality": "high",
+      "sections": [
+        "브랜드 정체성",
+        "오늘의 방향",
+        "이미지 스펙",
+        "카피 영역",
+        "금지사항"
+      ],
+      "rules": [
+        "NO text",
+        "NO watermark",
+        "NO logo",
+        "Leave 25% bottom space for copywriting"
+      ],
+      "prompt": "Create a 실사 2K advertising visual for 멜리언스. Scene: 피부결과 루틴을 정돈된 뷰티 무드로 보여주는 클로즈업. Objective: 뷰티 루틴 중심의 정돈된 뷰티, 세련되고 균형 잡힌 무드 소재. Hook: 뷰티 루틴를 1초 안에 인지할 수 있는 명확한 화면. Composition: 중앙에는 주요 피사체를 두고 하단 25%는 깨끗한 카피 여백으로 비운다. Tone: 정돈된 뷰티, 세련되고 균형 잡힌 무드. Include visual cues related to 뷰티 루틴, 봄 컬렉션, 피부결. Do not include any text, letters, numbers, logo, watermark, UI, price tag, or brand competitor name. Keep the bottom 25 percent clean and uncluttered for copywriting.",
+      "negative_prompt": [
+        "text",
+        "watermark",
+        "logo",
+        "competitor name",
+        "crowded bottom area",
+        "low quality composite"
+      ],
+      "file_name_preview": "melliance_20260722_실사_뷰티-루틴-봄-컬렉션-피부결_v01_high.png",
+      "copy_space": "bottom_25_percent",
+      "batch_ready": true
+    },
+    {
+      "prompt_id": "melliance_20260722_prompt02",
+      "brand": "melliance",
+      "storyboard_id": "melliance_20260722_sb02",
+      "status": "image_prompt_ready",
+      "model": "gpt-image-2",
+      "image_type": "real_photo",
+      "image_type_label": "실사",
+      "size": "2K",
+      "quality": "high",
+      "sections": [
+        "브랜드 정체성",
+        "오늘의 방향",
+        "이미지 스펙",
+        "카피 영역",
+        "금지사항"
+      ],
+      "rules": [
+        "NO text",
+        "NO watermark",
+        "NO logo",
+        "Leave 25% bottom space for copywriting"
+      ],
+      "prompt": "Create a 실사 2K advertising visual for 멜리언스. Scene: 피부결과 루틴을 정돈된 뷰티 무드로 보여주는 클로즈업. Objective: 뷰티 루틴 중심의 정돈된 뷰티, 세련되고 균형 잡힌 무드 소재. Hook: 뷰티 루틴를 1초 안에 인지할 수 있는 명확한 화면. Composition: 중앙에는 주요 피사체를 두고 하단 25%는 깨끗한 카피 여백으로 비운다. Tone: 정돈된 뷰티, 세련되고 균형 잡힌 무드. Include visual cues related to 뷰티 루틴, 봄 컬렉션, 피부결. Do not include any text, letters, numbers, logo, watermark, UI, price tag, or brand competitor name. Keep the bottom 25 percent clean and uncluttered for copywriting.",
+      "negative_prompt": [
+        "text",
+        "watermark",
+        "logo",
+        "competitor name",
+        "crowded bottom area",
+        "low quality composite"
+      ],
+      "file_name_preview": "melliance_20260722_실사_뷰티-루틴-봄-컬렉션-피부결_v02_high.png",
+      "copy_space": "bottom_25_percent",
+      "batch_ready": true
+    },
+    {
+      "prompt_id": "melliance_20260722_prompt03",
+      "brand": "melliance",
+      "storyboard_id": "melliance_20260722_sb03",
+      "status": "image_prompt_ready",
+      "model": "gpt-image-2",
+      "image_type": "illustration",
+      "image_type_label": "일러스트",
+      "size": "2K",
+      "quality": "medium",
+      "sections": [
+        "브랜드 정체성",
+        "오늘의 방향",
+        "이미지 스펙",
+        "카피 영역",
+        "금지사항"
+      ],
+      "rules": [
+        "NO text",
+        "NO watermark",
+        "NO logo",
+        "Leave 25% bottom space for copywriting"
+      ],
+      "prompt": "Create a 일러스트 2K advertising visual for 멜리언스. Scene: 피부결과 루틴을 정돈된 뷰티 무드로 보여주는 클로즈업. Objective: 뷰티 루틴 중심의 정돈된 뷰티, 세련되고 균형 잡힌 무드 소재. Hook: 뷰티 루틴를 1초 안에 인지할 수 있는 명확한 화면. Composition: 중앙에는 주요 피사체를 두고 하단 25%는 깨끗한 카피 여백으로 비운다. Tone: 정돈된 뷰티, 세련되고 균형 잡힌 무드. Include visual cues related to 뷰티 루틴, 봄 컬렉션, 피부결. Do not include any text, letters, numbers, logo, watermark, UI, price tag, or brand competitor name. Keep the bottom 25 percent clean and uncluttered for copywriting.",
+      "negative_prompt": [
+        "text",
+        "watermark",
+        "logo",
+        "competitor name",
+        "crowded bottom area",
+        "low quality composite"
+      ],
+      "file_name_preview": "melliance_20260722_일러스트_뷰티-루틴-봄-컬렉션-피부결_v03_medium.png",
+      "copy_space": "bottom_25_percent",
+      "batch_ready": true
+    },
+    {
+      "prompt_id": "melliance_20260722_prompt04",
+      "brand": "melliance",
+      "storyboard_id": "melliance_20260722_sb04",
+      "status": "image_prompt_ready",
+      "model": "gpt-image-2",
+      "image_type": "illustration",
+      "image_type_label": "일러스트",
+      "size": "2K",
+      "quality": "medium",
+      "sections": [
+        "브랜드 정체성",
+        "오늘의 방향",
+        "이미지 스펙",
+        "카피 영역",
+        "금지사항"
+      ],
+      "rules": [
+        "NO text",
+        "NO watermark",
+        "NO logo",
+        "Leave 25% bottom space for copywriting"
+      ],
+      "prompt": "Create a 일러스트 2K advertising visual for 멜리언스. Scene: 피부결과 루틴을 정돈된 뷰티 무드로 보여주는 클로즈업. Objective: 뷰티 루틴 중심의 정돈된 뷰티, 세련되고 균형 잡힌 무드 소재. Hook: 뷰티 루틴를 1초 안에 인지할 수 있는 명확한 화면. Composition: 중앙에는 주요 피사체를 두고 하단 25%는 깨끗한 카피 여백으로 비운다. Tone: 정돈된 뷰티, 세련되고 균형 잡힌 무드. Include visual cues related to 뷰티 루틴, 봄 컬렉션, 피부결. Do not include any text, letters, numbers, logo, watermark, UI, price tag, or brand competitor name. Keep the bottom 25 percent clean and uncluttered for copywriting.",
+      "negative_prompt": [
+        "text",
+        "watermark",
+        "logo",
+        "competitor name",
+        "crowded bottom area",
+        "low quality composite"
+      ],
+      "file_name_preview": "melliance_20260722_일러스트_뷰티-루틴-봄-컬렉션-피부결_v04_medium.png",
+      "copy_space": "bottom_25_percent",
+      "batch_ready": true
+    },
+    {
+      "prompt_id": "paperback_20260722_prompt01",
+      "brand": "paperback",
+      "storyboard_id": "paperback_20260722_sb01",
+      "status": "image_prompt_ready",
+      "model": "gpt-image-2",
+      "image_type": "real_photo",
+      "image_type_label": "실사",
+      "size": "2K",
+      "quality": "high",
+      "sections": [
+        "브랜드 정체성",
+        "오늘의 방향",
+        "이미지 스펙",
+        "카피 영역",
+        "금지사항"
+      ],
+      "rules": [
+        "NO text",
+        "NO watermark",
+        "NO logo",
+        "Leave 25% bottom space for copywriting"
+      ],
+      "prompt": "Create a 실사 2K advertising visual for 페이퍼백. Scene: 취향 있는 카페와 독서 장면을 연결한 라이프스타일 컷. Objective: 라이프스타일 중심의 일상 감성, 차분하고 취향이 드러나는 라이프스타일 소재. Hook: 라이프스타일를 1초 안에 인지할 수 있는 명확한 화면. Composition: 중앙에는 주요 피사체를 두고 하단 25%는 깨끗한 카피 여백으로 비운다. Tone: 일상 감성, 차분하고 취향이 드러나는 라이프스타일. Include visual cues related to 라이프스타일, 독서 감성, 카페. Do not include any text, letters, numbers, logo, watermark, UI, price tag, or brand competitor name. Keep the bottom 25 percent clean and uncluttered for copywriting.",
+      "negative_prompt": [
+        "text",
+        "watermark",
+        "logo",
+        "competitor name",
+        "crowded bottom area",
+        "low quality composite"
+      ],
+      "file_name_preview": "paperback_20260722_실사_라이프스타일-독서-감성-카페_v01_high.png",
+      "copy_space": "bottom_25_percent",
+      "batch_ready": true
+    },
+    {
+      "prompt_id": "paperback_20260722_prompt02",
+      "brand": "paperback",
+      "storyboard_id": "paperback_20260722_sb02",
+      "status": "image_prompt_ready",
+      "model": "gpt-image-2",
+      "image_type": "real_photo",
+      "image_type_label": "실사",
+      "size": "2K",
+      "quality": "high",
+      "sections": [
+        "브랜드 정체성",
+        "오늘의 방향",
+        "이미지 스펙",
+        "카피 영역",
+        "금지사항"
+      ],
+      "rules": [
+        "NO text",
+        "NO watermark",
+        "NO logo",
+        "Leave 25% bottom space for copywriting"
+      ],
+      "prompt": "Create a 실사 2K advertising visual for 페이퍼백. Scene: 취향 있는 카페와 독서 장면을 연결한 라이프스타일 컷. Objective: 라이프스타일 중심의 일상 감성, 차분하고 취향이 드러나는 라이프스타일 소재. Hook: 라이프스타일를 1초 안에 인지할 수 있는 명확한 화면. Composition: 중앙에는 주요 피사체를 두고 하단 25%는 깨끗한 카피 여백으로 비운다. Tone: 일상 감성, 차분하고 취향이 드러나는 라이프스타일. Include visual cues related to 라이프스타일, 독서 감성, 카페. Do not include any text, letters, numbers, logo, watermark, UI, price tag, or brand competitor name. Keep the bottom 25 percent clean and uncluttered for copywriting.",
+      "negative_prompt": [
+        "text",
+        "watermark",
+        "logo",
+        "competitor name",
+        "crowded bottom area",
+        "low quality composite"
+      ],
+      "file_name_preview": "paperback_20260722_실사_라이프스타일-독서-감성-카페_v02_high.png",
+      "copy_space": "bottom_25_percent",
+      "batch_ready": true
+    },
+    {
+      "prompt_id": "paperback_20260722_prompt03",
+      "brand": "paperback",
+      "storyboard_id": "paperback_20260722_sb03",
+      "status": "image_prompt_ready",
+      "model": "gpt-image-2",
+      "image_type": "illustration",
+      "image_type_label": "일러스트",
+      "size": "2K",
+      "quality": "medium",
+      "sections": [
+        "브랜드 정체성",
+        "오늘의 방향",
+        "이미지 스펙",
+        "카피 영역",
+        "금지사항"
+      ],
+      "rules": [
+        "NO text",
+        "NO watermark",
+        "NO logo",
+        "Leave 25% bottom space for copywriting"
+      ],
+      "prompt": "Create a 일러스트 2K advertising visual for 페이퍼백. Scene: 취향 있는 카페와 독서 장면을 연결한 라이프스타일 컷. Objective: 라이프스타일 중심의 일상 감성, 차분하고 취향이 드러나는 라이프스타일 소재. Hook: 라이프스타일를 1초 안에 인지할 수 있는 명확한 화면. Composition: 중앙에는 주요 피사체를 두고 하단 25%는 깨끗한 카피 여백으로 비운다. Tone: 일상 감성, 차분하고 취향이 드러나는 라이프스타일. Include visual cues related to 라이프스타일, 독서 감성, 카페. Do not include any text, letters, numbers, logo, watermark, UI, price tag, or brand competitor name. Keep the bottom 25 percent clean and uncluttered for copywriting.",
+      "negative_prompt": [
+        "text",
+        "watermark",
+        "logo",
+        "competitor name",
+        "crowded bottom area",
+        "low quality composite"
+      ],
+      "file_name_preview": "paperback_20260722_일러스트_라이프스타일-독서-감성-카페_v03_medium.png",
+      "copy_space": "bottom_25_percent",
+      "batch_ready": true
+    },
+    {
+      "prompt_id": "paperback_20260722_prompt04",
+      "brand": "paperback",
+      "storyboard_id": "paperback_20260722_sb04",
+      "status": "image_prompt_ready",
+      "model": "gpt-image-2",
+      "image_type": "illustration",
+      "image_type_label": "일러스트",
+      "size": "2K",
+      "quality": "medium",
+      "sections": [
+        "브랜드 정체성",
+        "오늘의 방향",
+        "이미지 스펙",
+        "카피 영역",
+        "금지사항"
+      ],
+      "rules": [
+        "NO text",
+        "NO watermark",
+        "NO logo",
+        "Leave 25% bottom space for copywriting"
+      ],
+      "prompt": "Create a 일러스트 2K advertising visual for 페이퍼백. Scene: 취향 있는 카페와 독서 장면을 연결한 라이프스타일 컷. Objective: 라이프스타일 중심의 일상 감성, 차분하고 취향이 드러나는 라이프스타일 소재. Hook: 라이프스타일를 1초 안에 인지할 수 있는 명확한 화면. Composition: 중앙에는 주요 피사체를 두고 하단 25%는 깨끗한 카피 여백으로 비운다. Tone: 일상 감성, 차분하고 취향이 드러나는 라이프스타일. Include visual cues related to 라이프스타일, 독서 감성, 카페. Do not include any text, letters, numbers, logo, watermark, UI, price tag, or brand competitor name. Keep the bottom 25 percent clean and uncluttered for copywriting.",
+      "negative_prompt": [
+        "text",
+        "watermark",
+        "logo",
+        "competitor name",
+        "crowded bottom area",
+        "low quality composite"
+      ],
+      "file_name_preview": "paperback_20260722_일러스트_라이프스타일-독서-감성-카페_v04_medium.png",
+      "copy_space": "bottom_25_percent",
+      "batch_ready": true
+    },
+    {
+      "prompt_id": "baren_20260722_prompt01",
+      "brand": "baren",
+      "storyboard_id": "baren_20260722_sb01",
+      "status": "image_prompt_ready",
+      "model": "gpt-image-2",
+      "image_type": "real_photo",
+      "image_type_label": "실사",
+      "size": "2K",
+      "quality": "high",
+      "sections": [
+        "브랜드 정체성",
+        "오늘의 방향",
+        "이미지 스펙",
+        "카피 영역",
+        "금지사항"
+      ],
+      "rules": [
+        "NO text",
+        "NO watermark",
+        "NO logo",
+        "Leave 25% bottom space for copywriting"
+      ],
+      "prompt": "Create a 실사 2K advertising visual for 바렌. Scene: 성분과 기능을 깨끗하게 이해시키는 정보형 비주얼. Objective: 기능성 케어 중심의 기능성, 명확하고 깨끗한 정보 전달 소재. Hook: 기능성 케어를 1초 안에 인지할 수 있는 명확한 화면. Composition: 중앙에는 주요 피사체를 두고 하단 25%는 깨끗한 카피 여백으로 비운다. Tone: 기능성, 명확하고 깨끗한 정보 전달. Include visual cues related to 기능성 케어, 인포그래픽, 성분. Do not include any text, letters, numbers, logo, watermark, UI, price tag, or brand competitor name. Keep the bottom 25 percent clean and uncluttered for copywriting.",
+      "negative_prompt": [
+        "text",
+        "watermark",
+        "logo",
+        "competitor name",
+        "crowded bottom area",
+        "low quality composite"
+      ],
+      "file_name_preview": "baren_20260722_실사_기능성-케어-인포그래픽-성분_v01_high.png",
+      "copy_space": "bottom_25_percent",
+      "batch_ready": true
+    },
+    {
+      "prompt_id": "baren_20260722_prompt02",
+      "brand": "baren",
+      "storyboard_id": "baren_20260722_sb02",
+      "status": "image_prompt_ready",
+      "model": "gpt-image-2",
+      "image_type": "real_photo",
+      "image_type_label": "실사",
+      "size": "2K",
+      "quality": "high",
+      "sections": [
+        "브랜드 정체성",
+        "오늘의 방향",
+        "이미지 스펙",
+        "카피 영역",
+        "금지사항"
+      ],
+      "rules": [
+        "NO text",
+        "NO watermark",
+        "NO logo",
+        "Leave 25% bottom space for copywriting"
+      ],
+      "prompt": "Create a 실사 2K advertising visual for 바렌. Scene: 성분과 기능을 깨끗하게 이해시키는 정보형 비주얼. Objective: 기능성 케어 중심의 기능성, 명확하고 깨끗한 정보 전달 소재. Hook: 기능성 케어를 1초 안에 인지할 수 있는 명확한 화면. Composition: 중앙에는 주요 피사체를 두고 하단 25%는 깨끗한 카피 여백으로 비운다. Tone: 기능성, 명확하고 깨끗한 정보 전달. Include visual cues related to 기능성 케어, 인포그래픽, 성분. Do not include any text, letters, numbers, logo, watermark, UI, price tag, or brand competitor name. Keep the bottom 25 percent clean and uncluttered for copywriting.",
+      "negative_prompt": [
+        "text",
+        "watermark",
+        "logo",
+        "competitor name",
+        "crowded bottom area",
+        "low quality composite"
+      ],
+      "file_name_preview": "baren_20260722_실사_기능성-케어-인포그래픽-성분_v02_high.png",
+      "copy_space": "bottom_25_percent",
+      "batch_ready": true
+    },
+    {
+      "prompt_id": "baren_20260722_prompt03",
+      "brand": "baren",
+      "storyboard_id": "baren_20260722_sb03",
+      "status": "image_prompt_ready",
+      "model": "gpt-image-2",
+      "image_type": "illustration",
+      "image_type_label": "일러스트",
+      "size": "2K",
+      "quality": "medium",
+      "sections": [
+        "브랜드 정체성",
+        "오늘의 방향",
+        "이미지 스펙",
+        "카피 영역",
+        "금지사항"
+      ],
+      "rules": [
+        "NO text",
+        "NO watermark",
+        "NO logo",
+        "Leave 25% bottom space for copywriting"
+      ],
+      "prompt": "Create a 일러스트 2K advertising visual for 바렌. Scene: 성분과 기능을 깨끗하게 이해시키는 정보형 비주얼. Objective: 기능성 케어 중심의 기능성, 명확하고 깨끗한 정보 전달 소재. Hook: 기능성 케어를 1초 안에 인지할 수 있는 명확한 화면. Composition: 중앙에는 주요 피사체를 두고 하단 25%는 깨끗한 카피 여백으로 비운다. Tone: 기능성, 명확하고 깨끗한 정보 전달. Include visual cues related to 기능성 케어, 인포그래픽, 성분. Do not include any text, letters, numbers, logo, watermark, UI, price tag, or brand competitor name. Keep the bottom 25 percent clean and uncluttered for copywriting.",
+      "negative_prompt": [
+        "text",
+        "watermark",
+        "logo",
+        "competitor name",
+        "crowded bottom area",
+        "low quality composite"
+      ],
+      "file_name_preview": "baren_20260722_일러스트_기능성-케어-인포그래픽-성분_v03_medium.png",
+      "copy_space": "bottom_25_percent",
+      "batch_ready": true
+    },
+    {
+      "prompt_id": "baren_20260722_prompt04",
+      "brand": "baren",
+      "storyboard_id": "baren_20260722_sb04",
+      "status": "image_prompt_ready",
+      "model": "gpt-image-2",
+      "image_type": "illustration",
+      "image_type_label": "일러스트",
+      "size": "2K",
+      "quality": "medium",
+      "sections": [
+        "브랜드 정체성",
+        "오늘의 방향",
+        "이미지 스펙",
+        "카피 영역",
+        "금지사항"
+      ],
+      "rules": [
+        "NO text",
+        "NO watermark",
+        "NO logo",
+        "Leave 25% bottom space for copywriting"
+      ],
+      "prompt": "Create a 일러스트 2K advertising visual for 바렌. Scene: 성분과 기능을 깨끗하게 이해시키는 정보형 비주얼. Objective: 기능성 케어 중심의 기능성, 명확하고 깨끗한 정보 전달 소재. Hook: 기능성 케어를 1초 안에 인지할 수 있는 명확한 화면. Composition: 중앙에는 주요 피사체를 두고 하단 25%는 깨끗한 카피 여백으로 비운다. Tone: 기능성, 명확하고 깨끗한 정보 전달. Include visual cues related to 기능성 케어, 인포그래픽, 성분. Do not include any text, letters, numbers, logo, watermark, UI, price tag, or brand competitor name. Keep the bottom 25 percent clean and uncluttered for copywriting.",
+      "negative_prompt": [
+        "text",
+        "watermark",
+        "logo",
+        "competitor name",
+        "crowded bottom area",
+        "low quality composite"
+      ],
+      "file_name_preview": "baren_20260722_일러스트_기능성-케어-인포그래픽-성분_v04_medium.png",
+      "copy_space": "bottom_25_percent",
+      "batch_ready": true
+    }
+  ]
+}
