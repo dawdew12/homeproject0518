@@ -4,7 +4,7 @@
   "summary": {
     "run_count": 1,
     "dates": [
-      "2026-07-23"
+      "2026-07-24"
     ],
     "total_ad_records": 15,
     "total_prompts": 20,
@@ -18,7 +18,7 @@
   },
   "daily_summaries": [
     {
-      "date": "2026-07-23",
+      "date": "2026-07-24",
       "artifact_count": 9,
       "metrics": {
         "ad_record_count": 15,

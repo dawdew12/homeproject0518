@@ -1,6 +1,6 @@
 {
   "status": "brand_detail_api_ready",
-  "generated_at": "2026-07-23T03:13:20+09:00",
+  "generated_at": "2026-07-24T03:17:30+09:00",
   "brand": "melliance",
   "snapshot": {
     "brand": "melliance",
@@ -22,7 +22,7 @@
   "routine": {
     "brand": "melliance",
     "display_name": "멜리언스",
-    "date": "2026-07-23",
+    "date": "2026-07-24",
     "ready_part_count": 4,
     "total_part_count": 4,
     "completion_percent": 100,
@@ -114,11 +114,11 @@
           "real_photo_count": 2,
           "illustration_count": 2,
           "estimated_cost_usd": 0.528,
-          "output_dir": "outputs/melliance/2026-07-23/"
+          "output_dir": "outputs/melliance/2026-07-24/"
         },
         "evidence": [
-          "outputs/melliance/2026-07-23/melliance_20260723_실사_뷰티-루틴-봄-컬렉션-피부결_v01_high.png",
-          "outputs/melliance/2026-07-23/melliance_20260723_실사_뷰티-루틴-봄-컬렉션-피부결_v02_high.png"
+          "outputs/melliance/2026-07-24/melliance_20260724_실사_뷰티-루틴-봄-컬렉션-피부결_v01_high.png",
+          "outputs/melliance/2026-07-24/melliance_20260724_실사_뷰티-루틴-봄-컬렉션-피부결_v02_high.png"
         ]
       }
     ]
@@ -126,7 +126,7 @@
   "trend_briefings": [
     {
       "sequence": 3,
-      "date": "2026-07-23",
+      "date": "2026-07-24",
       "brand": "melliance",
       "display_name": "멜리언스",
       "source": "naver_trends",
@@ -147,7 +147,7 @@
     },
     {
       "sequence": 8,
-      "date": "2026-07-23",
+      "date": "2026-07-24",
       "brand": "melliance",
       "display_name": "멜리언스",
       "source": "google_trends",
@@ -168,7 +168,7 @@
     },
     {
       "sequence": 13,
-      "date": "2026-07-23",
+      "date": "2026-07-24",
       "brand": "melliance",
       "display_name": "멜리언스",
       "source": "news",
@@ -189,7 +189,7 @@
     },
     {
       "sequence": 18,
-      "date": "2026-07-23",
+      "date": "2026-07-24",
       "brand": "melliance",
       "display_name": "멜리언스",
       "source": "competitor",

@@ -1,10 +1,10 @@
 {
   "status": "winner_loser_api_ready",
-  "generated_at": "2026-07-23T03:13:20+09:00",
+  "generated_at": "2026-07-24T03:17:30+09:00",
   "summary": {
     "exists": true,
-    "path": "history/daily/2026-07-23_winner_loser.json",
-    "date": "2026-07-23",
+    "path": "history/daily/2026-07-24_winner_loser.json",
+    "date": "2026-07-24",
     "status": "winner_loser_learning_ready",
     "record_count": 15,
     "winner_count": 12,
@@ -53,7 +53,7 @@
   "patterns": {
     "exists": true,
     "path": "history/winner_loser_patterns.json",
-    "updated_at": "2026-07-23",
+    "updated_at": "2026-07-24",
     "winner_count": 12,
     "loser_count": 0,
     "pending_count": 3,
