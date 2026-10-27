@@ -1,15 +1,15 @@
 {
   "status": "history_daily_api_ready",
-  "generated_at": "2026-10-27T06:31:21+09:00",
+  "generated_at": "2026-10-28T06:10:34+09:00",
   "summary": {
     "exists": true,
-    "path": "history/daily/2026-10-27_github_history_summary.json",
-    "date": "2026-10-27",
+    "path": "history/daily/2026-10-28_github_history_summary.json",
+    "date": "2026-10-28",
     "status": "github_history_summary_ready",
     "weekly_key": "2026-W44",
     "daily_file_count": 9,
     "artifact_count": 9,
-    "commit_message": "[HISTORY] 2026-10-27 daily run summary",
+    "commit_message": "[HISTORY] 2026-10-28 daily run summary",
     "prompt_count": 20,
     "image_request_count": 20,
     "approved_count": 20,
@@ -19,61 +19,61 @@
   "artifacts": [
     {
       "suffix": "ad_data",
-      "path": "history/daily/2026-10-27_ad_data.json",
+      "path": "history/daily/2026-10-28_ad_data.json",
       "status": "mock_collected",
       "record_count": 15
     },
     {
       "suffix": "gdrive_manifest",
-      "path": "history/daily/2026-10-27_gdrive_manifest.json",
+      "path": "history/daily/2026-10-28_gdrive_manifest.json",
       "status": "gdrive_upload_manifest_ready",
       "record_count": 20
     },
     {
       "suffix": "image_dry_run",
-      "path": "history/daily/2026-10-27_image_dry_run.json",
+      "path": "history/daily/2026-10-28_image_dry_run.json",
       "status": "image_dry_run_ready",
       "record_count": 20
     },
     {
       "suffix": "manager_brief",
-      "path": "history/daily/2026-10-27_manager_brief.json",
+      "path": "history/daily/2026-10-28_manager_brief.json",
       "status": "manager_brief_ready",
       "record_count": 0
     },
     {
       "suffix": "preflight",
-      "path": "history/daily/2026-10-27_preflight.json",
+      "path": "history/daily/2026-10-28_preflight.json",
       "status": "preflight_passed",
       "record_count": 0
     },
     {
       "suffix": "prompts",
-      "path": "history/daily/2026-10-27_prompts.json",
+      "path": "history/daily/2026-10-28_prompts.json",
       "status": "prompts_ready",
       "record_count": 0
     },
     {
       "suffix": "quality_review",
-      "path": "history/daily/2026-10-27_quality_review.json",
+      "path": "history/daily/2026-10-28_quality_review.json",
       "status": "quality_review_ready",
       "record_count": 20
     },
     {
       "suffix": "trend_data",
-      "path": "history/daily/2026-10-27_trend_data.json",
+      "path": "history/daily/2026-10-28_trend_data.json",
       "status": "mock_collected",
       "record_count": 20
     },
     {
       "suffix": "winner_loser",
-      "path": "history/daily/2026-10-27_winner_loser.json",
+      "path": "history/daily/2026-10-28_winner_loser.json",
       "status": "winner_loser_learning_ready",
       "record_count": 15
     }
   ],
   "planned_commit": {
-    "message": "[HISTORY] 2026-10-27 daily run summary",
+    "message": "[HISTORY] 2026-10-28 daily run summary",
     "paths": [
       "history/daily",
       "history/weekly",
